@@ -1,0 +1,206 @@
+/* ========================================
+   FONT DEFINITIONS
+   ======================================== */
+
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   FONT FAMILY VARIABLES
+   ======================================== */
+
+:root {
+  /* Primary Fonts */
+  --font-primary: 'Gabarito', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  
+  /* Professional Fonts */
+  --font-professional: 'Inter', sans-serif;
+  --font-corporate: 'Roboto', sans-serif;
+  --font-executive: 'Montserrat', sans-serif;
+  --font-classic: 'Source Sans Pro', sans-serif;
+  
+  /* Modern Fonts */
+  --font-modern: 'Poppins', sans-serif;
+  --font-contemporary: 'Nunito', sans-serif;
+  --font-sleek: 'Lato', sans-serif;
+  
+  /* Creative Fonts */
+  --font-creative: 'Raleway', sans-serif;
+  --font-artistic: 'Poppins', sans-serif;
+  --font-unique: 'Montserrat', sans-serif;
+  
+  /* Readable Fonts */
+  --font-readable: 'Open Sans', sans-serif;
+  --font-clean: 'Source Sans Pro', sans-serif;
+  --font-minimal: 'Inter', sans-serif;
+  
+  /* Special Fonts */
+  --font-wix-madefor: 'Wix Madefor Text', sans-serif;
+  
+  /* Fallback Fonts */
+  --font-fallback: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ========================================
+   FONT UTILITY CLASSES
+   ======================================== */
+
+/* Primary Fonts */
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+
+/* Professional Fonts */
+.font-professional { font-family: var(--font-professional); }
+.font-corporate { font-family: var(--font-corporate); }
+.font-executive { font-family: var(--font-executive); }
+.font-classic { font-family: var(--font-classic); }
+
+/* Modern Fonts */
+.font-modern { font-family: var(--font-modern); }
+.font-contemporary { font-family: var(--font-contemporary); }
+.font-sleek { font-family: var(--font-sleek); }
+
+/* Creative Fonts */
+.font-creative { font-family: var(--font-creative); }
+.font-artistic { font-family: var(--font-artistic); }
+.font-unique { font-family: var(--font-unique); }
+
+/* Readable Fonts */
+.font-readable { font-family: var(--font-readable); }
+.font-clean { font-family: var(--font-clean); }
+.font-minimal { font-family: var(--font-minimal); }
+
+/* Special Fonts */
+.font-wix-madefor { font-family: var(--font-wix-madefor); }
+
+/* ========================================
+   FONT WEIGHT UTILITIES
+   ======================================== */
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* ========================================
+   TEMPLATE-SPECIFIC FONT COMBINATIONS
+   ======================================== */
+
+/* Classic Professional Template */
+.template-classic {
+  --template-font-header: var(--font-professional);
+  --template-font-body: var(--font-professional);
+  --template-font-accent: var(--font-professional);
+}
+
+/* Modern Two Column Template */
+.template-modern {
+  --template-font-header: var(--font-modern);
+  --template-font-body: var(--font-modern);
+  --template-font-accent: var(--font-sleek);
+}
+
+/* Executive Template */
+.template-executive {
+  --template-font-header: var(--font-executive);
+  --template-font-body: var(--font-corporate);
+  --template-font-accent: var(--font-executive);
+}
+
+/* Minimalist Template */
+.template-minimalist {
+  --template-font-header: var(--font-minimal);
+  --template-font-body: var(--font-clean);
+  --template-font-accent: var(--font-minimal);
+}
+
+/* Creative Template */
+.template-creative {
+  --template-font-header: var(--font-creative);
+  --template-font-body: var(--font-artistic);
+  --template-font-accent: var(--font-unique);
+}
+
+/* Tech Specialist Template */
+.template-tech {
+  --template-font-header: var(--font-contemporary);
+  --template-font-body: var(--font-readable);
+  --template-font-accent: var(--font-sleek);
+}
+
+/* ========================================
+   RESPONSIVE FONT SIZES
+   ======================================== */
+
+.text-xs { font-size: 0.75rem; }    /* 12px */
+.text-sm { font-size: 0.875rem; }   /* 14px */
+.text-base { font-size: 1rem; }     /* 16px */
+.text-lg { font-size: 1.125rem; }   /* 18px */
+.text-xl { font-size: 1.25rem; }    /* 20px */
+.text-2xl { font-size: 1.5rem; }    /* 24px */
+.text-3xl { font-size: 1.875rem; }  /* 30px */
+.text-4xl { font-size: 2.25rem; }   /* 36px */
+
+/* ========================================
+   PRINT-SPECIFIC FONT OPTIMIZATIONS
+   ======================================== */
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .template-classic,
+  .template-modern,
+  .template-executive,
+  .template-minimalist,
+  .template-creative,
+  .template-tech {
+    font-family: var(--font-readable) !important;
+  }
+}
+
+/* ========================================
+   FONT LOADING OPTIMIZATION
+   ======================================== */
+
+/* Ensure fonts are loaded before displaying text */
+.font-loading {
+  font-display: swap;
+  visibility: hidden;
+}
+
+.fonts-loaded .font-loading {
+  visibility: visible;
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Improve readability for users with dyslexia */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    font-family: var(--font-readable) !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    font-weight: 500 !important;
+  }
+}
