@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleek One Column Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4">
+    <!-- Header -->
+    <div class="header">
+      <div class="profile-img">
+        <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Profile Picture">
+      </div>
+      <div class="header-info">
+        <h1>Daniel Roberts</h1>
+        <p class="job-title">Full Stack Developer</p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        Full Stack Developer with 5+ years of experience building scalable web applications. 
+        Strong background in React, Node.js, and Python. Passionate about creating clean and efficient solutions 
+        while collaborating with cross-functional teams.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section class="education">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="diamond"></div>
+          <div class="content">
+            <h3>Bachelor of Computer Science</h3>
+            <p><em>New York University</em> — 2014 - 2018</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="diamond"></div>
+          <div class="content">
+            <h3>Master of Software Engineering</h3>
+            <p><em>Massachusetts Institute of Technology (MIT)</em> — 2018 - 2020</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="diamond"></div>
+          <div class="content">
+            <h3>Senior Software Engineer</h3>
+            <p><em>Google</em> — 2020 - Present</p>
+            <ul>
+              <li>Led a team of 5 engineers to build scalable cloud-native applications.</li>
+              <li>Optimized Node.js microservices, reducing latency by 35%.</li>
+              <li>Collaborated with designers to implement new UI features in React.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="diamond"></div>
+          <div class="content">
+            <h3>Full Stack Developer</h3>
+            <p><em>Startup Labs</em> — 2018 - 2020</p>
+            <ul>
+              <li>Developed SaaS platforms using React, Express, and PostgreSQL.</li>
+              <li>Implemented CI/CD pipelines with GitHub Actions and Docker.</li>
+              <li>Improved system uptime to 99.9% through monitoring and automation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills">
+      <h2>Skills</h2>
+      <ul class="dot-list">
+        <li>React.js</li>
+        <li>Node.js</li>
+        <li>Python</li>
+        <li>Docker & Kubernetes</li>
+        <li>PostgreSQL / MongoDB</li>
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section class="languages">
+      <h2>Languages</h2>
+      <ul class="dot-list">
+        <li>English — Fluent</li>
+        <li>Spanish — Intermediate</li>
+        <li>German — Basic</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2>Contact</h2>
+      <p><strong>Phone:</strong> +1 555-123-4567</p>
+      <p><strong>Email:</strong> daniel.roberts@example.com</p>
+      <p><strong>Location:</strong> New York, USA</p>
+      <p><strong>Website:</strong> www.danielroberts.dev</p>
+    </section>
+  </div>
+</body>
+</html>
+<style>
+    body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.profile-img img {
+  width: 90px; /* reduced size */
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 3px #222;
+}
+
+.header-info h1 {
+  margin: 15px 0 5px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.job-title {
+  font-size: 13px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sections */
+section {
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin-left: 15px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item .diamond {
+  position: absolute;
+  left: -27px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  background: #333;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.timeline-item .content h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.timeline-item .content p {
+  margin: 2px 0 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.timeline-item ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.timeline-item ul li {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+/* Dot List (Skills & Languages) */
+.dot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dot-list li {
+  font-size: 13px;
+  margin-bottom: 6px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.dot-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+</style>

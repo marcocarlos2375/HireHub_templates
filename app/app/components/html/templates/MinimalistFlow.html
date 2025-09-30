@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimalist Flow Template - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4 minimalist-flow">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Nina Patel</h1>
+        <h2>Product Designer</h2>
+      </div>
+      <div class="header-right">
+        <p>ninapatel.design</p>
+        <p><a href="mailto:ninapatel@gmail.com">ninapatel@gmail.com</a></p>
+        <p>+91 432 2222 322</p>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- EXPERIENCE -->
+      <section>
+        <h3>Experience</h3>
+        <div class="item">
+          <div class="item-left">
+            <strong>ABC Company</strong><br>
+            UX Design Intern<br>
+            <span class="date">Jan 2023 – Present</span>
+          </div>
+          <div class="item-right">
+            <ul>
+              <li>Conducted user research and analyzed data to inform design decisions</li>
+              <li>Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups</li>
+              <li>Facilitated design reviews and user testing sessions to gather feedback</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <h3>Education</h3>
+        <div class="item">
+          <div class="item-left">
+            <strong>School of Design</strong><br>
+            UX Design Bootcamp<br>
+            <span class="date">Jan 2023 – Feb 2023</span>
+          </div>
+          <div class="item-right">
+            <ul>
+              <li>Hands-on training in user-centered design, prototyping, and visual design</li>
+              <li>Completed projects including mobile app, nonprofit website, and e-commerce platform</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section>
+        <h3>Projects</h3>
+        <div class="item">
+          <div class="item-left">
+            <strong>XYZ Project</strong><br>
+            Freelance Designer<br>
+            <span class="date">Jun 2022 – Dec 2022</span>
+          </div>
+          <div class="item-right">
+            <ul>
+              <li>Designed wireframes, prototypes, and visual designs for mobile/web products</li>
+              <li>Conducted usability testing and iterated designs based on feedback</li>
+              <li>Collaborated with developers to ensure accessible implementation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS & TOOLS -->
+      <section>
+        <h3>Skills & Tools</h3>
+        <div class="two-cols">
+          <div>
+            <h4>Tools</h4>
+            <ul>
+              <li>Sketch</li>
+              <li>Figma</li>
+              <li>FigJam</li>
+              <li>Adobe Creative Suite</li>
+              <li>InVision</li>
+              <li>Axure</li>
+              <li>Marvel App</li>
+              <li>Balsamiq</li>
+              <li>Webflow</li>
+              <li>UserTesting</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Skills</h4>
+            <ul>
+              <li>User Research</li>
+              <li>Interaction Design</li>
+              <li>Visual Design</li>
+              <li>Communication & Collaboration</li>
+              <li>User Testing</li>
+              <li>Adaptability & Continuous Learning</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+<style>
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  padding: 30px 40px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0 0;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 12px;
+}
+.header-right a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+.item-left {
+  width: 35%;
+  font-size: 13px;
+}
+.item-left .date {
+  font-size: 12px;
+  color: #666;
+}
+
+.item-right {
+  width: 65%;
+  font-size: 13px;
+}
+
+.item-right ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.two-cols {
+  display: flex;
+  gap: 40px;
+}
+
+.two-cols h4 {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.two-cols ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+    
+</style>
+<script>
+    const skills = [
+  { name: "Figma", level: 95 },
+  { name: "Sketch", level: 90 },
+  { name: "Adobe Photoshop", level: 70 },
+  { name: "Adobe Illustrator", level: 60 },
+  { name: "Principle", level: 50 },
+  { name: "Adobe XD", level: 65 }
+];
+
+const languages = [
+  { name: "English", level: 85 },
+  { name: "Italian", level: 60 }
+];
+
+// Render Skills
+const skillsContainer = document.getElementById("skills");
+skills.forEach(skill => {
+  const div = document.createElement("div");
+  div.classList.add("skill");
+
+  const name = document.createElement("div");
+  name.classList.add("skill-name");
+  name.textContent = skill.name;
+
+  const progress = document.createElement("div");
+  progress.classList.add("progress");
+
+  const bar = document.createElement("div");
+  bar.classList.add("progress-bar");
+  bar.style.width = skill.level + "%";
+
+  progress.appendChild(bar);
+  div.appendChild(name);
+  div.appendChild(progress);
+  skillsContainer.appendChild(div);
+});
+
+// Render Languages
+const languagesContainer = document.getElementById("languages");
+languages.forEach(lang => {
+  const div = document.createElement("div");
+  div.classList.add("language");
+
+  const name = document.createElement("div");
+  name.classList.add("language-name");
+  name.textContent = lang.name;
+
+  const bar = document.createElement("div");
+  bar.classList.add("language-bar");
+
+  const progress = document.createElement("div");
+  progress.classList.add("language-progress");
+  progress.style.width = lang.level + "%";
+
+  bar.appendChild(progress);
+  div.appendChild(name);
+  div.appendChild(bar);
+  languagesContainer.appendChild(div);
+});
+
+</script>

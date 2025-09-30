@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beige Elegance Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/satoshi');
+  </style>
+</head>
+<body>
+  <div class="a4">
+    <!-- Header Section -->
+    <div class="header">
+      <div class="name-block">
+        <h1>Carlos <br> Idrissi Saez</h1>
+      </div>
+      <div class="contact-summary">
+        <h2>Software Engineer</h2>
+        <div class="contact-top">
+          <span>+33 6 12 34 56 78</span> | 
+          <span>carlos.idriss@example.com</span> | 
+          <span>Paris, France</span> | 
+          <span>www.carlossaez.dev</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date and Recipient -->
+    <div class="letter-info">
+      <div class="date-section">
+        <p class="date">December 29, 2024</p>
+      </div>
+      
+      <div class="recipient-section">
+        <p class="recipient">
+          <strong>Hiring Manager</strong><br>
+          Technology Department<br>
+          [Company Name]<br>
+          [Company Address]<br>
+          [City, State, ZIP Code]
+        </p>
+      </div>
+    </div>
+
+    <!-- Subject Line -->
+    <div class="subject-line">
+      <p><strong>Subject: Application for Senior Software Engineer Position</strong></p>
+    </div>
+
+    <!-- Letter Content -->
+    <div class="letter-content">
+      <div class="greeting">
+        <p>Dear Hiring Manager,</p>
+      </div>
+
+      <div class="body-paragraph">
+        <p>I am writing to express my strong interest in the Senior Software Engineer position at [Company Name]. With over 8 years of experience in developing cutting-edge applications and services, specializing in machine learning, cloud infrastructure, and distributed systems, I am excited about the opportunity to contribute to your innovative team.</p>
+      </div>
+
+      <div class="body-paragraph">
+        <p>In my current role as Senior Software Engineer at Google Inc., I have led the development of features for BigQuery ML that improved model training speed by 40% and implemented CI/CD pipelines that reduced deployment time by 60%. My experience spans across multiple technologies including Python, Java, React, and cloud platforms like AWS and Azure. I have successfully mentored junior engineers and collaborated with cross-functional teams to deliver high-quality solutions.</p>
+      </div>
+
+      <div class="body-paragraph">
+        <p>What particularly attracts me to [Company Name] is [specific reason related to the company/role]. My background in building scalable microservices handling millions of requests per day, combined with my expertise in machine learning and distributed systems, aligns perfectly with your team's objectives. I am confident that my proven track record of optimizing system performance and delivering innovative solutions would make me a valuable addition to your organization.</p>
+      </div>
+
+      <div class="body-paragraph">
+        <p>I would welcome the opportunity to discuss how my technical expertise and passion for innovation can contribute to [Company Name]'s continued success. Thank you for considering my application. I look forward to hearing from you soon.</p>
+      </div>
+
+      <div class="closing">
+        <p>Sincerely,</p>
+        <div class="signature-space"></div>
+        <p><strong>Carlos Idrissi Saez</strong></p>
+      </div>
+    </div>
+
+    <!-- Attachments -->
+    <div class="attachments">
+      <p><em>Attachments: Resume, Portfolio</em></p>
+    </div>
+  </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Cover Letter</h3>
+    
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Wix Madefor Text', sans-serif">Wix Madefor Text</option>
+        <option value="'Gabarito', sans-serif">Gabarito</option>
+        <option value="'Raleway', sans-serif">Raleway</option>
+        <option value="'Manrope', sans-serif">Manrope</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+        <option value="'Figtree', sans-serif">Figtree</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Satoshi', sans-serif">Satoshi</option>
+        <option value="'Lato', sans-serif">Lato</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="beige">Beige (Default)</option>
+        <option value="blue">Professional Blue</option>
+        <option value="green">Nature Green</option>
+        <option value="purple">Creative Purple</option>
+        <option value="gray">Modern Gray</option>
+        <option value="teal">Fresh Teal</option>
+        <option value="coral">Warm Coral</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Cover Letter</button>
+    </div>
+  </div>
+
+  <script>
+    // Color schemes
+    const colorSchemes = {
+      beige: {
+        primary: '#f0e5da',
+        secondary: '#e8e0d8',
+        background: '#f4f4f4',
+        text: '#333',
+        lightText: '#555',
+        border: '#ddd'
+      },
+      blue: {
+        primary: '#e3f2fd',
+        secondary: '#bbdefb',
+        background: '#f5f5f5',
+        text: '#1565c0',
+        lightText: '#424242',
+        border: '#90caf9'
+      },
+      green: {
+        primary: '#e8f5e8',
+        secondary: '#c8e6c9',
+        background: '#f1f8e9',
+        text: '#2e7d32',
+        lightText: '#424242',
+        border: '#a5d6a7'
+      },
+      purple: {
+        primary: '#f3e5f5',
+        secondary: '#e1bee7',
+        background: '#fce4ec',
+        text: '#7b1fa2',
+        lightText: '#424242',
+        border: '#ce93d8'
+      },
+      gray: {
+        primary: '#eceff1',
+        secondary: '#cfd8dc',
+        background: '#fafafa',
+        text: '#37474f',
+        lightText: '#546e7a',
+        border: '#b0bec5'
+      },
+      teal: {
+        primary: '#e0f2f1',
+        secondary: '#b2dfdb',
+        background: '#f0fdfc',
+        text: '#00695c',
+        lightText: '#424242',
+        border: '#80cbc4'
+      },
+      coral: {
+        primary: '#fce4ec',
+        secondary: '#f8bbd9',
+        background: '#fff8f5',
+        text: '#d81b60',
+        lightText: '#424242',
+        border: '#f48fb1'
+      }
+    };
+
+    // Get elements
+    const fontSelector = document.getElementById('font-selector');
+    const colorSchemeSelector = document.getElementById('color-scheme');
+    const resetBtn = document.getElementById('reset-btn');
+    const printBtn = document.getElementById('print-btn');
+    const body = document.body;
+
+    // Apply font
+    function applyFont(fontFamily) {
+      body.style.fontFamily = fontFamily;
+    }
+
+    // Apply color scheme
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+      const root = document.documentElement;
+      
+      root.style.setProperty('--primary-color', colors.primary);
+      root.style.setProperty('--secondary-color', colors.secondary);
+      root.style.setProperty('--background-color', colors.background);
+      root.style.setProperty('--text-color', colors.text);
+      root.style.setProperty('--light-text-color', colors.lightText);
+      root.style.setProperty('--border-color', colors.border);
+
+      // Apply to specific elements
+      document.querySelector('.name-block').style.backgroundColor = colors.primary;
+      document.querySelector('.subject-line').style.backgroundColor = colors.secondary;
+      document.querySelector('.subject-line').style.borderLeftColor = colors.primary;
+      document.body.style.backgroundColor = colors.background;
+      document.querySelectorAll('h1, h2, h3, h4').forEach(el => {
+        el.style.color = colors.text;
+      });
+    }
+
+    // Event listeners
+    fontSelector.addEventListener('change', (e) => {
+      applyFont(e.target.value);
+    });
+
+    colorSchemeSelector.addEventListener('change', (e) => {
+      applyColorScheme(e.target.value);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      fontSelector.value = "'Josefin Sans', sans-serif";
+      colorSchemeSelector.value = 'beige';
+      applyFont("'Josefin Sans', sans-serif");
+      applyColorScheme('beige');
+    });
+
+    printBtn.addEventListener('click', () => {
+      // Hide control panel for printing
+      document.querySelector('.control-panel').style.display = 'none';
+      window.print();
+      document.querySelector('.control-panel').style.display = 'block';
+    });
+
+    // Initialize with default values
+    applyFont("'Josefin Sans', sans-serif");
+    applyColorScheme('beige');
+  </script>
+</body>
+</html>
+<style>
+    
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  align-items: stretch;
+}
+
+.name-block {
+  background: #f0e5da;
+  padding: 30px 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-block h1 {
+  font-size: 36px;
+  margin: 0;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.contact-summary {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-summary h2 {
+  margin: 0 0 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.contact-top {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* LETTER INFO */
+.letter-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.date-section {
+  flex: 1;
+}
+
+.date {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.recipient-section {
+  flex: 1;
+  text-align: right;
+}
+
+.recipient {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* SUBJECT LINE */
+.subject-line {
+  margin-bottom: 25px;
+  padding: 12px 20px;
+  background: #f9f6f3;
+  border-left: 4px solid #f0e5da;
+  border-radius: 5px;
+}
+
+.subject-line p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* LETTER CONTENT */
+.letter-content {
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.greeting {
+  margin-bottom: 20px;
+}
+
+.greeting p {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.body-paragraph {
+  margin-bottom: 18px;
+}
+
+.body-paragraph p {
+  font-size: 15px;
+  margin: 0;
+  text-align: justify;
+  color: #444;
+}
+
+.closing {
+  margin-top: 25px;
+}
+
+.closing p {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+.signature-space {
+  height: 40px;
+  margin: 15px 0;
+}
+
+/* ATTACHMENTS */
+.attachments {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.attachments p {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+  text-align: center;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+    padding: 20mm;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .name-block {
+    flex: none;
+  }
+  
+  .letter-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .recipient-section {
+    text-align: left;
+  }
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  color: #333;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: #f0e5da;
+  box-shadow: 0 0 0 2px rgba(240, 229, 218, 0.2);
+}
+
+.control-group button {
+  width: 48%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#reset-btn {
+  background: #f8f9fa;
+  color: #666;
+  margin-right: 4%;
+}
+
+#reset-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+#print-btn {
+  background: #f0e5da;
+  color: #333;
+  border-color: #f0e5da;
+}
+
+#print-btn:hover {
+  background: #e8d5c4;
+  border-color: #e8d5c4;
+}
+
+/* Hide control panel when printing */
+@media print {
+  .control-panel {
+    display: none !important;
+  }
+}
+
+/* Mobile responsiveness for control panel */
+@media (max-width: 768px) {
+  .control-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 300px;
+  }
+}
+</style>

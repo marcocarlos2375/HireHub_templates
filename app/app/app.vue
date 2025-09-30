@@ -1,53 +1,62 @@
 <template>
   <div class="app-container">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Main Navigation -->
-    <div v-if="!selectedTemplate && !selectedCoverLetterTemplate" class="main-navigation">
+    <!-- Tab Navigation -->
+    <div v-if="!selectedTemplate && !selectedCoverLetterTemplate" class="tab-navigation">
       <div class="nav-header">
         <h1 class="nav-title">Professional Templates</h1>
-        <p class="nav-subtitle">Choose the type of document you want to create</p>
+        <p class="nav-subtitle">Choose and customize your professional documents</p>
       </div>
       
-      <div class="nav-options">
-        <div class="nav-card" @click="showResumeGallery">
-          <div class="nav-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button 
+            class="tab-button" 
+            :class="{ active: activeTab === 'resume' }"
+            @click="activeTab = 'resume'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14,2 14,8 20,8"/>
               <line x1="16" y1="13" x2="8" y2="13"/>
               <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10,9 9,9 8,9"/>
             </svg>
-          </div>
-          <h3>Resume Templates</h3>
-          <p>Professional resume templates for your job applications</p>
-        </div>
-        
-        <div class="nav-card" @click="showCoverLetterGallery">
-          <div class="nav-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            Resume Templates
+          </button>
+          <button 
+            class="tab-button" 
+            :class="{ active: activeTab === 'cover-letter' }"
+            @click="activeTab = 'cover-letter'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
+            Cover Letter Templates
+          </button>
+        </div>
+        
+        <div class="tab-content">
+          <!-- Resume Template Gallery -->
+          <div v-if="activeTab === 'resume'" class="tab-panel">
+            <TemplateGallery 
+              @template-selected="handleResumeTemplateSelection"
+            />
           </div>
-          <h3>Cover Letter Templates</h3>
-          <p>Professional cover letter templates to accompany your resume</p>
+          
+          <!-- Cover Letter Gallery -->
+          <div v-if="activeTab === 'cover-letter'" class="tab-panel">
+            <CoverLetterGallery 
+              @template-selected="handleCoverLetterTemplateSelection"
+            />
+          </div>
         </div>
       </div>
     </div>
-    
-    <!-- Resume Template Gallery -->
-    <div v-if="showResumeTemplates && !selectedTemplate" class="gallery-container">
-      <TemplateGallery 
-        @template-selected="handleResumeTemplateSelection"
-      />
-    </div>
-    
-    <!-- Cover Letter Gallery -->
-    <CoverLetterGallery 
-      v-if="showCoverLetterTemplates && !selectedCoverLetterTemplate"
-      @template-selected="handleCoverLetterTemplateSelection"
-    />
     
     <!-- Resume Template View -->
     <div v-if="selectedTemplate" class="template-view">
@@ -64,15 +73,30 @@
           <p class="template-desc">{{ selectedTemplate.description }}</p>
         </div>
         <button class="pdf-btn" @click="generatePDF" :disabled="isGeneratingPDF">
-        
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
           {{ isGeneratingPDF ? 'Generating...' : 'Generate PDF' }}
         </button>
       </div>
       
       <ClassicTemplates 
+        v-if="selectedTemplate.id === 'classic'"
         :resume-data="resumeData"
         :template-config="selectedTemplate"
         :font-family="'Wix Madefor Text, sans-serif'"
+        @page-change="handlePageChange"
+      />
+      
+      <ModernBoxedTemplate 
+        v-if="selectedTemplate.id === 'modern-boxed'"
+        :resume-data="resumeData"
+        :template-config="selectedTemplate"
+        :font-family="'Josefin Sans, sans-serif'"
         @page-change="handlePageChange"
       />
     </div>
@@ -117,10 +141,12 @@
 import { ref } from 'vue'
 import TemplateGallery from './components/Templates/TemplateGallery.vue'
 import ClassicTemplates from './components/Templates/ClassicTemplates.vue'
+import ModernBoxedTemplate from './components/Templates/ModernBoxedTemplate.vue'
 import CoverLetterGallery from './components/Templates/CoverLetters/CoverLetterGallery.vue'
 import ClassicCoverLetter from './components/Templates/CoverLetters/ClassicCoverLetter.vue'
 
 // Navigation state
+const activeTab = ref('resume')
 const showResumeTemplates = ref(false)
 const showCoverLetterTemplates = ref(false)
 
@@ -167,16 +193,7 @@ const coverLetterData = {
   }
 }
 
-// Navigation functions
-const showResumeGallery = () => {
-  showResumeTemplates.value = true
-  showCoverLetterTemplates.value = false
-}
-
-const showCoverLetterGallery = () => {
-  showCoverLetterTemplates.value = true
-  showResumeTemplates.value = false
-}
+// Tab navigation is handled directly in template with activeTab.value
 
 // Resume template functions
 const handleResumeTemplateSelection = (template) => {
@@ -186,6 +203,7 @@ const handleResumeTemplateSelection = (template) => {
 
 const goBackToResumeGallery = () => {
   selectedTemplate.value = null
+  activeTab.value = 'resume'
 }
 
 // Cover letter template functions
@@ -196,6 +214,7 @@ const handleCoverLetterTemplateSelection = (template) => {
 
 const goBackToCoverLetterGallery = () => {
   selectedCoverLetterTemplate.value = null
+  activeTab.value = 'cover-letter'
 }
 
 const handlePageChange = (page) => {
@@ -237,7 +256,7 @@ const generateCoverLetterPDF = async () => {
 }
 </script>
 
-<style>
+<style lang="scss">
 .app-container {
   min-height: 100vh;
   font-family: 'Gabarito', sans-serif;
@@ -370,81 +389,96 @@ const generateCoverLetterPDF = async () => {
   }
 }
 
-/* Main Navigation Styles */
-.main-navigation {
+/* Tab Navigation Styles */
+.tab-navigation {
   min-height: 100vh;
-  padding: 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 2rem;
 }
 
 .nav-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
-.nav-header .nav-title {
-  font-size: 3.5rem;
+.nav-title {
+  font-size: 3rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
   font-family: 'Gabarito', sans-serif;
 }
 
-.nav-header .nav-subtitle {
+.nav-subtitle {
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
   font-family: 'Gabarito', sans-serif;
 }
 
-.nav-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
+.tab-container {
   width: 100%;
+  max-width: 1200px;
+  margin-top: 2rem;
 }
 
-.nav-card {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  text-align: center;
+.tab-buttons {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Gabarito', sans-serif;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.nav-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+.tab-button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.nav-card .nav-icon {
-  margin-bottom: 1.5rem;
-}
-
-.nav-card .nav-icon svg {
-  color: #0ea5e9;
-}
-
-.nav-card h3 {
-  font-size: 1.5rem;
+.tab-button.active {
+  background: rgba(255, 255, 255, 0.95);
+  color: #374151;
   font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1rem;
-  font-family: 'Gabarito', sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.nav-card p {
-  color: #6b7280;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-  font-family: 'Gabarito', sans-serif;
+.tab-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tab-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.tab-panel {
+  min-height: 400px;
 }
 </style>

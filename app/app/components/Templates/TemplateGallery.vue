@@ -77,6 +77,18 @@ const templates = ref([
     paginatorType: 'twoCols'
   },
   {
+    id: 'modern-boxed',
+    name: 'Modern Boxed',
+    description: 'Elegant design with bordered header and two-column layout',
+    tags: ['Modern', 'Boxed', 'Professional'],
+    primaryColor: '#ffffff',
+    headerColor: '#000000',
+    accentColor: '#000000',
+    sampleName: 'Sophia Alvarez',
+    sampleTitle: 'Graphic Designer',
+    paginatorType: 'twoColsWithHeader'
+  },
+  {
     id: 'executive',
     name: 'Executive Header',
     description: 'Professional layout with prominent header section',

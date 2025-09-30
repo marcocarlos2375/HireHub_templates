@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pastel Sidebar Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-pic">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Profile Picture">
+      </div>
+      <div class="header-info">
+        <h1>Juliana Silva</h1>
+        <p class="job-title">Art Director</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- LEFT PART -->
+      <div class="left-part">
+        <section>
+          <h2>Contact</h2>
+          <ul class="contact-list">
+            <li>📞 +123-456-7890</li>
+            <li>✉️ hello@reallygreatsite.com</li>
+            <li>🌐 www.reallygreatsite.com</li>
+            <li>📍 123 Anywhere St., Any City</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <p><strong>Bachelor of Design</strong><br>Wardiere University<br>2006 – 2008</p>
+          <p><strong>Bachelor of Design</strong><br>Wardiere University<br>2006 – 2008</p>
+        </section>
+
+        <section>
+          <h2>Expertise</h2>
+          <ul>
+            <li>Web Design</li>
+            <li>Branding</li>
+            <li>Graphic Design</li>
+            <li>SEO</li>
+            <li>Marketing</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Languages</h2>
+          <p>English</p>
+          <p>French</p>
+        </section>
+      </div>
+
+      <!-- RIGHT PART -->
+      <div class="right-part">
+
+        <section>
+          <h2>About Me</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum.</p>
+        </section>
+
+        <section>
+          <h2>Work Experience</h2>
+
+          <div class="experience">
+            <span class="date">Jan 2022 – Present</span>
+            <h3>Digital Marketing Manager</h3>
+            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
+          </div>
+
+          <div class="experience">
+            <span class="date">2017 – 2019</span>
+            <h3>Social Media Manager</h3>
+            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
+          </div>
+
+          <div class="experience">
+            <span class="date">2015 – 2017</span>
+            <h3>Social Media Manager</h3>
+            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <div class="references">
+            <div>
+              <p><strong>Estelle Darcy</strong><br>Wardiere Inc. / CEO</p>
+              <p>📞 +123-456-7890<br>✉️ hello@reallygreatsite.com</p>
+            </div>
+            <div>
+              <p><strong>Harper Russo</strong><br>Wardiere Inc. / CEO</p>
+              <p>📞 +123-456-7890<br>✉️ hello@reallygreatsite.com</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<style>
+    body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  background: #f5d8d8;
+  padding: 20px;
+}
+.header-pic img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.header-info h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.header-info .job-title {
+  font-size: 14px;
+  color: #555;
+}
+
+/* CONTENT LAYOUT */
+.content {
+  display: flex;
+  padding: 25px 30px;
+}
+.left-part {
+  width: 30%;
+  padding-right: 20px;
+  border-right: 1px solid #ccc;
+}
+.right-part {
+  width: 70%;
+  padding-left: 30px;
+}
+
+/* SECTIONS */
+section {
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+p {
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+/* EXPERIENCE */
+.experience {
+  margin-bottom: 15px;
+}
+.experience .date {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-bottom: 4px;
+}
+.experience h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* REFERENCES */
+.references {
+  display: flex;
+  gap: 40px;
+}
+.references div {
+  font-size: 13px;
+}
+</style>

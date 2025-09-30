@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clean Gradient Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="profile-pic">
+        <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Profile Picture">
+      </div>
+      <div class="header-info">
+        <p class="location">San Francisco, California</p>
+        <p class="contact">(315) 802-8179 · ricktang@gmail.com</p>
+        <h1>Rick Tang, <span>Product Designer</span></h1>
+        <p class="summary">
+          UX/UI specialist focused on designing clean and functional projects across all platforms and devices 
+          in response to specific briefs and problems, while always maintaining a unique look and feel.
+        </p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <h3>Product Designer, Uber</h3>
+        <span class="date">Mar 2015 – Present</span>
+        <ul>
+          <li>Designed safety-focused experiences for Riders and Drivers</li>
+          <li>Physical space problem solving and interaction with digital systems</li>
+          <li>Navigated organization to achieve operational improvements</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Product Designer, IFTTT</h3>
+        <span class="date">Dec 2013 – Mar 2015</span>
+        <ul>
+          <li>Product and system design for a complex product</li>
+          <li>Designed consumer and developer products for IFTTT</li>
+          <li>Maintained design across iOS, Android, and Web</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Product Designer, Facebook</h3>
+        <span class="date">Jun 2013 – Sep 2013</span>
+        <ul>
+          <li>Designed and prototyped internal tools</li>
+          <li>Worked with Privacy team to build assets and features</li>
+          <li>Redesigned Newsfeed curation for mobile</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>UX/UI Design Intern, Google Maps</h3>
+        <span class="date">Jun 2012 – Sep 2013</span>
+        <ul>
+          <li>Contributed to Maps on iOS wireframe and user experience</li>
+          <li>Designed and prototyped onboarding experience</li>
+          <li>Created asset and feature design for Maps on Android</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h2>Education</h2>
+      <div class="entry">
+        <h3>Rhode Island School of Design</h3>
+        <p>BFA Industrial Design, Class of 2013</p>
+      </div>
+      <div class="entry">
+        <h3>Brown University</h3>
+        <p>Interdisciplinary Studies, Sep 2010 – May 2013</p>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section class="section">
+      <h2>Languages</h2>
+      <p>English: C2 | Italian: B2</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2>Skills</h2>
+      <p>Figma | Sketch | Photoshop | Illustrator | Adobe XD | Principle</p>
+    </section>
+
+    <!-- LINKS -->
+    <section class="section">
+      <h2>Links</h2>
+      <p>LinkedIn | Dribbble | Behance</p>
+    </section>
+  </div>
+</body>
+</html>
+<style>
+    body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: linear-gradient(to right, #eaf6f3 0%, #ffffff 60%);
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  padding: 40px 50px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.header-info {
+  flex: 1;
+}
+
+.header-info h1 {
+  font-size: 22px;
+  margin: 5px 0;
+  font-weight: 700;
+}
+.header-info h1 span {
+  font-weight: 400;
+}
+
+.location, .contact {
+  font-size: 12px;
+  color: #555;
+  margin: 0;
+}
+.summary {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* SECTIONS */
+.section {
+  margin-bottom: 25px;
+}
+.section h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #444;
+  border-left: 3px solid #222;
+  padding-left: 8px;
+}
+
+.entry {
+  margin-bottom: 15px;
+}
+.entry h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+.entry .date {
+  font-size: 12px;
+  color: #777;
+}
+.entry p, .entry ul {
+  font-size: 13px;
+  margin: 4px 0;
+}
+.entry ul {
+  padding-left: 18px;
+}
+
+</style>

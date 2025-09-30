@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Épure Template - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <h1><span class="firstname">BENJAMIN</span> <span class="lastname">LEROY</span></h1>
+      </div>
+      <div class="header-right">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Benjamin Leroy" class="profile-img">
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      
+      <!-- LEFT PART -->
+      <aside class="left-part">
+        
+        <section>
+          <h2>Contact</h2>
+          <p>+123-456-7890</p>
+          <p>hello@reallygreatsite.com</p>
+          <p>123 Anywhere St, Any City</p>
+        </section>
+
+        <section>
+          <h2>Formation</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2018 - 2020</p>
+                <p class="title">Master en Ingénierie Aérospatiale</p>
+                <p class="school">École Amédée Autran</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2015 - 2018</p>
+                <p class="title">Bachelor en Ingénierie Mécanique</p>
+                <p class="school">École Amédée Autran</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2015</p>
+                <p class="title">Baccalauréat</p>
+                <p class="school">École Amédée Autran</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+          <ul>
+            <li>Conception et modélisation de véhicules spatiaux</li>
+            <li>Analyse aérodynamique</li>
+            <li>Gestion de projets complexes</li>
+            <li>Simulation numérique</li>
+            <li>Collaboration internationale</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Langues</h2>
+          <ul>
+            <li>Français</li>
+            <li>Anglais</li>
+          </ul>
+        </section>
+
+      </aside>
+
+      <!-- RIGHT PART -->
+      <section class="right-part">
+
+        <section>
+          <h2>Profil</h2>
+          <p>
+            Ingénieur aérospatial polyvalent, je dispose d’une expérience significative dans la modélisation numérique, 
+            l’analyse de performances aérodynamiques et la gestion de projets spatiaux.
+          </p>
+        </section>
+
+        <section>
+          <h2>Expériences Professionnelles</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2023 - Aujourd’hui</p>
+                <p class="title">Ingénieur Aérospatial - Concordia</p>
+                <ul>
+                  <li>Conception et développement de sous-systèmes pour satellites.</li>
+                  <li>Gestion de projets R&D de la conception à la réalisation.</li>
+                  <li>Analyse des performances et optimisation des systèmes.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2021 - 2023</p>
+                <p class="title">Ingénieur de Recherche en Aérospatial - Messagem</p>
+                <ul>
+                  <li>Participation à des projets sur véhicules hypersoniques.</li>
+                  <li>Développement de modèles numériques complexes.</li>
+                  <li>Publications et présentations internationales.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2020</p>
+                <p class="title">Stagiaire en Ingénierie Aérospatiale - Nomade</p>
+                <ul>
+                  <li>Assistance à la conception et tests de systèmes spatiaux.</li>
+                  <li>Contribution à l’analyse de données de mission.</li>
+                  <li>Participation à des projets collaboratifs internationaux.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+<style>
+    
+    body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #F1F1F1;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  padding: 30px 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.header .lastname {
+  font-weight: 300;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.main {
+  display: flex;
+  gap: 40px;
+}
+
+.left-part {
+  flex: 1;
+}
+
+.right-part {
+  flex: 2;
+}
+
+h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 15px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc;
+}
+
+.timeline-item .circle {
+  position: absolute;
+  left: -8px;
+  top: -10px;
+  width: 9px;
+  height: 9px;
+  background: transparent;
+  border-radius: 50%;
+  border: 2px solid #888;
+}
+
+.timeline-content .date {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 3px 0;
+}
+
+.timeline-content .title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+</style>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Edge Template - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="a4 modern-edge">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-top">
+        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Profile Picture">
+        <h1>Rick Tang</h1>
+        <h2>Product Designer</h2>
+      </div>
+      <div class="header-bottom">
+        <span> San Francisco, California</span>
+        <span>ricktang@gmail.com</span>
+        <span> (315) 802-8179</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT PART -->
+      <section class="left-part">
+        <h3>Experience</h3>
+        <div class="job">
+          <h4>Uber</h4>
+          <p><strong>Product Designer</strong><br>Mar 2015 - Present</p>
+          <ul>
+            <li>Designed safety-focused experiences for Riders and Drivers</li>
+            <li>Physical space problem solving and digital interaction</li>
+            <li>Navigated organization to achieve operational improvements</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h4>IFTTT</h4>
+          <p><strong>Product Designer</strong><br>Dec 2013 - Mar 2015</p>
+          <ul>
+            <li>Product and system design for a complex product</li>
+            <li>Designed consumer & developer products</li>
+            <li>Maintained design across iOS, Android, and web</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h4>Facebook</h4>
+          <p><strong>Product Designer</strong><br>Jun 2013 - Sep 2013</p>
+          <ul>
+            <li>Prototyped internal tools</li>
+            <li>Worked with Privacy team to build assets & features</li>
+            <li>Redesigned Newsfeed experience for mobile</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h4>Google Maps</h4>
+          <p><strong>UX/UI Design Intern</strong><br>Jun 2012 - Sep 2013</p>
+          <ul>
+            <li>Contributed to iOS wireframes & UX</li>
+            <li>Designed onboarding experience</li>
+            <li>Assets & feature design for Android</li>
+          </ul>
+        </div>
+
+        <h3>Education</h3>
+        <p><strong>Rhode Island School of Design</strong><br>BFA Industrial Design, Class of 2013</p>
+        <p><strong>Brown University</strong><br>Interdisciplinary Studies, Sep 2010 - May 2013</p>
+      </section>
+
+      <!-- RIGHT PART -->
+      <section class="right-part">
+        <h3>Links</h3>
+        <ul class="links">
+          <li>LinkedIn</li>
+          <li>Dribbble</li>
+          <li>Behance</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <div id="skills"></div>
+
+        <h3>Languages</h3>
+        <div id="languages"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="resume.js"></script>
+</body>
+</html>
+<style>
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.header {
+  background: #111;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+}
+.header-top img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.header-top h1 {
+  margin: 10px 0 0;
+  font-size: 22px;
+}
+.header-top h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0 15px;
+  color: #bbb;
+}
+.header-bottom {
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* MAIN */
+main {
+  display: flex;
+  gap: 40px;
+  padding: 30px;
+}
+.left-part {
+  width: 65%;
+}
+.right-part {
+  width: 35%;
+}
+
+/* Section headers */
+h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 20px 0 10px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 4px;
+}
+
+/* Jobs */
+.job {
+  margin-bottom: 20px;
+}
+.job h4 {
+  font-size: 13px;
+  margin: 0;
+}
+.job p {
+  font-size: 12px;
+  margin: 3px 0 5px;
+}
+.job ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+/* Skills bars */
+.skill {
+  margin-bottom: 12px;
+}
+.skill-name {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.progress {
+  height: 6px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: #111;
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Languages */
+.language {
+  margin-bottom: 12px;
+}
+.language-name {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.language-bar {
+  height: 6px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.language-progress {
+  height: 100%;
+  background: #111;
+  width: 0;
+}
+    
+</style>
+<script>
+const skills = [
+  { name: "Figma", level: 95 },
+  { name: "Sketch", level: 90 },
+  { name: "Adobe Photoshop", level: 70 },
+  { name: "Adobe Illustrator", level: 60 },
+  { name: "Principle", level: 50 },
+  { name: "Adobe XD", level: 65 }
+];
+
+const languages = [
+  { name: "English", level: 85 },
+  { name: "Italian", level: 60 }
+];
+
+// Render Skills
+const skillsContainer = document.getElementById("skills");
+skills.forEach(skill => {
+  const div = document.createElement("div");
+  div.classList.add("skill");
+
+  const name = document.createElement("div");
+  name.classList.add("skill-name");
+  name.textContent = skill.name;
+
+  const progress = document.createElement("div");
+  progress.classList.add("progress");
+
+  const bar = document.createElement("div");
+  bar.classList.add("progress-bar");
+  bar.style.width = skill.level + "%";
+
+  progress.appendChild(bar);
+  div.appendChild(name);
+  div.appendChild(progress);
+  skillsContainer.appendChild(div);
+});
+
+// Render Languages
+const languagesContainer = document.getElementById("languages");
+languages.forEach(lang => {
+  const div = document.createElement("div");
+  div.classList.add("language");
+
+  const name = document.createElement("div");
+  name.classList.add("language-name");
+  name.textContent = lang.name;
+
+  const bar = document.createElement("div");
+  bar.classList.add("language-bar");
+
+  const progress = document.createElement("div");
+  progress.classList.add("language-progress");
+  progress.style.width = lang.level + "%";
+
+  bar.appendChild(progress);
+  div.appendChild(name);
+  div.appendChild(bar);
+  languagesContainer.appendChild(div);
+});
+    
+</script>

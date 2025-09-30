@@ -295,6 +295,135 @@
         }
       },
       
+      /* -------------------- Measurement utilities -------------------- */
+      getEdgeMarginsForTopLevel(rootEl) {
+        const children = rootEl.children;
+        const first = children[0];
+        const last = children[children.length - 1];
+        const mt = first ? parseFloat(getComputedStyle(first).marginTop || '0') : 0;
+        const mb = last  ? parseFloat(getComputedStyle(last).marginBottom || '0') : 0;
+        return { mt, mb };
+      },
+      
+      measuredHeightWithMargins(rootEl) {
+        const { mt, mb } = this.getEdgeMarginsForTopLevel(rootEl);
+        return rootEl.scrollHeight + mt + mb;
+      },
+
+      /* -------------------- Atomic block detection -------------------- */
+      isAtomicBlock(node) {
+        if (!node || node.nodeType !== Node.ELEMENT_NODE) return false;
+        const el = node;
+        if (el.classList?.contains('lang-item')) return true;
+        if (el.dataset?.atomic === 'true') return true;
+
+        // Heuristic: a row div with a small progress bar sibling/child
+        if (el.tagName === 'DIV') {
+          const hasBar =
+            (el.querySelector && (el.querySelector('.lang-bar') ||
+             el.querySelector('[style*="height: 6px"]') ||
+             el.querySelector('[style*="height:6px"]')));
+          const first = el.firstElementChild;
+          const hasFlexHeader = first && getComputedStyle(first).display.includes('flex');
+          if (hasBar && hasFlexHeader) return true;
+        }
+        return false;
+      },
+
+      /* -------------------- Overflow cause analysis -------------------- */
+      analyzeOverflowCause(measurer) {
+        const analysis = {
+          totalElements: 0,
+          largestElements: [],
+          contentTypes: {},
+          possibleCauses: []
+        };
+
+        const analyzeElement = (element) => {
+          if (!element || element.nodeType !== Node.ELEMENT_NODE) return;
+          
+          analysis.totalElements++;
+          const rect = element.getBoundingClientRect();
+          const computedStyle = getComputedStyle(element);
+          
+          // Track content types
+          const tagName = element.tagName.toLowerCase();
+          analysis.contentTypes[tagName] = (analysis.contentTypes[tagName] || 0) + 1;
+          
+          // Find large elements
+          if (rect.height > 50) {
+            analysis.largestElements.push({
+              tagName: tagName,
+              height: Math.round(rect.height),
+              className: element.className || '',
+              textPreview: (element.textContent || '').substring(0, 80) + '...'
+            });
+          }
+          
+          // Check for common overflow causes
+          if (tagName === 'ul' && element.children.length > 5) {
+            analysis.possibleCauses.push(`📝 Long list: ${element.children.length} items`);
+          }
+          
+          if (tagName === 'div' && rect.height > 100) {
+            analysis.possibleCauses.push(`📦 Large container: ${Math.round(rect.height)}px`);
+          }
+          
+          if (element.innerHTML && element.innerHTML.includes('<p>') && element.innerHTML.includes('<ul>')) {
+            analysis.possibleCauses.push(`🔗 Mixed content: paragraphs + lists`);
+          }
+          
+          // Analyze children
+          for (const child of element.children) {
+            analyzeElement(child);
+          }
+        };
+
+        // Start analysis
+        const content = measurer.querySelector('.column-content') || measurer;
+        if (content) analyzeElement(content);
+        
+        // Sort largest elements by height
+        analysis.largestElements.sort((a, b) => b.height - a.height);
+        analysis.largestElements = analysis.largestElements.slice(0, 3);
+        
+        return analysis;
+      },
+
+      /* -------------------- Section extraction for better splitting -------------------- */
+      extractSections(html) {
+        const sections = [];
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        
+        // Find all H2 elements (section headers)
+        const h2Elements = tempDiv.querySelectorAll('h2[style*="color: #0EA5E9"]');
+        
+        if (h2Elements.length === 0) {
+          // No sections found, return as single section
+          return [`<div class="section">${html}</div>`];
+        }
+        
+        h2Elements.forEach((h2) => {
+          const section = document.createElement('div');
+          section.className = 'section';
+          
+          // Add the H2 header
+          section.appendChild(h2.cloneNode(true));
+          
+          // Find content until next H2 or end
+          let currentElement = h2.nextElementSibling;
+          while (currentElement && currentElement.tagName !== 'H2') {
+            section.appendChild(currentElement.cloneNode(true));
+            currentElement = currentElement.nextElementSibling;
+          }
+          
+          sections.push(section.outerHTML);
+        });
+        
+        return sections;
+      },
+
       measureHeaderHeight() {
         const h = this.$refs.measurerHeader;
         if (!h) return;
@@ -302,27 +431,69 @@
         // this.headerHeight = (h.scrollHeight || 0) + this.headerGap;
       },
       
-      // Split HTML into chunks that fit within maxHeight
-      splitHtmlIntoChunks(html, measurer, maxHeight) {
-        const MAX = maxHeight;
-        const overflows = () => measurer.scrollHeight > MAX;
-        
-        const setMeasure = (node) => {
-          measurer.innerHTML = '';
-          measurer.appendChild(node.cloneNode(true));
+      /* -------------------- HTML-aware splitting core -------------------- */
+      splitHtmlIntoChunks(html, measurer, maxContentHeight, safety = 0, maxPages = Infinity) {
+        const self = this;
+
+        const overflows = () => {
+          const currentHeight = self.measuredHeightWithMargins(measurer);
+          const maxAllowed = maxContentHeight - safety;
+          const isOverflowing = currentHeight > maxAllowed;
+          
+          if (isOverflowing) {
+            // Analyze what's causing the overflow
+            const contentAnalysis = self.analyzeOverflowCause(measurer);
+            console.log('🚨 OVERFLOW DETECTED:', {
+              currentHeight: currentHeight,
+              maxAllowed: maxAllowed,
+              safety: safety,
+              overflow: currentHeight - maxAllowed,
+              cause: contentAnalysis,
+              content: measurer.innerHTML.substring(0, 200) + '...'
+            });
+          }
+          
+          return isOverflowing;
         };
-        
+
+        const setMeasure = (node) => {
+          // Wrap probe to mirror render (.column-content) for parity
+          measurer.innerHTML = '';
+          const wrapper = document.createElement('div');
+          wrapper.className = 'column-content';
+          wrapper.appendChild(node.cloneNode(true));
+          measurer.appendChild(wrapper);
+        };
+
         const tryAppend = (container, node) => {
+          const nodeInfo = {
+            tagName: node.tagName || 'TEXT',
+            className: node.className || '',
+            textContent: (node.textContent || '').substring(0, 100) + '...',
+            nodeType: node.nodeType
+          };
+          
           container.appendChild(node);
           setMeasure(container);
+          
           if (overflows()) {
+            console.log('❌ FAILED TO APPEND:', {
+              ...nodeInfo,
+              reason: 'Content would exceed page height',
+              containerHeight: self.measuredHeightWithMargins(measurer),
+              maxAllowed: maxContentHeight - safety
+            });
             container.removeChild(container.lastChild);
             return false;
           }
+          
+          console.log('✅ SUCCESSFULLY APPENDED:', nodeInfo);
           return true;
         };
         
-        // Split plain text to fit into baseContainer using binary search
+        const isSection = (node) =>
+          node?.nodeType === Node.ELEMENT_NODE && node.classList?.contains('section');
+
         const splitTextToFit = (baseContainer, textNode) => {
           const full = textNode.textContent || '';
           if (!full) return [null, null];
@@ -340,13 +511,12 @@
           return [left, right];
         };
         
-        // Split a simple block (p/li/div…) with inline/text children
         const splitSimpleBlock = (blockEl) => {
           const left = blockEl.cloneNode(false);
           const right = blockEl.cloneNode(false);
           
           // Check if this is an atomic block that shouldn't be split
-          if (blockEl.classList && blockEl.classList.contains('atomic-block')) {
+          if (self.isAtomicBlock(blockEl)) {
             return { left: null, right: blockEl.cloneNode(true) };
           }
           
@@ -425,12 +595,34 @@
         wrap.innerHTML = html || '';
         const nodes = Array.from(wrap.childNodes);
         
-        const chunks = [];
+        let chunks = [];
         let col = document.createElement('div');
-        const pushCol = () => { chunks.push(col.innerHTML); col = document.createElement('div'); };
+        
+        const pushCol = () => {
+          if (col.innerHTML.trim()) {
+            console.log(`📄 CREATING PAGE ${chunks.length + 1}:`, {
+              contentLength: col.innerHTML.length,
+              preview: col.textContent.substring(0, 150) + '...'
+            });
+            chunks.push(col.innerHTML);
+          }
+          col = document.createElement('div');
+        };
         
         for (const node of nodes) {
           const clone = node.cloneNode(true);
+          
+          // Skip sections that should be kept together if we're at the start of a new page
+          if (isSection(clone) && col.childNodes.length === 0) {
+            if (!tryAppend(col, clone)) {
+              // Section is too big for a page, try to split it
+              const { left, right } = splitSimpleBlock(clone);
+              if (left && left.childNodes.length) col.appendChild(left);
+              pushCol();
+              if (right && right.childNodes.length) col.appendChild(right);
+            }
+            continue;
+          }
           
           // Special case: first node itself is too tall
           if (col.childNodes.length === 0) {
@@ -440,20 +632,21 @@
               col.removeChild(clone);
               if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
                 const { left, right } = splitList(clone);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               } else if (clone.nodeType === Node.ELEMENT_NODE) {
                 const { left, right } = splitSimpleBlock(clone);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               } else {
-                const p = document.createElement('p'); p.appendChild(clone);
+                const p = document.createElement('p'); 
+                p.appendChild(clone);
                 const { left, right } = splitSimpleBlock(p);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               }
               continue;
             }
@@ -467,20 +660,21 @@
             if (!tryAppend(col, clone)) {
               if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
                 const { left, right } = splitList(clone);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               } else if (clone.nodeType === Node.ELEMENT_NODE) {
                 const { left, right } = splitSimpleBlock(clone);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               } else {
-                const p = document.createElement('p'); p.appendChild(clone);
+                const p = document.createElement('p'); 
+                p.appendChild(clone);
                 const { left, right } = splitSimpleBlock(p);
-                if (left) col.appendChild(left);
+                if (left && left.childNodes.length) col.appendChild(left);
                 pushCol();
-                if (right) col.appendChild(right);
+                if (right && right.childNodes.length) col.appendChild(right);
               }
             }
             continue;
@@ -489,6 +683,36 @@
         
         if (col.childNodes.length) pushCol();
         if (chunks.length === 0) chunks.push('');
+
+        // Enforce maxPages hard cap (merge tail, then fit tail into one page)
+        if (Number.isFinite(maxPages) && chunks.length > maxPages) {
+          const keep = chunks.slice(0, maxPages - 1);
+          const mergedTailRaw = chunks.slice(maxPages - 1).join('');
+          const fittedTailArr = this.splitHtmlIntoChunks(
+            `<div class="column-content">${mergedTailRaw}</div>`,
+            measurer,
+            maxContentHeight,
+            safety,
+            1
+          );
+          const fittedTail = (fittedTailArr[0] || `<div class="column-content"></div>`);
+          chunks = [...keep, fittedTail];
+        }
+
+        // Set pages
+        this.pages = chunks;
+
+        // Log pagination summary
+        console.log('📊 PAGINATION SUMMARY:', {
+          totalPages: chunks.length,
+          maxContentHeight: maxContentHeight,
+          safety: safety,
+          pages: chunks.map((page, i) => ({
+            pageNumber: i + 1,
+            contentLength: page.length,
+            preview: page.replace(/<[^>]*>/g, '').substring(0, 100) + '...'
+          }))
+        });
         
         return chunks;
       },
@@ -509,17 +733,84 @@
         this.measureHeaderHeight(); // update headerHeight first
         
         const maxH = this.columnMaxHeight;
+        const finalSafeHeight = Math.max(0, maxH - this.safetyBuffer);
         
-        // split raw content into initial chunks
-        let leftChunks = this.splitHtmlIntoChunks(this.leftHtml, this.$refs.measurerLeft, maxH);
-        let rightChunks = this.splitHtmlIntoChunks(this.rightHtml, this.$refs.measurerRight, maxH);
+        console.log('🔄 STARTING REPAGINATION:', {
+          maxHeight: maxH,
+          safetyBuffer: this.safetyBuffer,
+          finalSafeHeight: finalSafeHeight,
+          leftContentLength: this.leftHtml?.length || 0,
+          rightContentLength: this.rightHtml?.length || 0
+        });
         
-        // enforce safe space on each chunk separately
-        leftChunks = leftChunks.flatMap(chunk => this.enforceSafeSpace(chunk, this.$refs.measurerLeft, maxH));
-        rightChunks = rightChunks.flatMap(chunk => this.enforceSafeSpace(chunk, this.$refs.measurerRight, maxH));
+        // Prepare content: optional auto-wrap + ensure column-content wrapper for input
+        let leftPrepared = this.leftHtml?.trim() || '';
+        let rightPrepared = this.rightHtml?.trim() || '';
+        
+        // Convert the content to individual sections for better splitting
+        if (leftPrepared.includes('<h2 style=')) {
+          const sections = this.extractSections(leftPrepared);
+          leftPrepared = sections.join('');
+          console.log('🔧 EXTRACTED LEFT SECTIONS:', sections.length, 'sections');
+        }
+        
+        if (rightPrepared.includes('<h2 style=')) {
+          const sections = this.extractSections(rightPrepared);
+          rightPrepared = sections.join('');
+          console.log('🔧 EXTRACTED RIGHT SECTIONS:', sections.length, 'sections');
+        }
+        
+        // Mirror measurer styles
+        if (this.$refs.measurerLeft) {
+          this.$refs.measurerLeft.style.paddingTop = `${this.columnPaddingTop}px`;
+          this.$refs.measurerLeft.style.paddingRight = `${this.columnPaddingRight}px`;
+          this.$refs.measurerLeft.style.paddingBottom = `${this.columnPaddingBottom}px`;
+          this.$refs.measurerLeft.style.paddingLeft = `${this.columnPaddingLeft}px`;
+          this.$refs.measurerLeft.style.boxSizing = 'border-box';
+          this.$refs.measurerLeft.style.width = `${this.leftColumnWidth}px`;
+        }
+        
+        if (this.$refs.measurerRight) {
+          this.$refs.measurerRight.style.paddingTop = `${this.columnPaddingTop}px`;
+          this.$refs.measurerRight.style.paddingRight = `${this.columnPaddingRight}px`;
+          this.$refs.measurerRight.style.paddingBottom = `${this.columnPaddingBottom}px`;
+          this.$refs.measurerRight.style.paddingLeft = `${this.columnPaddingLeft}px`;
+          this.$refs.measurerRight.style.boxSizing = 'border-box';
+          this.$refs.measurerRight.style.width = `${this.rightColumnWidth}px`;
+        }
+        
+        // Split content with enhanced algorithm
+        let leftChunks = this.splitHtmlIntoChunks(
+          leftPrepared,
+          this.$refs.measurerLeft,
+          finalSafeHeight,
+          this.safetyBuffer,
+          this.maxPages
+        );
+        
+        let rightChunks = this.splitHtmlIntoChunks(
+          rightPrepared,
+          this.$refs.measurerRight,
+          finalSafeHeight,
+          this.safetyBuffer,
+          this.maxPages
+        );
+        
+        // Ensure each chunk has proper wrapper for rendering
+        leftChunks = leftChunks.map(c => {
+          if (!c.trim()) return '';
+          if (c.includes('class="column-content"')) return c;
+          return `<div class="column-content">${c}</div>`;
+        }).filter(c => c.trim());
+        
+        rightChunks = rightChunks.map(c => {
+          if (!c.trim()) return '';
+          if (c.includes('class="column-content"')) return c;
+          return `<div class="column-content">${c}</div>`;
+        }).filter(c => c.trim());
         
         const maxChunks = Math.max(leftChunks.length, rightChunks.length);
-        const maxPagesLimit = this.maxPages || 6; // hard cap if not specified
+        const maxPagesLimit = this.maxPages || 6;
         const pagesArr = [];
         
         for (let i = 0; i < maxChunks && i < maxPagesLimit; i++) {
@@ -536,6 +827,23 @@
         }
         
         this.pages = pagesArr;
+        
+        // Log pagination summary
+        console.log('📊 TWO-COLUMN PAGINATION SUMMARY:', {
+          totalPages: this.pages.length,
+          leftChunks: leftChunks.length,
+          rightChunks: rightChunks.length,
+          maxHeight: maxH,
+          finalSafeHeight: finalSafeHeight,
+          safetyBuffer: this.safetyBuffer,
+          pages: this.pages.map((page, i) => ({
+            pageNumber: i + 1,
+            leftLength: page.left.length,
+            rightLength: page.right.length,
+            leftPreview: page.left.replace(/<[^>]*>/g, '').substring(0, 50) + '...',
+            rightPreview: page.right.replace(/<[^>]*>/g, '').substring(0, 50) + '...'
+          }))
+        });
         
         // Update pagination store
         this.paginationStore.setPageCount(this.totalPages);

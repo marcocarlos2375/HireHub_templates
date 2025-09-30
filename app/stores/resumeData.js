@@ -9,7 +9,8 @@ export const useResumeDataStore = defineStore('resumeData', {
       phone: '+33 6 12 34 56 78',
       location: 'Paris, France',
       linkedin: 'linkedin.com/in/carlossaez',
-      portfolio: 'www.carlossaez.dev'
+      portfolio: 'www.carlossaez.dev',
+      summary: 'Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems.'
     },
     
     summary: {
@@ -77,10 +78,36 @@ export const useResumeDataStore = defineStore('resumeData', {
     ],
     
     skills: {
-      'Programming Languages': ['Python', 'Java', 'JavaScript', 'TypeScript', 'Go', 'C++'],
-      'Frameworks & Libraries': ['React', 'Vue.js', 'Node.js', 'Express', 'Django', 'Spring Boot'],
-      'Cloud & DevOps': ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Jenkins', 'Terraform'],
-      'Databases': ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch']
+      'Programming Languages': [
+        { name: 'Python', level: 5 },
+        { name: 'Java', level: 5 },
+        { name: 'JavaScript', level: 4 },
+        { name: 'TypeScript', level: 4 },
+        { name: 'Go', level: 3 },
+        { name: 'C++', level: 3 }
+      ],
+      'Frameworks & Libraries': [
+        { name: 'React', level: 5 },
+        { name: 'Vue.js', level: 4 },
+        { name: 'Node.js', level: 5 },
+        { name: 'Express', level: 4 },
+        { name: 'Django', level: 3 },
+        { name: 'Spring Boot', level: 3 }
+      ],
+      'Cloud & DevOps': [
+        { name: 'AWS', level: 4 },
+        { name: 'Azure', level: 3 },
+        { name: 'Docker', level: 5 },
+        { name: 'Kubernetes', level: 4 },
+        { name: 'Jenkins', level: 3 },
+        { name: 'Terraform', level: 3 }
+      ],
+      'Databases': [
+        { name: 'PostgreSQL', level: 4 },
+        { name: 'MongoDB', level: 4 },
+        { name: 'Redis', level: 3 },
+        { name: 'Elasticsearch', level: 3 }
+      ]
     },
     
     projects: [

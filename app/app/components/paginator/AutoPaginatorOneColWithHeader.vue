@@ -106,7 +106,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       /* styling helpers */
       contentClass:{ type: String, default: '' },
       fudgePx:     { type: Number, default: 1 },     // anti sub-pixel clipping
-      safetyBuffer:{ type: Number, default: 15 },    // margin for overflow detection
+      safetyBuffer:{ type: Number, default: 12 },    // margin for overflow detection
       maxPages:    { type: Number, default: Infinity }, // hard cap
   
       /* controls */
