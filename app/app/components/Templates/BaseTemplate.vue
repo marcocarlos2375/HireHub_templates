@@ -16,6 +16,24 @@
         @page-change="handlePageChange"
       />
       
+      <!-- Auto Paginator One Column with Header (Only First Page) -->
+      <AutoPaginatorOneColHeaderOnce 
+        v-else-if="paginatorType === 'oneColHeaderOnce'"
+        :model-value="currentPageIndex"
+        :header-html="headerContent"
+        :html="mainContent"
+        :page-width="pageWidthPx"
+        :page-height="pageHeightPx"
+        :page-padding="pagePaddingPx"
+        :header-bg-color="headerBgColor"
+        :column-bg-color="backgroundColor"
+        :font-family="fontFamily"
+        :safety-buffer="1"
+        :fudge-px="0"
+        content-class="resume-typography"
+        @page-change="handlePageChange"
+      />
+      
       <!-- Auto Paginator Two Columns -->
       <AutoPaginatorTwoCols 
         v-else-if="paginatorType === 'twoCols'"
@@ -88,6 +106,7 @@
   import { ref, computed, onMounted, watch } from 'vue';
   import { usePaginationStore } from '~/stores/pagination';
   import AutoPaginatorOneColWithHeader from '../paginator/AutoPaginatorOneColWithHeader.vue';
+  import AutoPaginatorOneColHeaderOnce from '../paginator/AutoPaginatorOneColHeaderOnce.vue';
   import AutoPaginatorTwoCols from '../paginator/AutoPaginatorTwoCols.vue';
   import AutoPaginatorTwoColsWithHeader from '../paginator/AutoPaginatorTwoColsWithHeader.vue';
   
@@ -99,7 +118,7 @@
     paginatorType: {
       type: String,
       default: 'oneColHeader',
-      validator: (value) => ['oneColHeader', 'twoCols', 'twoColsHeader'].includes(value)
+      validator: (value) => ['oneColHeader', 'oneColHeaderOnce', 'twoCols', 'twoColsHeader'].includes(value)
     },
     // Total number of pages to render (for legacy paginator)
     pageCount: {

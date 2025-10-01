@@ -12,11 +12,11 @@ export const useResumeDataStore = defineStore('resumeData', {
       portfolio: 'www.carlossaez.dev',
       summary: 'Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems.'
     },
-    
+  
     summary: {
       text: 'Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver high-quality solutions that drive business growth and improve user experience.'
     },
-    
+  
     experience: [
       {
         id: 1,
@@ -25,7 +25,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         location: 'Deggendorf',
         start_date: 'Mar 2025',
         end_date: 'Dec 2026',
-        description: '<p>Responsible for designing and delivering scalable web applications and internal tools. Implemented backend services and automated CI/CD pipelines to improve deployment speed and system reliability.</p><ul><li>Designed and implemented RESTful APIs and microservices using modern web frameworks, improving feature delivery time by ~30%.</li><li>Developed frontend components and responsive UIs (component-driven, accessible) and collaborated closely with designers to reduce UI bugs by 25%.</li><li>Built and maintained automated CI/CD pipelines, unit and integration test suites, and deployment scripts to ensure zero-downtime releases.</li><li>Optimized database queries and introduced caching strategies, reducing average response time by 40% for key endpoints.</li><li>Implemented monitoring and logging (alerts, dashboards) that cut incident detection time by 50% and reduced mean time to recovery.</li><li>Mentored junior developers, ran code reviews, and introduced coding standards that raised code quality and consistency across the team.</li></ul>'
+        description: '<p>Responsible for designing and delivering scalable web applications and internal tools. Implemented backend services and automated <strong>CI/CD pipelines</strong> to enhance deployment <u>speed and system reliability</u>.</p><ul><li>Designed and implemented RESTful APIs and microservices using modern web frameworks, accelerating feature delivery by ~30%.</li><li>Developed responsive, component-driven UIs and collaborated with designers to reduce UI defects by 25%.</li><li>Built and maintained automated CI/CD pipelines, test suites, and deployment scripts ensuring zero-downtime releases.</li><li>Optimized database queries and introduced caching strategies, lowering response times for critical endpoints by 40%.</li><li>Implemented monitoring and alerting dashboards that cut incident detection time by 50% and improved recovery metrics.</li><li>Mentored junior developers, conducted code reviews, and established coding standards to boost quality and consistency.</li><li>Enhanced system observability with structured logging and proactive performance metrics collection.</li><li>Collaborated with cross-functional stakeholders to align technical delivery with business goals and improve outcomes.</li><li>Integrated security best practices into development workflows, strengthening application resilience against threats.</li><li>Introduced automated documentation tools, improving onboarding speed and knowledge sharing across the team.</li></ul>'
       },
       {
         id: 2,
@@ -34,7 +34,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         location: 'Mountain View, CA',
         start_date: 'Jun 2022',
         end_date: 'Present',
-        description: '<p><strong>Senior Software Engineer</strong> working on Google Cloud Platform\'s AI and machine learning services.</p><ul><li>Led the development of a new feature for BigQuery ML that improved model training speed by 40%</li><li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li><li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li><li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li><li>Mentored 5 junior engineers and conducted technical interviews</li><li>Implemented CI/CD pipelines that reduced deployment time by 60%</li></ul>'
+        description: '<p><strong>Senior Software Engineer</strong> working on Google Cloud Platform’s AI and machine learning services.</p><ul><li>Led the development of a new BigQuery ML feature that accelerated training speed by 40%.</li><li>Partnered with cross-functional teams to design and deliver RESTful APIs for deploying ML models.</li><li>Engineered scalable backend systems ensuring high availability and performance.</li><li>Improved reliability through automation, monitoring, and self-healing infrastructure.</li><li>Mentored 5 junior engineers, provided guidance, and ran technical interviews.</li><li>Implemented CI/CD pipelines that reduced deployment time by 60% and increased release frequency.</li></ul>'
       },
       {
         id: 3,
@@ -43,10 +43,10 @@ export const useResumeDataStore = defineStore('resumeData', {
         location: 'Seattle, WA',
         start_date: 'Jul 2020',
         end_date: 'May 2022',
-        description: '<p>Developing cloud-native applications and services for Azure platform. Focus on scalability, performance optimization, and automated testing.</p><ul><li>Built scalable microservices handling 1M+ requests per day</li><li>Optimized database queries resulting in 50% performance improvement</li><li>Implemented automated testing frameworks reducing bugs by 30%</li><li>Collaborated with product managers to define technical requirements</li></ul>'
+        description: '<p>Developed cloud-native applications and services for the Azure platform with a focus on scalability, performance optimization, and testing automation.</p><ul><li>Built microservices handling over 1M requests per day.</li><li>Optimized queries and caching, improving performance by 50%.</li><li>Introduced automated testing frameworks, reducing defects by 30%.</li><li>Worked with product managers to define technical requirements and align with business goals.</li></ul>'
       }
     ],
-    
+  
     education: [
       {
         id: 1,
@@ -55,7 +55,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Sep 2020',
         end_date: 'Jun 2022',
         degree: 'Master of Science in Computer Science',
-        description: '<p>Specialized in Artificial Intelligence and Machine Learning. <strong>GPA: 3.92/4.0</strong></p><ul><li>Research Assistant at Stanford AI Lab</li><li>Published 2 papers on deep learning applications</li><li>Teaching Assistant for CS231n: Convolutional Neural Networks</li></ul>'
+        description: '<p>Specialized in Artificial Intelligence and Machine Learning. <strong>GPA: 3.92/4.0</strong></p><ul><li>Research Assistant at Stanford AI Lab.</li><li>Published 2 papers on deep learning applications.</li><li>Teaching Assistant for CS231n: Convolutional Neural Networks.</li></ul>'
       },
       {
         id: 2,
@@ -64,7 +64,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Sep 2016',
         end_date: 'May 2020',
         degree: 'Bachelor of Science in Computer Engineering',
-        description: '<p>Bachelor of Science in Computer Engineering - Minor in Mathematics. Graduated with Honors. GPA: 3.85/4.0</p><ul><li>Dean\'s List all semesters</li><li>Capstone Project: Developed an IoT system for smart energy management</li></ul>'
+        description: '<p>Bachelor of Science in Computer Engineering - Minor in Mathematics. Graduated with Honors. GPA: 3.85/4.0</p><ul><li>Dean\'s List every semester.</li><li>Capstone Project: Developed an IoT system for smart energy management.</li></ul>'
       },
       {
         id: 3,
@@ -73,10 +73,10 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Jan 2019',
         end_date: 'Jun 2019',
         degree: 'Study Abroad Program',
-        description: '<p>Focus on Advanced Algorithms and Distributed Systems</p><ul><li>Completed research project on distributed consensus algorithms</li><li>Participated in the ETH Robotics Challenge</li></ul>'
+        description: '<p>Focus on Advanced Algorithms and Distributed Systems.</p><ul><li>Completed a research project on distributed consensus algorithms.</li><li>Participated in the ETH Robotics Challenge.</li></ul>'
       }
     ],
-    
+  
     skills: {
       'Programming Languages': [
         { name: 'Python', level: 5 },
@@ -109,7 +109,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         { name: 'Elasticsearch', level: 3 }
       ]
     },
-    
+  
     projects: [
       {
         id: 1,
@@ -120,7 +120,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Mar 2022',
         end_date: 'Present',
         technologies: ['React', 'Node.js', 'MongoDB', 'AWS'],
-        description: '<p>AI-powered retail analytics platform for sales and inventory optimization.</p><ul><li>Implemented machine learning algorithms for demand forecasting</li><li>Built real-time dashboard with React and D3.js</li><li>Integrated with multiple POS systems and inventory databases</li><li>Achieved 25% improvement in inventory turnover rates</li></ul>'
+        description: '<p>AI-powered retail analytics platform for sales and inventory optimization.</p><ul><li>Implemented machine learning algorithms for demand forecasting.</li><li>Built real-time dashboards with React and D3.js.</li><li>Integrated with POS systems and inventory databases.</li><li>Achieved 25% improvement in inventory turnover rates.</li></ul>'
       },
       {
         id: 2,
@@ -131,7 +131,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Jan 2023',
         end_date: 'Dec 2023',
         technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Docker'],
-        description: '<p><strong>Personal finance management application</strong> with automated categorization and investment tracking.</p><ul><li>Developed automated transaction categorization using NLP</li><li>Built investment portfolio tracking with real-time market data</li><li>Implemented secure bank account integration via Plaid API</li><li>Created mobile-responsive Vue.js frontend with PWA capabilities</li></ul>'
+        description: '<p><strong>Personal finance management application</strong> with automated categorization and investment tracking.</p><ul><li>Developed automated transaction categorization using NLP.</li><li>Built portfolio tracking with live market data.</li><li>Implemented secure bank integrations via Plaid API.</li><li>Created mobile-responsive Vue.js frontend with PWA capabilities.</li></ul>'
       },
       {
         id: 3,
@@ -142,10 +142,10 @@ export const useResumeDataStore = defineStore('resumeData', {
         start_date: 'Jun 2021',
         end_date: 'Feb 2022',
         technologies: ['Angular', 'Java', 'Spring Boot', 'MySQL'],
-        description: '<p>Real-time healthcare data visualization platform for hospital management and patient care optimization.</p><ul><li>Built interactive dashboards for patient flow monitoring</li><li>Implemented real-time alerts for critical patient metrics</li><li>Developed data integration layer for multiple hospital systems</li><li>Reduced patient wait times by 30% through optimized scheduling</li></ul>'
+        description: '<p>Real-time healthcare data visualization platform for hospital management and patient care optimization.</p><ul><li>Built dashboards for monitoring patient flows.</li><li>Implemented real-time alerts for critical patient metrics.</li><li>Developed integration layers for multiple hospital systems.</li><li>Reduced patient wait times by 30% via scheduling optimization.</li></ul>'
       }
     ],
-    
+  
     publications: [
       {
         id: 1,
@@ -172,24 +172,24 @@ export const useResumeDataStore = defineStore('resumeData', {
         description: 'Practical approaches to deploying and maintaining machine learning models in production environments.'
       }
     ],
-    
+  
     certifications: [
       { name: 'AWS Certified Solutions Architect', year: '2023' },
       { name: 'Google Cloud Professional Developer', year: '2022' },
       { name: 'Certified Kubernetes Administrator', year: '2022' }
     ],
-    
+  
     languages: [
       { name: 'English', level: 'Native' },
       { name: 'Spanish', level: 'Fluent' },
       { name: 'French', level: 'Intermediate' }
     ],
-    
+  
     awards: [
       { name: 'Employee of the Year', organization: 'Google Inc.', year: '2023' },
       { name: 'Innovation Award', organization: 'Microsoft Corporation', year: '2021' }
     ],
-    
+  
     references: [
       {
         id: 1,
@@ -222,7 +222,7 @@ export const useResumeDataStore = defineStore('resumeData', {
         relationship: 'Academic Supervisor'
       }
     ],
-    
+  
     customSections: [
       {
         id: 1,
@@ -234,7 +234,7 @@ export const useResumeDataStore = defineStore('resumeData', {
             city: 'Berlin',
             start_date: 'Jan 2023',
             end_date: 'Present',
-            description: '<p>Mentoring aspiring web developers through coding bootcamp program.</p><ul><li>Provided one-on-one guidance to 15+ students</li><li>Conducted weekly code review sessions</li><li>Helped students build portfolio projects</li><li>Achieved 90% job placement rate for mentees</li></ul>'
+            description: '<p>Mentoring aspiring web developers through coding bootcamp program.</p><ul><li>Provided one-on-one guidance to 15+ students.</li><li>Conducted weekly code review sessions.</li><li>Helped students build portfolio projects.</li><li>Achieved 90% job placement rate for mentees.</li></ul>'
           },
           {
             id: 2,
@@ -242,7 +242,7 @@ export const useResumeDataStore = defineStore('resumeData', {
             city: 'Munich',
             start_date: 'Mar 2022',
             end_date: 'Dec 2022',
-            description: '<p>Organized monthly technology workshops for local community.</p><ul><li>Planned and executed 10 workshops with 200+ attendees</li><li>Topics covered: React, Node.js, Python, and DevOps</li><li>Collaborated with local tech companies for sponsorship</li></ul>'
+            description: '<p>Organized monthly technology workshops for local community.</p><ul><li>Planned and executed 10 workshops with 200+ attendees.</li><li>Topics covered: React, Node.js, Python, and DevOps.</li><li>Collaborated with local tech companies for sponsorship.</li></ul>'
           }
         ]
       },
@@ -256,7 +256,7 @@ export const useResumeDataStore = defineStore('resumeData', {
             city: 'International',
             start_date: 'Jan 2020',
             end_date: 'Present',
-            description: '<p>Active member of the IEEE Computer Society with focus on software engineering standards.</p><ul><li>Participated in annual conferences and workshops</li><li>Contributed to open-source software engineering guidelines</li><li>Networking with industry professionals worldwide</li></ul>'
+            description: '<p>Active member of the IEEE Computer Society with focus on software engineering standards.</p><ul><li>Participated in annual conferences and workshops.</li><li>Contributed to open-source engineering guidelines.</li><li>Networking with industry professionals worldwide.</li></ul>'
           },
           {
             id: 2,
@@ -264,12 +264,13 @@ export const useResumeDataStore = defineStore('resumeData', {
             city: 'Germany',
             start_date: 'Jun 2021',
             end_date: 'Present',
-            description: '<p>Member of national software engineering professional organization.</p><ul><li>Regular attendee of quarterly meetups</li><li>Participated in industry best practices discussions</li></ul>'
+            description: '<p>Member of national software engineering professional organization.</p><ul><li>Regular attendee of quarterly meetups.</li><li>Participated in industry best practices discussions.</li></ul>'
           }
         ]
       }
     ]
-  }),
+  })
+,  
   
   getters: {
     getPersonalInfo: (state) => state.personalInfo,

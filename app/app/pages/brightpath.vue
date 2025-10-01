@@ -2,9 +2,10 @@
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <div class="a4">
-      <!-- Header -->
-      <div class="header">
+    <!-- Hidden source content for Paged.js -->
+    <div class="resume-content" style="display: none;">
+      <!-- Header - Only on first page -->
+      <div class="header page-header">
         <div class="decorator"></div>
         <div class="header-info">
           <h1>Carlos Idrissi Saez</h1>
@@ -12,42 +13,48 @@
         </div>
       </div>
 
-      <div class="main">
+      <div class="main two-column-layout">
         <!-- Left Part -->
         <div class="left-part">
           <section class="contact">
             <h2>Contact</h2>
             <table class="contact-table">
-              <tr><td>Phone:</td><td>+33 6 12 34 56 78</td></tr>
-              <tr><td>Email:</td><td>carlos.idriss@example.com</td></tr>
-              <tr><td>Location:</td><td>Paris, France</td></tr>
-              <tr><td>Portfolio:</td><td>www.carlossaez.dev</td></tr>
-              <tr><td>LinkedIn:</td><td>linkedin.com/in/carlossaez</td></tr>
+              <tbody>
+                <tr><td>Phone:</td><td>+33 6 12 34 56 78</td></tr>
+                <tr><td>Email:</td><td>carlos.idriss@example.com</td></tr>
+                <tr><td>Location:</td><td>Paris, France</td></tr>
+                <tr><td>Portfolio:</td><td>www.carlossaez.dev</td></tr>
+                <tr><td>LinkedIn:</td><td>linkedin.com/in/carlossaez</td></tr>
+              </tbody>
             </table>
           </section>
 
           <section class="skills">
             <h2>Technical Skills</h2>
             <table class="skills-table">
-              <tr><td>Python</td><td class="level">Expert</td></tr>
-              <tr><td>Java</td><td class="level">Expert</td></tr>
-              <tr><td>React</td><td class="level">Expert</td></tr>
-              <tr><td>Node.js</td><td class="level">Expert</td></tr>
-              <tr><td>Docker</td><td class="level">Expert</td></tr>
-              <tr><td>JavaScript</td><td class="level">Advanced</td></tr>
-              <tr><td>TypeScript</td><td class="level">Advanced</td></tr>
-              <tr><td>Vue.js</td><td class="level">Advanced</td></tr>
-              <tr><td>AWS</td><td class="level">Advanced</td></tr>
-              <tr><td>Kubernetes</td><td class="level">Advanced</td></tr>
+              <tbody>
+                <tr><td>Python</td><td class="level">Expert</td></tr>
+                <tr><td>Java</td><td class="level">Expert</td></tr>
+                <tr><td>React</td><td class="level">Expert</td></tr>
+                <tr><td>Node.js</td><td class="level">Expert</td></tr>
+                <tr><td>Docker</td><td class="level">Expert</td></tr>
+                <tr><td>JavaScript</td><td class="level">Advanced</td></tr>
+                <tr><td>TypeScript</td><td class="level">Advanced</td></tr>
+                <tr><td>Vue.js</td><td class="level">Advanced</td></tr>
+                <tr><td>AWS</td><td class="level">Advanced</td></tr>
+                <tr><td>Kubernetes</td><td class="level">Advanced</td></tr>
+              </tbody>
             </table>
           </section>
 
           <section class="languages">
             <h2>Languages</h2>
             <table class="skills-table">
-              <tr><td>English</td><td class="level">Native</td></tr>
-              <tr><td>Spanish</td><td class="level">Fluent</td></tr>
-              <tr><td>French</td><td class="level">Intermediate</td></tr>
+              <tbody>
+                <tr><td>English</td><td class="level">Native</td></tr>
+                <tr><td>Spanish</td><td class="level">Fluent</td></tr>
+                <tr><td>French</td><td class="level">Intermediate</td></tr>
+              </tbody>
             </table>
           </section>
 
@@ -173,6 +180,11 @@
                     <li>Developed frontend components and responsive UIs, reducing UI bugs by 25%</li>
                     <li>Built and maintained automated CI/CD pipelines and deployment scripts</li>
                     <li>Optimized database queries and introduced caching strategies, reducing response time by 40%</li>
+                    <li>Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%</li>
+                    <li>Developed frontend components and responsive UIs, reducing UI bugs by 25%</li>
+                    <li>Built and maintained automated CI/CD pipelines and deployment scripts</li>
+                    <li>Optimized database queries and introduced caching strategies, reducing response time by 40%</li>
+                  
                   </ul>
                 </div>
               </div>
@@ -208,11 +220,76 @@
                   </ul>
                 </div>
               </div>
+              <div class="timeline-item">
+                <div class="dot yellow"></div>
+                <div class="content">
+                  <h3>E-Commerce Platform</h3>
+                  <p><em>ShopTech Inc.</em> — Jun 2021 - Dec 2021</p>
+                  <p><strong>Technologies:</strong> Next.js, Stripe, Redis, Kubernetes</p>
+                  <ul>
+                    <li>Built scalable e-commerce platform handling 10K+ daily transactions</li>
+                    <li>Integrated payment processing with Stripe and PayPal</li>
+                    <li>Implemented real-time inventory management system</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="dot yellow"></div>
+                <div class="content">
+                  <h3>AI Chatbot System</h3>
+                  <p><em>ChatAI Solutions</em> — Jan 2020 - May 2020</p>
+                  <p><strong>Technologies:</strong> Python, TensorFlow, FastAPI, WebSocket</p>
+                  <ul>
+                    <li>Developed NLP-based chatbot with 95% accuracy</li>
+                    <li>Integrated with multiple messaging platforms</li>
+                    <li>Reduced customer support workload by 40%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="publications">
+            <h2>Publications & Articles</h2>
+            <div class="timeline-exp">
+              <div class="timeline-item">
+                <div class="dot yellow"></div>
+                <div class="content">
+                  <h3>Machine Learning in Production Systems</h3>
+                  <p><em>IEEE Conference on AI</em> — 2023</p>
+                  <p>Co-authored paper on deploying ML models at scale with focus on performance optimization and monitoring.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="dot yellow"></div>
+                <div class="content">
+                  <h3>Microservices Architecture Best Practices</h3>
+                  <p><em>Tech Blog</em> — 2022</p>
+                  <p>Published comprehensive guide on building resilient microservices with real-world examples.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="volunteer">
+            <h2>Volunteer Experience</h2>
+            <div class="timeline-exp">
+              <div class="timeline-item">
+                <div class="dot yellow"></div>
+                <div class="content">
+                  <h3>Coding Mentor</h3>
+                  <p><em>Code for Good</em> — 2021 - Present</p>
+                  <p>Mentoring underprivileged students in programming and software development.</p>
+                </div>
+              </div>
             </div>
           </section>
         </div>
       </div>
     </div>
+
+    <!-- Simple continuous display - browser handles pagination on print -->
+    <div class="paged-container"></div>
 
     <!-- Control Panel -->
     <div class="control-panel">
@@ -326,6 +403,11 @@ const colorSchemes = {
 const applyFont = () => {
   if (process.client) {
     document.body.style.fontFamily = selectedFont.value
+    // Apply to paged content
+    const pagedContent = document.querySelector('.paged-container')
+    if (pagedContent) {
+      pagedContent.style.fontFamily = selectedFont.value
+    }
   }
 }
 
@@ -333,23 +415,30 @@ const applyColorScheme = () => {
   if (process.client) {
     const colors = colorSchemes[selectedScheme.value]
     
-    const decorator = document.querySelector('.decorator')
-    if (decorator) decorator.style.backgroundColor = colors.primary
-    
-    document.querySelectorAll('.dot.yellow').forEach(el => {
-      el.style.backgroundColor = colors.primary
-    })
-    
-    document.querySelectorAll('.cert-year').forEach(el => {
-      el.style.backgroundColor = colors.secondary
-      el.style.color = colors.text
+    // Apply to both source and paged content
+    const containers = ['.resume-content', '.paged-container']
+    containers.forEach(selector => {
+      const container = document.querySelector(selector)
+      if (!container) return
+      
+      const decorator = container.querySelector('.decorator')
+      if (decorator) decorator.style.backgroundColor = colors.primary
+      
+      container.querySelectorAll('.dot.yellow').forEach(el => {
+        el.style.backgroundColor = colors.primary
+      })
+      
+      container.querySelectorAll('.cert-year').forEach(el => {
+        el.style.backgroundColor = colors.secondary
+        el.style.color = colors.text
+      })
+      
+      container.querySelectorAll('h1, h2, h3').forEach(el => {
+        el.style.color = colors.text
+      })
     })
     
     document.body.style.backgroundColor = colors.background
-    
-    document.querySelectorAll('h1, h2, h3').forEach(el => {
-      el.style.color = colors.text
-    })
   }
 }
 
@@ -369,29 +458,268 @@ const printResume = () => {
   }
 }
 
+const initPaged = () => {
+  if (!process.client) return
+  
+  const content = document.querySelector('.resume-content')
+  const container = document.querySelector('.paged-container')
+  
+  if (!content || !container) return
+  
+  console.log('📄 Starting simple A4 pagination...')
+  
+  // Clear container
+  container.innerHTML = ''
+  
+  // Create first page
+  const page1 = document.createElement('div')
+  page1.className = 'a4-page'
+  page1.setAttribute('data-page', '1')
+  page1.innerHTML = content.innerHTML
+  container.appendChild(page1)
+  
+  // Wait for render then check overflow
+  setTimeout(() => {
+    checkAndCreatePages()
+    applyFont()
+    applyColorScheme()
+  }, 100)
+}
+
+const checkAndCreatePages = () => {
+  const container = document.querySelector('.paged-container')
+  if (!container) return
+  
+  const A4_HEIGHT = 1123 // 297mm in pixels
+  const SAFE_SPACE = 50 // Safety margin in pixels
+  const SAFE_HEIGHT = A4_HEIGHT - SAFE_SPACE
+  
+  console.log(`\n🔍 Checking A4 page...`)
+  console.log(`   A4 Height: ${A4_HEIGHT}px`)
+  console.log(`   Safe Space: ${SAFE_SPACE}px`)
+  console.log(`   Safe Height: ${SAFE_HEIGHT}px`)
+  console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`)
+  
+  const page = container.querySelector('.a4-page')
+  if (!page) return
+  
+  const pageHeight = page.scrollHeight
+  const isOverflowing = pageHeight > SAFE_HEIGHT
+  
+  console.log(`📄 Page 1:`)
+  console.log(`   Content Height: ${pageHeight}px`)
+  
+  if (isOverflowing) {
+    const overflow = pageHeight - SAFE_HEIGHT
+    console.log(`   ⚠️ OVERFLOW: ${overflow}px beyond safe zone`)
+    console.log(`   Content will be cut at ${SAFE_HEIGHT}px`)
+    
+    // Add badge
+    if (!page.querySelector('.overflow-badge')) {
+      const badge = document.createElement('div')
+      badge.className = 'overflow-badge'
+      badge.textContent = `⚠️ ${overflow}px hidden`
+      page.appendChild(badge)
+    }
+  } else {
+    const remaining = SAFE_HEIGHT - pageHeight
+    console.log(`   ✅ OK - ${remaining}px remaining in safe zone`)
+  }
+  
+  console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`)
+}
+
 onMounted(() => {
-  applyFont()
-  applyColorScheme()
+  if (process.client) {
+    initPaged()
+  }
 })
 </script>
 
-<style scoped>
+<style>
+/* Paged.js CSS Paged Media Rules */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@page :first {
+  margin: 0;
+}
+
+/* Header only on first page */
+.page-header {
+  width: 100%;
+  clear: both;
+  margin-bottom: 20px;
+}
+
+/* Two column layout using CSS Grid - stays together */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+  width: 100%;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Left and right parts */
+.left-part {
+  grid-column: 1;
+  padding-right: 10px;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.right-part {
+  grid-column: 2;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/* Allow sections to break if needed */
+section {
+  break-inside: auto;
+  page-break-inside: auto;
+  margin-bottom: 15px;
+}
+
+.timeline-item {
+  break-inside: auto;
+  page-break-inside: auto;
+  margin-bottom: 15px;
+}
+
+/* Keep the grid together */
+.main.two-column-layout {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+/* Page break utilities */
+.page-break {
+  break-after: page;
+  page-break-after: always;
+}
+
+/* Force grid to continue on new pages */
+@media print {
+  .two-column-layout {
+    display: grid !important;
+  }
+}
+
 body {
   font-family: 'Josefin Sans', sans-serif;
   background: #f4f4f4;
-  margin: 0;
   padding: 20px;
   color: #333;
 }
 
-.a4 {
+/* Paged container */
+.paged-container {
+  margin: 20px auto;
+  max-width: 210mm;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 20px;
+}
+
+/* Each A4 page */
+.paged-container :deep(.a4-page) {
   width: 210mm;
-  min-height: 297mm;
-  background: #fff;
-  margin: auto;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  padding: 30px 40px;
+  height: 297mm; /* Fixed A4 height */
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px 25px;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden; /* This cuts the content */
+}
+
+/* Debug: Show safe height limit */
+.paged-container :deep(.a4-page)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(297mm - 50px); /* Safe height line */
+  height: 2px;
+  background: #e74c3c;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* Force height limit on all content inside */
+.paged-container :deep(.a4-page .header),
+.paged-container :deep(.a4-page .main) {
+  max-height: calc(297mm - 40px - 50px); /* A4 height - padding - safe space = 1073px */
+}
+
+.paged-container :deep(.a4-page .main) {
+  overflow: hidden;
+}
+
+/* Overflow badges */
+.paged-container :deep(.overflow-badge) {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.paged-container :deep(.overflow-badge.hard) {
+  background: #e74c3c; /* Red for hard overflow */
+  animation: pulse 1.5s infinite;
+}
+
+.paged-container :deep(.overflow-badge.soft) {
+  background: #f39c12; /* Orange for soft overflow */
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+  
+  .paged-container {
+    margin: 0;
+    gap: 0;
+  }
+  
+  .paged-container :deep(.a4-page) {
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+  }
+  
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
+
+/* Resume content container - hidden source */
+.resume-content {
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
 }
 
 /* Header */
@@ -399,7 +727,9 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  clear: both;
 }
 
 .decorator {
@@ -421,21 +751,9 @@ body {
   margin-top: 4px;
 }
 
-/* Layout */
-.main {
-  display: flex;
-  gap: 40px;
-}
-
-.left-part {
-  flex: 1;
-  border-right: 1px solid #ddd;
-  padding-right: 20px;
-}
-
-.right-part {
-  flex: 2;
-  padding-left: 20px;
+/* Additional spacing */
+section {
+  margin-bottom: 20px;
 }
 
 h2 {

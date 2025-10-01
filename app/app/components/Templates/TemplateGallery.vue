@@ -33,7 +33,7 @@
           </div>
         </div>
         
-        <div class="template-overlay">
+        <div class="template-actions">
           <button class="select-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 12l2 2 4-4"/>
@@ -64,6 +64,17 @@ const templates = ref([
     sampleName: 'John Doe',
     sampleTitle: 'Software Engineer',
     paginatorType: 'oneColHeader'
+  },
+  {
+    id: 'classic-header-once',
+    name: 'Classic Professional (Header Once)',
+    description: 'Classic design with header only on first page for more content space',
+    tags: ['Professional', 'Space-Efficient', 'Multi-Page'],
+    primaryColor: '#ffffff',
+    headerColor: '#0EA5E9',
+    sampleName: 'John Doe',
+    sampleTitle: 'Software Engineer',
+    paginatorType: 'oneColHeaderOnce'
   },
   {
     id: 'modern-two-col',
@@ -143,7 +154,7 @@ const selectTemplate = (template) => {
 .template-gallery {
   min-height: 100vh;
   padding: 2rem;
-  background: #0284c7;
+  background: white;
   font-family: 'Gabarito', sans-serif;
 }
 
@@ -154,14 +165,14 @@ const selectTemplate = (template) => {
   .gallery-title {
     font-size: 3rem;
     font-weight: 700;
-    color: white;
+    color: #0c4a6e;
     margin-bottom: 1rem;
     font-family: 'Gabarito', sans-serif;
   }
   
   .gallery-subtitle {
     font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #0369a1;
     margin: 0;
     font-family: 'Gabarito', sans-serif;
   }
@@ -179,35 +190,36 @@ const selectTemplate = (template) => {
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #e0f2fe;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
   font-family: 'Gabarito', sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.08);
   
   &:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.8);
-    
-    .template-overlay {
-      opacity: 1;
-    }
+    border-color: #0ea5e9;
+    box-shadow: 0 12px 32px rgba(14, 165, 233, 0.2);
   }
 }
 
 .template-info {
   padding: 1.5rem;
+  flex: 1;
   
   .template-name {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #0c4a6e;
     margin-bottom: 0.5rem;
     font-family: 'Gabarito', sans-serif;
   }
   
   .template-description {
-    color: #6b7280;
+    color: #0369a1;
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 1rem;
@@ -221,8 +233,8 @@ const selectTemplate = (template) => {
   }
   
   .template-tag {
-    background: #f3f4f6;
-    color: #374151;
+    background: #dbeafe;
+    color: #0369a1;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.75rem;
@@ -231,25 +243,18 @@ const selectTemplate = (template) => {
   }
 }
 
-.template-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+.template-actions {
+  padding: 1.5rem;
+  padding-top: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   
   .select-btn {
-    background: #0ea5e9;
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     color: white;
     border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 1rem;
     font-family: 'Gabarito', sans-serif;
@@ -257,16 +262,25 @@ const selectTemplate = (template) => {
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    width: 100%;
+    justify-content: center;
     
     &:hover {
-      background: #0284c7;
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
     }
     
     svg {
       width: 20px;
       height: 20px;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover svg {
+      transform: scale(1.15);
     }
   }
 }

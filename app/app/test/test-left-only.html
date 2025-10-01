@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Left Column Only</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #0EA5E9;
+        }
+        .controls {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #0EA5E9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0284c7;
+        }
+        .page {
+            border: 2px solid #333;
+            padding: 0;
+            margin-bottom: 20px;
+            background: white;
+            min-height: 827px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .page.left {
+            width: 200px;
+        }
+        .page.right {
+            width: 375px;
+        }
+        .page-content {
+            padding: 15px;
+            min-height: 827px;
+            box-sizing: border-box;
+        }
+        .page-content.left {
+            background: #f0f9ff;
+        }
+        .page-content.right {
+            background: white;
+        }
+        .page-header {
+            background: #0EA5E9;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fef3c7;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-top: 2px solid #f59e0b;
+        }
+        .stats {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        .debug-ruler {
+            position: absolute;
+            right: -50px;
+            top: 0;
+            width: 40px;
+            height: 827px;
+            background: linear-gradient(to bottom, 
+                #16a34a 0%, #16a34a 80%, 
+                #ea580c 80%, #ea580c 90%, 
+                #dc2626 90%, #dc2626 100%);
+            border: 1px solid #333;
+        }
+        .debug-ruler::before {
+            content: '827px';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .debug-ruler::after {
+            content: '80%';
+            position: absolute;
+            top: 66%;
+            left: 5px;
+            font-size: 10px;
+            color: white;
+        }
+        #result {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Colonne LEFT uniquement</h1>
+
+    <div class="controls">
+        <h2>Test des colonnes séparément:</h2>
+        <button onclick="testLeftColumn()">Tester LEFT (200px)</button>
+        <button onclick="testRightColumn()">Tester RIGHT (375px)</button>
+        <button onclick="testBothColumns()">Tester LES DEUX</button>
+        <button onclick="testSimpleText()" style="background: #16a34a;">📝 Test SIMPLE (texte seulement)</button>
+        <button onclick="debugRightColumn()" style="background: #dc2626;">🐛 Debug RIGHT (logs détaillés)</button>
+        <button onclick="clearResults()">Effacer</button>
+    </div>
+
+    <div id="stats" class="stats" style="display: none;"></div>
+    <div id="result"></div>
+
+    <!-- Importer le splitter -->
+    <script src="test.js"></script>
+
+    <script>
+        function testLeftColumn() {
+            console.log('=== TEST: Colonne LEFT uniquement ===');
+            
+            // Contenu exact de la colonne left du CV
+            const leftColumnHTML = `
+                <h3 style="color: #0EA5E9; margin-top: 0;">Sidebar</h3>
+                
+                <h4 style="color: #0369a1; margin-top: 20px;">Contact</h4>
+                <p style="font-size: 14px; line-height: 1.6;">
+                    <strong>Email:</strong><br>
+                    john@example.com<br><br>
+                    <strong>Téléphone:</strong><br>
+                    +33 6 12 34 56 78<br><br>
+                    <strong>Localisation:</strong><br>
+                    Paris, France
+                </p>
+                
+                <h4 style="color: #0369a1; margin-top: 20px;">Compétences</h4>
+                <ul style="font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>JavaScript</strong></li>
+                    <li><strong>React</strong></li>
+                    <li><strong>Node.js</strong></li>
+                    <li><strong>TypeScript</strong></li>
+                    <li><strong>Vue.js</strong></li>
+                    <li><strong>CSS/SASS</strong></li>
+                    <li><strong>Git</strong></li>
+                    <li><strong>Docker</strong></li>
+                    <li><strong>MongoDB</strong></li>
+                    <li><strong>PostgreSQL</strong></li>
+                </ul>
+                
+                <h4 style="color: #0369a1; margin-top: 20px;">Langues</h4>
+                <ul style="font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li>Français - <em>Natif</em></li>
+                    <li>Anglais - <em>Courant</em></li>
+                    <li>Espagnol - <em>Intermédiaire</em></li>
+                </ul>
+                
+                <h4 style="color: #0369a1; margin-top: 20px;">Centres d'intérêt</h4>
+                <ul style="font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li>Open Source</li>
+                    <li>Photographie</li>
+                    <li>Voyages</li>
+                    <li>Lecture</li>
+                </ul>
+            `;
+            
+            // Style de la colonne left
+            const leftStyle = 'flex: 0 0 200px; background: #f0f9ff; padding: 15px;';
+            
+            console.log('📏 Mesure du contenu total AVANT split:');
+            const measurer = document.createElement('div');
+            measurer.style.cssText = 'position: absolute; visibility: hidden; left: -9999px;';
+            document.body.appendChild(measurer);
+            
+            const testDiv = document.createElement('div');
+            testDiv.setAttribute('style', leftStyle);
+            testDiv.innerHTML = leftColumnHTML;
+            measurer.appendChild(testDiv);
+            
+            const totalHeight = testDiv.getBoundingClientRect().height;
+            console.log(`   Hauteur totale: ${totalHeight.toFixed(1)}px`);
+            console.log(`   Hauteur max par page: 820px (avec marge de sécurité)`);
+            console.log(`   Nombre de pages nécessaires: ${Math.ceil(totalHeight / 820)}`);
+            
+            document.body.removeChild(measurer);
+            
+            // Split avec la fonction dédiée
+            const startTime = performance.now();
+            
+            // Initialiser les measurers
+            if (typeof initMeasurer === 'function') initMeasurer();
+            if (typeof initTwoColumnsMeasurers === 'function') initTwoColumnsMeasurers();
+            
+            // Utiliser splitColumnContent si disponible
+            let chunks;
+            
+            // Attendre que les measurers soient initialisés
+            if (typeof window.splitColumnContent === 'function') {
+                // Utiliser la fonction globale
+                const measurerToUse = window.measurerLeft || measurerLeft;
+                if (measurerToUse) {
+                    console.log('✅ Utilisation de splitColumnContent avec measurerLeft');
+                    chunks = window.splitColumnContent(leftColumnHTML, 820, leftStyle, measurerToUse);
+                } else {
+                    console.error('❌ measurerLeft non disponible!');
+                    chunks = splitHtmlIntoChunks(leftColumnHTML, 827);
+                }
+            } else {
+                console.log('⚠️ Fallback sur splitHtmlIntoChunks');
+                chunks = splitHtmlIntoChunks(leftColumnHTML, 827);
+            }
+            
+            const endTime = performance.now();
+            
+            // Afficher les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong>📊 Résultats du split:</strong><br>
+                - Hauteur totale du contenu: ${totalHeight.toFixed(1)}px<br>
+                - Hauteur max par page: 827px<br>
+                - Nombre de pages générées: ${chunks.length}<br>
+                - Temps d'exécution: ${(endTime - startTime).toFixed(2)} ms<br>
+                - Taux de remplissage moyen: ${(totalHeight / (chunks.length * 827) * 100).toFixed(1)}%
+            `;
+            
+            // Afficher les pages avec debug visuel
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = chunks.map((chunk, i) => {
+                // Mesurer la hauteur réelle de chaque chunk
+                const tempMeasurer = document.createElement('div');
+                tempMeasurer.style.cssText = 'position: absolute; visibility: hidden; left: -9999px;';
+                document.body.appendChild(tempMeasurer);
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.setAttribute('style', leftStyle);
+                tempDiv.innerHTML = chunk;
+                tempMeasurer.appendChild(tempDiv);
+                
+                const chunkHeight = tempDiv.getBoundingClientRect().height;
+                const usage = (chunkHeight / 827 * 100).toFixed(1);
+                const available = (827 - chunkHeight).toFixed(1);
+                
+                document.body.removeChild(tempMeasurer);
+                
+                return `
+                    <div class="page left">
+                        <div class="page-header">LEFT ${i + 1} / ${chunks.length}</div>
+                        <div class="page-content left" style="margin-top: 40px;">
+                            ${chunk}
+                        </div>
+                        <div class="page-footer">
+                            Hauteur: ${chunkHeight.toFixed(1)}px (${usage}%) | Disponible: ${available}px
+                        </div>
+                        <div class="debug-ruler"></div>
+                    </div>
+                `;
+            }).join('');
+            
+            console.log(`✅ Test LEFT terminé: ${chunks.length} pages générées`);
+        }
+        
+        function testRightColumn() {
+            console.log('=== TEST: Colonne RIGHT uniquement ===');
+            
+            // Contenu exact de la colonne right du CV
+            const rightColumnHTML = `
+                <h2 style="color: #0EA5E9; margin-top: 0;">John Doe</h2>
+                <p style="color: #64748b; font-size: 18px; margin-top: -10px;">Développeur Full Stack</p>
+                
+                <h3 style="color: #059669; border-bottom: 2px solid #059669; padding-bottom: 5px;">Profil</h3>
+                <p style="line-height: 1.6;">
+                    Développeur Full Stack passionné avec <strong>5 ans d'expérience</strong> dans la création d'applications web modernes. 
+                    Expertise en <em>JavaScript</em>, <em>React</em>, et <em>Node.js</em>. Capacité à travailler en équipe et à livrer des 
+                    projets de haute qualité dans les délais impartis.
+                </p>
+                
+                <h3 style="color: #059669; border-bottom: 2px solid #059669; padding-bottom: 5px; margin-top: 30px;">Expérience Professionnelle</h3>
+                
+                <div style="margin-bottom: 20px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Senior Full Stack Developer</h4>
+                    <p style="color: #64748b; margin: 0;"><em>TechCorp Inc. • Paris • 2022 - Présent</em></p>
+                    <ul style="line-height: 1.8; margin-top: 10px;">
+                        <li>Développement d'une <strong>plateforme SaaS</strong> utilisée par plus de 10,000 utilisateurs</li>
+                        <li>Architecture et implémentation d'une <em>API RESTful</em> avec Node.js et Express</li>
+                        <li>Migration de l'application vers <span style="color: #7c3aed;">React 18</span> et TypeScript</li>
+                        <li>Mise en place de tests automatisés avec Jest et Cypress</li>
+                        <li>Optimisation des performances: réduction du temps de chargement de <strong>40%</strong></li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 20px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Full Stack Developer</h4>
+                    <p style="color: #64748b; margin: 0;"><em>WebAgency • Lyon • 2020 - 2022</em></p>
+                    <ul style="line-height: 1.8; margin-top: 10px;">
+                        <li>Développement de sites web et applications pour divers clients</li>
+                        <li>Création d'interfaces utilisateur <em>responsive</em> avec React et Vue.js</li>
+                        <li>Intégration de systèmes de paiement (Stripe, PayPal)</li>
+                        <li>Collaboration avec designers et chefs de projet en méthodologie <strong>Agile</strong></li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 20px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Junior Developer</h4>
+                    <p style="color: #64748b; margin: 0;"><em>StartupXYZ • Paris • 2019 - 2020</em></p>
+                    <ul style="line-height: 1.8; margin-top: 10px;">
+                        <li>Développement de fonctionnalités frontend avec <em>JavaScript</em> et jQuery</li>
+                        <li>Maintenance et amélioration du code existant</li>
+                        <li>Participation aux revues de code et aux stand-ups quotidiens</li>
+                    </ul>
+                </div>
+                
+                <h3 style="color: #059669; border-bottom: 2px solid #059669; padding-bottom: 5px; margin-top: 30px;">Formation</h3>
+                
+                <div style="margin-bottom: 15px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Master en Informatique</h4>
+                    <p style="color: #64748b; margin: 0;"><em>Université Paris-Saclay • 2017 - 2019</em></p>
+                    <p style="margin-top: 5px;">Spécialisation en <strong>Développement Web</strong> et Intelligence Artificielle</p>
+                </div>
+                
+                <div style="margin-bottom: 15px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Licence en Informatique</h4>
+                    <p style="color: #64748b; margin: 0;"><em>Université de Lyon • 2014 - 2017</em></p>
+                </div>
+                
+                <h3 style="color: #059669; border-bottom: 2px solid #059669; padding-bottom: 5px; margin-top: 30px;">Projets Personnels</h3>
+                
+                <div style="margin-bottom: 15px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Portfolio Builder</h4>
+                    <p style="line-height: 1.6;">
+                        Application web permettant aux développeurs de créer facilement leur portfolio. 
+                        Technologies: <em>React</em>, <em>Node.js</em>, <em>MongoDB</em>. 
+                        Plus de <strong>1000 utilisateurs actifs</strong>.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 15px;" data-wrapper="true">
+                    <h4 style="color: #0EA5E9; margin-bottom: 5px;">Open Source Contributions</h4>
+                    <p style="line-height: 1.6;">
+                        Contributeur actif sur plusieurs projets open source incluant 
+                        <span style="color: #7c3aed;">React</span>, <span style="color: #7c3aed;">Vue.js</span>, et 
+                        <span style="color: #7c3aed;">Express</span>.
+                    </p>
+                </div>
+            `;
+            
+            // Style de la colonne right
+            const rightStyle = 'flex: 1; padding: 15px;';
+            
+            console.log('📏 Mesure du contenu total AVANT split:');
+            const measurer = document.createElement('div');
+            measurer.style.cssText = 'position: absolute; visibility: hidden; left: -9999px; width: 375px;';
+            document.body.appendChild(measurer);
+            
+            const testDiv = document.createElement('div');
+            testDiv.setAttribute('style', rightStyle);
+            testDiv.style.width = '375px';
+            testDiv.innerHTML = rightColumnHTML;
+            measurer.appendChild(testDiv);
+            
+            const totalHeight = testDiv.getBoundingClientRect().height;
+            console.log(`   Hauteur totale: ${totalHeight.toFixed(1)}px`);
+            console.log(`   Hauteur max par page: 820px (avec marge de sécurité)`);
+            console.log(`   Nombre de pages nécessaires: ${Math.ceil(totalHeight / 820)}`);
+            
+            document.body.removeChild(measurer);
+            
+            // Split avec la fonction dédiée
+            const startTime = performance.now();
+            
+            // Initialiser les measurers
+            if (typeof initMeasurer === 'function') initMeasurer();
+            if (typeof initTwoColumnsMeasurers === 'function') initTwoColumnsMeasurers();
+            
+            // Utiliser splitColumnContent si disponible
+            let chunks;
+            
+            console.log('🔍 Vérification des fonctions disponibles:');
+            console.log('  - splitColumnContent:', typeof splitColumnContent);
+            console.log('  - window.splitColumnContent:', typeof window.splitColumnContent);
+            console.log('  - measurerRight:', typeof measurerRight);
+            console.log('  - window.measurerRight:', typeof window.measurerRight);
+            
+            // Attendre que les measurers soient initialisés
+            if (typeof window.splitColumnContent === 'function') {
+                // Utiliser la fonction globale
+                const measurerToUse = window.measurerRight || measurerRight;
+                if (measurerToUse) {
+                    console.log('✅ Utilisation de splitColumnContent avec measurerRight');
+                    chunks = window.splitColumnContent(rightColumnHTML, 820, rightStyle, measurerToUse);
+                } else {
+                    console.error('❌ measurerRight non disponible!');
+                    chunks = splitHtmlIntoChunks(rightColumnHTML, 827);
+                }
+            } else {
+                console.log('⚠️ Fallback sur splitHtmlIntoChunks');
+                chunks = splitHtmlIntoChunks(rightColumnHTML, 827);
+            }
+            
+            const endTime = performance.now();
+            
+            // Afficher les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong>📊 Résultats du split RIGHT:</strong><br>
+                - Hauteur totale du contenu: ${totalHeight.toFixed(1)}px<br>
+                - Hauteur max par page: 827px<br>
+                - Nombre de pages générées: ${chunks.length}<br>
+                - Temps d'exécution: ${(endTime - startTime).toFixed(2)} ms<br>
+                - Taux de remplissage moyen: ${(totalHeight / (chunks.length * 827) * 100).toFixed(1)}%
+            `;
+            
+            // Afficher les pages avec debug visuel
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = chunks.map((chunk, i) => {
+                // Mesurer la hauteur réelle de chaque chunk
+                const tempMeasurer = document.createElement('div');
+                tempMeasurer.style.cssText = 'position: absolute; visibility: hidden; left: -9999px; width: 375px;';
+                document.body.appendChild(tempMeasurer);
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.setAttribute('style', rightStyle);
+                tempDiv.style.width = '375px';
+                tempDiv.innerHTML = chunk;
+                tempMeasurer.appendChild(tempDiv);
+                
+                const chunkHeight = tempDiv.getBoundingClientRect().height;
+                const usage = (chunkHeight / 827 * 100).toFixed(1);
+                const available = (827 - chunkHeight).toFixed(1);
+                
+                document.body.removeChild(tempMeasurer);
+                
+                return `
+                    <div class="page right">
+                        <div class="page-header">RIGHT ${i + 1} / ${chunks.length}</div>
+                        <div class="page-content right" style="margin-top: 40px;">
+                            ${chunk}
+                        </div>
+                        <div class="page-footer">
+                            Hauteur: ${chunkHeight.toFixed(1)}px (${usage}%) | Disponible: ${available}px
+                        </div>
+                        <div class="debug-ruler"></div>
+                    </div>
+                `;
+            }).join('');
+            
+            console.log(`✅ Test RIGHT terminé: ${chunks.length} pages générées`);
+        }
+        
+        function testSimpleText() {
+            console.log('=== TEST SIMPLE: Texte long dans 2 colonnes ===');
+            console.log('🔍 Mode DEBUG activé - tous les logs seront affichés\n');
+            
+            // Générer beaucoup de texte
+            const longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(50);
+            
+            const leftHTML = `
+                <h3 style="color: #0EA5E9; margin-top: 0;">Colonne LEFT</h3>
+                <p style="font-size: 14px; line-height: 1.6;">
+                    ${longText}
+                </p>
+            `;
+            
+            const rightHTML = `
+                <h2 style="color: #0EA5E9; margin-top: 0;">Colonne RIGHT</h2>
+                <p style="line-height: 1.6;">
+                    ${longText}
+                </p>
+            `;
+            
+            const startTime = performance.now();
+            
+            // Initialiser les measurers
+            if (typeof initMeasurer === 'function') initMeasurer();
+            if (typeof initTwoColumnsMeasurers === 'function') initTwoColumnsMeasurers();
+            
+            // Vérifier que les measurers sont bien initialisés
+            console.log('🔍 Vérification des measurers:');
+            console.log('  - measurerLeftColumn:', window.measurerLeftColumn);
+            console.log('  - measurerRightColumn:', window.measurerRightColumn);
+            
+            if (!window.measurerLeftColumn || !window.measurerRightColumn) {
+                console.error('❌ Les measurers ne sont pas initialisés!');
+                alert('Erreur: Les measurers ne sont pas disponibles. Rechargez la page.');
+                return;
+            }
+            
+            // Split LEFT
+            console.log('\n🔵 === SPLIT COLONNE LEFT ===');
+            const leftStyle = 'flex: 0 0 200px; background: #f0f9ff; padding: 15px;';
+            const leftChunks = window.splitColumnContent(leftHTML, 820, leftStyle, window.measurerLeftColumn);
+            
+            // Split RIGHT
+            console.log('\n🔴 === SPLIT COLONNE RIGHT ===');
+            const rightStyle = 'flex: 1; padding: 15px;';
+            const rightChunks = window.splitColumnContent(rightHTML, 820, rightStyle, window.measurerRightColumn);
+            
+            // Combiner les chunks
+            const maxPages = Math.max(leftChunks.length, rightChunks.length);
+            const chunks = [];
+            
+            for (let i = 0; i < maxPages; i++) {
+                const leftContent = leftChunks[i] || '<div style="min-height: 20px;">&nbsp;</div>';
+                const rightContent = rightChunks[i] || '<div style="min-height: 20px;">&nbsp;</div>';
+                
+                const pageHtml = `<div style="display: flex; gap: 20px; height: 100%;">
+  <div style="${leftStyle}">${leftContent}</div>
+  <div style="${rightStyle}">${rightContent}</div>
+</div>`;
+                
+                chunks.push(pageHtml);
+            }
+            
+            const endTime = performance.now();
+            
+            console.log(`\n✅ RÉSUMÉ:`);
+            console.log(`  - LEFT: ${leftChunks.length} pages`);
+            console.log(`  - RIGHT: ${rightChunks.length} pages`);
+            console.log(`  - TOTAL: ${chunks.length} pages`);
+            
+            // Afficher les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong>📊 Test SIMPLE (texte seulement):</strong><br>
+                - Nombre de pages générées: ${chunks.length}<br>
+                - Temps d'exécution: ${(endTime - startTime).toFixed(2)} ms<br>
+                - Type: 2 colonnes indépendantes
+            `;
+            
+            // Afficher les pages
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = chunks.map((chunk, i) => `
+                <div class="page" style="width: 595px;">
+                    <div class="page-header">Page ${i + 1} / ${chunks.length}</div>
+                    <div class="page-content" style="margin-top: 40px;">
+                        ${chunk}
+                    </div>
+                    <div class="debug-ruler"></div>
+                </div>
+            `).join('');
+            
+            console.log(`✅ Test SIMPLE terminé: ${chunks.length} pages générées`);
+        }
+        
+        function debugRightColumn() {
+            console.log('=== 🐛 DEBUG: Colonne RIGHT avec logs détaillés ===');
+            console.log('Ouvrez la console pour voir tous les détails!\n');
+            
+            // Même contenu que testRightColumn mais avec tous les logs activés
+            testRightColumn();
+            
+            // Afficher un message dans les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong>🐛 MODE DEBUG ACTIVÉ</strong><br>
+                ⚠️ Regardez la console pour voir:<br>
+                - Chaque élément ajouté<br>
+                - La hauteur de chaque élément<br>
+                - L'espace disponible après chaque ajout<br>
+                - Les décisions de split (accepté/rejeté)<br>
+                - Les tentatives de division<br><br>
+                <strong>Astuce:</strong> Filtrez la console par "RIGHT" pour voir uniquement les logs de cette colonne
+            `;
+        }
+        
+        function testBothColumns() {
+            clearResults();
+            testLeftColumn();
+            
+            // Ajouter right après left
+            setTimeout(() => {
+                const currentResult = document.getElementById('result').innerHTML;
+                testRightColumn();
+                const rightResult = document.getElementById('result').innerHTML;
+                document.getElementById('result').innerHTML = currentResult + rightResult;
+                
+                // Mettre à jour les stats
+                document.getElementById('stats').innerHTML = `
+                    <strong>📊 Comparaison LEFT vs RIGHT:</strong><br>
+                    Voir la console pour les détails de chaque colonne
+                `;
+            }, 100);
+        }
+        
+        function clearResults() {
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('stats').style.display = 'none';
+        }
+        
+        // Exposer les fonctions globalement si elles existent
+        if (typeof measurerLeft !== 'undefined') {
+            window.measurerLeft = measurerLeft;
+        }
+    </script>
+</body>
+</html>
