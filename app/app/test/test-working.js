@@ -128,10 +128,10 @@
  */
 
 const CONFIG = {
-    MAX_PAGE_HEIGHT: 820, // 827px - 7px de marge de sécurité
+    MAX_PAGE_HEIGHT: 827, // Hauteur standard A4
     SAFETY_BUFFER: 1,
     MIN_USAGE_PERCENT: 0.96,
-    MAX_USAGE_PERCENT: 1.01,
+    MAX_USAGE_PERCENT: 1.0, // Ne jamais dépasser 100%
   };
   
   // ================= MEASURER =================
@@ -161,6 +161,13 @@ const CONFIG = {
     return rect.height + marginTop + marginBottom;
   }
   
+  function getLineHeight(element) {
+    const style = window.getComputedStyle(element);
+    const lineHeight = parseFloat(style.lineHeight);
+    const fontSize = parseFloat(style.fontSize);
+    return lineHeight || fontSize || 16;
+  }
+  
   function measureCandidate(container, content) {
     // Génère une clé unique pour le cache
     const key = container.tagName + "::" + (content.textContent || content.outerHTML || '');
@@ -177,7 +184,9 @@ const CONFIG = {
   }
   
   function overflows(maxHeight = CONFIG.MAX_PAGE_HEIGHT) {
-    return measuredHeightWithMargins(measurer) > (maxHeight - CONFIG.SAFETY_BUFFER);
+    // Buffer dynamique basé sur la hauteur de ligne (demi-ligne de sécurité)
+    const buffer = getLineHeight(measurer) * 0.5;
+    return measuredHeightWithMargins(measurer) > (maxHeight - buffer - CONFIG.SAFETY_BUFFER);
   }
   
   function tryAppend(container, node, maxHeight = CONFIG.MAX_PAGE_HEIGHT) {
@@ -492,8 +501,106 @@ const CONFIG = {
     let chunks = [];
     let col = document.createElement('div');
   
+    // Validation d'une page avant de la pousser
+    const validatePage = (html, pageNum) => {
+      measurer.innerHTML = '';
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      measurer.appendChild(div);
+      const h = measuredHeightWithMargins(measurer);
+      
+      if (h > maxHeight) {
+        console.warn(`⚠️ Page ${pageNum + 1} trop grande (${h.toFixed(1)}px > ${maxHeight}px) - dépasse de ${(h - maxHeight).toFixed(1)}px`);
+        return false;
+      }
+      return true;
+    };
+    
+    // Force split - filet de sécurité ultime pour pages trop grandes
+    const forceSplit = (container, maxH) => {
+      console.log("🚨 ForceSplit activé - découpage brutal de la page");
+
+      const left = document.createElement('div');
+      const right = document.createElement('div');
+      const children = Array.from(container.childNodes);
+
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        left.appendChild(child.cloneNode(true));
+
+        measurer.innerHTML = '';
+        measurer.appendChild(left.cloneNode(true));
+
+        if (overflows(maxH)) {
+          // Retirer le dernier ajouté
+          left.removeChild(left.lastChild);
+          
+          // Fallback: si c'est un texte ou paragraphe géant, essayer de le couper
+          if (child.nodeType === Node.TEXT_NODE || 
+              child.tagName === 'P' || 
+              child.tagName === 'PRE' ||
+              child.tagName === 'BLOCKQUOTE') {
+            console.log(`  ✂️ Tentative de split texte/paragraphe pour <${child.tagName || 'TEXT'}>`);
+            
+            try {
+              const [lt, rt] = splitTextToFit(left, child, maxH);
+              if (lt) {
+                left.appendChild(lt);
+                console.log(`    ✅ Partie gauche ajoutée`);
+              }
+              if (rt) {
+                right.appendChild(rt);
+                console.log(`    ➡️ Partie droite ajoutée`);
+                // Ajouter tous les enfants suivants
+                for (let j = i + 1; j < children.length; j++) {
+                  right.appendChild(children[j].cloneNode(true));
+                }
+              }
+              break;
+            } catch (e) {
+              console.warn(`    ⚠️ Échec du split texte, basculement complet`, e);
+              // Si ça échoue, basculer tout le bloc
+              right.appendChild(child.cloneNode(true));
+              for (let j = i + 1; j < children.length; j++) {
+                right.appendChild(children[j].cloneNode(true));
+              }
+              break;
+            }
+          } else {
+            // Bloc non divisible (image, table, etc.) - basculer tout
+            console.log(`  📦 Bloc <${child.tagName}> non divisible - basculement complet`);
+            for (let j = i; j < children.length; j++) {
+              right.appendChild(children[j].cloneNode(true));
+            }
+            break;
+          }
+        }
+      }
+
+      return {
+        left: left.innerHTML.trim() ? left : null,
+        right: right.innerHTML.trim() ? right : null
+      };
+    };
+    
     const pushCol = () => {
-      if (col.innerHTML.trim()) chunks.push(col.innerHTML);
+      if (col.innerHTML.trim()) {
+        // Validation avant de pousser
+        if (!validatePage(col.innerHTML, chunks.length)) {
+          console.error(`❌ Page ${chunks.length + 1} invalide - correction avec forceSplit`);
+          const result = forceSplit(col, maxHeight);
+          if (result.left) {
+            chunks.push(result.left.innerHTML);
+            console.log(`  ✅ Left poussé: ${result.left.innerHTML.length} caractères`);
+          }
+          if (result.right) {
+            chunks.push(result.right.innerHTML);
+            console.log(`  ➡️ Right poussé: ${result.right.innerHTML.length} caractères`);
+          }
+        } else {
+          chunks.push(col.innerHTML);
+        }
+      }
       col = document.createElement('div');
     };
   
@@ -577,6 +684,34 @@ const CONFIG = {
     }
   
     pushCol();
+    
+    // Détecteur d'overflow - vérifier chaque chunk
+    console.log('\n🔍 === DÉTECTION D\'OVERFLOW ===');
+    let hasOverflow = false;
+    chunks.forEach((chunk, i) => {
+      measurer.innerHTML = '';
+      const testDiv = document.createElement('div');
+      testDiv.innerHTML = chunk;
+      measurer.appendChild(testDiv);
+      
+      const height = measuredHeightWithMargins(measurer);
+      const overflow = height > maxHeight;
+      
+      if (overflow) {
+        hasOverflow = true;
+        console.error(`❌ Page ${i + 1}: OVERFLOW détecté! ${height.toFixed(1)}px > ${maxHeight}px (dépasse de ${(height - maxHeight).toFixed(1)}px)`);
+      } else {
+        const usage = (height / maxHeight * 100).toFixed(1);
+        console.log(`✅ Page ${i + 1}: ${height.toFixed(1)}px (${usage}%)`);
+      }
+    });
+    
+    if (hasOverflow) {
+      console.error('\n⚠️ ATTENTION: Des pages dépassent la limite!');
+    } else {
+      console.log('\n✅ Toutes les pages respectent la limite de ' + maxHeight + 'px');
+    }
+    
     return chunks;
   }
   

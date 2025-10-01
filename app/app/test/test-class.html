@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test HtmlSplitter Class</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #0EA5E9;
+        }
+        .controls {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #0EA5E9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0284c7;
+        }
+        .page {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            width: 595px;
+            min-height: 860px; /* 820px de contenu + 40px de padding (20px top + 20px bottom) */
+            box-sizing: border-box;
+            position: relative;
+        }
+        .page::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 840px; /* 820px + 20px de padding top */
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #dc2626 0%, #dc2626 50%, transparent 50%);
+            background-size: 20px 2px;
+            z-index: 10;
+        }
+        .page::after {
+            content: '820px limit';
+            position: absolute;
+            right: 10px;
+            top: 835px;
+            background: #dc2626;
+            color: white;
+            padding: 2px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+            z-index: 11;
+        }
+        .page-ruler {
+            position: absolute;
+            right: -60px;
+            top: 20px;
+            width: 50px;
+            height: 820px;
+            background: linear-gradient(to bottom, 
+                #16a34a 0%, #16a34a 80%, 
+                #f59e0b 80%, #f59e0b 95%, 
+                #dc2626 95%, #dc2626 100%);
+            border: 1px solid #333;
+            font-size: 10px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .page-ruler::before {
+            content: '0px';
+            text-align: center;
+        }
+        .page-ruler::after {
+            content: '820px';
+            text-align: center;
+        }
+        .stats {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        .success {
+            color: #059669;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de la classe HtmlSplitter</h1>
+
+    <div class="controls">
+        <h2>Tests avec la classe HtmlSplitter:</h2>
+        <button onclick="testSimpleParagraph()">Test 1: Paragraphe Simple</button>
+        <button onclick="testLongList()">Test 2: Liste Longue</button>
+        <button onclick="testTable()">Test 3: Tableau</button>
+        <button onclick="testComplexArticle()">Test 4: Article Complexe</button>
+        <button onclick="testAllElements()">Test 5: Tous les Éléments</button>
+        <button onclick="testCustomDimensions()" style="background: #059669;">Test 6: Dimensions Personnalisées</button>
+        <button onclick="clearResults()">Effacer</button>
+    </div>
+
+    <div id="stats" class="stats" style="display: none;"></div>
+    
+    <div style="display: flex; gap: 20px;">
+        <div style="flex: 1;">
+            <h2 style="color: #059669;">📄 test-working.js (JavaScript)</h2>
+            <div id="result-working"></div>
+        </div>
+        <div style="flex: 1;">
+            <h2 style="color: #ea580c;">📖 Paged.js (CSS Print)</h2>
+            <div id="result-pagedjs"></div>
+        </div>
+    </div>
+
+    <!-- Importer Paged.js depuis CDN -->
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    
+    <!-- Importer test-working.js -->
+    <script src="test-working.js"></script>
+
+    <script>
+        // TEST 1: Paragraphe simple
+        function testSimpleParagraph() {
+            console.log('=== TEST 1: Paragraphe Simple ===');
+            
+            const html = `
+                <p style="line-height: 1.6;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    ${'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. '.repeat(100)}
+                </p>
+            `;
+            
+            runTest('Paragraphe Simple', html);
+        }
+
+        // TEST 2: Liste longue
+        function testLongList() {
+            console.log('=== TEST 2: Liste Longue ===');
+            
+            const items = Array.from({length: 50}, (_, i) => 
+                `<li>Élément de liste numéro ${i + 1} avec du texte supplémentaire pour tester</li>`
+            ).join('');
+            
+            const html = `
+                <h2 style="color: #0EA5E9;">Liste de 50 éléments</h2>
+                <ul style="line-height: 1.8;">
+                    ${items}
+                </ul>
+            `;
+            
+            runTest('Liste Longue (50 items)', html);
+        }
+
+        // TEST 3: Tableau
+        function testTable() {
+            console.log('=== TEST 3: Tableau ===');
+            
+            const rows = Array.from({length: 30}, (_, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>Produit ${i + 1}</td>
+                    <td>${(Math.random() * 100).toFixed(2)}€</td>
+                    <td>${Math.floor(Math.random() * 100)}</td>
+                </tr>
+            `).join('');
+            
+            const html = `
+                <h2 style="color: #0EA5E9;">Tableau de Produits</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: #0EA5E9; color: white;">
+                        <tr>
+                            <th style="padding: 10px; border: 1px solid #ddd;">ID</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Produit</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Prix</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
+            
+            runTest('Tableau (30 lignes)', html);
+        }
+
+        // TEST 4: Article complexe
+        function testComplexArticle() {
+            console.log('=== TEST 4: Article Complexe ===');
+            
+            const html = `
+                <article style="line-height: 1.6;">
+                    <header>
+                        <h1 style="color: #0EA5E9;">Guide Complet du Développement Web</h1>
+                        <p style="color: #64748b;"><em>Publié le 1er octobre 2025</em></p>
+                    </header>
+                    
+                    <section>
+                        <h2 style="color: #059669;">Introduction</h2>
+                        <p>
+                            Le développement web moderne nécessite une compréhension approfondie de nombreuses technologies.
+                            ${'Dans cet article, nous allons explorer les concepts fondamentaux. '.repeat(10)}
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h2 style="color: #059669;">Technologies Frontend</h2>
+                        <h3 style="color: #0EA5E9;">HTML & CSS</h3>
+                        <p>${'HTML et CSS sont les fondations du web. '.repeat(15)}</p>
+                        
+                        <h3 style="color: #0EA5E9;">JavaScript</h3>
+                        <p>${'JavaScript permet d\'ajouter de l\'interactivité. '.repeat(15)}</p>
+                        
+                        <ul style="line-height: 1.8;">
+                            <li><strong>React</strong> - Bibliothèque UI populaire</li>
+                            <li><strong>Vue.js</strong> - Framework progressif</li>
+                            <li><strong>Angular</strong> - Framework complet</li>
+                            <li><strong>Svelte</strong> - Compilateur moderne</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2 style="color: #059669;">Technologies Backend</h2>
+                        <dl style="line-height: 1.6;">
+                            <dt><strong>Node.js</strong></dt>
+                            <dd>Runtime JavaScript côté serveur</dd>
+                            
+                            <dt><strong>Python</strong></dt>
+                            <dd>Langage polyvalent avec Django et Flask</dd>
+                            
+                            <dt><strong>PHP</strong></dt>
+                            <dd>Langage serveur traditionnel</dd>
+                        </dl>
+                    </section>
+                    
+                    <blockquote style="border-left: 4px solid #0EA5E9; padding-left: 20px; margin: 20px 0; color: #64748b;">
+                        <p><em>"Le meilleur code est celui qui n'a pas besoin d'être écrit."</em></p>
+                        <footer>— Un développeur sage</footer>
+                    </blockquote>
+                    
+                    <footer style="border-top: 2px solid #e5e7eb; padding-top: 15px; margin-top: 30px;">
+                        <p><em>Article sous licence MIT</em></p>
+                    </footer>
+                </article>
+            `;
+            
+            runTest('Article Complexe', html);
+        }
+
+        // TEST 5: Tous les éléments
+        function testAllElements() {
+            console.log('=== TEST 5: Tous les Éléments ===');
+            
+            const html = `
+                <h1 style="color: #0EA5E9;">Test de Tous les Éléments</h1>
+                
+                <p style="line-height: 1.6;">
+                    ${'Paragraphe avec beaucoup de texte. '.repeat(20)}
+                </p>
+                
+                <ul style="line-height: 1.8;">
+                    ${Array.from({length: 15}, (_, i) => `<li>Item UL ${i + 1}</li>`).join('')}
+                </ul>
+                
+                <ol style="line-height: 1.8;">
+                    ${Array.from({length: 15}, (_, i) => `<li>Item OL ${i + 1}</li>`).join('')}
+                </ol>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead style="background: #0EA5E9; color: white;">
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Col 1</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Col 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Array.from({length: 20}, (_, i) => `
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;">Data ${i + 1}</td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">Value ${i + 1}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                
+                <dl style="line-height: 1.6;">
+                    <dt><strong>Terme 1</strong></dt>
+                    <dd>Définition du terme 1</dd>
+                    <dt><strong>Terme 2</strong></dt>
+                    <dd>Définition du terme 2</dd>
+                </dl>
+                
+                <blockquote style="border-left: 4px solid #0EA5E9; padding-left: 20px; margin: 20px 0;">
+                    <p>${'Citation importante. '.repeat(10)}</p>
+                </blockquote>
+                
+                <pre style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 5px;"><code>function test() {
+  console.log('Hello World');
+  return true;
+}</code></pre>
+            `;
+            
+            runTest('Tous les Éléments', html);
+        }
+
+        // TEST 6: Dimensions personnalisées
+        function testCustomDimensions() {
+            console.log('=== TEST 6: Dimensions Personnalisées ===');
+            
+            const html = `
+                <h2 style="color: #0EA5E9;">Bloc avec dimensions personnalisées</h2>
+                <p style="line-height: 1.6;">
+                    ${'Ce contenu sera divisé avec une largeur de 400px et une hauteur max de 600px. '.repeat(30)}
+                </p>
+                <ul style="line-height: 1.8;">
+                    ${Array.from({length: 20}, (_, i) => `<li>Item ${i + 1}</li>`).join('')}
+                </ul>
+            `;
+            
+            // Utiliser des dimensions personnalisées
+            const pages = splitter.split(html, {
+                maxHeight: 600,  // Hauteur personnalisée
+                width: 400,      // Largeur personnalisée
+                padding: 10,     // Padding personnalisé
+                containerStyle: 'background: #f0f9ff; border-left: 4px solid #0EA5E9; padding: 15px;'
+            });
+            
+            console.log(`📄 ${pages.length} pages générées avec dimensions personnalisées`);
+            console.log(`   Largeur: 400px, Hauteur max: 600px, Padding: 10px`);
+            
+            // Afficher les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong class="success">✅ Test: Dimensions Personnalisées</strong><br>
+                - Nombre de pages générées: <strong>${pages.length}</strong><br>
+                - <strong>Largeur:</strong> 400px (au lieu de 595px)<br>
+                - <strong>Hauteur max:</strong> 600px (au lieu de 820px)<br>
+                - <strong>Padding:</strong> 10px (au lieu de 20px)<br>
+                - <strong>Style:</strong> Fond bleu avec bordure gauche
+            `;
+            
+            // Afficher les pages avec les bonnes dimensions
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = pages.map((chunk, i) => `
+                <div class="page" style="width: 400px; min-height: 600px;">
+                    <h3 style="color: #0EA5E9; margin-top: 0;">Page ${i + 1} / ${pages.length}</h3>
+                    <div style="border: 1px dashed #ccc; padding: 10px;">
+                        ${chunk}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Fonction générique pour exécuter un test
+        function runTest(testName, html) {
+            console.log('🔍 HTML à splitter:', html.substring(0, 100) + '...');
+            
+            // TEST avec test-working.js
+            console.log('\n📄 Test avec test-working.js:');
+            const startWorking = performance.now();
+            const pagesWorking = splitHtmlIntoChunks(html, 827);
+            const endWorking = performance.now();
+            console.log(`  ✅ ${pagesWorking.length} pages en ${(endWorking - startWorking).toFixed(2)}ms`);
+            
+            // Afficher les stats
+            const statsDiv = document.getElementById('stats');
+            statsDiv.style.display = 'block';
+            statsDiv.innerHTML = `
+                <strong class="success">✅ Test: ${testName}</strong><br><br>
+                <strong>📄 test-working.js:</strong> ${pagesWorking.length} pages en ${(endWorking - startWorking).toFixed(2)}ms<br>
+                <strong>📖 Paged.js:</strong> Voir colonne de droite
+            `;
+            
+            // Afficher les pages de test-working.js
+            const resultWorking = document.getElementById('result-working');
+            resultWorking.innerHTML = pagesWorking.map((chunk, i) => `
+                <div class="page">
+                    <div class="page-ruler"></div>
+                    <h3 style="color: #059669; margin-top: 0;">Page ${i + 1} / ${pagesWorking.length}</h3>
+                    <div style="border: 1px dashed #059669; padding: 10px;">
+                        ${chunk}
+                    </div>
+                </div>
+            `).join('');
+            
+            // Afficher avec Paged.js
+            const resultPagedjs = document.getElementById('result-pagedjs');
+            resultPagedjs.innerHTML = `
+                <style>
+                    @page {
+                        size: 595px 827px;
+                        margin: 20px;
+                    }
+                    .pagedjs-content {
+                        font-family: Arial, sans-serif;
+                    }
+                </style>
+                <div class="pagedjs-content" id="pagedjs-content">
+                    ${html}
+                </div>
+            `;
+            
+            // Appliquer Paged.js
+            if (window.PagedPolyfill) {
+                const paged = new PagedPolyfill();
+                paged.preview(resultPagedjs.querySelector('#pagedjs-content')).then(() => {
+                    console.log('📖 Paged.js: Rendu terminé');
+                });
+            }
+            
+            console.log(`\n✅ Comparaison terminée: ${pagesWorking.length} pages (test-working.js)`);
+        }
+
+        function clearResults() {
+            document.getElementById('result-working').innerHTML = '';
+            document.getElementById('result-pagedjs').innerHTML = '';
+            document.getElementById('stats').style.display = 'none';
+            console.log('🧹 Résultats effacés');
+        }
+    </script>
+</body>
+</html>

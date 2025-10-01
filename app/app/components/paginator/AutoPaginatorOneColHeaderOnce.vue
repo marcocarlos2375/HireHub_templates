@@ -208,13 +208,6 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
     },
     
     mounted() {
-      console.log('✅ AutoPaginatorOneColHeaderOnce MOUNTED');
-      console.log('Props received:', {
-        html: this.html ? 'HAS CONTENT' : 'EMPTY',
-        headerHtml: this.headerHtml ? 'HAS CONTENT' : 'EMPTY',
-        pageWidth: this.pageWidth,
-        pageHeight: this.pageHeight
-      });
       
       // Add Outfit font CSS link to document head
       if (!document.querySelector(`link[href="${outfitCssUrl}"]`)) {
@@ -243,13 +236,11 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       },
       
       logPageHtml() {
-        console.log('--- Page HTML Content ---');
+        alert(`HTML for ${this.pages.length} pages logged to console. Press F12 to view.`);
         this.pages.forEach((pageHtml, index) => {
           console.log(`--- Page ${index + 1} of ${this.pages.length} ---`);
           console.log(pageHtml);
         });
-        console.log('--- End of Page HTML Content ---');
-        alert(`HTML for ${this.pages.length} pages logged to console. Press F12 to view.`);
       },
 
       async generatePDF() {
@@ -334,8 +325,6 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
           // Reset button
           button.textContent = originalText;
           button.disabled = false;
-          
-          console.log('PDF generated successfully');
         } catch (error) {
           console.error('Error generating PDF:', error);
           alert(`Error generating PDF: ${error.message}`);
@@ -401,10 +390,18 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       },
   
       /* -------------------- HTML-aware splitting core -------------------- */
-      splitHtmlIntoChunks(html, measurer, maxContentHeight, safety = 0, maxPages = Infinity) {
+      splitHtmlIntoChunks(html, measurer, maxContentHeightOrFn, safety = 0, maxPages = Infinity) {
         const self = this;
-  
-        const overflows = () => self.measuredHeightWithMargins(measurer) > (maxContentHeight - safety);
+        
+        // Support dynamic height per page: function or fixed value
+        const getMaxHeight = (pageIndex) => {
+          return typeof maxContentHeightOrFn === 'function' 
+            ? maxContentHeightOrFn(pageIndex)
+            : maxContentHeightOrFn;
+        };
+        
+        let currentPageIndex = 0;
+        const overflows = () => self.measuredHeightWithMargins(measurer) > (getMaxHeight(currentPageIndex) - safety);
   
         const setMeasure = (node) => {
           // Wrap probe to mirror render (.column-content) for parity
@@ -475,16 +472,13 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
                 if (child.nodeType === Node.ELEMENT_NODE) {
                   // Check if it's a list - use special list splitting
                   if (child.tagName === 'UL' || child.tagName === 'OL') {
-                    console.log(`🔍 Found ${child.tagName} inside block with ${child.children.length} items - calling splitList`);
                     // Pass the current left container to check available space
                     const res = splitListInContext(child, left);
                     if (res.left && res.left.childNodes.length) {
                       left.appendChild(res.left);
-                      console.log(`  ✅ Added ${res.left.children.length} items to left`);
                     }
                     if (res.right && res.right.childNodes.length) {
                       right.appendChild(res.right);
-                      console.log(`  ➡️ Moved ${res.right.children.length} items to right`);
                     }
                   } else {
                     const res = splitSimpleBlock(child);
@@ -503,8 +497,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         };
   
         const splitListInContext = (listEl, contextContainer) => {
-          console.log('📋 splitListInContext called with', listEl.children.length, 'items');
-          const left = listEl.cloneNode(false);
+              const left = listEl.cloneNode(false);
           const right = listEl.cloneNode(false);
           const listItems = Array.from(listEl.children);
           
@@ -519,27 +512,20 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
             testContainer.appendChild(testList);
             setMeasure(testContainer);
             
-            const totalHeight = self.measuredHeightWithMargins(measurer);
             const doesOverflow = overflows();
-            
-            console.log(`  Item ${i + 1}: total height with context=${totalHeight.toFixed(1)}px, overflows=${doesOverflow}`);
             
             if (doesOverflow) {
               // Doesn't fit - add remaining items to right
-              console.log(`    ❌ Overflow! Moving ${listItems.length - i} items to right`);
               for (let j = i; j < listItems.length; j++) {
                 right.appendChild(listItems[j].cloneNode(true));
               }
-              console.log(`  📋 Split result: left=${left.children.length} items, right=${right.children.length} items`);
               return { left: left.childNodes.length > 0 ? left : null, right: right.childNodes.length > 0 ? right : null };
             } else {
               // Fits! Add to left
               left.appendChild(liClone);
-              console.log(`    ✅ Added to left (total: ${left.children.length})`);
             }
           }
           
-          console.log(`  📋 All items fit! left=${left.children.length} items, right=null`);
           return { left: left.childNodes.length > 0 ? left : null, right: null };
         };
   
@@ -629,15 +615,6 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         wrap.innerHTML = html || '';
         const nodes = Array.from(wrap.childNodes);
         
-        console.log('🔍 Analyzing HTML structure:');
-        nodes.forEach((node, i) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            console.log(`  Node ${i}: <${node.tagName}> with ${node.children.length} children`);
-            if (node.tagName === 'UL' || node.tagName === 'OL') {
-              console.log(`    → List with ${node.children.length} items`);
-            }
-          }
-        });
   
         let chunks = [];
         let col = document.createElement('div');
@@ -647,72 +624,15 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         const pushCol = () => {
           if (col.innerHTML.trim()) {
             chunks.push(col.innerHTML);
+            currentPageIndex++; // Track page index for dynamic height
           }
           col = document.createElement('div');
         };
   
-        let nodeIndex = 0;
         for (const node of nodes) {
-          nodeIndex++;
           const clone = node.cloneNode(true);
-          const nodeType = clone.nodeType === Node.ELEMENT_NODE ? clone.tagName : 'TEXT';
-          console.log(`\n📦 Processing node ${nodeIndex}: <${nodeType}>`);
-          
-          // Special handling for lists: treat each <li> as an individual block
-          if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
-            const listType = clone.tagName;
-            const listItems = Array.from(clone.children);
-            
-            // Try to add list items one by one
-            let currentList = null;
-            for (const li of listItems) {
-              // Create or reuse list container
-              if (!currentList) {
-                currentList = document.createElement(listType);
-                // Copy list attributes
-                for (const attr of clone.attributes) {
-                  currentList.setAttribute(attr.name, attr.value);
-                }
-              }
-              
-              const liClone = li.cloneNode(true);
-              currentList.appendChild(liClone);
-              
-              // Test if current list fits
-              const testContainer = col.cloneNode(true);
-              testContainer.appendChild(currentList.cloneNode(true));
-              setMeasure(testContainer);
-              
-              if (overflows()) {
-                // Remove the li that caused overflow
-                currentList.removeChild(currentList.lastChild);
-                
-                // If current list has items, add it to page
-                if (currentList.children.length > 0) {
-                  col.appendChild(currentList);
-                }
-                
-                // Start new page
-                pushCol();
-                
-                // Start new list with the overflowing item
-                currentList = document.createElement(listType);
-                for (const attr of clone.attributes) {
-                  currentList.setAttribute(attr.name, attr.value);
-                }
-                currentList.appendChild(liClone);
-              }
-            }
-            
-            // Add remaining list items
-            if (currentList && currentList.children.length > 0) {
-              col.appendChild(currentList);
-            }
-            continue;
-          }
           
           if (tryAppend(col, clone)) {
-            console.log(`  ✅ Fits on current page (page ${chunks.length + 1})`);
             continue;
           }
   
@@ -720,44 +640,33 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
             // current page has content; check if we should split element to fill page better
             setMeasure(col);
             const currentHeight = self.measuredHeightWithMargins(measurer);
-            const targetHeight = maxContentHeight - safety;
+            const targetHeight = getMaxHeight(currentPageIndex) - safety;
             const usagePercent = currentHeight / targetHeight;
-            
-            console.log(`  ❌ Doesn't fit! Current page height: ${currentHeight.toFixed(1)}px (${(usagePercent * 100).toFixed(1)}% of ${targetHeight.toFixed(1)}px)`);
             
             // Check if page is already in acceptable range (95-101%)
             const isPageValid = usagePercent >= MIN_USAGE_PERCENT && usagePercent <= MAX_USAGE_PERCENT;
             
             if (isPageValid) {
               // Page is already valid - close it and move element to next page
-              console.log(`  ✅ Page is valid (${(usagePercent * 100).toFixed(1)}%) - closing and moving element to next page`);
               pushCol();
               
               // Try to add to new page
               if (tryAppend(col, clone)) {
-                console.log(`  ✅ Fits on new page`);
                 continue;
               }
               
               // Still doesn't fit - need to split
-              console.log(`  🔄 Element too large for empty page, splitting...`);
             } else {
               // Page is NOT valid - try to split element to reach valid range
-              if (usagePercent < MIN_USAGE_PERCENT) {
-                console.log(`  🔄 Page only ${(usagePercent * 100).toFixed(1)}% full - trying to split element to reach 95%...`);
-              } else {
-                console.log(`  🔄 Page would be ${(usagePercent * 100).toFixed(1)}% full - exceeds 101% max, splitting...`);
-              }
               
               // Try to split the element to fill remaining space
               let didSplit = false;
               
               if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
-                const { left, right } = splitList(clone);
+                const { left, right } = splitListInContext(clone, col);
                 if (left && left.childNodes.length) {
                   col.appendChild(left);
                   didSplit = true;
-                  console.log(`  ✅ Added ${left.children.length} list items to fill page`);
                 }
                 pushCol();
                 if (right && right.childNodes.length) {
@@ -785,17 +694,14 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
               }
               
               // Couldn't split - close page anyway
-              console.log(`  ⚠️ Couldn't split element - closing page at ${(usagePercent * 100).toFixed(1)}%`);
               pushCol();
               
               // Try to add to new page
               if (tryAppend(col, clone)) {
-                console.log(`  ✅ Fits on new page`);
                 continue;
               }
               
               // Still doesn't fit - need to split
-              console.log(`  🔄 Element too large for empty page, splitting...`);
             }
 
             // special: atomic block should go to next page intact if possible
@@ -808,7 +714,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
             }
 
             if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
-              const { left, right } = splitList(clone);
+              const { left, right } = splitListInContext(clone, col);
               if (left && left.childNodes.length) col.appendChild(left);
               pushCol();
               // Continue splitting right if it still overflows
@@ -819,7 +725,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
                     break; // Fits on current page
                   }
                   // Still doesn't fit, split again
-                  const splitAgain = splitList(remainingList);
+                  const splitAgain = splitListInContext(remainingList, col);
                   if (splitAgain.left && splitAgain.left.childNodes.length) {
                     col.appendChild(splitAgain.left);
                   }
@@ -862,7 +768,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
           }
   
           if (clone.nodeType === Node.ELEMENT_NODE && (clone.tagName === 'UL' || clone.tagName === 'OL')) {
-            const { left, right } = splitList(clone);
+            const { left, right } = splitListInContext(clone, col);
             if (left && left.childNodes.length) col.appendChild(left);
             pushCol();
             // Continue splitting right if it still overflows
@@ -873,7 +779,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
                   break; // Fits on current page
                 }
                 // Still doesn't fit, split again
-                const splitAgain = splitList(remainingList);
+                const splitAgain = splitListInContext(remainingList, col);
                 if (splitAgain.left && splitAgain.left.childNodes.length) {
                   col.appendChild(splitAgain.left);
                 }
@@ -911,7 +817,8 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         while (passes < maxPages) {
           const last = chunks[chunks.length - 1];
           measurer.innerHTML = last;
-          if (!(self.measuredHeightWithMargins(measurer) > (maxContentHeight - safety))) break;
+          const lastPageHeight = getMaxHeight(chunks.length - 1);
+          if (!(self.measuredHeightWithMargins(measurer) > (lastPageHeight - safety))) break;
   
           const wrap2 = document.createElement('div');
           wrap2.innerHTML = last;
@@ -1008,9 +915,6 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       },
   
       repaginate() {
-        console.log('🔍 AutoPaginatorOneColHeaderOnce - repaginate called');
-        console.log('📄 html prop:', this.html ? `${this.html.substring(0, 100)}...` : 'EMPTY');
-        console.log('📋 headerHtml prop:', this.headerHtml ? `${this.headerHtml.substring(0, 50)}...` : 'EMPTY');
         
         // Prepare content: optional auto-wrap + ensure column-content wrapper for input
         let prepared = this.html.trim();
@@ -1040,73 +944,41 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         const subsequentPageSafeHeightNoPad = subsequentPageColumnHeight - (Number(this.columnPaddingTop) + Number(this.columnPaddingBottom));
         const subsequentPageFinalSafeHeight = Math.max(100, subsequentPageSafeHeightNoPad);
         
-        console.log(`📐 Page heights: Page 1 (with header)=${firstPageFinalSafeHeight.toFixed(1)}px, Pages 2+ (no header)=${subsequentPageFinalSafeHeight.toFixed(1)}px`);
-        console.log(`📐 Difference: ${(subsequentPageFinalSafeHeight - firstPageFinalSafeHeight).toFixed(1)}px more space on pages 2+`);
   
-        // Strategy: Split content in two passes for optimal space usage
-        // Pass 1: Determine what fits on page 1 (with header - less space)
-        const firstPageChunks = this.splitHtmlIntoChunks(
+        // Single-pass approach with dynamic height function
+        const getHeightForPage = (pageIndex) => {
+          return pageIndex === 0 ? firstPageFinalSafeHeight : subsequentPageFinalSafeHeight;
+        };
+        
+        let chunks = this.splitHtmlIntoChunks(
           prepared,
           this.$refs.measurer,
-          firstPageFinalSafeHeight,
+          getHeightForPage,
           this.safetyBuffer,
-          2 // Get first page + overflow
+          this.maxPages
         );
-        
-        let chunks = [];
-        
-        if (firstPageChunks.length === 0) {
-          chunks = [''];
-        } else if (firstPageChunks.length === 1) {
-          // All content fits on first page
-          chunks = [firstPageChunks[0]];
-        } else {
-          // Content overflows to additional pages
-          const firstPageContent = firstPageChunks[0];
-          
-          // Get all remaining content (everything after first page)
-          const remainingContent = firstPageChunks.slice(1).join('');
-          
-          if (remainingContent.trim()) {
-            // Pass 2: Re-split remaining content with MORE space (no header on pages 2+)
-            const remainingChunks = this.splitHtmlIntoChunks(
-              remainingContent,
-              this.$refs.measurer,
-              subsequentPageFinalSafeHeight,
-              this.safetyBuffer,
-              this.maxPages - 1
-            );
-            chunks = [firstPageContent, ...remainingChunks];
-          } else {
-            chunks = [firstPageContent];
-          }
-        }
-        
-        console.log('📊 Chunks after split:', chunks.length);
-        chunks.forEach((chunk, i) => {
-          console.log(`  Page ${i + 1}: ${chunk.substring(0, 50)}...`);
-        });
-  
-        // Note: chunks already have column-content wrapper from initial wrapping (line 1020)
+
+        // Note: chunks already have column-content wrapper from initial wrapping
         // No need to wrap again here
   
-        // Enforce maxPages hard cap (merge tail, then fit tail into one page)
+        // Enforce maxPages hard cap
         if (Number.isFinite(this.maxPages) && chunks.length > this.maxPages) {
           const keep = chunks.slice(0, this.maxPages - 1);
           const mergedTailRaw = chunks.slice(this.maxPages - 1).join('');
+          const lastPageHeight = getHeightForPage(this.maxPages - 1);
           const fittedTailArr = this.splitHtmlIntoChunks(
-            `<div class="column-content">${mergedTailRaw}</div>`,
+            mergedTailRaw,
             this.$refs.measurer,
-            subsequentPageFinalSafeHeight,
+            lastPageHeight,
             this.safetyBuffer,
             1
           );
-          const fittedTail = (fittedTailArr[0] || `<div class="column-content"></div>`);
-          chunks = [...keep, fittedTail];
+          const fittedTail = (fittedTailArr[0] || '');
+          chunks.splice(0, chunks.length, ...keep, fittedTail);
         }
   
-        // Set pages
-        this.pages = chunks;
+        // Set pages (ensure no empty chunks)
+        this.pages = chunks.filter(c => c.trim());
   
         // Update store & emit count
         this.paginationStore.setPageCount(this.pages.length);
@@ -1119,61 +991,22 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         if (this.currentIdx < 0) {
           this.currentIdx = 0;
         }
-  
-        // Debug verify: log space usage for each page
+
+        // Log page usage statistics
         this.$nextTick(() => {
-          if (this.$refs.measurer && chunks.length > 0) {
-            console.log('📏 ===== PAGE SPACE USAGE REPORT =====');
-            let totalOverflow = 0;
-            let pagesWithOverflow = 0;
+          if (this.$refs.measurer && this.pages.length > 0) {
+            console.log(`📄 Total Pages: ${this.pages.length}`);
             
-            for (let i = 0; i < chunks.length; i++) {
-              this.$refs.measurer.innerHTML = chunks[i];
+            for (let i = 0; i < this.pages.length; i++) {
+              this.$refs.measurer.innerHTML = this.pages[i];
               const contentHeight = this.measuredHeightWithMargins(this.$refs.measurer);
               const targetHeight = i === 0 ? firstPageFinalSafeHeight : subsequentPageFinalSafeHeight;
               const availableSpace = targetHeight - this.safetyBuffer;
-              const usedSpace = contentHeight;
-              const remainingSpace = availableSpace - usedSpace;
-              const usagePercentage = ((usedSpace / availableSpace) * 100).toFixed(1);
-              const overflowPercentage = ((Math.abs(remainingSpace) / availableSpace) * 100).toFixed(1);
+              const usagePercentage = ((contentHeight / availableSpace) * 100).toFixed(1);
               
-              const pageType = i === 0 ? '(WITH HEADER)' : '(NO HEADER)';
-              // Allow up to 0.8% overflow as acceptable
-              const hasAcceptableOverflow = remainingSpace < 0 && overflowPercentage <= 0.8;
-              const status = remainingSpace >= 0 || hasAcceptableOverflow ? '✅' : '⚠️';
-              
-              console.log(`${status} Page ${i + 1} ${pageType}:`);
-              console.log(`   Available Space: ${availableSpace.toFixed(1)}px`);
-              console.log(`   Used Space:      ${usedSpace.toFixed(1)}px (${usagePercentage}%)`);
-              console.log(`   Remaining Space: ${remainingSpace.toFixed(1)}px`);
-              
-              if (remainingSpace < 0) {
-                totalOverflow += Math.abs(remainingSpace);
-                pagesWithOverflow++;
-                if (hasAcceptableOverflow) {
-                  console.log(`   ℹ️ Minor overflow (<0.8%) - acceptable`);
-                } else {
-                  console.warn(`   ⚠️ OVERFLOW: Content exceeds available height by ${Math.abs(remainingSpace).toFixed(1)}px (${overflowPercentage}%)`);
-                }
-              }
-              
-              // Check if usage is below 94% minimum (excluding last page)
-              const usage = parseFloat(usagePercentage);
-              if (i < chunks.length - 1 && usage < 94.0) {
-                console.warn(`   ⚠️ LOW USAGE: Only ${usagePercentage}% used (minimum required: 94%)`);
-              }
-              
-              console.log('   ---');
+              const status = parseFloat(usagePercentage) <= 101 ? '✅' : '⚠️';
+              console.log(`${status} Page ${i + 1}: ${usagePercentage}%`);
             }
-            
-            // Summary
-            console.log('📊 SUMMARY:');
-            console.log(`   Total Pages: ${chunks.length}`);
-            console.log(`   Pages with Overflow: ${pagesWithOverflow}`);
-            if (pagesWithOverflow > 0) {
-              console.log(`   Total Overflow: ${totalOverflow.toFixed(1)}px`);
-            }
-            console.log('📏 ===== END REPORT =====');
           }
         });
       }
@@ -1248,7 +1081,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
   /* Keep default block flow (avoid display: contents) */
   .column-content {
     /* structure wrapper to match measurer */
-    background-color: red !important;
+    display: block;
   }
   
   /* Hidden measurer */

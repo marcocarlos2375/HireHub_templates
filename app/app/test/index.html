@@ -40,8 +40,78 @@
             margin-bottom: 20px;
             background: white;
             width: 595px;
-            min-height: 827px;
+            min-height: 867px; /* 827px de contenu + 40px de padding */
             box-sizing: border-box;
+            position: relative;
+        }
+        .page::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 847px; /* 827px + 20px de padding top */
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #dc2626 0%, #dc2626 50%, transparent 50%);
+            background-size: 20px 2px;
+            z-index: 10;
+        }
+        .page::after {
+            content: '827px limit';
+            position: absolute;
+            right: 10px;
+            top: 842px;
+            background: #dc2626;
+            color: white;
+            padding: 2px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+            z-index: 11;
+        }
+        .page-ruler {
+            position: absolute;
+            right: -60px;
+            top: 20px;
+            width: 50px;
+            height: 827px;
+            background: linear-gradient(to bottom, 
+                #16a34a 0%, #16a34a 80%, 
+                #f59e0b 80%, #f59e0b 95%, 
+                #dc2626 95%, #dc2626 100%);
+            border: 1px solid #333;
+            font-size: 10px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .page-ruler::before {
+            content: '0px';
+            text-align: center;
+        }
+        .page-ruler::after {
+            content: '827px';
+            text-align: center;
+        }
+        .page.overflow {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+        .page.overflow .page-header {
+            background: #dc2626;
+        }
+        .overflow-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #dc2626;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 20;
         }
         .page-header {
             background: #0EA5E9;
@@ -963,6 +1033,7 @@ console.log(greet('World'));</code></pre>
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = chunks.map((chunk, i) => `
                 <div class="page">
+                    <div class="page-ruler"></div>
                     <div class="page-header">Page ${i + 1} / ${chunks.length}</div>
                     ${chunk}
                 </div>

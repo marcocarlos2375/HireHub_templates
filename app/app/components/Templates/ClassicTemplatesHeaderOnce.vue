@@ -1,21 +1,11 @@
 <template>
-    <BaseTemplate 
-      :paginator-type="props.templateConfig.paginatorType"
-      :header-content="headerContent"
-      :main-content="mainContent"
-      :left-content="leftContent"
-      :right-content="rightContent"
-      :background-color="templateBackgroundColor"
-      :text-color="templateTextColor"
-      :padding="templatePadding"
-      :header-bg-color="headerBgColor"
-      :left-column-bg-color="leftColumnBgColor"
-      :right-column-bg-color="rightColumnBgColor"
-      :font-family="props.fontFamily"
-      @page-change="handlePageChange"
-      ref="baseTemplate"
-    />
-  </template>
+  <BaseTemplate :paginator-type="props.templateConfig.paginatorType" :header-content="headerContent"
+    :main-content="mainContent" :left-content="leftContent" :right-content="rightContent"
+    :background-color="templateBackgroundColor" :text-color="templateTextColor" :padding="templatePadding"
+    :header-bg-color="headerBgColor" :left-column-bg-color="leftColumnBgColor"
+    :right-column-bg-color="rightColumnBgColor" :font-family="props.fontFamily" @page-change="handlePageChange"
+    ref="baseTemplate" />
+</template>
 
 <script setup>
 import { ref, computed } from 'vue'
@@ -86,7 +76,7 @@ const generateExperienceHTML = (experiences) => {
     console.log('---');
   });
   console.log('💼 ===== END EXPERIENCE DESCRIPTIONS =====');
-  
+
   return experiences.map(exp => `
         <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
           <h3 style="margin: 0; font-size: ${baseFontSize + 4}px;">${exp.company}</h3>
@@ -107,7 +97,7 @@ const generateEducationHTML = (education) => {
     console.log('---');
   });
   console.log('🎓 ===== END EDUCATION DESCRIPTIONS =====');
-  
+
   return education.map(edu => `
         <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
           <h3 style="margin: 0; font-size: ${baseFontSize + 3}px;">${edu.institution}</h3>
@@ -142,7 +132,7 @@ const generateProjectsHTML = (projects) => {
 ${project.description}
         <div style="margin: 8px 0 20px 0;">
           <strong style="font-size: ${baseFontSize}px;">Technologies:</strong>
-          <span style="font-size: ${baseFontSize }px; color: #333; margin-left: 5px;">${project.technologies.join(', ')}</span>
+          <span style="font-size: ${baseFontSize}px; color: #333; margin-left: 5px;">${project.technologies.join(', ')}</span>
         </div>
     `).join('')
 }
