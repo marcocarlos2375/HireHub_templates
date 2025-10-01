@@ -74,23 +74,23 @@ const styles = {
 }
 
 // Generate contact info for left column
-const generateContactHTML = (personalInfo) => {
+const generateContactHTML = (contact) => {
   const contacts = []
   
-  if (personalInfo.location) {
-    contacts.push(`<p><span style="${styles.contactLabel}">Address</span><br>${personalInfo.location}</p>`)
+  if (contact.location) {
+    contacts.push(`<p><span style="${styles.contactLabel}">Address</span><br>${contact.location}</p>`)
   }
-  if (personalInfo.phone) {
-    contacts.push(`<p><span style="${styles.contactLabel}">Phone</span><br>${personalInfo.phone}</p>`)
+  if (contact.phone_number || contact.phone) {
+    contacts.push(`<p><span style="${styles.contactLabel}">Phone</span><br>${contact.phone_number || contact.phone}</p>`)
   }
-  if (personalInfo.email) {
-    contacts.push(`<p><span style="${styles.contactLabel}">Email</span><br>${personalInfo.email}</p>`)
+  if (contact.email) {
+    contacts.push(`<p><span style="${styles.contactLabel}">Email</span><br>${contact.email}</p>`)
   }
-  if (personalInfo.linkedin) {
-    contacts.push(`<p><span style="${styles.contactLabel}">LinkedIn</span><br>${personalInfo.linkedin}</p>`)
+  if (contact.linkedin_url || contact.linkedin) {
+    contacts.push(`<p><span style="${styles.contactLabel}">LinkedIn</span><br>${contact.linkedin_url || contact.linkedin}</p>`)
   }
-  if (personalInfo.portfolio) {
-    contacts.push(`<p><span style="${styles.contactLabel}">Portfolio</span><br>${personalInfo.portfolio}</p>`)
+  if (contact.portfolio_url || contact.portfolio) {
+    contacts.push(`<p><span style="${styles.contactLabel}">Portfolio</span><br>${contact.portfolio_url || contact.portfolio}</p>`)
   }
   
   return contacts.join('')
@@ -98,9 +98,26 @@ const generateContactHTML = (personalInfo) => {
 
 // Generate skills with dot rating system
 const generateSkillsHTML = (skills) => {
+  if (Array.isArray(skills)) {
+    return skills.map(skill => {
+      const skillLevel = 3 // Default level
+      const dots = Array.from({length: 5}, (_, i) => 
+        `<div class="dot${i < skillLevel ? ' filled' : ''}"></div>`
+      ).join('')
+      
+      return `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 6px 0;">
+          <span style="${styles.skillName}">${typeof skill === 'string' ? skill : skill.name}</span>
+          <div style="display: flex; gap: 4px;">
+            ${dots}
+          </div>
+        </div>
+      `
+    }).join('')
+  }
   return Object.entries(skills).map(([category, skillList]) => `
     ${skillList.map(skill => {
-      const skillLevel = skill.level || 3 // Default to 3 if no level specified
+      const skillLevel = skill.level || 3
       const dots = Array.from({length: 5}, (_, i) => 
         `<div class="dot${i < skillLevel ? ' filled' : ''}"></div>`
       ).join('')
@@ -162,25 +179,29 @@ const generateProjectsHTML = (projects) => {
 
 // Header content with bordered box design
 const headerContent = computed(() => {
-  const { personalInfo } = props.resumeData
+  const contact = props.resumeData.contact_information || {}
+  const name = `${contact.first_name || ''} ${contact.last_name || ''}`.trim() || props.resumeData.personalInfo?.name || ''
+  const title = contact.job_title || props.resumeData.personalInfo?.title || ''
+  
   return `
     <div style="border: 2px solid #000; text-align: center; padding: 20px; margin-bottom: 30px; background: #fff;">
-      <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #000;">${personalInfo.name}</h1>
-      <h2 style="margin: 5px 0 0; font-size: 14px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; color: #555;">${personalInfo.title}</h2>
+      <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #000;">${name}</h1>
+      <h2 style="margin: 5px 0 0; font-size: 14px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; color: #555;">${title}</h2>
     </div>
   `
 })
 
 // Left column content
 const leftContent = computed(() => {
-  const { personalInfo, skills } = props.resumeData
+  const contact = props.resumeData.contact_information || props.resumeData.personalInfo || {}
+  const skills = props.resumeData.skills || []
   
   let content = `
     <h3 style="${styles.sectionTitle}">Info</h3>
-    ${generateContactHTML(personalInfo)}
+    ${generateContactHTML(contact)}
   `
   
-  if (skills && Object.keys(skills).length > 0) {
+  if (skills && (Array.isArray(skills) ? skills.length > 0 : Object.keys(skills).length > 0)) {
     content += `
       <h3 style="${styles.sectionTitle}">Skills</h3>
       <div id="skills">
@@ -194,23 +215,26 @@ const leftContent = computed(() => {
 
 // Right column content
 const rightContent = computed(() => {
-  const { personalInfo, experience, education, projects } = props.resumeData
+  const summary = props.resumeData.summary || props.resumeData.personalInfo?.summary || ''
+  const experiences = props.resumeData.experiences || props.resumeData.experience || []
+  const education = props.resumeData.education || []
+  const projects = props.resumeData.projects || []
   
   let content = ''
   
   // Professional Summary
-  if (personalInfo.summary) {
+  if (summary) {
     content += `
       <h3 style="${styles.sectionTitle}">Profile</h3>
-      <p style="${styles.bodyText}">${personalInfo.summary}</p>
+      <p style="${styles.bodyText}">${summary}</p>
     `
   }
   
   // Experience
-  if (experience && experience.length > 0) {
+  if (experiences && experiences.length > 0) {
     content += `
       <h3 style="${styles.sectionTitle}">Employment</h3>
-      ${generateExperienceHTML(experience)}
+      ${generateExperienceHTML(experiences)}
     `
   }
   

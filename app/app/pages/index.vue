@@ -107,6 +107,14 @@
           :font-family="'Josefin Sans, sans-serif'"
           @page-change="handlePageChange"
         />
+        
+        <BrightPathTemplateHeaderOnce 
+          v-if="selectedTemplate.id === 'brightpath-header-once'"
+          :resume-data="resumeData"
+          :template-config="selectedTemplate"
+          :font-family="'Josefin Sans, sans-serif'"
+          @page-change="handlePageChange"
+        />
       </div>
       
       <!-- Cover Letter Template View -->
@@ -151,6 +159,7 @@
   import ClassicTemplates from '../components/Templates/ClassicTemplates.vue'
   import ClassicTemplatesHeaderOnce from '../components/Templates/ClassicTemplatesHeaderOnce.vue'
   import ModernBoxedTemplate from '../components/Templates/ModernBoxedTemplate.vue'
+  import BrightPathTemplateHeaderOnce from '../components/Templates/BrightPathTemplateHeaderOnce.vue'
   import CoverLetterGallery from '../components/Templates/CoverLetters/CoverLetterGallery.vue'
   import ClassicCoverLetter from '../components/Templates/CoverLetters/ClassicCoverLetter.vue'
   
@@ -174,7 +183,86 @@
       location: 'Paris, France',
       linkedin: 'linkedin.com/in/carlossaez',
       portfolio: 'www.carlossaez.dev'
-    }
+    },
+    contact_information: {
+      first_name: 'Carlos',
+      last_name: 'Idriss Saez',
+      job_title: 'Software Engineer',
+      email: 'carlos.idriss@example.com',
+      phone_number: '+33 6 12 34 56 78',
+      location: 'Paris, France',
+      linkedin_url: 'linkedin.com/in/carlossaez',
+      portfolio_url: 'www.carlossaez.dev'
+    },
+    summary: 'Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver high-quality solutions that drive business growth and improve user experience.',
+    skills: [
+      { name: 'Python', proficiency: 'Expert' },
+      { name: 'Java', proficiency: 'Expert' },
+      { name: 'React', proficiency: 'Expert' },
+      { name: 'Node.js', proficiency: 'Advanced' },
+      { name: 'Docker', proficiency: 'Advanced' },
+      { name: 'AWS', proficiency: 'Advanced' },
+      { name: 'Kubernetes', proficiency: 'Intermediate' }
+    ],
+    languages: [
+      { language: 'English', proficiency: 'Native' },
+      { language: 'Spanish', proficiency: 'Fluent' },
+      { language: 'French', proficiency: 'Intermediate' }
+    ],
+    experiences: [
+      {
+        company: 'Google Inc.',
+        job_title: 'Senior Software Engineer',
+        location: 'Mountain View, CA',
+        start_date: 'Jun 2022',
+        end_date: 'Present',
+        description: '<ul><li>Led the development of a new feature for BigQuery ML that improved model training speed by 40%</li><li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li><li>Mentored 5 junior engineers and conducted technical interviews</li><li>Implemented CI/CD pipelines that reduced deployment time by 60%</li></ul>'
+      },
+      {
+        company: 'Microsoft Corporation',
+        job_title: 'Software Engineer',
+        location: 'Seattle, WA',
+        start_date: 'Jul 2020',
+        end_date: 'May 2022',
+        description: '<ul><li>Built scalable microservices handling 1M+ requests per day</li><li>Optimized database queries resulting in 50% performance improvement</li><li>Implemented automated testing frameworks reducing bugs by 30%</li><li>Collaborated with product managers to define technical requirements</li></ul>'
+      }
+    ],
+    education: [
+      {
+        institution: 'Stanford University',
+        degree: 'Master of Science in Computer Science',
+        field_of_study: 'Artificial Intelligence',
+        start_date: 'Sep 2020',
+        end_date: 'Jun 2022',
+        description: 'Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0. Research Assistant at Stanford AI Lab. Published 2 papers on deep learning applications.'
+      },
+      {
+        institution: 'University of California, Berkeley',
+        degree: 'Bachelor of Science in Computer Engineering',
+        field_of_study: 'Computer Engineering',
+        start_date: 'Sep 2016',
+        end_date: 'May 2020',
+        description: 'Minor in Mathematics. GPA: 3.85/4.0. Dean\'s List all semesters. Capstone Project: Developed an IoT system for smart energy management.'
+      }
+    ],
+    projects: [
+      {
+        title: 'SmartRetail Platform',
+        organization: 'RetailTech AG',
+        start_date: 'Mar 2022',
+        end_date: 'Present',
+        technologies: ['React', 'Node.js', 'MongoDB', 'AWS'],
+        description: '<ul><li>Implemented machine learning algorithms for demand forecasting</li><li>Built real-time dashboard with React and D3.js</li><li>Achieved 25% improvement in inventory turnover rates</li></ul>'
+      },
+      {
+        title: 'FinanceTracker Pro',
+        organization: 'FinTech Solutions',
+        start_date: 'Jan 2023',
+        end_date: 'Dec 2023',
+        technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Docker'],
+        description: '<ul><li>Developed automated transaction categorization using NLP</li><li>Built investment portfolio tracking with real-time market data</li><li>Created mobile-responsive Vue.js frontend with PWA capabilities</li></ul>'
+      }
+    ]
   }
   
   // Mock cover letter data

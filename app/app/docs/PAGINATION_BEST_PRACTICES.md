@@ -301,29 +301,34 @@ const generateEducationHTML = (education) => {
 const generateSkillsHTML = (skillCategories) => {
   if (!skillCategories?.length) return ''
   
-  return `
+  const header = `
     <section class="section">
       <h2 class="section-title" style="color: #0EA5E9; border-bottom: 2px solid #0EA5E9; padding-bottom: 5px; margin-bottom: 15px; font-size: 16px; font-weight: 600;">
         Skills
       </h2>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        ${skillCategories.map(category => `
-          <li style="margin-bottom: 12px;">
-            <strong style="font-size: 12px; font-weight: 600; color: #333; display: block; margin-bottom: 6px;">
-              ${category.name}:
-            </strong>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-              ${category.skills.map(skill => `
-                <span style="background-color: #f0f0f0; padding: 4px 10px; border-radius: 8px; font-size: 11px; color: #333;">
-                  ${skill}
-                </span>
-              `).join('')}
-            </div>
-          </li>
-        `).join('')}
-      </ul>
     </section>
   `
+  
+  const list = `
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      ${skillCategories.map(category => `
+        <li style="margin-bottom: 12px;">
+          <strong style="font-size: 12px; font-weight: 600; color: #333; display: block; margin-bottom: 6px;">
+            ${category.name}:
+          </strong>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            ${category.skills.map(skill => `
+              <span style="background-color: #f0f0f0; padding: 4px 10px; border-radius: 8px; font-size: 11px; color: #333;">
+                ${skill}
+              </span>
+            `).join('')}
+          </div>
+        </li>
+      `).join('')}
+    </ul>
+  `
+  
+  return header + list  // Two sibling elements!
 }
 ```
 
@@ -335,9 +340,50 @@ const generateSkillsHTML = (skillCategories) => {
 
 1. **Section boundaries** - Tries to keep sections together
 2. **Section title + first content** - Keeps title with at least one item
-3. **List items** - Splits `<ul>/<ol>` one `<li>` at a time
-4. **Block elements** - Splits `<div>`, `<p>`, etc. recursively
-5. **Text nodes** - Uses binary search to split long text
+3. **Lists** - Splits `<ul>/<ol>` one `<li>` at a time
+4. **Tables** - Splits `<table>` row by row (preserves `<thead>` on continuation pages)
+5. **Definition lists** - Splits `<dl>` by `<dt>`/`<dd>` pairs
+6. **Block containers** - Recursively splits: `<div>`, `<p>`, `<section>`, `<article>`, `<blockquote>`, `<aside>`, `<header>`, `<footer>`, `<figure>`, `<pre>`
+7. **Text nodes** - Uses binary search to split long text
+
+### **Supported Splittable Elements**
+
+#### **✅ Lists**
+- `<ul>` - Unordered lists (split by `<li>`)
+- `<ol>` - Ordered lists (split by `<li>`)
+- `<dl>` - Definition lists (split by `<dt>`/`<dd>` pairs)
+
+#### **✅ Tables**
+- `<table>` - Tables split row by row
+  - Automatically preserves `<thead>` on continuation pages
+  - Splits `<tbody>` rows across pages
+  - Each continuation page gets: `<thead>` + rows that fit
+
+#### **✅ Block Containers (Recursively Splittable)**
+- `<div>` - Generic containers
+- `<p>` - Paragraphs
+- `<section>` - Semantic sections
+- `<article>` - Article content
+- `<blockquote>` - Block quotes
+- `<aside>` - Sidebar/tangent content
+- `<header>` - Header sections
+- `<footer>` - Footer sections
+- `<figure>` - Figures with captions
+- `<pre>` - Preformatted text
+
+#### **✅ Inline/Text**
+- Text nodes - Long text strings split with binary search
+- Nested inline elements within blocks
+
+#### **❌ Non-Splittable (Atomic) Elements**
+These elements cannot be split and must fit entirely on one page:
+- `<img>` - Images
+- `<video>` - Video elements
+- `<canvas>` - Canvas elements
+- `<iframe>` - Embedded content
+- `<svg>` - SVG graphics
+- Elements with `data-atomic="true"` attribute
+- Elements with `.lang-item` class
 
 ### **What Gets Kept Together**
 
@@ -479,11 +525,18 @@ With wrapper:                   Without wrapper:
   <div>Content...</div>
 </div>
 
-// GOOD - Explicit section markup
+// STILL BAD - Section wraps title AND content (acts as ONE block)
 <section class="section">
   <h2 class="section-title">Experience</h2>
   <div>Content...</div>
 </section>
+
+// GOOD - Title separate, content separate
+<section class="section">
+  <h2 class="section-title">Experience</h2>
+</section>
+<div>Experience item 1...</div>
+<div>Experience item 2...</div>
 ```
 
 ---

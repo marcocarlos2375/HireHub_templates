@@ -142,6 +142,18 @@ const templates = ref([
     sampleName: 'David Kim',
     sampleTitle: 'Full Stack Developer',
     paginatorType: 'twoColsHeader'
+  },
+  {
+    id: 'brightpath-header-once',
+    name: 'BrightPath',
+    description: 'Professional two-column design with timeline and yellow accent',
+    tags: ['Timeline', 'Two-Column', 'Elegant'],
+    primaryColor: '#e6b800',
+    headerColor: '#e6b800',
+    backgroundColor: '#f9f9f9',
+    sampleName: 'Carlos Idrissi',
+    sampleTitle: 'Software Engineer',
+    paginatorType: 'twoColsHeaderOnce'
   }
 ])
 

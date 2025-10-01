@@ -1,6 +1,6 @@
-<!-- AutoPaginatorOneColHeaderOnce.vue -->
+<!-- AutoPaginatorTwoColsWithHeaderOnce.vue -->
 <template>
-    <div class="auto-paginator-1ch" :style="componentStyle" role="region" aria-label="Paginated document">
+    <div class="auto-paginator-2ch" :style="componentStyle" role="region" aria-label="Paginated document">
       <!-- ONE visible page -->
       <div
         v-if="pages.length"
@@ -32,35 +32,64 @@
           <div class="header-content" v-html="headerHtml"></div>
         </div>
         
-        <!-- Column area (fills remaining height) -->
-        <div
-          class="col page-content column"
-          :class="contentClass"
-          :style="{ 
-            width: '100%', 
-            margin: '0 auto',
-            backgroundColor: columnBgColor,
-            paddingTop: columnPaddingTop + 'px',
-            paddingRight: columnPaddingRight + 'px',
-            paddingBottom: columnPaddingBottom + 'px',
-            paddingLeft: columnPaddingLeft + 'px'
-          }"
-          v-html="pages[currentIdx]"
-          role="region"
-          aria-label="Column content"
-        />
+        <!-- Two columns area (fills remaining height) -->
+        <div class="page-columns" :style="{ gap: columnGutter + 'px' }">
+          <div
+            class="col page-content left-column"
+            :class="contentClass"
+            :style="{ 
+              width: leftColumnWidth + 'px',
+              backgroundColor: leftColumnBgColor,
+              paddingTop: columnPaddingTop + 'px',
+              paddingRight: columnPaddingRight + 'px',
+              paddingBottom: columnPaddingBottom + 'px',
+              paddingLeft: columnPaddingLeft + 'px'
+            }"
+            v-html="pages[currentIdx].left"
+            role="region"
+            aria-label="Left column content"
+          />
+          <div
+            class="col page-content right-column"
+            :class="contentClass"
+            :style="{ 
+              width: rightColumnWidth + 'px',
+              backgroundColor: rightColumnBgColor,
+              paddingTop: columnPaddingTop + 'px',
+              paddingRight: columnPaddingRight + 'px',
+              paddingBottom: columnPaddingBottom + 'px',
+              paddingLeft: columnPaddingLeft + 'px'
+            }"
+            v-html="pages[currentIdx].right"
+            role="region"
+            aria-label="Right column content"
+          />
+        </div>
       </div>
   
      
 
 
-      <!-- Hidden measurer (must mirror visible layout for accurate sizing) -->
+      <!-- Hidden measurers (2 total: left, right) -->
       <div
-        ref="measurer"
+        ref="measurerLeft"
         class="hidden-measurer page-content"
         :class="contentClass"
         :style="{ 
-          width: `${columnWidth}px`,
+          width: `${leftColumnWidth}px`,
+          paddingTop: `${columnPaddingTop}px`,
+          paddingRight: `${columnPaddingRight}px`,
+          paddingBottom: `${columnPaddingBottom}px`,
+          paddingLeft: `${columnPaddingLeft}px`,
+          boxSizing: 'border-box'
+        }"
+      />
+      <div
+        ref="measurerRight"
+        class="hidden-measurer page-content"
+        :class="contentClass"
+        :style="{ 
+          width: `${rightColumnWidth}px`,
           paddingTop: `${columnPaddingTop}px`,
           paddingRight: `${columnPaddingRight}px`,
           paddingBottom: `${columnPaddingBottom}px`,
@@ -77,11 +106,12 @@ import { usePaginationStore } from '~/stores/pagination';
 const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,600,700';
   
   export default {
-    name: 'AutoPaginatorOneColHeaderOnce',
+    name: 'AutoPaginatorTwoColsWithHeaderOnce',
     
     props: {
       /* content */
-      html: { type: String, default: '' },
+      leftHtml: { type: String, default: '' },
+      rightHtml: { type: String, default: '' },
       headerHtml: { type: String, default: '' },
   
       /* page geometry */
@@ -102,7 +132,10 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       columnPaddingRight: { type: [Number, String], default: 35 },
       columnPaddingBottom: { type: [Number, String], default: 35 },
       columnPaddingLeft: { type: [Number, String], default: 35 },
-      columnBgColor: { type: String, default: '#e9e9e9' },
+      leftColumnBgColor: { type: String, default: '#0EA5E9' },
+      rightColumnBgColor: { type: String, default: '#e9e9e9' },
+      columnGutter: { type: Number, default: 0 },
+      leftColumnRatio: { type: Number, default: 0.3 },
   
       /* styling helpers */
       contentClass:{ type: String, default: '' },
@@ -122,7 +155,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
     
     data() {
       return {
-        pages: [] // ['<html>', '<html>', ...]
+        pages: [] // [{left: '<html>', right: '<html>'}, ...]
       };
     },
     
@@ -149,9 +182,14 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         }
       },
       
-      columnWidth() {
-        const inner = this.pageWidth - 2 * this.pagePadding;
-        return Math.max(0, inner);
+      leftColumnWidth() {
+        const inner = this.pageWidth - 2 * this.pagePadding - this.columnGutter;
+        return Math.max(0, inner * this.leftColumnRatio);
+      },
+      
+      rightColumnWidth() {
+        const inner = this.pageWidth - 2 * this.pagePadding - this.columnGutter;
+        return Math.max(0, inner * (1 - this.leftColumnRatio));
       },
       
       // Dynamic header height: full height on first page, 0 on others
@@ -185,7 +223,8 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
       },
   
       // props that affect layout/pagination
-      html: 'repaginate',
+      leftHtml: 'repaginate',
+      rightHtml: 'repaginate',
       headerHtml: 'repaginate',
       pageWidth: 'repaginate',
       pageHeight: 'repaginate',
@@ -1027,22 +1066,38 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
   
       repaginate() {
         
-        // Prepare content: optional auto-wrap + ensure column-content wrapper for input
-        let prepared = this.html.trim();
-        prepared = this.autoWrapLanguages(prepared);
-  
-        if (!prepared.startsWith('<div class="column-content">')) {
-          prepared = `<div class="column-content">${prepared}</div>`;
+        // Prepare LEFT content
+        let leftPrepared = (this.leftHtml || '').trim();
+        leftPrepared = this.autoWrapLanguages(leftPrepared);
+        if (leftPrepared && !leftPrepared.startsWith('<div class="column-content">')) {
+          leftPrepared = `<div class="column-content">${leftPrepared}</div>`;
         }
-  
-        // Mirror measurer styles
-        if (this.$refs.measurer) {
-          this.$refs.measurer.style.paddingTop = `${this.columnPaddingTop}px`;
-          this.$refs.measurer.style.paddingRight = `${this.columnPaddingRight}px`;
-          this.$refs.measurer.style.paddingBottom = `${this.columnPaddingBottom}px`;
-          this.$refs.measurer.style.paddingLeft = `${this.columnPaddingLeft}px`;
-          this.$refs.measurer.style.boxSizing = 'border-box';
-          this.$refs.measurer.style.width = `${this.columnWidth}px`;
+
+        // Prepare RIGHT content
+        let rightPrepared = (this.rightHtml || '').trim();
+        rightPrepared = this.autoWrapLanguages(rightPrepared);
+        if (rightPrepared && !rightPrepared.startsWith('<div class="column-content">')) {
+          rightPrepared = `<div class="column-content">${rightPrepared}</div>`;
+        }
+
+        // Mirror left measurer styles
+        if (this.$refs.measurerLeft) {
+          this.$refs.measurerLeft.style.paddingTop = `${this.columnPaddingTop}px`;
+          this.$refs.measurerLeft.style.paddingRight = `${this.columnPaddingRight}px`;
+          this.$refs.measurerLeft.style.paddingBottom = `${this.columnPaddingBottom}px`;
+          this.$refs.measurerLeft.style.paddingLeft = `${this.columnPaddingLeft}px`;
+          this.$refs.measurerLeft.style.boxSizing = 'border-box';
+          this.$refs.measurerLeft.style.width = `${this.leftColumnWidth}px`;
+        }
+
+        // Mirror right measurer styles
+        if (this.$refs.measurerRight) {
+          this.$refs.measurerRight.style.paddingTop = `${this.columnPaddingTop}px`;
+          this.$refs.measurerRight.style.paddingRight = `${this.columnPaddingRight}px`;
+          this.$refs.measurerRight.style.paddingBottom = `${this.columnPaddingBottom}px`;
+          this.$refs.measurerRight.style.paddingLeft = `${this.columnPaddingLeft}px`;
+          this.$refs.measurerRight.style.boxSizing = 'border-box';
+          this.$refs.measurerRight.style.width = `${this.rightColumnWidth}px`;
         }
   
         // Compute safe height for FIRST page (with header)
@@ -1056,40 +1111,41 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
         const subsequentPageFinalSafeHeight = Math.max(100, subsequentPageSafeHeightNoPad);
         
   
-        // Single-pass approach with dynamic height function
+        // Dynamic height function
         const getHeightForPage = (pageIndex) => {
           return pageIndex === 0 ? firstPageFinalSafeHeight : subsequentPageFinalSafeHeight;
         };
         
-        let chunks = this.splitHtmlIntoChunks(
-          prepared,
-          this.$refs.measurer,
+        // Split LEFT column independently
+        let leftChunks = this.splitHtmlIntoChunks(
+          leftPrepared,
+          this.$refs.measurerLeft,
           getHeightForPage,
           this.safetyBuffer,
           this.maxPages
         );
 
-        // Note: chunks already have column-content wrapper from initial wrapping
-        // No need to wrap again here
-  
-        // Enforce maxPages hard cap
-        if (Number.isFinite(this.maxPages) && chunks.length > this.maxPages) {
-          const keep = chunks.slice(0, this.maxPages - 1);
-          const mergedTailRaw = chunks.slice(this.maxPages - 1).join('');
-          const lastPageHeight = getHeightForPage(this.maxPages - 1);
-          const fittedTailArr = this.splitHtmlIntoChunks(
-            mergedTailRaw,
-            this.$refs.measurer,
-            lastPageHeight,
-            this.safetyBuffer,
-            1
-          );
-          const fittedTail = (fittedTailArr[0] || '');
-          chunks.splice(0, chunks.length, ...keep, fittedTail);
+        // Split RIGHT column independently
+        let rightChunks = this.splitHtmlIntoChunks(
+          rightPrepared,
+          this.$refs.measurerRight,
+          getHeightForPage,
+          this.safetyBuffer,
+          this.maxPages
+        );
+
+        // Combine into pages (max of both columns)
+        const maxChunks = Math.max(leftChunks.length, rightChunks.length);
+        const pagesArr = [];
+        
+        for (let i = 0; i < maxChunks && i < this.maxPages; i++) {
+          pagesArr.push({
+            left: (leftChunks[i] || '').trim(),
+            right: (rightChunks[i] || '').trim()
+          });
         }
-  
-        // Set pages (ensure no empty chunks)
-        this.pages = chunks.filter(c => c.trim());
+
+        this.pages = pagesArr;
   
         // Update store & emit count
         this.paginationStore.setPageCount(this.pages.length);
@@ -1105,18 +1161,32 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
 
         // Log page usage statistics
         this.$nextTick(() => {
-          if (this.$refs.measurer && this.pages.length > 0) {
-            console.log(`📄 Total Pages: ${this.pages.length}`);
+          if ((this.$refs.measurerLeft || this.$refs.measurerRight) && this.pages.length > 0) {
+            console.log(`📄 Total Pages: ${this.pages.length} (Left: ${leftChunks.length}, Right: ${rightChunks.length})`);
             
             for (let i = 0; i < this.pages.length; i++) {
-              this.$refs.measurer.innerHTML = this.pages[i];
-              const contentHeight = this.measuredHeightWithMargins(this.$refs.measurer);
               const targetHeight = i === 0 ? firstPageFinalSafeHeight : subsequentPageFinalSafeHeight;
               const availableSpace = targetHeight - this.safetyBuffer;
-              const usagePercentage = ((contentHeight / availableSpace) * 100).toFixed(1);
               
-              const status = parseFloat(usagePercentage) <= 101 ? '✅' : '⚠️';
-              console.log(`${status} Page ${i + 1}: ${usagePercentage}%`);
+              // Measure left
+              let leftUsage = '0.0';
+              if (this.$refs.measurerLeft && this.pages[i].left) {
+                this.$refs.measurerLeft.innerHTML = this.pages[i].left;
+                const leftHeight = this.measuredHeightWithMargins(this.$refs.measurerLeft);
+                leftUsage = ((leftHeight / availableSpace) * 100).toFixed(1);
+              }
+              
+              // Measure right
+              let rightUsage = '0.0';
+              if (this.$refs.measurerRight && this.pages[i].right) {
+                this.$refs.measurerRight.innerHTML = this.pages[i].right;
+                const rightHeight = this.measuredHeightWithMargins(this.$refs.measurerRight);
+                rightUsage = ((rightHeight / availableSpace) * 100).toFixed(1);
+              }
+              
+              const leftStatus = parseFloat(leftUsage) <= 101 ? '✅' : '⚠️';
+              const rightStatus = parseFloat(rightUsage) <= 101 ? '✅' : '⚠️';
+              console.log(`${leftStatus}/${rightStatus} Page ${i + 1}: Left=${leftUsage}%, Right=${rightUsage}%`);
             }
           }
         });
@@ -1127,7 +1197,7 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
     
   <style scoped>
   /* Base styles */
-  .auto-paginator-1ch {
+  .auto-paginator-2ch {
     display: grid;
     font-family: 'Outfit', sans-serif !important;
   }
@@ -1148,8 +1218,15 @@ const outfitCssUrl = 'http://localhost:8081/fonts/css?family=Outfit:300,400,500,
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    box-sizing: border-box; /* headerHeight includes padding */
-    position: relative; /* Ensure positioning context */
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .page-columns {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 30fr 70fr;
+    box-sizing: border-box;
   }
   
   .header-content {

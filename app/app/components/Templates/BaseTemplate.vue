@@ -50,9 +50,9 @@
         @page-change="handlePageChange"
       />
       
-      <!-- Auto Paginator Two Columns with Header and Block -->
+      <!-- Auto Paginator Two Columns with Header (All Pages) -->
       <AutoPaginatorTwoColsWithHeader 
-        v-else
+        v-else-if="paginatorType === 'twoColsWithHeader' || paginatorType === 'twoColsHeader'"
         :model-value="currentPageIndex"
         :headerHtml="headerContent"
         :leftHtml="leftContent"
@@ -60,12 +60,54 @@
         :pageWidth="pageWidthPx"
         :pageHeight="pageHeightPx"
         :pagePadding="pagePaddingPx"
+        :headerHeight="150"
+        :headerPaddingTop="20"
+        :headerPaddingRight="20"
+        :headerPaddingBottom="20"
+        :headerPaddingLeft="20"
+        :columnPaddingTop="35"
+        :columnPaddingRight="35"
+        :columnPaddingBottom="35"
+        :columnPaddingLeft="35"
         :headerBgColor="headerBgColor"
         :leftColumnBgColor="leftColumnBgColor"
         :rightColumnBgColor="rightColumnBgColor"
-        :leftColumnRatio="leftColumnRatio"
+        :columnGutter="0"
         :font-family="fontFamily"
+        :safetyBuffer="5"
+        :fudgePx="1"
         contentClass="resume-typography"
+        @page-change="handlePageChange"
+      />
+      
+      <!-- Auto Paginator Two Columns with Header (Only First Page) -->
+      <AutoPaginatorTwoColsWithHeaderOnce 
+        v-else-if="paginatorType === 'twoColsHeaderOnce'"
+        :model-value="currentPageIndex"
+        :header-html="headerContent"
+        :left-html="leftContent"
+        :right-html="rightContent"
+        :page-width="pageWidthPx"
+        :page-height="pageHeightPx"
+        :page-padding="pagePaddingPx"
+        :header-height="150"
+        :header-padding-top="20"
+        :header-padding-right="20"
+        :header-padding-bottom="20"
+        :header-padding-left="20"
+        :column-padding-top="35"
+        :column-padding-right="35"
+        :column-padding-bottom="35"
+        :column-padding-left="35"
+        :header-bg-color="headerBgColor"
+        :left-column-bg-color="leftColumnBgColor"
+        :right-column-bg-color="rightColumnBgColor"
+        :left-column-ratio="leftColumnRatio"
+        :column-gutter="0"
+        :font-family="fontFamily"
+        :safety-buffer="5"
+        :fudge-px="1"
+        content-class="resume-typography"
         @page-change="handlePageChange"
       />
       
@@ -109,6 +151,7 @@
   import AutoPaginatorOneColHeaderOnce from '../paginator/AutoPaginatorOneColHeaderOnce.vue';
   import AutoPaginatorTwoCols from '../paginator/AutoPaginatorTwoCols.vue';
   import AutoPaginatorTwoColsWithHeader from '../paginator/AutoPaginatorTwoColsWithHeader.vue';
+  import AutoPaginatorTwoColsWithHeaderOnce from '../paginator/AutoPaginatorTwoColsWithHeaderOnce.vue';
   
   // Initialize Pinia store
   const paginationStore = usePaginationStore();
@@ -118,7 +161,7 @@
     paginatorType: {
       type: String,
       default: 'oneColHeader',
-      validator: (value) => ['oneColHeader', 'oneColHeaderOnce', 'twoCols', 'twoColsHeader'].includes(value)
+      validator: (value) => ['oneColHeader', 'oneColHeaderOnce', 'twoCols', 'twoColsHeader', 'twoColsWithHeader', 'twoColsHeaderOnce'].includes(value)
     },
     // Total number of pages to render (for legacy paginator)
     pageCount: {
@@ -271,9 +314,21 @@
   });
   
   // Convert mm to px for paginator components
-  const pageWidthPx = computed(() => Math.round(210 * 3.78)); // A4 width in pixels
-  const pageHeightPx = computed(() => Math.round(297 * 3.78)); // A4 height in pixels
-  const pagePaddingPx = computed(() => Math.round(props.padding.top * 3.78)); // Convert mm to px
+  const pageWidthPx = computed(() => {
+    const width = Math.round(210 * 3.78);
+    console.log('📐 BaseTemplate - pageWidthPx:', width);
+    return width;
+  });
+  const pageHeightPx = computed(() => {
+    const height = Math.round(297 * 3.78);
+    console.log('📐 BaseTemplate - pageHeightPx:', height);
+    return height;
+  });
+  const pagePaddingPx = computed(() => {
+    const padding = Math.round(props.padding.top * 3.78);
+    console.log('📐 BaseTemplate - pagePaddingPx:', padding, 'from padding.top:', props.padding.top);
+    return padding;
+  });
   
   // Handle page change from paginator components
   const handlePageChange = (page) => {
