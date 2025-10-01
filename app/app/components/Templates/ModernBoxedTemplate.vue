@@ -58,6 +58,11 @@ const emit = defineEmits(['page-change'])
 // Get store data
 const resumeStore = useResumeDataStore()
 
+// Debug logs
+console.log('🎨 ModernBoxedTemplate mounted!')
+console.log('📦 Resume data:', props.resumeData)
+console.log('⚙️ Template config:', props.templateConfig)
+
 // Base font size for consistent scaling
 const baseFontSize = 12.5 // Base font size in px
 
@@ -193,8 +198,12 @@ const headerContent = computed(() => {
 
 // Left column content
 const leftContent = computed(() => {
+  console.log('📝 ModernBoxed - Generating LEFT content')
   const contact = props.resumeData.contact_information || props.resumeData.personalInfo || {}
   const skills = props.resumeData.skills || []
+  
+  console.log('Contact:', contact)
+  console.log('Skills:', skills)
   
   let content = `
     <h3 style="${styles.sectionTitle}">Info</h3>
@@ -210,15 +219,23 @@ const leftContent = computed(() => {
     `
   }
   
+  console.log('📝 LEFT Content length:', content.length)
+  console.log('📝 LEFT Content preview:', content.substring(0, 200))
   return content
 })
 
 // Right column content
 const rightContent = computed(() => {
+  console.log('📝 ModernBoxed - Generating RIGHT content')
   const summary = props.resumeData.summary || props.resumeData.personalInfo?.summary || ''
   const experiences = props.resumeData.experiences || props.resumeData.experience || []
   const education = props.resumeData.education || []
   const projects = props.resumeData.projects || []
+  
+  console.log('Summary:', summary)
+  console.log('Experiences:', experiences)
+  console.log('Education:', education)
+  console.log('Projects:', projects)
   
   let content = ''
   
@@ -254,6 +271,8 @@ const rightContent = computed(() => {
     `
   }
   
+  console.log('📝 RIGHT Content length:', content.length)
+  console.log('📝 RIGHT Content preview:', content.substring(0, 200))
   return content
 })
 

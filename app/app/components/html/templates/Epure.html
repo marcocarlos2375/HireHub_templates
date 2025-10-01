@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Épure Template - CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Carlos Idrissi Saez - Software Engineer Resume</title>
+  <meta name="description" content="Software Engineer with 8+ years experience in machine learning, cloud infrastructure, and distributed systems">
+  <meta name="keywords" content="Software Engineer, Python, Java, React, Machine Learning, Cloud, AWS, Docker, Kubernetes">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/satoshi');
+  </style>
 </head>
 <body>
   <div class="a4">
@@ -13,10 +18,11 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header-left">
-        <h1><span class="firstname">BENJAMIN</span> <span class="lastname">LEROY</span></h1>
+        <h1><span class="firstname">CARLOS</span> <span class="lastname">IDRISSI SAEZ</span></h1>
+        <p class="job-title">Software Engineer</p>
       </div>
       <div class="header-right">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Benjamin Leroy" class="profile-img">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Idrissi Saez" class="profile-img">
       </div>
     </header>
 
@@ -28,58 +34,93 @@
         
         <section>
           <h2>Contact</h2>
-          <p>+123-456-7890</p>
-          <p>hello@reallygreatsite.com</p>
-          <p>123 Anywhere St, Any City</p>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Paris, France</span>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>carlos.idriss@example.com</span>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+33 6 12 34 56 78</span>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <span>www.carlossaez.dev</span>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <span>linkedin.com/in/carlossaez</span>
+          </div>
         </section>
 
+
         <section>
-          <h2>Formation</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="circle"></div>
-              <div class="timeline-content">
-                <p class="date">2018 - 2020</p>
-                <p class="title">Master en Ingénierie Aérospatiale</p>
-                <p class="school">École Amédée Autran</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="circle"></div>
-              <div class="timeline-content">
-                <p class="date">2015 - 2018</p>
-                <p class="title">Bachelor en Ingénierie Mécanique</p>
-                <p class="school">École Amédée Autran</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="circle"></div>
-              <div class="timeline-content">
-                <p class="date">2015</p>
-                <p class="title">Baccalauréat</p>
-                <p class="school">École Amédée Autran</p>
-              </div>
-            </div>
+          <h2>Technical Skills</h2>
+          <div id="skills-container">
+            <!-- Skills will be generated by JavaScript -->
           </div>
         </section>
 
         <section>
-          <h2>Compétences</h2>
-          <ul>
-            <li>Conception et modélisation de véhicules spatiaux</li>
-            <li>Analyse aérodynamique</li>
-            <li>Gestion de projets complexes</li>
-            <li>Simulation numérique</li>
-            <li>Collaboration internationale</li>
-          </ul>
+          <h2>Languages</h2>
+          <div class="language-item">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="language-item">
+            <span class="lang-name">Spanish</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+          <div class="language-item">
+            <span class="lang-name">French</span>
+            <span class="lang-level">Intermediate</span>
+          </div>
         </section>
 
         <section>
-          <h2>Langues</h2>
-          <ul>
-            <li>Français</li>
-            <li>Anglais</li>
-          </ul>
+          <h2>Certifications</h2>
+          <div class="cert-item">
+            <span class="cert-name">AWS Solutions Architect</span>
+            <span class="cert-year">2023</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Google Cloud Developer</span>
+            <span class="cert-year">2022</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Kubernetes Administrator</span>
+            <span class="cert-year">2022</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Awards</h2>
+          <div class="award-item">
+            <span class="award-name">Employee of the Year</span>
+            <span class="award-year">2023</span>
+          </div>
+          <div class="award-item">
+            <span class="award-name">Innovation Award</span>
+            <span class="award-year">2021</span>
+          </div>
         </section>
 
       </aside>
@@ -88,7 +129,7 @@
       <section class="right-part">
 
         <section>
-          <h2>Profil</h2>
+          <h2>Professional Summary</h2>
           <p>
             Ingénieur aérospatial polyvalent, je dispose d’une expérience significative dans la modélisation numérique, 
             l’analyse de performances aérodynamiques et la gestion de projets spatiaux.
@@ -96,13 +137,54 @@
         </section>
 
         <section>
-          <h2>Expériences Professionnelles</h2>
+          <h2>Professional Experience</h2>
           <div class="timeline">
             <div class="timeline-item">
               <div class="circle"></div>
               <div class="timeline-content">
                 <p class="date">2023 - Aujourd’hui</p>
-                <p class="title">Ingénieur Aérospatial - Concordia</p>
+                <p class="title">Senior Software Engineer - Google Inc.</p>
+                <ul>
+                  <li>Led the development of a new BigQuery ML feature that accelerated training speed by 40%.</li>
+                  <li>Partnered with cross-functional teams to design and deliver RESTful APIs for deploying ML models.</li>
+                  <li>Analyse des performances et optimisation des systèmes.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">Jul 2020 - May 2022</p>
+                <p class="title">Ingénieur de Recherche en Aérospatial - Messagem</p>
+                <ul>
+                  <li>Participation à des projets sur véhicules hypersoniques.</li>
+                  <li>Développement de modèles numériques complexes.</li>
+                  <li>Publications et présentations internationales.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2020</p>
+                <p class="title">Stagiaire en Ingénierie Aérospatiale - Nomade</p>
+                <ul>
+                  <li>Assistance à la conception et tests de systèmes spatiaux.</li>
+                  <li>Contribution à l’analyse de données de mission.</li>
+                  <li>Participation à des projets collaboratifs internationaux.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Education</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="circle"></div>
+              <div class="timeline-content">
+                <p class="date">2023 - Aujourd’hui</p>
+                <p class="title">Master of Science in Computer Science - University of Technology</p>
                 <ul>
                   <li>Conception et développement de sous-systèmes pour satellites.</li>
                   <li>Gestion de projets R&D de la conception à la réalisation.</li>
@@ -140,6 +222,205 @@
       </section>
     </div>
   </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Template</h3>
+    
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Wix Madefor Text', sans-serif">Wix Madefor Text</option>
+        <option value="'Gabarito', sans-serif">Gabarito</option>
+        <option value="'Raleway', sans-serif">Raleway</option>
+        <option value="'Manrope', sans-serif">Manrope</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+        <option value="'Figtree', sans-serif">Figtree</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Satoshi', sans-serif">Satoshi</option>
+        <option value="'Lato', sans-serif">Lato</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="default">Classic Black (Default)</option>
+        <option value="blue">Professional Blue</option>
+        <option value="green">Nature Green</option>
+        <option value="purple">Creative Purple</option>
+        <option value="orange">Energetic Orange</option>
+        <option value="teal">Modern Teal</option>
+        <option value="burgundy">Elegant Burgundy</option>
+        <option value="navy">Corporate Navy</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Resume</button>
+    </div>
+  </div>
+
+  <script>
+    // Skills data grouped by categories
+    const skillsData = {
+      'Programming Languages': [
+        { name: 'Python', level: 'Expert' },
+        { name: 'Java', level: 'Expert' },
+        { name: 'JavaScript', level: 'Advanced' },
+        { name: 'TypeScript', level: 'Advanced' },
+        { name: 'Go', level: 'Intermediate' },
+        { name: 'C++', level: 'Intermediate' }
+      ],
+      'Frameworks & Libraries': [
+        { name: 'React', level: 'Expert' },
+        { name: 'Vue.js', level: 'Advanced' },
+        { name: 'Node.js', level: 'Expert' },
+        { name: 'Express', level: 'Advanced' },
+        { name: 'Django', level: 'Intermediate' },
+        { name: 'Spring Boot', level: 'Intermediate' }
+      ],
+      'Cloud & DevOps': [
+        { name: 'AWS', level: 'Advanced' },
+        { name: 'Azure', level: 'Intermediate' },
+        { name: 'Docker', level: 'Expert' },
+        { name: 'Kubernetes', level: 'Advanced' },
+        { name: 'Jenkins', level: 'Intermediate' },
+        { name: 'Terraform', level: 'Intermediate' }
+      ],
+      'Databases': [
+        { name: 'PostgreSQL', level: 'Advanced' },
+        { name: 'MongoDB', level: 'Advanced' },
+        { name: 'Redis', level: 'Intermediate' },
+        { name: 'Elasticsearch', level: 'Intermediate' }
+      ]
+    };
+
+    // Color schemes
+    const colorSchemes = {
+      default: { primary: '#333', secondary: '#666', accent: '#888' },
+      blue: { primary: '#2c5aa0', secondary: '#4a7bc8', accent: '#6b9bd2' },
+      green: { primary: '#2d5016', secondary: '#4a7c22', accent: '#6ba832' },
+      purple: { primary: '#5b2c87', secondary: '#7d4bab', accent: '#9f6bc8' },
+      orange: { primary: '#cc5500', secondary: '#e67300', accent: '#ff9933' },
+      teal: { primary: '#008080', secondary: '#20a0a0', accent: '#40c0c0' },
+      burgundy: { primary: '#800020', secondary: '#a0003d', accent: '#c0005a' },
+      navy: { primary: '#1e3a5f', secondary: '#2d5a8f', accent: '#4a7bc8' }
+    };
+
+    // Generate grouped skills
+    const skillsContainer = document.getElementById("skills-container");
+    if (skillsContainer) {
+      Object.entries(skillsData).forEach(([category, skills]) => {
+        // Create category header
+        const categoryDiv = document.createElement("div");
+        categoryDiv.classList.add("skill-category");
+        
+        const categoryTitle = document.createElement("h4");
+        categoryTitle.classList.add("skill-category-title");
+        categoryTitle.textContent = category;
+        categoryDiv.appendChild(categoryTitle);
+        
+        // Create skills for this category
+        skills.forEach(skill => {
+          const skillDiv = document.createElement("div");
+          skillDiv.classList.add("skill-item");
+          skillDiv.innerHTML = `<span class="skill-name">${skill.name}</span><span class="skill-level">${skill.level}</span>`;
+          categoryDiv.appendChild(skillDiv);
+        });
+        
+        skillsContainer.appendChild(categoryDiv);
+      });
+    }
+
+    // Apply font
+    function applyFont(fontFamily) {
+      document.body.style.fontFamily = fontFamily;
+    }
+
+    // Apply color scheme
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+      
+      // Apply to specific elements only
+      document.querySelectorAll('.circle').forEach(circle => {
+        circle.style.borderColor = colors.primary;
+      });
+      
+      // Update right part section borders only
+      document.querySelectorAll('.right-part h2').forEach(h2 => {
+        h2.style.borderBottomColor = colors.primary;
+        h2.style.color = colors.primary;
+      });
+      
+      // Update timeline titles
+      document.querySelectorAll('.timeline-content .title').forEach(title => {
+        title.style.color = colors.primary;
+      });
+      
+      // Update contact icons
+      document.querySelectorAll('.contact-item svg').forEach(icon => {
+        icon.style.color = colors.primary;
+      });
+      
+      // Update skill category titles
+      document.querySelectorAll('.skill-category-title').forEach(title => {
+        title.style.color = colors.primary;
+      });
+    }
+
+    // Get elements and set up event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get elements
+      const fontSelector = document.getElementById('font-selector');
+      const colorSelector = document.getElementById('color-scheme');
+      const resetBtn = document.getElementById('reset-btn');
+      const printBtn = document.getElementById('print-btn');
+
+      // Event listeners
+      if (fontSelector) {
+        fontSelector.addEventListener('change', (e) => {
+          applyFont(e.target.value);
+        });
+      }
+
+      if (colorSelector) {
+        colorSelector.addEventListener('change', (e) => {
+          applyColorScheme(e.target.value);
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (fontSelector) fontSelector.value = "'Josefin Sans', sans-serif";
+          if (colorSelector) colorSelector.value = 'default';
+          applyFont("'Josefin Sans', sans-serif");
+          applyColorScheme('default');
+        });
+      }
+
+      if (printBtn) {
+        printBtn.addEventListener('click', () => {
+          // Hide control panel for printing
+          const controlPanel = document.querySelector('.control-panel');
+          if (controlPanel) controlPanel.style.display = 'none';
+          window.print();
+          if (controlPanel) controlPanel.style.display = 'block';
+        });
+      }
+
+      // Initialize with default values
+      applyFont("'Josefin Sans', sans-serif");
+      applyColorScheme('default');
+    });
+  </script>
 </body>
 </html>
 <style>
@@ -230,22 +511,490 @@ ul {
 .timeline-item .circle {
   position: absolute;
   left: -8px;
-  top: -10px;
+  top: -1px;
   width: 9px;
   height: 9px;
-  background: transparent;
+  background: white;
   border-radius: 50%;
-  border: 2px solid #888;
+  border: 2px solid var(--primary-color);
 }
 
 .timeline-content .date {
-  font-size: 13px;
-  color: #666;
-  margin: 0 0 3px 0;
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  display: block;
 }
 
 .timeline-content .title {
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+/* ENHANCED TIMELINE STYLING */
+.timeline-content .school {
+  font-size: 12px;
+  color: var(--secondary-color);
+  margin: 2px 0 5px 0;
+  font-style: italic;
+}
+
+.timeline-content .details {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 2px 0;
+  line-height: 1.4;
+}
+
+.timeline-content ul {
+  margin: 8px 0 0 0;
+  padding-left: 16px;
+}
+
+.timeline-content li {
+  font-size: 12px;
+  color: var(--secondary-color);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* RIGHT PART SECTION HEADERS */
+.right-part h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 6px;
+}
+
+/* KEEP ORIGINAL H2 STYLES FOR LEFT SIDEBAR */
+.left-part h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  color: #333;
+}
+
+/* PROFESSIONAL SUMMARY */
+.right-part > section > p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--secondary-color);
+  margin: 10px 0;
+}
+
+/* CSS Variables for color schemes */
+:root {
+  --primary-color: #333;
+  --secondary-color: #666;
+  --accent-color: #888;
+}
+
+/* HEADER ENHANCEMENTS */
+.job-title {
+  font-size: 16px;
+  color: var(--secondary-color);
+  margin: 5px 0 0 0;
+  font-weight: 300;
+}
+
+/* CONTACT ITEMS WITH ICONS */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.contact-item svg {
+  margin-right: 8px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.contact-item span {
+  color: var(--secondary-color);
+}
+
+/* SKILLS */
+.skill-category {
+  margin-bottom: 15px;
+}
+
+.skill-category-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.skill-name {
+  color: var(--secondary-color);
+}
+
+.skill-level {
+  font-size: 10px;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+/* LANGUAGES */
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.lang-name {
+  color: var(--secondary-color);
+}
+
+.lang-level {
+  font-size: 10px;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+/* CERTIFICATIONS */
+.cert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.cert-name {
+  color: var(--secondary-color);
+}
+
+.cert-year {
+  font-size: 10px;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+/* AWARDS */
+.award-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.award-name {
+  color: var(--secondary-color);
+}
+
+.award-year {
+  font-size: 10px;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+/* TIMELINE ENHANCEMENTS */
+.timeline-content .company {
+  font-size: 12px;
+  color: var(--accent-color);
+  margin: 2px 0 5px 0;
+  font-style: italic;
+}
+
+.timeline-content .details {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 2px 0;
+  line-height: 1.4;
+}
+
+/* PUBLICATIONS */
+.publication-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pub-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary-color);
+  margin: 0 0 3px 0;
+}
+
+.pub-details {
+  font-size: 11px;
+  color: var(--accent-color);
+  margin: 0 0 5px 0;
+  font-style: italic;
+}
+
+.pub-desc {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* VOLUNTEER EXPERIENCE */
+.volunteer-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vol-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary-color);
+  margin: 0 0 3px 0;
+}
+
+.vol-date {
+  font-size: 11px;
+  color: var(--accent-color);
+  margin: 0 0 5px 0;
+  font-style: italic;
+}
+
+.vol-desc {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* PROFESSIONAL MEMBERSHIPS */
+.membership-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mem-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary-color);
+  margin: 0 0 3px 0;
+}
+
+.mem-date {
+  font-size: 11px;
+  color: var(--accent-color);
+  margin: 0 0 5px 0;
+  font-style: italic;
+}
+
+.mem-desc {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* REFERENCES */
+.references-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.reference-card {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 5px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.ref-name {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--primary-color);
+  margin: 0 0 3px 0;
+}
+
+.ref-title {
+  font-size: 11px;
+  color: var(--secondary-color);
+  margin: 0 0 2px 0;
+  font-weight: 500;
+}
+
+.ref-contact, .ref-phone {
+  font-size: 10px;
+  color: var(--accent-color);
+  margin: 1px 0;
+}
+
+.ref-relation {
+  font-size: 10px;
+  color: var(--accent-color);
+  margin: 3px 0 0 0;
+  font-style: italic;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
   margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  color: #333;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.2);
+}
+
+.control-group button {
+  width: 48%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#reset-btn {
+  background: #f8f9fa;
+  color: #666;
+  margin-right: 4%;
+}
+
+#reset-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+#print-btn {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+#print-btn:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .a4 {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .left-part, .right-part {
+    flex: none;
+  }
+  
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .references-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .control-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+/* PRINT STYLES */
+@media print {
+  .control-panel {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+  }
+  
+  .references-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

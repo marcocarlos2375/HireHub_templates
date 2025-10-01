@@ -57,6 +57,11 @@ const emit = defineEmits(['page-change'])
 // Get store data
 const resumeStore = useResumeDataStore()
 
+// Debug: Log when component is mounted
+console.log('🎨 BrightPathTemplateHeaderOnce mounted!')
+console.log('📦 Resume data:', props.resumeData)
+console.log('⚙️ Template config:', props.templateConfig)
+
 // Base font size
 const baseFontSize = 12
 
