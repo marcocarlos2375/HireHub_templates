@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Idrissi Saez - Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="a4 modern-edge">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-top">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Idrissi Saez">
+        <h1>Carlos Idrissi Saez</h1>
+        <h2>Software Engineer</h2>
+      </div>
+      <div class="header-bottom">
+        <span>Paris, France</span>
+        <span>carlos.idriss@example.com</span>
+        <span>+33 6 12 34 56 78</span>
+        <span>www.carlossaez.dev</span>
+        <span>linkedin.com/in/carlossaez</span>
+      </div>
+    </header>
+
+    <!-- COVER LETTER CONTENT -->
+    <div class="cover-letter-content">
+      
+      <!-- DATE AND RECIPIENT -->
+      <div class="letter-header">
+        <div class="date">
+          <span id="current-date"></span>
+        </div>
+        
+        <div class="recipient" contenteditable="true">
+          <p><strong>Hiring Manager</strong></p>
+          <p>[Company Name]</p>
+          <p>[Company Address]</p>
+          <p>[City, State, ZIP Code]</p>
+        </div>
+      </div>
+
+      <!-- SUBJECT LINE -->
+      <div class="subject">
+        <p><strong>Subject: Application for <span contenteditable="true">[Position Title]</span> Position</strong></p>
+      </div>
+
+      <!-- SALUTATION -->
+      <div class="salutation">
+        <p>Dear <span contenteditable="true">Hiring Manager</span>,</p>
+      </div>
+
+      <!-- LETTER BODY -->
+      <div class="letter-body">
+        
+        <!-- OPENING PARAGRAPH -->
+        <div class="paragraph opening">
+          <p>I am writing to express my strong interest in the <span contenteditable="true">[Position Title]</span> position at <span contenteditable="true">[Company Name]</span>. With over 8 years of experience as a Software Engineer specializing in machine learning, cloud infrastructure, and distributed systems, I am excited about the opportunity to contribute to your team's innovative projects and drive technological excellence.</p>
+        </div>
+
+        <!-- EXPERIENCE PARAGRAPH -->
+        <div class="paragraph experience">
+          <p>In my current role as Senior Software Engineer at Google Inc., I have led the development of BigQuery ML features that improved model training speed by 40% and implemented CI/CD pipelines that reduced deployment time by 60%. Previously, at Microsoft Corporation, I built scalable microservices handling over 1M requests per day and optimized database queries resulting in 50% performance improvements. My technical expertise spans Python, Java, React, Node.js, Docker, and cloud platforms including AWS and Azure.</p>
+        </div>
+
+        <!-- SKILLS PARAGRAPH -->
+        <div class="paragraph skills">
+          <p>What particularly excites me about <span contenteditable="true">[Company Name]</span> is <span contenteditable="true">[specific reason related to company/role]</span>. My experience with machine learning algorithms, distributed systems architecture, and mentoring junior developers aligns perfectly with your team's needs. I have successfully delivered projects including SmartRetail Platform (25% inventory improvement), FinanceTracker Pro (NLP-powered categorization), and Healthcare Analytics Dashboard (30% wait time reduction).</p>
+        </div>
+
+        <!-- PUBLICATIONS PARAGRAPH -->
+        <div class="paragraph publications">
+          <p>I am also committed to knowledge sharing and have published technical articles including "Scaling Microservices with Kubernetes" in Tech Journal and "Machine Learning in Production Systems" in AI Research Today. Additionally, I actively contribute to the developer community through mentoring programs in Berlin, achieving a 90% job placement rate for mentees.</p>
+        </div>
+
+        <!-- EDUCATION PARAGRAPH -->
+        <div class="paragraph education">
+          <p>My educational background includes a Master of Science in Computer Science from Stanford University, where I specialized in Artificial Intelligence and Machine Learning with a GPA of 3.92/4.0. As a Research Assistant at Stanford AI Lab, I published papers on deep learning applications and gained valuable experience in cutting-edge research methodologies.</p>
+        </div>
+
+        <!-- CLOSING PARAGRAPH -->
+        <div class="paragraph closing">
+          <p>I am eager to bring my passion for innovative software development and proven track record of delivering high-quality solutions to <span contenteditable="true">[Company Name]</span>. I would welcome the opportunity to discuss how my technical expertise and leadership experience can contribute to your team's continued success. Thank you for considering my application.</p>
+        </div>
+
+      </div>
+
+      <!-- SIGNATURE -->
+      <div class="signature">
+        <p>Sincerely,</p>
+        <div class="signature-space"></div>
+        <p><strong>Carlos Idrissi Saez</strong></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Cover Letter</h3>
+    
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Lato', sans-serif">Lato</option>
+        <option value="'Montserrat', sans-serif">Montserrat</option>
+        <option value="'Open Sans', sans-serif">Open Sans</option>
+        <option value="Arial, sans-serif">Arial</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="dark">Dark (Default)</option>
+        <option value="blue">Professional Blue</option>
+        <option value="green">Nature Green</option>
+        <option value="purple">Creative Purple</option>
+        <option value="red">Dynamic Red</option>
+        <option value="teal">Modern Teal</option>
+        <option value="orange">Energetic Orange</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Cover Letter</button>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<style>
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+/* HEADER - Same as Resume */
+.header {
+  background: #111;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-top img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-top h1 {
+  margin: 10px 0 0;
+  font-size: 22px;
+}
+
+.header-top h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0 15px;
+  color: #bbb;
+}
+
+.header-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* COVER LETTER CONTENT */
+.cover-letter-content {
+  line-height: 1.6;
+  color: #333;
+  padding: 0 20px;
+  margin-top: 10px;
+}
+
+/* LETTER HEADER */
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.date {
+  font-size: 14px;
+  color: #555;
+}
+
+.recipient {
+  text-align: right;
+  font-size: 14px;
+}
+
+.recipient p {
+  margin: 2px 0;
+  color: #555;
+}
+
+.recipient strong {
+  color: #111;
+}
+
+/* SUBJECT */
+.subject {
+  margin-bottom: 20px;
+}
+
+.subject p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.subject strong {
+  color: #111;
+}
+
+/* SALUTATION */
+.salutation {
+  margin-bottom: 20px;
+}
+
+.salutation p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* LETTER BODY */
+.letter-body {
+  margin-bottom: 30px;
+}
+
+.paragraph {
+  margin-bottom: 18px;
+}
+
+.paragraph p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* Editable content styling */
+[contenteditable="true"] {
+  background-color: #fff3cd;
+  padding: 1px 3px;
+  border-radius: 2px;
+  border: 1px dashed #ffc107;
+}
+
+[contenteditable="true"]:focus {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #111;
+}
+
+/* SIGNATURE */
+.signature {
+  margin-top: 30px;
+}
+
+.signature p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.signature strong {
+  color: #111;
+}
+
+.signature-space {
+  height: 40px;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  color: #333;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.2);
+}
+
+.control-group button {
+  width: 48%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#reset-btn {
+  background: #f8f9fa;
+  color: #666;
+  margin-right: 4%;
+}
+
+#reset-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+#print-btn {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+#print-btn:hover {
+  background: #333;
+  border-color: #333;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .a4 {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .cover-letter-content {
+    padding: 0 15px;
+  }
+  
+  .header-bottom {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .letter-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .recipient {
+    text-align: left;
+  }
+  
+  .control-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+/* PRINT STYLES */
+@media print {
+  .control-panel {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+  }
+  
+  [contenteditable="true"] {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
+</style>
+
+<script>
+// Color schemes
+const colorSchemes = {
+  dark: { header: '#111', text: '#fff', accent: '#111' },
+  blue: { header: '#2c5aa0', text: '#fff', accent: '#2c5aa0' },
+  green: { header: '#2d5016', text: '#fff', accent: '#2d5016' },
+  purple: { header: '#5b2c87', text: '#fff', accent: '#5b2c87' },
+  red: { header: '#c62828', text: '#fff', accent: '#c62828' },
+  teal: { header: '#008080', text: '#fff', accent: '#008080' },
+  orange: { header: '#e65100', text: '#fff', accent: '#e65100' }
+};
+
+// Apply font
+function applyFont(fontFamily) {
+  document.body.style.fontFamily = fontFamily;
+}
+
+// Apply color scheme
+function applyColorScheme(scheme) {
+  const colors = colorSchemes[scheme];
+  
+  // Update header
+  document.querySelector('.header').style.backgroundColor = colors.header;
+  
+  // Update strong elements
+  document.querySelectorAll('.recipient strong, .subject strong, .signature strong').forEach(element => {
+    element.style.color = colors.accent;
+  });
+  
+  // Update editable content borders
+  const style = document.createElement('style');
+  style.textContent = `
+    [contenteditable="true"]:focus {
+      border-color: ${colors.accent} !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Set current date
+function setCurrentDate() {
+  const today = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+}
+
+// Get elements and set up event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  // Set current date
+  setCurrentDate();
+  
+  const fontSelector = document.getElementById('font-selector');
+  const colorSelector = document.getElementById('color-scheme');
+  const resetBtn = document.getElementById('reset-btn');
+  const printBtn = document.getElementById('print-btn');
+
+  // Event listeners
+  if (fontSelector) {
+    fontSelector.addEventListener('change', (e) => {
+      applyFont(e.target.value);
+    });
+  }
+
+  if (colorSelector) {
+    colorSelector.addEventListener('change', (e) => {
+      applyColorScheme(e.target.value);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (fontSelector) fontSelector.value = "'Josefin Sans', sans-serif";
+      if (colorSelector) colorSelector.value = 'dark';
+      applyFont("'Josefin Sans', sans-serif");
+      applyColorScheme('dark');
+    });
+  }
+
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      const controlPanel = document.querySelector('.control-panel');
+      if (controlPanel) controlPanel.style.display = 'none';
+      window.print();
+      if (controlPanel) controlPanel.style.display = 'block';
+    });
+  }
+
+  // Initialize with default values
+  applyFont("'Josefin Sans', sans-serif");
+  applyColorScheme('dark');
+});
+</script>
