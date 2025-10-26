@@ -41,7 +41,7 @@
 
     <!-- AWARDS -->
     <section id="awards-section" style="display:none;">
-      <h3>KEY ACHIEVEMENTS & AWARDS</h3>
+      <h3 id="awards-title">KEY ACHIEVEMENTS & AWARDS</h3>
       <div id="awards"></div>
     </section>
 
@@ -55,6 +55,12 @@
     <section id="education-section" style="display:none;">
       <h3>EDUCATION</h3>
       <div class="education" id="education"></div>
+    </section>
+
+    <!-- INTERNSHIPS -->
+    <section id="internships-section" style="display:none;">
+      <h3>INTERNSHIPS</h3>
+      <div class="experience" id="internships"></div>
     </section>
 
     <!-- KEY PROJECTS -->
@@ -226,6 +232,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title.toUpperCase();
+        }
+      }
+
       let html = '<ul>';
       resumeData.customSections.awards.forEach(award => {
         const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
@@ -281,6 +295,29 @@
 
       document.getElementById('education').innerHTML = html;
       document.getElementById('education-section').style.display = 'block';
+    }
+
+    // Populate internships
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+        const cleanDesc = stripHtmlTags(internship.description);
+
+        html += `
+          <div class="job-item">
+            <p class="job-title">${internship.title} <span>${startDate} - ${endDate}</span></p>
+            <p>${internship.company} ${internship.location ? '• ' + internship.location : ''}</p>
+            ${cleanDesc ? `<p><em>${cleanDesc}</em></p>` : ''}
+          </div>
+        `;
+      });
+
+      document.getElementById('internships').innerHTML = html;
+      document.getElementById('internships-section').style.display = 'block';
     }
 
     // Populate projects
@@ -380,6 +417,7 @@
         populateAwards();
         populateExperience();
         populateEducation();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateAdditionalInfo();

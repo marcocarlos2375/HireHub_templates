@@ -75,7 +75,7 @@
             <ul class="cert-list" id="cert-list"></ul>
           </div>
           <div class="awards-column" id="awards-column" style="display:none;">
-            <h4>Awards</h4>
+            <h4 id="awards-title">Awards</h4>
             <ul class="awards-list" id="awards-list"></ul>
           </div>
         </div>
@@ -95,7 +95,7 @@
 
       <!-- Volunteer Experience -->
       <section class="section-block" id="volunteering-section" style="display:none;">
-        <h3 class="section-title">Volunteer Experience</h3>
+        <h3 class="section-title" id="volunteering-title">Volunteer Experience</h3>
         <div id="volunteering"></div>
       </section>
 
@@ -255,7 +255,9 @@
         `;
       }
 
-      // Old website field removed - using websitesAndSocialLinksif (personal.birthDate) {
+      // Old website field removed - using websitesAndSocialLinks
+
+      if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
         const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         html += `
@@ -561,6 +563,13 @@
       // Populate awards
       if (awards.length > 0) {
         awardsColumn.style.display = 'block';
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('awards-title').textContent = sectionDef.title;
+          }
+        }
         let html = '';
         awards.forEach(award => {
           const startYear = award.startDate ? new Date(award.startDate).getFullYear() : '';
@@ -638,6 +647,13 @@
       }
 
       volunteeringSection.style.display = 'block';
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
       let html = '';
       volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);

@@ -379,7 +379,14 @@
         return;
       }
 
-      let html = '<h3>Awards</h3><div class="awards">';
+      // Use customSectionsList for dynamic title
+      let awardsTitle = 'Awards';
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) awardsTitle = sectionDef.title;
+      }
+
+      let html = `<h3>${awardsTitle}</h3><div class="awards">`;
       awards.forEach(award => {
         const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
         const issuer = award.city || '';
@@ -538,7 +545,14 @@
         return;
       }
 
-      let html = '<h3>Volunteer Experience</h3>';
+      // Use customSectionsList for dynamic title
+      let volunteeringTitle = 'Volunteer Experience';
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) volunteeringTitle = sectionDef.title;
+      }
+
+      let html = `<h3>${volunteeringTitle}</h3>`;
       volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
         const endDate = vol.endDate ? formatDate(vol.endDate) : 'Present';

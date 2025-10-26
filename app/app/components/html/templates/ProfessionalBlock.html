@@ -64,7 +64,7 @@
         </section>
 
         <section id="awards-section" class="section-block" style="display:none;">
-          <h3 class="section-title">Awards</h3>
+          <h3 class="section-title" id="awards-title">Awards</h3>
           <div class="cert-list" id="awards-container">
           </div>
         </section>
@@ -84,6 +84,11 @@
           <div id="experience-container"></div>
         </section>
 
+        <section id="internships-section" class="section-block" style="display:none;">
+          <h3 class="section-title">Internships</h3>
+          <div id="internships-container"></div>
+        </section>
+
         <section id="projects-section" class="section-block" style="display:none;">
           <h3 class="section-title">Key Projects</h3>
           <div id="projects-container"></div>
@@ -100,7 +105,7 @@
         </section>
 
         <section id="volunteering-section" class="section-block" style="display:none;">
-          <h3 class="section-title">Volunteer Experience</h3>
+          <h3 class="section-title" id="volunteering-title">Volunteer Experience</h3>
           <div id="volunteering-container"></div>
         </section>
 
@@ -179,12 +184,6 @@
       const personal = resumeData.personalInfo;
       document.getElementById('name').textContent = personal.lastName || '';
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-
-      if (personal.profileImage) {
-        const img = document.getElementById('profile-img');
-        img.src = personal.profileImage;
-        img.style.display = 'block';
-      }
 
       // Header contact
       const headerContact = document.getElementById('header-contact');
@@ -353,6 +352,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title;
+        }
+      }
+
       const container = document.getElementById('awards-container');
       container.innerHTML = '';
 
@@ -462,6 +469,51 @@
       });
 
       document.getElementById('experience-section').style.display = 'block';
+    }
+
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      const container = document.getElementById('internships-container');
+      container.innerHTML = '';
+
+      resumeData.internships.forEach(internship => {
+        const div = document.createElement('div');
+        div.classList.add('entry-block');
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('entry-date');
+        dateSpan.textContent = `${formatDate(internship.startDate)} – ${internship.current ? 'Present' : formatDate(internship.endDate)}`;
+        div.appendChild(dateSpan);
+
+        const content = document.createElement('div');
+        content.classList.add('entry-content');
+
+        const h4 = document.createElement('h4');
+        h4.classList.add('entry-role');
+        h4.textContent = `${internship.title || ''} at ${internship.company || ''}`;
+        content.appendChild(h4);
+
+        if (internship.description) {
+          const descP = document.createElement('p');
+          descP.classList.add('entry-description');
+          descP.textContent = stripHtmlTags(internship.description);
+          content.appendChild(descP);
+        }
+
+        div.appendChild(content);
+
+        if (internship.location) {
+          const locSpan = document.createElement('span');
+          locSpan.classList.add('entry-location');
+          locSpan.textContent = internship.location;
+          div.appendChild(locSpan);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('internships-section').style.display = 'block';
     }
 
     function populateProjects() {
@@ -581,6 +633,14 @@
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
+
       const container = document.getElementById('volunteering-container');
       container.innerHTML = '';
 
@@ -685,6 +745,7 @@
         populateAwards();
         populateEducation();
         populateExperience();
+        populateInternships();
         populateProjects();
         populateCourses();
         populatePublications();

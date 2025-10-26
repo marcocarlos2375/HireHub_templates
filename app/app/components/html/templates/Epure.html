@@ -82,6 +82,11 @@
           <div class="timeline" id="education"></div>
         </div>
 
+        <div id="internships-section" style="display:none;">
+          <h2>Internships</h2>
+          <div class="timeline" id="internships"></div>
+        </div>
+
         <div id="projects-section" style="display:none;">
           <h2>Key Projects</h2>
           <div class="timeline" id="projects"></div>
@@ -93,12 +98,12 @@
         </div>
 
         <div id="awards-section" style="display:none;">
-          <h2>Awards</h2>
+          <h2 id="awards-title">Awards</h2>
           <div id="awards"></div>
         </div>
 
         <div id="volunteering-section" style="display:none;">
-          <h2>Volunteer Experience</h2>
+          <h2 id="volunteering-title">Volunteer Experience</h2>
           <div id="volunteering"></div>
         </div>
 
@@ -201,35 +206,33 @@
           `<span class="firstname">${firstName.toUpperCase()}</span> <span class="lastname">${lastName.toUpperCase()}</span>`;
       }
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-
-      // Profile image
-      if (personal.profileImage) {
-        const img = document.getElementById('profile-img');
-        img.src = personal.profileImage;
-        img.style.display = 'block';
-      }
     }
 
     // Populate contact info
     function populateContactInfo() {
       const personal = resumeData.personalInfo;
       let html = '';
-      let hasDetails = false;
 
       if (personal.phone) {
         html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
-        hasDetails = true;
       }
 
       if (personal.email) {
         html += `<p><strong>Email:</strong> ${personal.email}</p>`;
-        hasDetails = true;
       }
 
       if (personal.location) {
         html += `<p><strong>Location:</strong> ${personal.location}</p>`;
-        hasDetails = true;
       }
+
+      document.getElementById('contact-info').innerHTML = html;
+    }
+
+    // Populate personal details section
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      let html = '';
+      let hasDetails = false;
 
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
@@ -431,6 +434,32 @@
       document.getElementById('education-section').style.display = 'block';
     }
 
+    // Populate internships
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+        const cleanDesc = stripHtmlTags(internship.description);
+
+        html += `
+          <div class="timeline-item">
+            <div class="circle"></div>
+            <div class="timeline-content">
+              <p class="date">${startDate} - ${endDate}</p>
+              <p class="title">${internship.title} - ${internship.company}</p>
+              ${cleanDesc ? `<p style="font-size: 12px; line-height: 1.4; margin-top: 8px; color: var(--secondary-color);">${cleanDesc}</p>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('internships').innerHTML = html;
+      document.getElementById('internships-section').style.display = 'block';
+    }
+
     // Populate projects
     function populateProjects() {
       if (!resumeData.projects || resumeData.projects.length === 0) return;
@@ -481,6 +510,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title;
+        }
+      }
+
       let html = '';
       resumeData.customSections.awards.forEach(award => {
         const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
@@ -499,6 +536,14 @@
     // Populate volunteering
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
 
       let html = '';
       resumeData.customSections.volunteering.forEach(vol => {
@@ -556,6 +601,7 @@
         populateCertifications();
         populateExperience();
         populateEducation();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateAwards();

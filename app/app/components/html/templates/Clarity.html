@@ -74,6 +74,11 @@
           <div id="experience"></div>
         </div>
 
+        <div id="internships-section" style="display:none;">
+          <h3>Internships</h3>
+          <div id="internships"></div>
+        </div>
+
         <div id="projects-section" style="display:none;">
           <h3>Key Projects</h3>
           <div id="projects"></div>
@@ -85,12 +90,12 @@
         </div>
 
         <div id="awards-section" style="display:none;">
-          <h3>Awards</h3>
+          <h3 id="awards-title">Awards</h3>
           <div id="awards"></div>
         </div>
 
         <div id="volunteering-section" style="display:none;">
-          <h3>Volunteer Experience</h3>
+          <h3 id="volunteering-title">Volunteer Experience</h3>
           <div id="volunteering"></div>
         </div>
 
@@ -171,17 +176,10 @@
       const personal = resumeData.personalInfo;
       document.getElementById('name').textContent = personal.lastName || '';
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-
-      // Profile image
-      if (personal.profileImage) {
-        const img = document.getElementById('profile-img');
-        img.src = personal.profileImage;
-        img.style.display = 'block';
-      }
     }
 
-    // Populate contact info
-    function populateContactInfo() {
+    // Populate personal details (contact info + additional fields)
+    function populatePersonalDetails() {
       const personal = resumeData.personalInfo;
       let html = '';
       let hasDetails = false;
@@ -390,6 +388,30 @@
       document.getElementById('experience-section').style.display = 'block';
     }
 
+    // Populate internships
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+        const cleanDesc = stripHtmlTags(internship.description);
+
+        html += `
+          <div class="job">
+            <span class="date">${startDate} - ${endDate}</span>
+            <h4>${internship.title}</h4>
+            <p>${internship.company} — ${internship.location || ''}</p>
+            ${cleanDesc ? `<p>${cleanDesc}</p>` : ''}
+          </div>
+        `;
+      });
+
+      document.getElementById('internships').innerHTML = html;
+      document.getElementById('internships-section').style.display = 'block';
+    }
+
     // Populate projects
     function populateProjects() {
       if (!resumeData.projects || resumeData.projects.length === 0) return;
@@ -438,6 +460,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title;
+        }
+      }
+
       let html = '';
       resumeData.customSections.awards.forEach(award => {
         const date = formatDate(award.startDate);
@@ -458,6 +488,14 @@
     // Populate volunteering
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
 
       let html = '';
       resumeData.customSections.volunteering.forEach(vol => {
@@ -507,7 +545,6 @@
         resumeData = data.content;
 
         populateHeader();
-        populateContactInfo();
         populatePersonalDetails();
         populateSummary();
         populateEducation();
@@ -516,6 +553,7 @@
         populateHobbies();
         populateCertifications();
         populateExperience();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateAwards();

@@ -33,7 +33,7 @@
       </section>
 
       <section class="section-block" id="awards-section" style="display: none;">
-        <h3 class="section-title">Awards <span class="section-number">04</span></h3>
+        <h3 class="section-title"><span id="awards-title">Awards</span> <span class="section-number">04</span></h3>
         <ul class="awards-list" id="awards-list">
           <!-- Awards will be populated by JavaScript -->
         </ul>
@@ -73,23 +73,28 @@
         <div id="education-list"></div>
       </section>
 
+      <section class="section-block" id="internships-section" style="display: none;">
+        <h3 class="section-title">Internships <span class="section-number">10</span></h3>
+        <div id="internships-list"></div>
+      </section>
+
       <section class="section-block" id="projects-section" style="display: none;">
-        <h3 class="section-title">Key Projects <span class="section-number">10</span></h3>
+        <h3 class="section-title">Key Projects <span class="section-number">11</span></h3>
         <div id="projects-list"></div>
       </section>
 
       <section class="section-block" id="publications-section" style="display: none;">
-        <h3 class="section-title">Publications <span class="section-number">11</span></h3>
+        <h3 class="section-title">Publications <span class="section-number">12</span></h3>
         <div id="publications-list"></div>
       </section>
 
       <section class="section-block" id="volunteering-section" style="display: none;">
-        <h3 class="section-title">Volunteer Experience <span class="section-number">12</span></h3>
+        <h3 class="section-title"><span id="volunteering-title">Volunteer Experience</span> <span class="section-number">13</span></h3>
         <div id="volunteering-list"></div>
       </section>
 
       <section class="section-block" id="references-section" style="display: none;">
-        <h3 class="section-title">References <span class="section-number">13</span></h3>
+        <h3 class="section-title">References <span class="section-number">14</span></h3>
         <div class="references-grid" id="references-list"></div>
       </section>
     </section>
@@ -451,6 +456,35 @@
       }
     }
 
+    // Populate internships
+    function populateInternships() {
+      const internshipsList = document.getElementById('internships-list');
+      const internshipsSection = document.getElementById('internships-section');
+
+      if (resumeData.internships && resumeData.internships.length > 0) {
+        let html = '';
+
+        resumeData.internships.forEach(internship => {
+          const startDate = formatDate(internship.startDate);
+          const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+
+          html += `
+            <div class="entry-block">
+              <span class="entry-date">${startDate} – ${endDate}</span>
+              <h4 class="entry-role">${internship.title}</h4>
+              <p>${internship.company}</p>
+              ${internship.description ? `<p>${stripHtmlTags(internship.description)}</p>` : ''}
+            </div>
+          `;
+        });
+
+        internshipsList.innerHTML = html;
+        internshipsSection.style.display = 'block';
+      } else {
+        internshipsSection.style.display = 'none';
+      }
+    }
+
     // Populate projects
     function populateProjects() {
       const projectsList = document.getElementById('projects-list');
@@ -505,6 +539,14 @@
       const volunteeringSection = document.getElementById('volunteering-section');
 
       if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('volunteering-title').textContent = sectionDef.title;
+          }
+        }
+
         let html = '';
 
         resumeData.customSections.volunteering.forEach(vol => {
@@ -532,6 +574,14 @@
       const awardsSection = document.getElementById('awards-section');
 
       if (resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('awards-title').textContent = sectionDef.title;
+          }
+        }
+
         let html = '';
 
         resumeData.customSections.awards.forEach(award => {
@@ -613,6 +663,7 @@
         populateLanguages();
         populateExperience();
         populateEducation();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateVolunteering();

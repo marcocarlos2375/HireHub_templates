@@ -55,6 +55,11 @@
           <div id="education"></div>
         </section>
 
+        <section id="internships-section" class="zen-block" style="display:none;">
+          <h2>Internships</h2>
+          <div id="internships"></div>
+        </section>
+
         <section id="projects-section" class="zen-block" style="display:none;">
           <h2>Projects</h2>
           <div id="projects"></div>
@@ -71,12 +76,12 @@
         </section>
 
         <section id="awards-section" class="zen-block" style="display:none;">
-          <h2>Awards</h2>
+          <h2 id="awards-title">Awards</h2>
           <div id="awards"></div>
         </section>
 
         <section id="volunteering-section" class="zen-block" style="display:none;">
-          <h2>Volunteer</h2>
+          <h2 id="volunteering-title">Volunteer</h2>
           <div id="volunteering"></div>
         </section>
 
@@ -232,6 +237,17 @@
           document.getElementById('education-section').style.display='block';
         }
 
+        if(d.internships && d.internships.length>0){
+          const ic=document.getElementById('internships');
+          d.internships.forEach(i=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<div class="it-head"><h3>'+i.title+'</h3><span class="dt">'+f(i.startDate)+' – '+(i.current?'Present':f(i.endDate))+'</span></div><p class="co">'+i.company+(i.location?' • '+i.location:'')+'</p>'+(i.description?'<p class="tx">'+s(i.description)+'</p>':'');
+            ic.appendChild(dv);
+          });
+          document.getElementById('internships-section').style.display='block';
+        }
+
         if(d.projects && d.projects.length>0){
           const pc=document.getElementById('projects');
           d.projects.forEach(pr=>{
@@ -267,6 +283,7 @@
         }
 
         if(d.customSections && d.customSections.awards && d.customSections.awards.length>0){
+          if(d.customSectionsList){const sd=d.customSectionsList.find(s=>s.id==='awards');if(sd&&sd.title)document.getElementById('awards-title').textContent=sd.title;}
           const ac=document.getElementById('awards');
           d.customSections.awards.forEach(a=>{
             const dv=document.createElement('div');
@@ -278,6 +295,7 @@
         }
 
         if(d.customSections && d.customSections.volunteering && d.customSections.volunteering.length>0){
+          if(d.customSectionsList){const sd=d.customSectionsList.find(s=>s.id==='volunteering');if(sd&&sd.title)document.getElementById('volunteering-title').textContent=sd.title;}
           const vc=document.getElementById('volunteering');
           d.customSections.volunteering.forEach(v=>{
             const dv=document.createElement('div');

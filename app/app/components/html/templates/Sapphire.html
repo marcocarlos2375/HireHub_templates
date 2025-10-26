@@ -56,6 +56,11 @@
           <div id="experience"></div>
         </section>
 
+        <section id="internships-section" class="main-sec" style="display:none;">
+          <h2>Internships</h2>
+          <div id="internships"></div>
+        </section>
+
         <section id="education-section" class="main-sec" style="display:none;">
           <h2>Education</h2>
           <div id="education"></div>
@@ -77,12 +82,12 @@
         </section>
 
         <section id="awards-section" class="main-sec" style="display:none;">
-          <h2>Awards</h2>
+          <h2 id="awards-title">Awards</h2>
           <div id="awards"></div>
         </section>
 
         <section id="volunteering-section" class="main-sec" style="display:none;">
-          <h2>Volunteer Work</h2>
+          <h2 id="volunteering-title">Volunteer Work</h2>
           <div id="volunteering"></div>
         </section>
 
@@ -139,13 +144,9 @@
 
     function populateAll() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.lastName || '';
+      const fullName = [personal.firstName, personal.lastName].filter(Boolean).join(' ');
+      document.getElementById('name').textContent = fullName;
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-      
-      if (personal.profileImage) {
-        document.getElementById('profile-img').src = personal.profileImage;
-        document.getElementById('profile-img').style.display = 'block';
-      }
 
       const contactDiv = document.getElementById('contact-info');
       contactDiv.innerHTML = '';
@@ -213,7 +214,7 @@
           sc.appendChild(h4);
           grp[cid].forEach(sk=>{
             const p=document.createElement('p');
-            p.innerHTML='<span class="bullet">▪</span> '+sk.name;
+            p.innerHTML='<span class="bullet">▪</span> '+sk.skill;
             sc.appendChild(p);
           });
         });
@@ -224,7 +225,7 @@
         const lc=document.getElementById('languages');
         resumeData.languages.forEach(l=>{
           const p=document.createElement('p');
-          p.innerHTML='<strong>'+l.language+'</strong> - '+l.proficiency;
+          p.innerHTML='<strong>'+l.language+'</strong> - '+l.level;
           lc.appendChild(p);
         });
         document.getElementById('languages-section').style.display='block';
@@ -251,12 +252,23 @@
         document.getElementById('experience-section').style.display='block';
       }
 
+      if(resumeData.internships && resumeData.internships.length>0){
+        const ic=document.getElementById('internships');
+        resumeData.internships.forEach(i=>{
+          const d=document.createElement('div');
+          d.className='item';
+          d.innerHTML='<h3>'+i.title+'</h3><p class="meta">'+i.company+(i.location?' • '+i.location:'')+' | '+formatDate(i.startDate)+' - '+(i.current?'Present':formatDate(i.endDate))+'</p>'+(i.description?'<p>'+stripHtmlTags(i.description)+'</p>':'');
+          ic.appendChild(d);
+        });
+        document.getElementById('internships-section').style.display='block';
+      }
+
       if(resumeData.education && resumeData.education.length>0){
         const ec=document.getElementById('education');
         resumeData.education.forEach(e=>{
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+e.degree+'</h3><p class="meta">'+e.institution+(e.location?' • '+e.location:'')+' | '+formatDate(e.startDate)+' - '+formatDate(e.endDate)+'</p>'+(e.description?'<p>'+stripHtmlTags(e.description)+'</p>':'');
+          d.innerHTML='<h3>'+e.degree+'</h3><p class="meta">'+e.school+(e.location?' • '+e.location:'')+' | '+formatDate(e.startDate)+' - '+(e.current?'Present':formatDate(e.endDate))+'</p>'+(e.description?'<p>'+stripHtmlTags(e.description)+'</p>':'');
           ec.appendChild(d);
         });
         document.getElementById('education-section').style.display='block';
@@ -268,7 +280,7 @@
           const t=p.technologies?(Array.isArray(p.technologies)?p.technologies.join(', '):p.technologies):'';
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+p.title+'</h3>'+(t?'<p class="meta">'+t+'</p>':'')+'<p class="meta">'+formatDate(p.startDate)+' - '+formatDate(p.endDate)+'</p>'+(p.description?'<p>'+stripHtmlTags(p.description)+'</p>':'');
+          d.innerHTML='<h3>'+p.name+'</h3>'+(p.link?'<p class="meta">'+p.link+'</p>':'')+(t?'<p class="meta">Technologies: '+t+'</p>':'')+(p.description?'<p>'+stripHtmlTags(p.description)+'</p>':'');
           pc.appendChild(d);
         });
         document.getElementById('projects-section').style.display='block';
@@ -279,7 +291,7 @@
         resumeData.publications.forEach(p=>{
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+p.title+'</h3><p class="meta">'+p.publisher+' | '+formatDate(p.date)+'</p>'+(p.description?'<p>'+stripHtmlTags(p.description)+'</p>':'');
+          d.innerHTML='<h3>'+p.title+'</h3><p class="meta">'+p.publisher+' | '+formatDate(p.publicationDate)+'</p>'+(p.description?'<p>'+stripHtmlTags(p.description)+'</p>':'')+(p.url?'<p class="meta"><a href="'+p.url+'" target="_blank">'+p.url+'</a></p>':'');
           pc.appendChild(d);
         });
         document.getElementById('publications-section').style.display='block';
@@ -290,7 +302,7 @@
         resumeData.courses.forEach(c=>{
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+c.name+'</h3><p class="meta">'+c.institution+' | '+formatDate(c.completionDate)+'</p>';
+          d.innerHTML='<h3>'+c.title+'</h3><p class="meta">'+c.institution+' | '+formatDate(c.completionDate)+'</p>'+(c.credential?'<p class="meta">Credential: '+c.credential+'</p>':'')+(c.description?'<p>'+stripHtmlTags(c.description)+'</p>':'');
           cc.appendChild(d);
         });
         document.getElementById('courses-section').style.display='block';
@@ -298,10 +310,12 @@
 
       if(resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length>0){
         const ac=document.getElementById('awards');
+        if(resumeData.customSectionsList){const sd=resumeData.customSectionsList.find(s=>s.id==='awards');if(sd&&sd.title)document.getElementById('awards-title').textContent=sd.title;}
         resumeData.customSections.awards.forEach(a=>{
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+a.title+'</h3><p class="meta">'+(a.issuer||'')+' | '+formatDate(a.date)+'</p>'+(a.description?'<p>'+stripHtmlTags(a.description)+'</p>':'');
+          const startYear=a.startDate?new Date(a.startDate).getFullYear():'';
+          d.innerHTML='<h3>'+a.title+'</h3><p class="meta">'+(a.city?a.city:'')+' '+(startYear?'| '+startYear:'')+'</p>'+(a.description?'<p>'+stripHtmlTags(a.description)+'</p>':'');
           ac.appendChild(d);
         });
         document.getElementById('awards-section').style.display='block';
@@ -309,10 +323,11 @@
 
       if(resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length>0){
         const vc=document.getElementById('volunteering');
+        if(resumeData.customSectionsList){const sd=resumeData.customSectionsList.find(s=>s.id==='volunteering');if(sd&&sd.title)document.getElementById('volunteering-title').textContent=sd.title;}
         resumeData.customSections.volunteering.forEach(v=>{
           const d=document.createElement('div');
           d.className='item';
-          d.innerHTML='<h3>'+v.role+'</h3><p class="meta">'+v.organization+' | '+formatDate(v.startDate)+' - '+formatDate(v.endDate)+'</p>'+(v.description?'<p>'+stripHtmlTags(v.description)+'</p>':'');
+          d.innerHTML='<h3>'+v.title+'</h3><p class="meta">'+(v.city?v.city+' | ':'')+formatDate(v.startDate)+' - '+(v.current?'Present':formatDate(v.endDate))+'</p>'+(v.description?'<p>'+stripHtmlTags(v.description)+'</p>':'');
           vc.appendChild(d);
         });
         document.getElementById('volunteering-section').style.display='block';

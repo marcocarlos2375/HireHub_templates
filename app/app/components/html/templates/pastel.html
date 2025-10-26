@@ -73,6 +73,11 @@
           <div id="experience"></div>
         </section>
 
+        <section id="internships-section" style="display:none;">
+          <h2>Internships</h2>
+          <div id="internships"></div>
+        </section>
+
         <section id="projects-section" style="display:none;">
           <h2>Projects</h2>
           <div id="projects"></div>
@@ -84,12 +89,12 @@
         </section>
 
         <section id="awards-section" style="display:none;">
-          <h2>Awards</h2>
+          <h2 id="awards-title">Awards</h2>
           <div id="awards"></div>
         </section>
 
         <section id="volunteering-section" style="display:none;">
-          <h2>Volunteering</h2>
+          <h2 id="volunteering-title">Volunteering</h2>
           <div id="volunteering"></div>
         </section>
 
@@ -155,12 +160,6 @@
       const personal = resumeData.personalInfo;
       document.getElementById('name').textContent = personal.lastName || '';
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-
-      if (personal.profileImage) {
-        const img = document.getElementById('profile-img');
-        img.src = personal.profileImage;
-        img.style.display = 'block';
-      }
     }
 
     function populateContactInfo() {
@@ -262,6 +261,41 @@
       });
 
       document.getElementById('experience-section').style.display = 'block';
+    }
+
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      const container = document.getElementById('internships');
+      container.innerHTML = '';
+
+      resumeData.internships.forEach(internship => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('date');
+        dateSpan.textContent = `${formatDate(internship.startDate)} – ${internship.current ? 'Present' : formatDate(internship.endDate)}`;
+        div.appendChild(dateSpan);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = internship.title || '';
+        div.appendChild(h3);
+
+        const companyP = document.createElement('p');
+        companyP.innerHTML = `<strong>${internship.company || ''}${internship.location ? ' | ' + internship.location : ''}</strong>`;
+        div.appendChild(companyP);
+
+        if (internship.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(internship.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('internships-section').style.display = 'block';
     }
 
     function populateEducation() {
@@ -452,6 +486,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title;
+        }
+      }
+
       const container = document.getElementById('awards');
       container.innerHTML = '';
 
@@ -490,6 +532,14 @@
 
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
 
       const container = document.getElementById('volunteering');
       container.innerHTML = '';
@@ -560,6 +610,7 @@
         populatePersonalDetails();
         populateSummary();
         populateExperience();
+        populateInternships();
         populateEducation();
         populateSkills();
         populateLanguages();

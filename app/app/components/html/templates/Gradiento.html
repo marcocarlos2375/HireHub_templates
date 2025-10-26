@@ -98,13 +98,13 @@
 
     <!-- Awards -->
     <section class="awards" id="awards-section" style="display: none;">
-      <h2>Awards</h2>
+      <h2 id="awards-title">Awards</h2>
       <div id="awards-list"></div>
     </section>
 
     <!-- Volunteering -->
     <section class="volunteering" id="volunteering-section" style="display: none;">
-      <h2>Volunteering</h2>
+      <h2 id="volunteering-title">Volunteering</h2>
       <div id="volunteering-list"></div>
     </section>
 
@@ -230,12 +230,6 @@
       const personal = resumeData.personalInfo;
       document.getElementById('name').textContent = `${personal.firstName} ${personal.lastName}`;
       document.getElementById('job-title').textContent = personal.jobTitle || '';
-
-      // Profile image (optional)
-      if (personal.profileImage) {
-        document.getElementById('profile-img').style.display = 'block';
-        document.getElementById('profile-picture').src = personal.profileImage;
-      }
     }
 
     // Populate contact information - ALL fields
@@ -524,6 +518,14 @@
       const awardsSection = document.getElementById('awards-section');
 
       if (resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('awards-title').textContent = sectionDef.title;
+          }
+        }
+
         let html = '';
         resumeData.customSections.awards.forEach(award => {
           html += `
@@ -545,6 +547,14 @@
       const volunteeringSection = document.getElementById('volunteering-section');
 
       if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('volunteering-title').textContent = sectionDef.title;
+          }
+        }
+
         let html = '';
         resumeData.customSections.volunteering.forEach(vol => {
           html += `

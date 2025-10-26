@@ -41,7 +41,7 @@
         </section>
 
         <section class="awards" id="awards-section" style="display: none;">
-          <h2>AWARDS</h2>
+          <h2 id="awards-title">AWARDS</h2>
           <div id="awards-list"></div>
         </section>
 
@@ -70,6 +70,11 @@
           <div id="education-list"></div>
         </section>
 
+        <section class="internships" id="internships-section" style="display: none;">
+          <h2>INTERNSHIPS</h2>
+          <div id="internships-list"></div>
+        </section>
+
         <section class="projects" id="projects-section" style="display: none;">
           <h2>KEY PROJECTS</h2>
           <div id="projects-list"></div>
@@ -81,7 +86,7 @@
         </section>
 
         <section class="volunteering" id="volunteering-section" style="display: none;">
-          <h2>VOLUNTEER EXPERIENCE</h2>
+          <h2 id="volunteering-title">VOLUNTEER EXPERIENCE</h2>
           <div id="volunteering-list"></div>
         </section>
 
@@ -484,6 +489,50 @@
       }
     }
 
+    // Populate internships
+    function populateInternships() {
+      const internshipsList = document.getElementById('internships-list');
+      const internshipsSection = document.getElementById('internships-section');
+
+      if (resumeData.internships && resumeData.internships.length > 0) {
+        let html = '';
+
+        resumeData.internships.forEach(internship => {
+          const startDate = formatDate(internship.startDate);
+          const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+
+          html += `
+            <div class="job">
+              <h3>${internship.company}</h3>
+              <p><em>${internship.title}</em> | ${startDate} – ${endDate}</p>
+          `;
+
+          if (internship.description) {
+            const desc = stripHtmlTags(internship.description);
+            const points = desc.split('.').filter(p => p.trim());
+            if (points.length > 1) {
+              html += '<ul>';
+              points.forEach(point => {
+                if (point.trim()) {
+                  html += `<li>${point.trim()}.</li>`;
+                }
+              });
+              html += '</ul>';
+            } else {
+              html += `<p>${desc}</p>`;
+            }
+          }
+
+          html += '</div>';
+        });
+
+        internshipsList.innerHTML = html;
+        internshipsSection.style.display = 'block';
+      } else {
+        internshipsSection.style.display = 'none';
+      }
+    }
+
     // Populate projects
     function populateProjects() {
       const projectsList = document.getElementById('projects-list');
@@ -536,6 +585,14 @@
       const volunteeringSection = document.getElementById('volunteering-section');
 
       if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('volunteering-title').textContent = sectionDef.title.toUpperCase();
+          }
+        }
+
         let html = '';
 
         resumeData.customSections.volunteering.forEach(vol => {
@@ -585,6 +642,14 @@
       const awardsSection = document.getElementById('awards-section');
 
       if (resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0) {
+        // Use customSectionsList for dynamic title
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+          if (sectionDef && sectionDef.title) {
+            document.getElementById('awards-title').textContent = sectionDef.title.toUpperCase();
+          }
+        }
+
         let html = '';
 
         resumeData.customSections.awards.forEach(award => {
@@ -657,6 +722,7 @@
         populateLanguages();
         populateExperience();
         populateEducation();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateVolunteering();

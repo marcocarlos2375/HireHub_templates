@@ -75,6 +75,11 @@
           <div class="timeline" id="education"></div>
         </div>
 
+        <div id="internships-section" style="display:none;">
+          <h2>INTERNSHIPS</h2>
+          <div class="timeline" id="internships"></div>
+        </div>
+
         <div id="projects-section" style="display:none;">
           <h2>KEY PROJECTS</h2>
           <div class="timeline" id="projects"></div>
@@ -86,12 +91,12 @@
         </div>
 
         <div id="awards-section" style="display:none;">
-          <h2>AWARDS</h2>
+          <h2 id="awards-title">AWARDS</h2>
           <div class="timeline" id="awards"></div>
         </div>
 
         <div id="volunteering-section" style="display:none;">
-          <h2>VOLUNTEER EXPERIENCE</h2>
+          <h2 id="volunteering-title">VOLUNTEER EXPERIENCE</h2>
           <div class="timeline" id="volunteering"></div>
         </div>
 
@@ -192,22 +197,27 @@
     function populateContactInfo() {
       const personal = resumeData.personalInfo;
       let html = '';
-      let hasDetails = false;
 
       if (personal.phone) {
         html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
-        hasDetails = true;
       }
 
       if (personal.email) {
         html += `<p><strong>Email:</strong> ${personal.email}</p>`;
-        hasDetails = true;
       }
 
       if (personal.location) {
         html += `<p><strong>Location:</strong> ${personal.location}</p>`;
-        hasDetails = true;
       }
+
+      document.getElementById('contact-info').innerHTML = html;
+    }
+
+    // Populate personal details section
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      let html = '';
+      let hasDetails = false;
 
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
@@ -420,6 +430,32 @@
       document.getElementById('education-section').style.display = 'block';
     }
 
+    // Populate internships
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+        const cleanDesc = stripHtmlTags(internship.description);
+
+        html += `
+          <div class="timeline-item">
+            <div class="diamond"></div>
+            <div class="content">
+              <h3>${internship.company}</h3>
+              <p><em>${internship.title}</em> | ${startDate} – ${endDate}</p>
+              ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('internships').innerHTML = html;
+      document.getElementById('internships-section').style.display = 'block';
+    }
+
     // Populate projects
     function populateProjects() {
       if (!resumeData.projects || resumeData.projects.length === 0) return;
@@ -473,6 +509,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title.toUpperCase();
+        }
+      }
+
       let html = '';
       resumeData.customSections.awards.forEach(award => {
         const date = formatDate(award.startDate);
@@ -495,6 +539,14 @@
     // Populate volunteering
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title.toUpperCase();
+        }
+      }
 
       let html = '';
       resumeData.customSections.volunteering.forEach(vol => {
@@ -555,6 +607,7 @@
         populateCertifications();
         populateExperience();
         populateEducation();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateAwards();

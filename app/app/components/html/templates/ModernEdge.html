@@ -32,6 +32,11 @@
           <div id="education"></div>
         </div>
 
+        <div id="internships-section" style="display:none;">
+          <h3>Internships</h3>
+          <div id="internships"></div>
+        </div>
+
         <div id="projects-section" style="display:none;">
           <h3>Key Projects</h3>
           <div id="projects"></div>
@@ -43,7 +48,7 @@
         </div>
 
         <div id="volunteering-section" style="display:none;">
-          <h3>Volunteer Experience</h3>
+          <h3 id="volunteering-title">Volunteer Experience</h3>
           <div id="volunteering"></div>
         </div>
 
@@ -86,7 +91,7 @@
         </div>
 
         <div id="awards-section" style="display:none;">
-          <h3>Awards</h3>
+          <h3 id="awards-title">Awards</h3>
           <div class="award-list" id="awards"></div>
         </div>
 
@@ -645,13 +650,6 @@ function populateHeader() {
   document.getElementById('name').textContent = personal.lastName || '';
   document.getElementById('job-title').textContent = personal.jobTitle || '';
 
-  // Profile image
-  if (personal.profileImage) {
-    const img = document.getElementById('profile-img');
-    img.src = personal.profileImage;
-    img.style.display = 'block';
-  }
-
   // Contact info
   let html = '';
   if (personal.email) html += `<span>Email: ${personal.email}</span>`;
@@ -814,6 +812,14 @@ function populateCertifications() {
 function populateAwards() {
   if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+  // Use customSectionsList for dynamic title
+  if (resumeData.customSectionsList) {
+    const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+    if (sectionDef && sectionDef.title) {
+      document.getElementById('awards-title').textContent = sectionDef.title;
+    }
+  }
+
   let html = '';
   resumeData.customSections.awards.forEach(award => {
     const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
@@ -871,6 +877,25 @@ function populateEducation() {
   document.getElementById('education-section').style.display = 'block';
 }
 
+// Populate internships
+function populateInternships() {
+  if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+  let html = '';
+  resumeData.internships.forEach(internship => {
+    const startDate = formatDate(internship.startDate);
+    const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+    const cleanDesc = stripHtmlTags(internship.description);
+
+    html += `
+      <p><strong>${internship.company}</strong><br>${internship.title}, ${startDate} - ${endDate}${cleanDesc ? '<br><em>' + cleanDesc + '</em>' : ''}</p>
+    `;
+  });
+
+  document.getElementById('internships').innerHTML = html;
+  document.getElementById('internships-section').style.display = 'block';
+}
+
 // Populate projects
 function populateProjects() {
   if (!resumeData.projects || resumeData.projects.length === 0) return;
@@ -917,6 +942,14 @@ function populatePublications() {
 // Populate volunteering
 function populateVolunteering() {
   if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+  // Use customSectionsList for dynamic title
+  if (resumeData.customSectionsList) {
+    const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+    if (sectionDef && sectionDef.title) {
+      document.getElementById('volunteering-title').textContent = sectionDef.title;
+    }
+  }
 
   let html = '';
   resumeData.customSections.volunteering.forEach(vol => {
@@ -974,6 +1007,7 @@ async function populateResume() {
     populateAwards();
     populateExperience();
     populateEducation();
+    populateInternships();
     populateProjects();
     populatePublications();
     populateVolunteering();

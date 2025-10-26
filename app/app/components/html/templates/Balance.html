@@ -74,7 +74,7 @@
         </div>
 
         <div id="volunteering-section" style="display:none;">
-          <h3 class="section-title">Volunteer Experience</h3>
+          <h3 class="section-title" id="volunteering-title">Volunteer Experience</h3>
           <div id="volunteering"></div>
         </div>
       </section>
@@ -459,7 +459,12 @@
 
       // Awards
       if (awards.length > 0) {
-        html += '<h4 style="font-size: 13px; margin-top: 15px;">Awards</h4>';
+        let awardsTitle = 'Awards';
+        if (resumeData.customSectionsList) {
+          const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+          if (sectionDef && sectionDef.title) awardsTitle = sectionDef.title;
+        }
+        html += `<h4 style="font-size: 13px; margin-top: 15px;">${awardsTitle}</h4>`;
         awards.forEach(award => {
           const startYear = award.startDate ? new Date(award.startDate).getFullYear() : '';
           html += `
@@ -522,6 +527,14 @@
       if (volunteering.length === 0) {
         volunteeringSection.style.display = 'none';
         return;
+      }
+
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
       }
 
       volunteeringSection.style.display = 'block';

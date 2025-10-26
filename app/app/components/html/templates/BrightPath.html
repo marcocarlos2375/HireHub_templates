@@ -57,7 +57,7 @@
         </section>
 
         <section id="awards-section" style="display:none;">
-          <h2>Awards</h2>
+          <h2 id="awards-title">Awards</h2>
           <div class="award-list" id="awards"></div>
         </section>
 
@@ -84,6 +84,11 @@
           <div class="timeline-exp" id="experience"></div>
         </section>
 
+        <section id="internships-section" style="display:none;">
+          <h2>Internships</h2>
+          <div class="timeline-exp" id="internships"></div>
+        </section>
+
         <section id="projects-section" style="display:none;">
           <h2>Key Projects</h2>
           <div class="timeline-exp" id="projects"></div>
@@ -95,7 +100,7 @@
         </section>
 
         <section id="volunteering-section" style="display:none;">
-          <h2>Volunteer Experience</h2>
+          <h2 id="volunteering-title">Volunteer Experience</h2>
           <div class="timeline-exp" id="volunteering"></div>
         </section>
       </div>
@@ -325,6 +330,14 @@
     function populateAwards() {
       if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'awards');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('awards-title').textContent = sectionDef.title;
+        }
+      }
+
       let html = '';
       resumeData.customSections.awards.forEach(award => {
         const startDate = award.startDate ? new Date(award.startDate).getFullYear() : '';
@@ -429,6 +442,37 @@
       document.getElementById('experience-section').style.display = 'block';
     }
 
+    // Populate internships with timeline
+    function populateInternships() {
+      if (!resumeData.internships || resumeData.internships.length === 0) return;
+
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = internship.current ? 'Present' : formatDate(internship.endDate);
+
+        html += `
+          <div class="timeline-item">
+            <div class="dot yellow"></div>
+            <div class="content">
+              <h3>${internship.title}</h3>
+              <p><em>${internship.company}, ${internship.location || ''}</em> — ${startDate} - ${endDate}</p>
+        `;
+
+        if (internship.description) {
+          html += `<p>${stripHtmlTags(internship.description)}</p>`;
+        }
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('internships').innerHTML = html;
+      document.getElementById('internships-section').style.display = 'block';
+    }
+
     // Populate projects with timeline
     function populateProjects() {
       if (!resumeData.projects || resumeData.projects.length === 0) return;
@@ -495,6 +539,14 @@
     function populateVolunteering() {
       if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
 
+      // Use customSectionsList for dynamic title
+      if (resumeData.customSectionsList) {
+        const sectionDef = resumeData.customSectionsList.find(s => s.id === 'volunteering');
+        if (sectionDef && sectionDef.title) {
+          document.getElementById('volunteering-title').textContent = sectionDef.title;
+        }
+      }
+
       let html = '';
       resumeData.customSections.volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
@@ -536,6 +588,7 @@
         populateSummary();
         populateEducation();
         populateExperience();
+        populateInternships();
         populateProjects();
         populatePublications();
         populateVolunteering();
