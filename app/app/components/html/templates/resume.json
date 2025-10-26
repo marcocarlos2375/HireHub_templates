@@ -8,10 +8,11 @@
       "phone": "+33 6 12 34 56 78",
       "location": "Paris, France",
       "website": "https://www.carlossaez.dev",
-      "birthDate": "",
+      "birthDate": "1995-01-01",
       "nationality": "French",
-      "relationshipStatus": "",
+      "relationshipStatus": "single",
       "availability": "immediate",
+      "drivingLicense": "B",
       "socialLinks": {
         "linkedin": "linkedin.com/in/carlossaez",
         "github": "github.com/carlossaez",
