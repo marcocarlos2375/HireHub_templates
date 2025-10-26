@@ -152,8 +152,7 @@
       if (personal.phone) contact.push(personal.phone);
       if (personal.email) contact.push(personal.email);
       if (personal.location) contact.push(personal.location);
-      if (personal.website) contact.push(personal.website.replace('https://', ''));
-      if (personal.socialLinks?.linkedin) contact.push(personal.socialLinks.linkedin.replace('https://linkedin.com/in/', 'linkedin.com/in/'));
+      // personal.website and socialLinks removed - using websitesAndSocialLinks below
 
       document.getElementById('contact-info').textContent = contact.join(' | ');
     }
@@ -191,7 +190,7 @@
 
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
-          items.push(`<strong>${link.platform}:</strong> ${link.url.replace('https://', '')}`);
+          items.push(`<strong>${link.label}:</strong> ${link.url.replace('https://', '')}`);
         });
       }
 
@@ -396,7 +395,7 @@
     const colorSchemes = {
       black: {
         primary: '#000000',
-        secondary: '#f8f9fa',
+        secondary: '#f5f5f5',
         background: '#f4f4f4',
         text: '#333',
         lightText: '#555',

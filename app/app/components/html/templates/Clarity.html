@@ -184,59 +184,56 @@
     function populateContactInfo() {
       const personal = resumeData.personalInfo;
       let html = '';
-
-      if (personal.email) html += `<p>${personal.email}</p>`;
-      if (personal.phone) html += `<p>${personal.phone}</p>`;
-      if (personal.location) html += `<p>${personal.location}</p>`;
-      if (personal.website) html += `<p>${personal.website.replace('https://', '')}</p>`;
-      if (personal.socialLinks?.linkedin) html += `<p>LinkedIn: ${personal.socialLinks.linkedin.replace('https://linkedin.com/in/', '')}</p>`;
-      if (personal.socialLinks?.github) html += `<p>GitHub: ${personal.socialLinks.github.replace('https://github.com/', '')}</p>`;
-
-      document.getElementById('contact-info').innerHTML = html;
-    }
-
-    // Populate personal details
-    function populatePersonalDetails() {
-      const personal = resumeData.personalInfo;
-      let html = '';
       let hasDetails = false;
+
+      if (personal.phone) {
+        html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
+        hasDetails = true;
+      }
+
+      if (personal.email) {
+        html += `<p><strong>Email:</strong> ${personal.email}</p>`;
+        hasDetails = true;
+      }
+
+      if (personal.location) {
+        html += `<p><strong>Location:</strong> ${personal.location}</p>`;
+        hasDetails = true;
+      }
 
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
-        const formattedDate = birthDate.toLocaleDateString('en-US', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        });
-        html += `<div class="lang-item"><span>Birth Date</span><span class="level">${formattedDate}</span></div>`;
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
         hasDetails = true;
       }
 
       if (personal.nationality) {
-        html += `<div class="lang-item"><span>Nationality</span><span class="level">${personal.nationality}</span></div>`;
-        hasDetails = true;
-      }
-
-      if (personal.relationshipStatus) {
-        const status = personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1);
-        html += `<div class="lang-item"><span>Relationship Status</span><span class="level">${status}</span></div>`;
+        html += `<p><strong>Nationality:</strong> ${personal.nationality}</p>`;
         hasDetails = true;
       }
 
       if (personal.availability) {
-        const avail = personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1);
-        html += `<div class="lang-item"><span>Availability</span><span class="level">${avail}</span></div>`;
+        html += `<p><strong>Availability:</strong> ${personal.availability}</p>`;
+        hasDetails = true;
+      }
+
+      if (personal.relationshipStatus) {
+        html += `<p><strong>Status:</strong> ${personal.relationshipStatus}</p>`;
         hasDetails = true;
       }
 
       if (personal.drivingLicense) {
-        html += `<div class="lang-item"><span>Driving License</span><span class="level">${personal.drivingLicense}</span></div>`;
+        html += `<p><strong>License:</strong> ${personal.drivingLicense}</p>`;
         hasDetails = true;
       }
 
+      // Display websitesAndSocialLinks
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
-          html += `<div class="lang-item"><span>${link.platform}</span><span class="level">${link.url.replace('https://', '')}</span></div>`;
-          hasDetails = true;
+          html += `<p><strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}</p>`;
         });
+        hasDetails = true;
       }
 
       if (hasDetails) {
@@ -536,7 +533,7 @@
     const colorSchemes = {
       black: {
         primary: '#000000',
-        secondary: '#f8f9fa',
+        secondary: '#f5f5f5',
         background: '#f4f4f4',
         text: '#333',
         lightText: '#555',

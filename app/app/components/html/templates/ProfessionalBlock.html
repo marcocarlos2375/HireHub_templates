@@ -205,17 +205,13 @@
         p.innerHTML = `<strong>Phone:</strong> ${personal.phone}`;
         headerContact.appendChild(p);
       }
-      if (personal.website) {
-        const p = document.createElement('p');
-        p.innerHTML = `<strong>Website:</strong> ${personal.website}`;
-        headerContact.appendChild(p);
-      }
+      // personal.website removed - using websitesAndSocialLinks below
 
       // Social links
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
           const p = document.createElement('p');
-          p.innerHTML = `<strong>${link.platform}:</strong> ${link.url}`;
+          p.innerHTML = `<strong>${link.label}:</strong> ${link.url}`;
           headerContact.appendChild(p);
         });
       }
@@ -480,7 +476,9 @@
 
         const dateSpan = document.createElement('span');
         dateSpan.classList.add('entry-date');
-        dateSpan.textContent = `${formatDate(proj.startDate)} – ${formatDate(proj.endDate)}`;
+        if (proj.startDate && proj.endDate) {
+          dateSpan.textContent = `${formatDate(proj.startDate)} – ${formatDate(proj.endDate)}`;
+        }
         div.appendChild(dateSpan);
 
         const content = document.createElement('div');

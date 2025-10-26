@@ -226,10 +226,10 @@
     }
 
     .reference-item {
-      background: #f8fcff;
+      background: #fff;
       padding: 12px;
       border-left: 3px solid #00aaff;
-      border-radius: 4px;
+      
     }
 
     .reference-item h4 {
@@ -606,17 +606,7 @@
         html += `<p><strong>Location:</strong> ${personal.location}</p>`;
       }
 
-      if (personal.website) {
-        html += `<p><strong>Website:</strong> <a href="${personal.website}" target="_blank">${personal.website.replace('https://', '').replace('http://', '')}</a></p>`;
-      }
-
-      if (personal.socialLinks && personal.socialLinks.linkedin) {
-        html += `<p><strong>LinkedIn:</strong> <a href="https://${personal.socialLinks.linkedin}" target="_blank">${personal.socialLinks.linkedin}</a></p>`;
-      }
-
-      if (personal.socialLinks && personal.socialLinks.github) {
-        html += `<p><strong>GitHub:</strong> <a href="https://${personal.socialLinks.github}" target="_blank">${personal.socialLinks.github}</a></p>`;
-      }
+      // Old website and socialLinks fields removed - now using websitesAndSocialLinks below
 
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
@@ -1012,7 +1002,7 @@
     const colorSchemes = {
       blue: {
         primary: '#00aaff',
-        secondary: '#e0f4ff',
+        secondary: '#fff',
         background: '#f4f4f4',
         text: '#333',
         lightText: '#666',
@@ -1021,7 +1011,7 @@
       },
       cyan: {
         primary: '#00d4ff',
-        secondary: '#e0f9ff',
+        secondary: '#fff',
         background: '#f5fcff',
         text: '#2d3748',
         lightText: '#4a5568',
@@ -1030,7 +1020,7 @@
       },
       navy: {
         primary: '#1e3a8a',
-        secondary: '#dbeafe',
+        secondary: '#fff',
         background: '#f8fafc',
         text: '#1e293b',
         lightText: '#475569',
@@ -1039,7 +1029,7 @@
       },
       teal: {
         primary: '#0d9488',
-        secondary: '#ccfbf1',
+        secondary: '#fff',
         background: '#f0fdfa',
         text: '#134e4a',
         lightText: '#14b8a6',
@@ -1048,7 +1038,7 @@
       },
       skyblue: {
         primary: '#0ea5e9',
-        secondary: '#e0f2fe',
+        secondary: '#fff',
         background: '#f0f9ff',
         text: '#0c4a6e',
         lightText: '#075985',
@@ -1057,7 +1047,7 @@
       },
       indigo: {
         primary: '#6366f1',
-        secondary: '#e0e7ff',
+        secondary: '#fff',
         background: '#f5f7ff',
         text: '#312e81',
         lightText: '#4338ca',
@@ -1066,7 +1056,7 @@
       },
       azure: {
         primary: '#0891b2',
-        secondary: '#cffafe',
+        secondary: '#fff',
         background: '#ecfeff',
         text: '#164e63',
         lightText: '#0e7490',
@@ -1075,7 +1065,7 @@
       },
       cobalt: {
         primary: '#2563eb',
-        secondary: '#dbeafe',
+        secondary: '#fff',
         background: '#eff6ff',
         text: '#1e3a8a',
         lightText: '#1e40af',

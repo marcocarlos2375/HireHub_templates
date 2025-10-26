@@ -271,22 +271,10 @@
       }
 
       // Website
-      if (personal.website) {
-        html += `
-          <div class="contact-item">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-            <div>
-              <strong>Website</strong><br>
-              <span>${personal.website.replace('https://', '').replace('http://', '')}</span>
-            </div>
-          </div>
-        `;
-      }
 
-      // Social links from websitesAndSocialLinks array
+      // Old website field removed - using websitesAndSocialLinks
+
+// Social links from websitesAndSocialLinks array
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
           html += `
@@ -296,7 +284,7 @@
                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
               </svg>
               <div>
-                <strong>${link.platform}</strong><br>
+                <strong>${link.label}</strong><br>
                 <span>${link.url}</span>
               </div>
             </div>
@@ -524,7 +512,7 @@
 
       let html = '';
       resumeData.projects.forEach(project => {
-        const startDate = formatDate(project.startDate);
+        const startDate = project.startDate ? formatDate(project.startDate) : '';
         const endDate = project.endDate ? formatDate(project.endDate) : 'Present';
 
         html += `

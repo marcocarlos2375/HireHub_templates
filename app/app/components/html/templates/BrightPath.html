@@ -175,60 +175,60 @@
       const personal = resumeData.personalInfo;
       let html = '';
 
-      if (personal.phone) html += `<tr><td>Phone:</td><td>${personal.phone}</td></tr>`;
-      if (personal.email) html += `<tr><td>Email:</td><td>${personal.email}</td></tr>`;
-      if (personal.location) html += `<tr><td>Location:</td><td>${personal.location}</td></tr>`;
-      if (personal.website) html += `<tr><td>Portfolio:</td><td>${personal.website.replace('https://', '').replace('http://', '')}</td></tr>`;
-      if (personal.socialLinks && personal.socialLinks.linkedin) html += `<tr><td>LinkedIn:</td><td>${personal.socialLinks.linkedin}</td></tr>`;
-      if (personal.socialLinks && personal.socialLinks.github) html += `<tr><td>GitHub:</td><td>${personal.socialLinks.github}</td></tr>`;
+      if (personal.phone) {
+        html += `<tr><td><strong>Phone:</strong></td><td>${personal.phone}</td></tr>`;
+      }
+
+      if (personal.email) {
+        html += `<tr><td><strong>Email:</strong></td><td>${personal.email}</td></tr>`;
+      }
+
+      if (personal.location) {
+        html += `<tr><td><strong>Location:</strong></td><td>${personal.location}</td></tr>`;
+      }
 
       document.getElementById('contact-info').innerHTML = html;
     }
 
-    // Populate personal details with ALL additional fields
+    // Populate personal details section
     function populatePersonalDetails() {
       const personal = resumeData.personalInfo;
       let html = '';
       let hasDetails = false;
 
-      // Birth Date
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
         const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        html += `<tr><td>Birth Date:</td><td>${formattedDate}</td></tr>`;
+        html += `<tr><td><strong>Birth Date:</strong></td><td>${formattedDate}</td></tr>`;
         hasDetails = true;
       }
 
-      // Nationality
       if (personal.nationality) {
-        html += `<tr><td>Nationality:</td><td>${personal.nationality}</td></tr>`;
+        html += `<tr><td><strong>Nationality:</strong></td><td>${personal.nationality}</td></tr>`;
         hasDetails = true;
       }
 
-      // Relationship Status
-      if (personal.relationshipStatus) {
-        html += `<tr><td>Status:</td><td>${personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1)}</td></tr>`;
-        hasDetails = true;
-      }
-
-      // Availability
       if (personal.availability) {
-        html += `<tr><td>Availability:</td><td>${personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1)}</td></tr>`;
+        html += `<tr><td><strong>Availability:</strong></td><td>${personal.availability}</td></tr>`;
         hasDetails = true;
       }
 
-      // Driving License
+      if (personal.relationshipStatus) {
+        html += `<tr><td><strong>Status:</strong></td><td>${personal.relationshipStatus}</td></tr>`;
+        hasDetails = true;
+      }
+
       if (personal.drivingLicense) {
-        html += `<tr><td>License:</td><td>${personal.drivingLicense}</td></tr>`;
+        html += `<tr><td><strong>License:</strong></td><td>${personal.drivingLicense}</td></tr>`;
         hasDetails = true;
       }
 
-      // Websites and Social Links
+      // Display websitesAndSocialLinks
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
-          html += `<tr><td>${link.label}:</td><td>${link.url.replace('https://', '').replace('http://', '')}</td></tr>`;
-          hasDetails = true;
+          html += `<tr><td><strong>${link.label}:</strong></td><td>${link.url.replace('https://', '').replace('http://', '')}</td></tr>`;
         });
+        hasDetails = true;
       }
 
       if (hasDetails) {
@@ -551,7 +551,7 @@
     const colorSchemes = {
       yellow: {
         primary: '#e6b800',
-        secondary: '#f8f4e6',
+        secondary: '#fff',
         background: '#f9f9f9',
         text: '#2c2c2c',
         lightText: '#555',

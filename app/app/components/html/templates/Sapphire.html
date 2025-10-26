@@ -95,7 +95,7 @@
   </div>
 
   <div class="control-panel">
-    <h3>💎 Customize</h3>
+    <h3>Customize</h3>
     <div class="control-group">
       <label>Font:</label>
       <select id="font-selector">
@@ -152,8 +152,8 @@
       [
         { label: 'Location', value: personal.location },
         { label: 'Email', value: personal.email },
-        { label: 'Phone', value: personal.phone },
-        { label: 'Website', value: personal.website }
+        { label: 'Phone', value: personal.phone }
+        // Website removed - using websitesAndSocialLinks below
       ].forEach(item => {
         if (item.value) {
           const p = document.createElement('p');
@@ -165,7 +165,7 @@
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
           const p = document.createElement('p');
-          p.innerHTML = '<strong>' + link.platform + ':</strong> ' + link.url;
+          p.innerHTML = '<strong>' + link.label + ':</strong> ' + link.url;
           contactDiv.appendChild(p);
         });
       }

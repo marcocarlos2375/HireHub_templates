@@ -167,7 +167,7 @@
       const contactInfo = [];
       if (personal.phone) contactInfo.push(personal.phone);
       if (personal.email) contactInfo.push(personal.email);
-      if (personal.website) contactInfo.push(personal.website.replace('https://', '').replace('http://', ''));
+      // personal.website removed - using websitesAndSocialLinks via populateSocialLinks()
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
         const age = new Date().getFullYear() - birthDate.getFullYear();
@@ -237,9 +237,10 @@
         const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
 
         html += `
-          <div class="entry">
-            <h3>${job.jobTitle}, ${job.company}</h3>
+          <div class="entry-item">
+            <h4>${job.jobTitle} at ${job.company}</h4>
             <span class="date">${startDate} – ${endDate}</span>
+            <span class="location">${job.location}</span>
             <p>${job.description}</p>
           </div>
         `;
@@ -248,287 +249,12 @@
       employmentContainer.innerHTML = html;
     }
 
-    // Education
-    function populateEducation() {
-      const educationContainer = document.getElementById('education');
-
-      if (!resumeData.education || resumeData.education.length === 0) {
-        educationContainer.innerHTML = '';
-        return;
-      }
-
-      let html = '';
-      resumeData.education.forEach(edu => {
-        const startDate = formatDate(edu.startDate);
-        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
-
-        html += `
-          <div class="entry">
-            <h3>${edu.school}</h3>
-            <p>${edu.degree}, ${startDate} – ${endDate}</p>
-            ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
-          </div>
-        `;
-      });
-
-      educationContainer.innerHTML = html;
-    }
-
-    // Internships
-    function populateInternships() {
-      const internshipsSection = document.getElementById('internships-section');
-      const internshipsContainer = document.getElementById('internships');
-
-      if (!resumeData.internships || resumeData.internships.length === 0) {
-        internshipsSection.style.display = 'none';
-        return;
-      }
-
-      internshipsSection.style.display = 'block';
-      let html = '';
-      resumeData.internships.forEach(internship => {
-        const startDate = formatDate(internship.startDate);
-        const endDate = formatDate(internship.endDate);
-
-        html += `
-          <div class="entry">
-            <h3>${internship.position}, ${internship.company}</h3>
-            <span class="date">${startDate} – ${endDate}</span>
-            ${internship.description ? `<p>${internship.description}</p>` : ''}
-          </div>
-        `;
-      });
-
-      internshipsContainer.innerHTML = html;
-    }
-
-    // Projects
-    function populateProjects() {
-      const projectsSection = document.getElementById('projects-section');
-      const projectsContainer = document.getElementById('projects');
-
-      if (!resumeData.projects || resumeData.projects.length === 0) {
-        projectsSection.style.display = 'none';
-        return;
-      }
-
-      projectsSection.style.display = 'block';
-      let html = '';
-      resumeData.projects.forEach(project => {
-        html += `
-          <div class="entry">
-            <h3>${project.name}</h3>
-            <p>${project.description}</p>
-            ${project.technologies ? `<p style="font-size: 12px; color: #777;"><em>Technologies: ${project.technologies}</em></p>` : ''}
-          </div>
-        `;
-      });
-
-      projectsContainer.innerHTML = html;
-    }
-
-    // Publications
-    function populatePublications() {
-      const publicationsSection = document.getElementById('publications-section');
-      const publicationsContainer = document.getElementById('publications');
-
-      if (!resumeData.publications || resumeData.publications.length === 0) {
-        publicationsSection.style.display = 'none';
-        return;
-      }
-
-      publicationsSection.style.display = 'block';
-      let html = '';
-      resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.publicationDate);
-        html += `
-          <div class="entry">
-            <h3>${pub.title}</h3>
-            <span class="date">${pub.publisher}, ${date}</span>
-            ${pub.description ? `<p>${pub.description}</p>` : ''}
-          </div>
-        `;
-      });
-
-      publicationsContainer.innerHTML = html;
-    }
-
-    // Certifications & Awards
-    function populateCertificationsAndAwards() {
-      const section = document.getElementById('cert-awards-section');
-      const container = document.getElementById('cert-awards');
-
-      const courses = resumeData.courses || [];
-      const awards = resumeData.customSections?.awards || [];
-
-      if (courses.length === 0 && awards.length === 0) {
-        section.style.display = 'none';
-        return;
-      }
-
-      section.style.display = 'block';
-      let html = '';
-
-      // Certifications
-      if (courses.length > 0) {
-        courses.forEach(course => {
-          const date = formatDate(course.completionDate);
-          html += `
-            <div class="entry">
-              <h3>${course.title}</h3>
-              <p>${course.institution}, ${date}</p>
-              ${course.description ? `<p style="font-size: 12px;">${stripHtmlTags(course.description)}</p>` : ''}
-            </div>
-          `;
-        });
-      }
-
-      // Awards
-      if (awards.length > 0) {
-        awards.forEach(award => {
-          const startYear = award.startDate ? new Date(award.startDate).getFullYear() : '';
-          html += `
-            <div class="entry">
-              <h3>${award.title}</h3>
-              <p>${award.city || ''}${startYear ? ` ${startYear}` : ''}</p>
-              ${award.description ? `<p style="font-size: 12px;">${stripHtmlTags(award.description)}</p>` : ''}
-            </div>
-          `;
-        });
-      }
-
-      container.innerHTML = html;
-    }
-
-    // Skills
-    function populateSkills() {
-      const skillsContainer = document.getElementById('skills-container');
-
-      if (!resumeData.skills || resumeData.skills.length === 0) {
-        skillsContainer.innerHTML = '';
-        return;
-      }
-
-      // Group skills by category
-      const groupedSkills = {};
-      resumeData.skills.forEach(skill => {
-        if (!groupedSkills[skill.category]) {
-          groupedSkills[skill.category] = [];
-        }
-        groupedSkills[skill.category].push(skill);
-      });
-
-      let html = '';
-      const skillGroups = resumeData.skillGroups || [];
-
-      // Show skills grouped
-      skillGroups.forEach(group => {
-        const skills = groupedSkills[group.id];
-        if (!skills || skills.length === 0) return;
-
-        html += `<p><strong>${group.name}:</strong> ${skills.map(s => s.skill).join(' | ')}</p>`;
-      });
-
-      skillsContainer.innerHTML = html;
-    }
-
-    // Languages
-    function populateLanguages() {
-      const languagesSection = document.getElementById('languages-section');
-      const languagesList = document.getElementById('languages-list');
-
-      if (!resumeData.languages || resumeData.languages.length === 0) {
-        languagesSection.style.display = 'none';
-        return;
-      }
-
-      languagesSection.style.display = 'block';
-      const langStrings = resumeData.languages.map(lang => `${lang.language}: ${lang.level}`);
-      languagesList.innerHTML = `<p>${langStrings.join(' | ')}</p>`;
-    }
-
-    // Hobbies
-    function populateHobbies() {
-      const hobbiesSection = document.getElementById('hobbies-section');
-      const hobbiesList = document.getElementById('hobbies-list');
-
-      if (!resumeData.hobbies || resumeData.hobbies.length === 0) {
-        hobbiesSection.style.display = 'none';
-        return;
-      }
-
-      hobbiesSection.style.display = 'block';
-      hobbiesList.innerHTML = `<p>${resumeData.hobbies.join(' | ')}</p>`;
-    }
-
-    // Volunteering
-    function populateVolunteering() {
-      const volunteeringSection = document.getElementById('volunteering-section');
-      const volunteeringContainer = document.getElementById('volunteering');
-
-      const volunteering = resumeData.customSections?.volunteering || [];
-      if (volunteering.length === 0) {
-        volunteeringSection.style.display = 'none';
-        return;
-      }
-
-      volunteeringSection.style.display = 'block';
-      let html = '';
-      volunteering.forEach(vol => {
-        const startDate = formatDate(vol.startDate);
-        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-
-        html += `
-          <div class="entry">
-            <h3>${vol.title}</h3>
-            <span class="date">${startDate} – ${endDate}, ${vol.city}</span>
-            ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
-          </div>
-        `;
-      });
-
-      volunteeringContainer.innerHTML = html;
-    }
-
-    // References
-    function populateReferences() {
-      const referencesSection = document.getElementById('references-section');
-      const referencesList = document.getElementById('references-list');
-
-      if (!resumeData.references || resumeData.references.length === 0) {
-        referencesSection.style.display = 'none';
-        return;
-      }
-
-      referencesSection.style.display = 'block';
-      let html = '';
-      resumeData.references.forEach(ref => {
-        html += `
-          <div class="entry">
-            <h3>${ref.name}</h3>
-            <p>${ref.position}, ${ref.company}</p>
-            <p style="font-size: 12px; color: #777;">${ref.email} | ${ref.phone}</p>
-          </div>
-        `;
-      });
-
-      referencesList.innerHTML = html;
-    }
-
     // Social Links
     function populateSocialLinks() {
       const socialLinksSection = document.getElementById('social-links-section');
       const socialLinksContainer = document.getElementById('social-links');
-
       const personal = resumeData.personalInfo;
       const links = [];
-
-      if (personal.socialLinks) {
-        if (personal.socialLinks.linkedin) links.push('LinkedIn');
-        if (personal.socialLinks.github) links.push('GitHub');
-        if (personal.socialLinks.twitter) links.push('Twitter');
-      }
-      if (personal.website) links.push('Portfolio');
 
       // Add websitesAndSocialLinks if available
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
@@ -538,12 +264,12 @@
       }
 
       if (links.length === 0) {
-        socialLinksSection.style.display = 'none';
+        if (socialLinksSection) socialLinksSection.style.display = 'none';
         return;
       }
 
-      socialLinksSection.style.display = 'block';
-      socialLinksContainer.innerHTML = `<p>${links.join(' | ')}</p>`;
+      if (socialLinksSection) socialLinksSection.style.display = 'block';
+      if (socialLinksContainer) socialLinksContainer.innerHTML = `<p>${links.join(' | ')}</p>`;
     }
 
     // Helper function to format dates

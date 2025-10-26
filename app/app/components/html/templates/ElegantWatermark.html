@@ -219,53 +219,17 @@
       if (personal.phone) {
         html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
       }
-
       if (personal.email) {
         html += `<p><strong>Email:</strong> ${personal.email}</p>`;
       }
-
       if (personal.location) {
         html += `<p><strong>Location:</strong> ${personal.location}</p>`;
       }
 
-      if (personal.website) {
-        html += `<p><strong>Website:</strong> ${personal.website.replace('https://', '').replace('http://', '')}</p>`;
-      }
-
-      if (personal.socialLinks && personal.socialLinks.linkedin) {
-        html += `<p><strong>LinkedIn:</strong> ${personal.socialLinks.linkedin}</p>`;
-      }
-
-      if (personal.socialLinks && personal.socialLinks.github) {
-        html += `<p><strong>GitHub:</strong> ${personal.socialLinks.github}</p>`;
-      }
-
-      if (personal.birthDate) {
-        const birthDate = new Date(personal.birthDate);
-        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
-      }
-
-      if (personal.nationality) {
-        html += `<p><strong>Nationality:</strong> ${personal.nationality}</p>`;
-      }
-
-      if (personal.relationshipStatus) {
-        html += `<p><strong>Status:</strong> ${personal.relationshipStatus}</p>`;
-      }
-
-      if (personal.availability) {
-        html += `<p><strong>Availability:</strong> ${personal.availability}</p>`;
-      }
-
-      if (personal.drivingLicense) {
-        html += `<p><strong>Driving License:</strong> ${personal.drivingLicense}</p>`;
-      }
-
-      // Add websitesAndSocialLinks if available
+      // Display websitesAndSocialLinks
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
-          html += `<p><strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}</p>`;
+          html += `<p><strong>${link.label}:</strong> ${link.url}</p>`;
         });
       }
 

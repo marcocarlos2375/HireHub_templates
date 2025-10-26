@@ -654,25 +654,21 @@ function populateHeader() {
 
   // Contact info
   let html = '';
-  if (personal.location) html += `<span>${personal.location}</span>`;
-  if (personal.email) html += `<span>${personal.email}</span>`;
-  if (personal.phone) html += `<span>${personal.phone}</span>`;
-  if (personal.website) html += `<span>${personal.website.replace('https://', '')}</span>`;
-  if (personal.socialLinks?.linkedin) html += `<span>${personal.socialLinks.linkedin.replace('https://linkedin.com/in/', 'linkedin.com/in/')}</span>`;
+  if (personal.email) html += `<span>Email: ${personal.email}</span>`;
+  if (personal.phone) html += `<span> | Phone: ${personal.phone}</span>`;
+  if (personal.location) html += `<span> | Location: ${personal.location}</span>`;
 
   document.getElementById('contact-info').innerHTML = html;
 }
 
-// Populate personal details
+// Populate personal details section
 function populatePersonalDetails() {
   const personal = resumeData.personalInfo;
-  let items = [];
+  const items = [];
 
   if (personal.birthDate) {
     const birthDate = new Date(personal.birthDate);
-    const formattedDate = birthDate.toLocaleDateString('en-US', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    });
+    const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     items.push(`<strong>Birth Date:</strong> ${formattedDate}`);
   }
 
@@ -680,23 +676,23 @@ function populatePersonalDetails() {
     items.push(`<strong>Nationality:</strong> ${personal.nationality}`);
   }
 
-  if (personal.relationshipStatus) {
-    const status = personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1);
-    items.push(`<strong>Relationship Status:</strong> ${status}`);
+  if (personal.availability) {
+    items.push(`<strong>Availability:</strong> ${personal.availability}`);
   }
 
-  if (personal.availability) {
-    const avail = personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1);
-    items.push(`<strong>Availability:</strong> ${avail}`);
+  if (personal.relationshipStatus) {
+    items.push(`<strong>Status:</strong> ${personal.relationshipStatus}`);
   }
 
   if (personal.drivingLicense) {
     items.push(`<strong>Driving License:</strong> ${personal.drivingLicense}`);
   }
 
+  // Display websitesAndSocialLinks
   if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
-    const links = personal.websitesAndSocialLinks.map(link => `${link.platform}: ${link.url.replace('https://', '')}`).join(', ');
-    items.push(`<strong>Websites & Social:</strong> ${links}`);
+    personal.websitesAndSocialLinks.forEach(link => {
+      items.push(`<strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}`);
+    });
   }
 
   if (items.length > 0) {

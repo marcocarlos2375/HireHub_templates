@@ -192,71 +192,56 @@
     function populateContactInfo() {
       const personal = resumeData.personalInfo;
       let html = '';
+      let hasDetails = false;
 
       if (personal.phone) {
-        html += `<div class="contact-item">${svgIcons.phone}<span>${personal.phone}</span></div>`;
+        html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
+        hasDetails = true;
       }
+
       if (personal.email) {
-        html += `<div class="contact-item">${svgIcons.email}<span>${personal.email}</span></div>`;
+        html += `<p><strong>Email:</strong> ${personal.email}</p>`;
+        hasDetails = true;
       }
-      if (personal.website) {
-        html += `<div class="contact-item">${svgIcons.link}<span>${personal.website.replace('https://', '')}</span></div>`;
-      }
+
       if (personal.location) {
-        html += `<div class="contact-item">${svgIcons.location}<span>${personal.location}</span></div>`;
+        html += `<p><strong>Location:</strong> ${personal.location}</p>`;
+        hasDetails = true;
       }
-      if (personal.socialLinks?.linkedin) {
-        html += `<div class="contact-item">${svgIcons.linkedin}<span>${personal.socialLinks.linkedin.replace('https://linkedin.com/in/', '')}</span></div>`;
-      }
-      if (personal.socialLinks?.github) {
-        html += `<div class="contact-item">${svgIcons.github}<span>${personal.socialLinks.github.replace('https://github.com/', '')}</span></div>`;
-      }
-
-      document.getElementById('contact-info').innerHTML = html;
-    }
-
-    // Populate personal details
-    function populatePersonalDetails() {
-      const personal = resumeData.personalInfo;
-      let html = '';
-      let hasDetails = false;
 
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
-        const formattedDate = birthDate.toLocaleDateString('en-US', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        });
-        html += `<div class="contact-item">${svgIcons.calendar}<span>Birth: ${formattedDate}</span></div>`;
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
         hasDetails = true;
       }
 
       if (personal.nationality) {
-        html += `<div class="contact-item">${svgIcons.globe}<span>Nationality: ${personal.nationality}</span></div>`;
-        hasDetails = true;
-      }
-
-      if (personal.relationshipStatus) {
-        const status = personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1);
-        html += `<div class="contact-item">${svgIcons.user}<span>Status: ${status}</span></div>`;
+        html += `<p><strong>Nationality:</strong> ${personal.nationality}</p>`;
         hasDetails = true;
       }
 
       if (personal.availability) {
-        const avail = personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1);
-        html += `<div class="contact-item">${svgIcons.calendar}<span>Availability: ${avail}</span></div>`;
+        html += `<p><strong>Availability:</strong> ${personal.availability}</p>`;
+        hasDetails = true;
+      }
+
+      if (personal.relationshipStatus) {
+        html += `<p><strong>Status:</strong> ${personal.relationshipStatus}</p>`;
         hasDetails = true;
       }
 
       if (personal.drivingLicense) {
-        html += `<div class="contact-item">${svgIcons.user}<span>License: ${personal.drivingLicense}</span></div>`;
+        html += `<p><strong>License:</strong> ${personal.drivingLicense}</p>`;
         hasDetails = true;
       }
 
+      // Display websitesAndSocialLinks
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
         personal.websitesAndSocialLinks.forEach(link => {
-          html += `<div class="contact-item">${svgIcons.link}<span>${link.platform}: ${link.url.replace('https://', '')}</span></div>`;
-          hasDetails = true;
+          html += `<p><strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}</p>`;
         });
+        hasDetails = true;
       }
 
       if (hasDetails) {

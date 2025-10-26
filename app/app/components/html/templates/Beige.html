@@ -182,7 +182,7 @@
       if (personal.phone) parts.push(`<span>${personal.phone}</span>`);
       if (personal.email) parts.push(`<span>${personal.email}</span>`);
       if (personal.location) parts.push(`<span>${personal.location}</span>`);
-      if (personal.website) parts.push(`<span>${personal.website.replace('https://', '').replace('http://', '')}</span>`);
+      // personal.website removed - using websitesAndSocialLinks below
 
       document.getElementById('contact-info').innerHTML = parts.join(' | ');
     }
@@ -197,53 +197,16 @@
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
         const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        html += `<p><strong>Birth Date:</strong><br>${formattedDate}</p>`;
+        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
         hasDetails = true;
       }
 
-      // Nationality
-      if (personal.nationality) {
-        html += `<p><strong>Nationality:</strong><br>${personal.nationality}</p>`;
-        hasDetails = true;
-      }
-
-      // Relationship Status
-      if (personal.relationshipStatus) {
-        html += `<p><strong>Status:</strong><br>${personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1)}</p>`;
-        hasDetails = true;
-      }
-
-      // Availability
-      if (personal.availability) {
-        html += `<p><strong>Availability:</strong><br>${personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1)}</p>`;
-        hasDetails = true;
-      }
-
-      // Driving License
-      if (personal.drivingLicense) {
-        html += `<p><strong>License:</strong><br>${personal.drivingLicense}</p>`;
-        hasDetails = true;
-      }
-
-      // Websites and Social Links
+      // Display websitesAndSocialLinks
       if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
-        html += `<p><strong>Links:</strong></p>`;
         personal.websitesAndSocialLinks.forEach(link => {
           html += `<p style="margin-left: 10px;">${link.label}: ${link.url.replace('https://', '').replace('http://', '')}</p>`;
         });
         hasDetails = true;
-      }
-
-      // Social Links
-      if (personal.socialLinks) {
-        if (personal.socialLinks.linkedin) {
-          html += `<p><strong>LinkedIn:</strong><br>${personal.socialLinks.linkedin}</p>`;
-          hasDetails = true;
-        }
-        if (personal.socialLinks.github) {
-          html += `<p><strong>GitHub:</strong><br>${personal.socialLinks.github}</p>`;
-          hasDetails = true;
-        }
       }
 
       if (hasDetails) {
@@ -591,7 +554,7 @@
     const colorSchemes = {
       beige: {
         primary: '#f0e5da',
-        secondary: '#e8e0d8',
+        secondary: '#f5f5f5',
         background: '#f4f4f4',
         text: '#333',
         lightText: '#555',

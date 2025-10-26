@@ -372,11 +372,10 @@ section h3 {
       let html = '';
 
       // Website
-      if (personal.website) {
-        html += `<p>${personal.website.replace('https://', '').replace('http://', '')}</p>`;
-      }
 
-      // Email
+      // Old website field removed - using websitesAndSocialLinks
+
+// Email
       if (personal.email) {
         html += `<p><a href="mailto:${personal.email}">${personal.email}</a></p>`;
       }
@@ -391,17 +390,7 @@ section h3 {
         html += `<p>${personal.location}</p>`;
       }
 
-      // LinkedIn
-      if (personal.socialLinks && personal.socialLinks.linkedin) {
-        html += `<p>LinkedIn: ${personal.socialLinks.linkedin}</p>`;
-      }
-
-      // GitHub
-      if (personal.socialLinks && personal.socialLinks.github) {
-        html += `<p>GitHub: ${personal.socialLinks.github}</p>`;
-      }
-
-      // Birth Date
+      // LinkedIn// GitHub// Birth Date
       if (personal.birthDate) {
         const birthDate = new Date(personal.birthDate);
         const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
