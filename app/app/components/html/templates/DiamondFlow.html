@@ -184,8 +184,8 @@
     // Populate header
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name ? personal.name.toUpperCase() : '';
-      document.getElementById('job-title').textContent = personal.title ? personal.title.toUpperCase() : '';
+      document.getElementById('name').textContent = personal.lastName ? personal.lastName.toUpperCase() : '';
+      document.getElementById('job-title').textContent = personal.jobTitle ? personal.jobTitle.toUpperCase() : '';
     }
 
     // Populate contact info
@@ -325,7 +325,7 @@
           'C2': 100, 'C1': 90, 'B2': 80, 'B1': 70, 'A2': 60, 'A1': 50,
           'Native': 100, 'Fluent': 100, 'Advanced': 80, 'Intermediate': 60, 'Basic': 40
         };
-        const proficiency = proficiencyMap[lang.proficiency] || 60;
+        const proficiency = proficiencyMap[lang.level] || 60;
 
         html += `
           <div class="skill">
@@ -390,7 +390,7 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
         const cleanDesc = stripHtmlTags(job.description);
 
         html += `
@@ -398,7 +398,7 @@
             <div class="diamond"></div>
             <div class="content">
               <h3>${job.company}</h3>
-              <p><em>${job.title}</em> | ${startDate} – ${endDate}</p>
+              <p><em>${job.jobTitle}</em> | ${startDate} – ${endDate}</p>
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
             </div>
           </div>
@@ -449,7 +449,7 @@
             <div class="diamond"></div>
             <div class="content">
               <h3>${project.name}</h3>
-              ${project.url ? `<p style="margin-bottom: 5px;"><a href="${project.url}" target="_blank">${project.url}</a></p>` : ''}
+              ${project.link ? `<p style="margin-bottom: 5px;"><a href="${project.link}" target="_blank">${project.link}</a></p>` : ''}
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
               ${technologies ? `<p style="font-size: 13px; margin-top: 5px;"><strong>Technologies:</strong> ${technologies}</p>` : ''}
             </div>
@@ -467,7 +467,7 @@
 
       let html = '';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
@@ -490,14 +490,14 @@
 
       let html = '';
       resumeData.customSections.awards.forEach(award => {
-        const date = formatDate(award.date);
+        const date = formatDate(award.startDate);
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
             <div class="content">
               <h3>${award.title}</h3>
-              <p>${award.awarder} | ${date}</p>
-              ${award.summary ? `<p style="font-size: 13px; margin-top: 5px;">${stripHtmlTags(award.summary)}</p>` : ''}
+              <p>${award.city} | ${date}</p>
+              ${award.description ? `<p style="font-size: 13px; margin-top: 5px;">${stripHtmlTags(award.description)}</p>` : ''}
             </div>
           </div>
         `;
@@ -515,14 +515,14 @@
       resumeData.customSections.volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
         const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-        const cleanDesc = stripHtmlTags(vol.summary);
+        const cleanDesc = stripHtmlTags(vol.description);
 
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
             <div class="content">
-              <h3>${vol.organization}</h3>
-              <p><em>${vol.position}</em> | ${startDate} – ${endDate}</p>
+              <h3>${vol.city}</h3>
+              <p><em>${vol.title}</em> | ${startDate} – ${endDate}</p>
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
             </div>
           </div>

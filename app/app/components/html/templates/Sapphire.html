@@ -139,8 +139,8 @@
 
     function populateAll() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name || '';
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('name').textContent = personal.lastName || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
       
       if (personal.profileImage) {
         document.getElementById('profile-img').src = personal.profileImage;

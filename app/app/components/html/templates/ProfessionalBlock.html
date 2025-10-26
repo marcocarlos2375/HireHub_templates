@@ -177,8 +177,8 @@
 
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name || '';
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('name').textContent = personal.lastName || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
 
       if (personal.profileImage) {
         const img = document.getElementById('profile-img');
@@ -298,7 +298,7 @@
           skillDiv.classList.add('skill');
 
           const nameSpan = document.createElement('span');
-          nameSpan.textContent = skill.name;
+          nameSpan.textContent = skill.skill;
 
           const progressDiv = document.createElement('div');
           progressDiv.classList.add('progress');
@@ -328,7 +328,7 @@
       resumeData.languages.forEach(lang => {
         const div = document.createElement('div');
         div.classList.add('language-item');
-        div.innerHTML = `<strong>${lang.language}</strong><span>${lang.proficiency}</span>`;
+        div.innerHTML = `<strong>${lang.language}</strong><span>${lang.level}</span>`;
         container.appendChild(div);
       });
 
@@ -363,8 +363,8 @@
       resumeData.customSections.awards.forEach(award => {
         const div = document.createElement('div');
         div.classList.add('cert-item');
-        const dateStr = award.date ? ` (${formatDate(award.date)})` : '';
-        const issuer = award.issuer || '';
+        const dateStr = award.startDate ? ` (${formatDate(award.startDate)})` : '';
+        const issuer = award.city || '';
         div.innerHTML = `<strong>${award.title || ''}</strong><span>${issuer}${dateStr}</span>`;
         container.appendChild(div);
       });
@@ -392,7 +392,7 @@
 
         const h4 = document.createElement('h4');
         h4.classList.add('entry-role');
-        h4.textContent = edu.institution || '';
+        h4.textContent = edu.school || '';
         content.appendChild(h4);
 
         if (edu.degree) {
@@ -443,7 +443,7 @@
 
         const h4 = document.createElement('h4');
         h4.classList.add('entry-role');
-        h4.textContent = `${job.jobTitle || ''} at ${job.employer || ''}`;
+        h4.textContent = `${job.jobTitle || ''} at ${job.company || ''}`;
         content.appendChild(h4);
 
         if (job.description) {
@@ -488,7 +488,7 @@
 
         const h4 = document.createElement('h4');
         h4.classList.add('entry-role');
-        h4.textContent = proj.title || '';
+        h4.textContent = proj.name || '';
         content.appendChild(h4);
 
         if (proj.description) {
@@ -526,7 +526,7 @@
         const div = document.createElement('div');
         div.classList.add('cert-item');
         const dateStr = course.completionDate ? ` (${formatDate(course.completionDate)})` : '';
-        div.innerHTML = `<strong>${course.name || ''}</strong><span>${course.institution || ''}${dateStr}</span>`;
+        div.innerHTML = `<strong>${course.title || ''}</strong><span>${course.institution || ''}${dateStr}</span>`;
         container.appendChild(div);
       });
 
@@ -543,10 +543,10 @@
         const div = document.createElement('div');
         div.classList.add('entry-block');
 
-        if (pub.date) {
+        if (pub.publicationDate) {
           const dateSpan = document.createElement('span');
           dateSpan.classList.add('entry-date');
-          dateSpan.textContent = formatDate(pub.date);
+          dateSpan.textContent = formatDate(pub.publicationDate);
           div.appendChild(dateSpan);
         }
 
@@ -600,7 +600,7 @@
 
         const h4 = document.createElement('h4');
         h4.classList.add('entry-role');
-        h4.textContent = vol.role || '';
+        h4.textContent = vol.title || '';
         content.appendChild(h4);
 
         if (vol.description) {
@@ -612,10 +612,10 @@
 
         div.appendChild(content);
 
-        if (vol.organization) {
+        if (vol.city) {
           const locSpan = document.createElement('span');
           locSpan.classList.add('entry-location');
-          locSpan.textContent = vol.organization;
+          locSpan.textContent = vol.city;
           div.appendChild(locSpan);
         }
 
@@ -658,10 +658,10 @@
           div.appendChild(p);
         }
 
-        if (ref.relationship) {
+        if (ref.position) {
           const p = document.createElement('p');
           const em = document.createElement('em');
-          em.textContent = ref.relationship;
+          em.textContent = ref.position;
           p.appendChild(em);
           div.appendChild(p);
         }

@@ -169,8 +169,8 @@
     // Populate header
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name || '';
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('name').textContent = personal.lastName || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
 
       // Profile image
       if (personal.profileImage) {
@@ -327,7 +327,7 @@
         html += `
           <div class="lang-item">
             <span>${lang.language}</span>
-            <span class="level">${lang.proficiency}</span>
+            <span class="level">${lang.level}</span>
           </div>
         `;
       });
@@ -376,13 +376,13 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
         const cleanDesc = stripHtmlTags(job.description);
 
         html += `
           <div class="job">
             <span class="date">${startDate} - ${endDate}</span>
-            <h4>${job.title}</h4>
+            <h4>${job.jobTitle}</h4>
             <p>${job.company} — ${job.location || ''}</p>
             ${cleanDesc ? `<p>${cleanDesc}</p>` : ''}
           </div>
@@ -405,7 +405,7 @@
         html += `
           <div class="job">
             <h4>${project.name}</h4>
-            ${project.url ? `<p><a href="${project.url}" target="_blank">${project.url}</a></p>` : ''}
+            ${project.link ? `<p><a href="${project.link}" target="_blank">${project.link}</a></p>` : ''}
             ${cleanDesc ? `<p>${cleanDesc}</p>` : ''}
             ${technologies ? `<p><strong>Technologies:</strong> ${technologies}</p>` : ''}
           </div>
@@ -422,7 +422,7 @@
 
       let html = '';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `
           <div class="job">
             <span class="date">${date}</span>
@@ -443,13 +443,13 @@
 
       let html = '';
       resumeData.customSections.awards.forEach(award => {
-        const date = formatDate(award.date);
+        const date = formatDate(award.startDate);
         html += `
           <div class="job">
             <span class="date">${date}</span>
             <h4>${award.title}</h4>
-            <p>${award.awarder}</p>
-            ${award.summary ? `<p>${stripHtmlTags(award.summary)}</p>` : ''}
+            <p>${award.city}</p>
+            ${award.description ? `<p>${stripHtmlTags(award.description)}</p>` : ''}
           </div>
         `;
       });
@@ -466,13 +466,13 @@
       resumeData.customSections.volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
         const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-        const cleanDesc = stripHtmlTags(vol.summary);
+        const cleanDesc = stripHtmlTags(vol.description);
 
         html += `
           <div class="job">
             <span class="date">${startDate} - ${endDate}</span>
-            <h4>${vol.position}</h4>
-            <p>${vol.organization}</p>
+            <h4>${vol.title}</h4>
+            <p>${vol.city}</p>
             ${cleanDesc ? `<p>${cleanDesc}</p>` : ''}
           </div>
         `;

@@ -192,15 +192,15 @@
     // Populate header
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      if (personal.name) {
+      if (personal.lastName) {
         // Split name into first and last for styling
-        const nameParts = personal.name.split(' ');
+        const nameParts = personal.lastName.split(' ');
         const firstName = nameParts[0] || '';
         const lastName = nameParts.slice(1).join(' ') || '';
         document.getElementById('name-header').innerHTML =
           `<span class="firstname">${firstName.toUpperCase()}</span> <span class="lastname">${lastName.toUpperCase()}</span>`;
       }
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
 
       // Profile image
       if (personal.profileImage) {
@@ -343,7 +343,7 @@
         html += `
           <div class="language-item">
             <span class="lang-name">${lang.language}</span>
-            <span class="lang-level">${lang.proficiency}</span>
+            <span class="lang-level">${lang.level}</span>
           </div>
         `;
       });
@@ -401,7 +401,7 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
         const cleanDesc = stripHtmlTags(job.description);
 
         html += `
@@ -409,7 +409,7 @@
             <div class="circle"></div>
             <div class="timeline-content">
               <p class="date">${startDate} - ${endDate}</p>
-              <p class="title">${job.title} - ${job.company}</p>
+              <p class="title">${job.jobTitle} - ${job.company}</p>
               ${cleanDesc ? `<p style="font-size: 12px; line-height: 1.4; margin-top: 8px; color: var(--secondary-color);">${cleanDesc}</p>` : ''}
             </div>
           </div>
@@ -460,7 +460,7 @@
             <div class="circle"></div>
             <div class="timeline-content">
               <p class="title">${project.name}</p>
-              ${project.url ? `<p style="font-size: 11px; margin: 2px 0;"><a href="${project.url}" target="_blank">${project.url}</a></p>` : ''}
+              ${project.link ? `<p style="font-size: 11px; margin: 2px 0;"><a href="${project.link}" target="_blank">${project.link}</a></p>` : ''}
               ${cleanDesc ? `<p style="font-size: 12px; line-height: 1.4; margin-top: 5px; color: var(--secondary-color);">${cleanDesc}</p>` : ''}
               ${technologies ? `<p style="font-size: 11px; margin-top: 5px; color: var(--accent-color);"><strong>Tech:</strong> ${technologies}</p>` : ''}
             </div>
@@ -478,7 +478,7 @@
 
       let html = '';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `
           <div class="publication-item">
             <p class="pub-title">${pub.title}</p>
@@ -498,7 +498,7 @@
 
       let html = '';
       resumeData.customSections.awards.forEach(award => {
-        const year = award.date ? new Date(award.date).getFullYear() : '';
+        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
         html += `
           <div class="award-item">
             <span class="award-name">${award.title}</span>
@@ -519,11 +519,11 @@
       resumeData.customSections.volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
         const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-        const cleanDesc = stripHtmlTags(vol.summary);
+        const cleanDesc = stripHtmlTags(vol.description);
 
         html += `
           <div class="volunteer-item">
-            <p class="vol-title">${vol.position} - ${vol.organization}</p>
+            <p class="vol-title">${vol.title} - ${vol.city}</p>
             <p class="vol-date">${startDate} - ${endDate}</p>
             ${cleanDesc ? `<p class="vol-desc">${cleanDesc}</p>` : ''}
           </div>

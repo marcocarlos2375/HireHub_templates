@@ -135,10 +135,10 @@
       if (!resumeData) return;
 
       // Header
-      const fullName = resumeData.personalInfo.name || '';
+      const fullName = resumeData.personalInfo.lastName || '';
       document.getElementById('full-name').textContent = fullName;
-      document.getElementById('job-title').textContent = resumeData.personalInfo.title || '';
-      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.title || 'Resume'}`;
+      document.getElementById('job-title').textContent = resumeData.personalInfo.jobTitle || '';
+      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.jobTitle || 'Resume'}`;
 
       // Contact Information
       populateContactInfo();
@@ -345,7 +345,7 @@
 
           html += `
             <div class="skill">
-              <div class="skill-name">${skill.name}</div>
+              <div class="skill-name">${skill.skill}</div>
               <div class="dots">
                 ${Array.from({length: 5}, (_, i) =>
                   `<div class="dot ${i < level ? 'filled' : ''}"></div>`
@@ -373,7 +373,7 @@
         html += `
           <div class="language-item">
             <strong>${lang.language}</strong>
-            <span>${lang.proficiency}</span>
+            <span>${lang.level}</span>
           </div>
         `;
       });
@@ -393,8 +393,8 @@
 
       let html = '<h3>Awards</h3><div class="awards">';
       awards.forEach(award => {
-        const year = award.date ? new Date(award.date).getFullYear() : '';
-        const issuer = award.issuer || '';
+        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        const issuer = award.city || '';
         html += `
           <div class="award-item">
             <strong>${award.title}</strong>
@@ -448,7 +448,7 @@
 
         html += `
           <div class="job">
-            <h4>${job.jobTitle} at ${job.employer}</h4>
+            <h4>${job.jobTitle} at ${job.company}</h4>
             <span class="date">${startDate} — ${endDate}</span>
             <span class="loc">${job.location}</span>
             <p>${stripHtmlTags(job.description)}</p>
@@ -477,7 +477,7 @@
           <div class="edu">
             <h4>${edu.degree}</h4>
             <span class="date">${startDate} — ${endDate}</span>
-            <span class="loc">${edu.institution}</span>
+            <span class="loc">${edu.school}</span>
             ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
           </div>
         `;
@@ -529,7 +529,7 @@
 
         html += `
           <div class="job">
-            <h4>${project.title}</h4>
+            <h4>${project.name}</h4>
             <span class="date">${startDate} — ${endDate}</span>
             <p>${stripHtmlTags(project.description)}</p>
             ${project.technologies && project.technologies.length > 0 ? `<p><em>Technologies: ${project.technologies.join(', ')}</em></p>` : ''}
@@ -557,9 +557,9 @@
 
         html += `
           <div class="job">
-            <h4>${vol.role}</h4>
+            <h4>${vol.title}</h4>
             <span class="date">${startDate} — ${endDate}</span>
-            <span class="loc">${vol.organization}</span>
+            <span class="loc">${vol.city}</span>
             ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
           </div>
         `;
@@ -580,7 +580,7 @@
       let html = '<h3>Courses & Certifications</h3><div class="pub-cert-item">';
       resumeData.courses.forEach(course => {
         const date = formatDate(course.completionDate);
-        html += `<p><strong>${course.name}</strong> - ${course.institution} (${date})</p>`;
+        html += `<p><strong>${course.title}</strong> - ${course.institution} (${date})</p>`;
       });
       html += '</div>';
 
@@ -598,7 +598,7 @@
 
       let html = '<h3>Publications</h3><div class="pub-cert-item">';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `<p><strong>${pub.title}</strong> - ${pub.publisher} (${date})</p>`;
       });
       html += '</div>';

@@ -390,7 +390,7 @@
         let html = '';
         resumeData.employmentHistory.forEach(job => {
           // Skip internships
-          if (job.isInternship) return;
+          if (job.description.includes("Intern")) return;
 
           const startDate = formatDate(job.startDate);
           const endDate = job.endDate ? formatDate(job.endDate) : 'Present';
@@ -421,7 +421,7 @@
       const internshipsSection = document.getElementById('internships-section');
 
       if (resumeData.employmentHistory && resumeData.employmentHistory.length > 0) {
-        const internships = resumeData.employmentHistory.filter(job => job.isInternship);
+        const internships = resumeData.employmentHistory.filter(job => job.description.includes("Intern"));
 
         if (internships.length > 0) {
           let html = '';

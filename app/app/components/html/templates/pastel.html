@@ -153,8 +153,8 @@
 
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name || '';
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('name').textContent = personal.lastName || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
 
       if (personal.profileImage) {
         const img = document.getElementById('profile-img');
@@ -245,7 +245,7 @@
         div.appendChild(h3);
 
         const companyP = document.createElement('p');
-        companyP.innerHTML = `<strong>${job.employer || ''}${job.location ? ' | ' + job.location : ''}</strong>`;
+        companyP.innerHTML = `<strong>${job.company || ''}${job.location ? ' | ' + job.location : ''}</strong>`;
         div.appendChild(companyP);
 
         if (job.description) {
@@ -270,7 +270,7 @@
         const p = document.createElement('p');
         let html = '';
         if (edu.degree) html += `<strong>${edu.degree}</strong><br>`;
-        if (edu.institution) html += `${edu.institution}<br>`;
+        if (edu.school) html += `${edu.school}<br>`;
         html += `${formatDate(edu.startDate)} – ${formatDate(edu.endDate)}`;
         p.innerHTML = html;
         container.appendChild(p);
@@ -307,7 +307,7 @@
       Object.keys(grouped).forEach(category => {
         grouped[category].forEach(skill => {
           const li = document.createElement('li');
-          li.textContent = skill.name;
+          li.textContent = skill.skill;
           ul.appendChild(li);
         });
       });
@@ -324,7 +324,7 @@
 
       resumeData.languages.forEach(lang => {
         const p = document.createElement('p');
-        p.textContent = `${lang.language} (${lang.proficiency})`;
+        p.textContent = `${lang.language} (${lang.level})`;
         container.appendChild(p);
       });
 
@@ -347,7 +347,7 @@
         div.appendChild(dateSpan);
 
         const h3 = document.createElement('h3');
-        h3.textContent = proj.title || '';
+        h3.textContent = proj.name || '';
         div.appendChild(h3);
 
         if (proj.technologies && proj.technologies.length > 0) {
@@ -378,10 +378,10 @@
         const div = document.createElement('div');
         div.classList.add('experience');
 
-        if (pub.date) {
+        if (pub.publicationDate) {
           const dateSpan = document.createElement('span');
           dateSpan.classList.add('date');
-          dateSpan.textContent = formatDate(pub.date);
+          dateSpan.textContent = formatDate(pub.publicationDate);
           div.appendChild(dateSpan);
         }
 
@@ -416,7 +416,7 @@
       resumeData.courses.forEach(course => {
         const p = document.createElement('p');
         let html = '';
-        if (course.name) html += `<strong>${course.name}</strong><br>`;
+        if (course.title) html += `<strong>${course.title}</strong><br>`;
         if (course.institution) html += `${course.institution}<br>`;
         if (course.completionDate) html += formatDate(course.completionDate);
         p.innerHTML = html;
@@ -453,10 +453,10 @@
         const div = document.createElement('div');
         div.classList.add('experience');
 
-        if (award.date) {
+        if (award.startDate) {
           const dateSpan = document.createElement('span');
           dateSpan.classList.add('date');
-          dateSpan.textContent = formatDate(award.date);
+          dateSpan.textContent = formatDate(award.startDate);
           div.appendChild(dateSpan);
         }
 
@@ -464,9 +464,9 @@
         h3.textContent = award.title || '';
         div.appendChild(h3);
 
-        if (award.issuer) {
+        if (award.city) {
           const issuerP = document.createElement('p');
-          issuerP.innerHTML = `<strong>${award.issuer}</strong>`;
+          issuerP.innerHTML = `<strong>${award.city}</strong>`;
           div.appendChild(issuerP);
         }
 
@@ -498,11 +498,11 @@
         div.appendChild(dateSpan);
 
         const h3 = document.createElement('h3');
-        h3.textContent = vol.role || '';
+        h3.textContent = vol.title || '';
         div.appendChild(h3);
 
         const orgP = document.createElement('p');
-        orgP.innerHTML = `<strong>${vol.organization || ''}</strong>`;
+        orgP.innerHTML = `<strong>${vol.city || ''}</strong>`;
         div.appendChild(orgP);
 
         if (vol.description) {

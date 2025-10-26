@@ -158,8 +158,8 @@
 
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name || '';
-      document.getElementById('job-title').textContent = personal.title || '';
+      document.getElementById('name').textContent = personal.lastName || '';
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
 
       if (personal.profileImage) {
         const img = document.getElementById('profile-img');
@@ -270,14 +270,14 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
         const cleanDesc = stripHtmlTags(job.description);
 
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
             <div class="content">
-              <h3>${job.title}</h3>
+              <h3>${job.jobTitle}</h3>
               <p><em>${job.company}</em> — ${startDate} - ${endDate}</p>
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
             </div>
@@ -302,7 +302,7 @@
             <div class="diamond"></div>
             <div class="content">
               <h3>${project.name}</h3>
-              ${project.url ? `<p><em>${project.url}</em></p>` : ''}
+              ${project.link ? `<p><em>${project.link}</em></p>` : ''}
               ${technologies ? `<p style="font-size: 12px;"><em>Tech: ${technologies}</em></p>` : ''}
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
             </div>
@@ -319,7 +319,7 @@
 
       let html = '';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
@@ -352,7 +352,7 @@
 
       let html = '';
       resumeData.languages.forEach(lang => {
-        html += `<li>${lang.language} — ${lang.proficiency}</li>`;
+        html += `<li>${lang.language} — ${lang.level}</li>`;
       });
 
       document.getElementById('languages').innerHTML = html;
@@ -389,8 +389,8 @@
 
       let html = '';
       resumeData.customSections.awards.forEach(award => {
-        const year = award.date ? new Date(award.date).getFullYear() : '';
-        html += `<p><strong>${award.title}</strong> — ${award.awarder}${year ? ' (' + year + ')' : ''}</p>`;
+        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        html += `<p><strong>${award.title}</strong> — ${award.city}${year ? ' (' + year + ')' : ''}</p>`;
       });
 
       document.getElementById('awards').innerHTML = html;
@@ -404,14 +404,14 @@
       resumeData.customSections.volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
         const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-        const cleanDesc = stripHtmlTags(vol.summary);
+        const cleanDesc = stripHtmlTags(vol.description);
 
         html += `
           <div class="timeline-item">
             <div class="diamond"></div>
             <div class="content">
-              <h3>${vol.position}</h3>
-              <p><em>${vol.organization}</em> — ${startDate} - ${endDate}</p>
+              <h3>${vol.title}</h3>
+              <p><em>${vol.city}</em> — ${startDate} - ${endDate}</p>
               ${cleanDesc ? `<p style="font-size: 13px; margin-top: 8px;">${cleanDesc}</p>` : ''}
             </div>
           </div>

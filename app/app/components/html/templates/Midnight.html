@@ -520,7 +520,7 @@
         let html = '';
 
         resumeData.employmentHistory.forEach(job => {
-          if (job.isInternship) return;
+          if (job.description.includes("Intern")) return;
 
           const startDate = formatDate(job.startDate);
           const endDate = job.endDate ? formatDate(job.endDate) : 'Present';

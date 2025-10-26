@@ -144,8 +144,8 @@
     // Populate header
     function populateHeader() {
       const personal = resumeData.personalInfo;
-      document.getElementById('name').textContent = personal.name ? personal.name.toUpperCase() : '';
-      document.getElementById('job-title').textContent = personal.title ? personal.title.toUpperCase() : '';
+      document.getElementById('name').textContent = personal.lastName ? personal.lastName.toUpperCase() : '';
+      document.getElementById('job-title').textContent = personal.jobTitle ? personal.jobTitle.toUpperCase() : '';
 
       // Contact info on one line
       let contact = [];
@@ -229,9 +229,9 @@
 
       let html = '<ul>';
       resumeData.customSections.awards.forEach(award => {
-        const year = award.date ? new Date(award.date).getFullYear() : '';
-        const summary = award.summary ? stripHtmlTags(award.summary) : '';
-        html += `<li><strong>${award.title}.</strong> ${award.awarder}${year ? ' (' + year + ')' : ''}${summary ? ' - ' + summary : ''}.</li>`;
+        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        const summary = award.description ? stripHtmlTags(award.description) : '';
+        html += `<li><strong>${award.title}.</strong> ${award.city}${year ? ' (' + year + ')' : ''}${summary ? ' - ' + summary : ''}.</li>`;
       });
       html += '</ul>';
 
@@ -246,12 +246,12 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
         const cleanDesc = stripHtmlTags(job.description);
 
         html += `
           <div class="job">
-            <p class="job-title">${job.title}, ${job.company} <span>${startDate} - ${endDate}</span></p>
+            <p class="job-title">${job.jobTitle}, ${job.company} <span>${startDate} - ${endDate}</span></p>
             ${cleanDesc ? `<p style="font-size: 13px; margin: 5px 0; line-height: 1.4;">${cleanDesc}</p>` : ''}
           </div>
         `;
@@ -312,7 +312,7 @@
 
       let html = '';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.date);
+        const date = formatDate(pub.publicationDate);
         html += `<li><strong>${pub.title}</strong> - ${pub.publisher}, ${date}</li>`;
       });
 
@@ -326,7 +326,7 @@
 
       // Languages
       if (resumeData.languages && resumeData.languages.length > 0) {
-        const langList = resumeData.languages.map(lang => `${lang.language} (${lang.proficiency})`).join(', ');
+        const langList = resumeData.languages.map(lang => `${lang.language} (${lang.level})`).join(', ');
         items.push(`<li><strong>Languages:</strong> ${langList}.</li>`);
       }
 
@@ -350,7 +350,7 @@
         const volList = resumeData.customSections.volunteering.map(vol => {
           const startDate = formatDate(vol.startDate);
           const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
-          return `${vol.position} at ${vol.organization} (${startDate}-${endDate})`;
+          return `${vol.title} at ${vol.city} (${startDate}-${endDate})`;
         }).join(', ');
         items.push(`<li><strong>Volunteer:</strong> ${volList}.</li>`);
       }
