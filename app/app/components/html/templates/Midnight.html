@@ -2,259 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Carlos Idrissi Saez - Software Engineer Resume</title>
-  <meta name="description" content="Software Engineer with 8+ years experience in machine learning, cloud infrastructure, and distributed systems">
-  <meta name="keywords" content="Software Engineer, Python, Java, React, Machine Learning, Cloud, AWS, Docker, Kubernetes">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    @import url('https://fonts.cdnfonts.com/css/satoshi');
-  </style>
+  <title>Resume - Midnight</title>
+  <meta name="description" content="Professional resume template with dark midnight sidebar">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="a4 midnight">
-    
+
     <!-- LEFT PART -->
     <aside class="left-part">
-      <div class="profile-pic">
-        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile Picture">
+      <div class="profile-pic" id="profile-pic-container" style="display: none;">
+        <img id="profile-picture" src="" alt="Profile Picture">
       </div>
-      <h1 id="name">Carlos Idrissi Saez</h1>
-      <h2 id="job_title">Software Engineer</h2>
+      <h1 id="name"></h1>
+      <h2 id="job_title"></h2>
 
       <h3>Contact</h3>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        <span>Paris, France</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        <span>carlos.idriss@example.com</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-        <span>+33 6 12 34 56 78</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-        </svg>
-        <span>www.carlossaez.dev</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-        <span>linkedin.com/in/carlossaez</span>
-      </div>
+      <div id="contact-list"></div>
 
       <h3>Skills</h3>
-      <div id="skills">
-        <div class="skill-group">
-          <h4 class="skill-group-title">Programming Languages</h4>
-          <div class="skill-group-items" id="programming-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Frameworks & Libraries</h4>
-          <div class="skill-group-items" id="frameworks-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Cloud & DevOps</h4>
-          <div class="skill-group-items" id="cloud-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Databases</h4>
-          <div class="skill-group-items" id="database-skills"></div>
-        </div>
-      </div>
+      <div id="skills-container"></div>
 
       <h3>Languages</h3>
-      <div class="language">
-        <div class="lang-name">English</div>
-        <div class="lang-level">Native</div>
-      </div>
-      <div class="language">
-        <div class="lang-name">Spanish</div>
-        <div class="lang-level">Fluent</div>
-      </div>
-      <div class="language">
-        <div class="lang-name">French</div>
-        <div class="lang-level">Intermediate</div>
+      <div id="languages-container"></div>
+
+      <div id="hobbies-section" style="display: none;">
+        <h3>Interests</h3>
+        <div id="hobbies-list"></div>
       </div>
     </aside>
 
     <!-- RIGHT PART -->
     <main class="right-part">
-      <section>
+      <section id="summary-section">
         <h3>Professional Summary</h3>
-        <p>
-          Highly skilled and innovative Software Engineer with over 8 years of experience in developing 
-          cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, 
-          and distributed systems. Proven track record of leading teams to deliver high-quality solutions 
-          that drive business growth and improve user experience.
-        </p>
+        <p id="summary-text"></p>
       </section>
 
-      <section>
+      <section id="education-section">
         <h3>Education</h3>
-        <div class="edu">
-          <h4>Stanford University <span class="date">Sep 2020 – Jun 2022</span></h4>
-          <p>Master of Science in Computer Science - Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0. Research Assistant at Stanford AI Lab. Published 2 papers on deep learning applications.</p>
-        </div>
-        <div class="edu">
-          <h4>University of California, Berkeley <span class="date">Sep 2016 – May 2020</span></h4>
-          <p>Bachelor of Science in Computer Engineering - Minor in Mathematics. GPA: 3.85/4.0. Dean's List all semesters. Capstone Project: Developed an IoT system for smart energy management.</p>
-        </div>
-        <div class="edu">
-          <h4>ETH Zurich <span class="date">Sep 2018 – Dec 2018</span></h4>
-          <p>Exchange Student in Computer Science - Focused on Advanced Algorithms and Data Structures. Participated in international programming competitions. Collaborated on research project in distributed computing.</p>
-        </div>
+        <div id="education-list"></div>
       </section>
 
-      <section>
+      <section id="experience-section">
         <h3>Professional Experience</h3>
-        <div class="job">
-          <h4>Senior Software Engineer at Google Inc. <span class="date">Jun 2022 – Present</span></h4>
-          <p>
-            Led the development of a new feature for BigQuery ML that improved model training speed by 40%. 
-            Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment. 
-            Mentored 5 junior engineers and conducted technical interviews. Implemented CI/CD pipelines that 
-            reduced deployment time by 60%.
-          </p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at Microsoft Corporation <span class="date">Jul 2020 – May 2022</span></h4>
-          <p>
-            Built scalable microservices handling 1M+ requests per day using Java and Spring Boot. 
-            Optimized database queries resulting in 50% performance improvement. Implemented automated testing 
-            frameworks reducing bugs by 30%. Collaborated with product managers to define technical requirements 
-            and delivered features ahead of schedule.
-          </p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at XYZ Company <span class="date">Mar 2025 – Dec 2026</span></h4>
-          <p>
-            Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%. 
-            Developed frontend components and responsive UIs, reducing UI bugs by 25%. Built and maintained 
-            automated CI/CD pipelines and deployment scripts. Optimized database queries and introduced caching 
-            strategies, reducing response time by 40%.
-          </p>
-        </div>
+        <div id="experience-list"></div>
       </section>
 
-      <section>
+      <section id="projects-section" style="display: none;">
         <h3>Key Projects</h3>
-        <div class="job">
-          <h4>SmartRetail Platform - Lead Developer <span class="date">Mar 2022 – Present</span></h4>
-          <p>
-            E-commerce analytics platform with real-time inventory management and demand forecasting. 
-            Implemented machine learning algorithms for demand forecasting. Built real-time dashboard with React and D3.js. 
-            Achieved 25% improvement in inventory turnover rates. Technologies: Python, React, TensorFlow, AWS.
-          </p>
-        </div>
-        <div class="job">
-          <h4>FinanceTracker Pro - Full Stack Developer <span class="date">Jan 2023 – Dec 2023</span></h4>
-          <p>
-            Personal finance management application with automated categorization and investment tracking. 
-            Developed automated transaction categorization using NLP. Built investment portfolio tracking with real-time market data. 
-            Created mobile-responsive Vue.js frontend with PWA capabilities. Technologies: Vue.js, Node.js, MongoDB, Docker.
-          </p>
-        </div>
+        <div id="projects-list"></div>
       </section>
 
-      <section>
+      <section id="publications-section" style="display: none;">
         <h3>Publications</h3>
-        <div class="job">
-          <h4>Scaling Microservices with Kubernetes <span class="date">August 2022</span></h4>
-          <p><em>Tech Journal</em> - Best practices for deploying and scaling microservices with Kubernetes.</p>
-        </div>
-        <div class="job">
-          <h4>Modern Frontend Architecture Patterns <span class="date">March 2023</span></h4>
-          <p><em>Web Development Quarterly</em> - Comprehensive guide to modern frontend architecture patterns including micro-frontends and component-driven development.</p>
-        </div>
-        <div class="job">
-          <h4>Machine Learning in Production Systems <span class="date">November 2023</span></h4>
-          <p><em>AI Research Today</em> - Practical approaches to deploying and maintaining machine learning models in production environments.</p>
-        </div>
+        <div id="publications-list"></div>
       </section>
 
-      <section>
+      <section id="volunteering-section" style="display: none;">
         <h3>Volunteer Experience</h3>
-        <div class="job">
-          <h4>Web Development Mentor <span class="date">Jan 2023 – Present</span></h4>
-          <p><em>Berlin</em> - Mentoring aspiring web developers through coding bootcamp program. Provided one-on-one guidance to 15+ students. Conducted weekly code review sessions. Helped students build portfolio projects. Achieved 90% job placement rate for mentees.</p>
-        </div>
-        <div class="job">
-          <h4>Tech Workshop Organizer <span class="date">Mar 2022 – Dec 2022</span></h4>
-          <p><em>Munich</em> - Organized monthly technology workshops for local community. Planned and executed 10 workshops with 200+ attendees. Topics covered: React, Node.js, Python, and DevOps. Collaborated with local tech companies for sponsorship.</p>
-        </div>
+        <div id="volunteering-list"></div>
       </section>
 
-      <section>
+      <section id="certifications-awards-section" style="display: none;">
         <h3>Certifications & Awards</h3>
         <div class="cert-awards">
-          <div class="cert-column">
+          <div class="cert-column" id="certifications-column" style="display: none;">
             <h4>Certifications</h4>
-            <ul>
-              <li>AWS Certified Solutions Architect (2023)</li>
-              <li>Google Cloud Professional Developer (2022)</li>
-              <li>Certified Kubernetes Administrator (2022)</li>
-            </ul>
+            <ul id="certifications-list"></ul>
           </div>
-          <div class="awards-column">
+          <div class="awards-column" id="awards-column" style="display: none;">
             <h4>Awards</h4>
-            <ul>
-              <li>Employee of the Year - Google Inc. (2023)</li>
-              <li>Innovation Award - Microsoft Corporation (2021)</li>
-            </ul>
+            <ul id="awards-list"></ul>
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="references-section" style="display: none;">
         <h3>References</h3>
-        <div class="references-grid">
-          <div class="reference-item">
-            <h4>Michael Bauer</h4>
-            <p><strong>CTO, TechVision GmbH</strong></p>
-            <p>michael.bauer@techvision.com</p>
-            <p>+49 30 987654</p>
-            <p><em>Direct Manager</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Sarah Chen</h4>
-            <p><strong>Senior Engineering Manager, InnovateTech Solutions</strong></p>
-            <p>sarah.chen@innovatetech.com</p>
-            <p>+1 555 123 4567</p>
-            <p><em>Team Lead</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Dr. Andreas Mueller</h4>
-            <p><strong>Professor of Computer Science, University of Munich</strong></p>
-            <p>a.mueller@tum.de</p>
-            <p>+49 89 289 17234</p>
-            <p><em>Academic Supervisor</em></p>
-          </div>
-        </div>
+        <div class="references-grid" id="references-list"></div>
       </section>
     </main>
   </div>
 
   <!-- Control Panel -->
   <div class="control-panel">
-    <h3>🎨 Customize Template</h3>
-    
+    <h3>Customize Template</h3>
+
     <div class="control-group">
       <label for="font-selector">Font Family:</label>
       <select id="font-selector">
@@ -262,16 +96,6 @@
         <option value="'Inter', sans-serif">Inter</option>
         <option value="'Poppins', sans-serif">Poppins</option>
         <option value="'Roboto', sans-serif">Roboto</option>
-        <option value="'Wix Madefor Text', sans-serif">Wix Madefor Text</option>
-        <option value="'Gabarito', sans-serif">Gabarito</option>
-        <option value="'Raleway', sans-serif">Raleway</option>
-        <option value="'Manrope', sans-serif">Manrope</option>
-        <option value="'DM Sans', sans-serif">DM Sans</option>
-        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
-        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
-        <option value="'Figtree', sans-serif">Figtree</option>
-        <option value="Arial, sans-serif">Arial</option>
-        <option value="'Satoshi', sans-serif">Satoshi</option>
         <option value="'Lato', sans-serif">Lato</option>
       </select>
     </div>
@@ -297,57 +121,7 @@
   </div>
 
   <script>
-    // Skills data organized by groups
-    const skillsData = {
-      'Programming Languages': [
-        { name: 'Python', level: 100 },
-        { name: 'Java', level: 100 },
-        { name: 'JavaScript', level: 80 },
-        { name: 'TypeScript', level: 75 },
-        { name: 'Go', level: 60 },
-        { name: 'C++', level: 60 }
-      ],
-      'Frameworks & Libraries': [
-        { name: 'React', level: 100 },
-        { name: 'Vue.js', level: 80 },
-        { name: 'Node.js', level: 100 },
-        { name: 'Express', level: 80 },
-        { name: 'Django', level: 60 },
-        { name: 'Spring Boot', level: 60 }
-      ],
-      'Databases': [
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Redis', level: 60 },
-        { name: 'Elasticsearch', level: 60 }
-      ]
-    };
-
-    // Generate skills by groups
-    function generateSkillGroup(groupName, skills, containerId) {
-      const container = document.getElementById(containerId);
-      skills.forEach(skill => {
-        const skillDiv = document.createElement('div');
-        skillDiv.className = 'skill';
-        
-        const skillName = document.createElement('div');
-        skillName.className = 'skill-name';
-        skillName.textContent = skill.name;
-        
-        const progress = document.createElement('div');
-        progress.className = 'progress';
-        
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        progressBar.style.width = skill.level + '%';
-        
-        progress.appendChild(progressBar);
-        skillDiv.appendChild(skillName);
-        skillDiv.appendChild(progress);
-        container.appendChild(skillDiv);
-      });
-    }
-
+    let resumeData = null;
 
     // Color schemes adapted for dark theme
     const colorSchemes = {
@@ -433,6 +207,18 @@
       }
     };
 
+    // Helper functions
+    function stripHtmlTags(html) {
+      const tmp = document.createElement('DIV');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+    }
 
     // Apply font
     function applyFont(fontFamily) {
@@ -444,11 +230,11 @@
       const colors = colorSchemes[scheme];
       const leftPart = document.querySelector('.left-part');
       const rightPart = document.querySelector('.right-part');
-      
+
       // Apply left sidebar colors
       leftPart.style.backgroundColor = colors.leftBg;
       leftPart.style.color = colors.leftText;
-      
+
       // Apply progress bar colors
       document.querySelectorAll('.progress').forEach(el => {
         el.style.backgroundColor = colors.progressBg;
@@ -456,29 +242,29 @@
       document.querySelectorAll('.progress-bar').forEach(el => {
         el.style.backgroundColor = colors.progressBar;
       });
-      
+
       // Apply border colors for left sidebar sections
       document.querySelectorAll('.left-part h3').forEach(el => {
         el.style.borderBottomColor = colors.leftBorder;
       });
-      
+
       // Apply skill group title borders
       document.querySelectorAll('.skill-group-title').forEach(el => {
         el.style.borderBottomColor = colors.leftBorder;
         el.style.color = colors.leftSecondary;
       });
-      
+
       // Apply right side text color
       document.querySelectorAll('.right-part h3').forEach(el => {
         el.style.color = colors.rightText;
         el.style.borderBottomColor = colors.rightText;
       });
-      
+
       // Apply reference card border colors
       document.querySelectorAll('.reference-item').forEach(el => {
         el.style.borderLeftColor = colors.rightText;
       });
-      
+
       // Apply language text colors
       document.querySelectorAll('.lang-name').forEach(el => {
         el.style.color = colors.leftText;
@@ -486,7 +272,7 @@
       document.querySelectorAll('.lang-level').forEach(el => {
         el.style.color = colors.leftSecondary;
       });
-      
+
       // Apply contact item colors
       document.querySelectorAll('.contact-item span').forEach(el => {
         el.style.color = colors.leftSecondary;
@@ -494,25 +280,458 @@
       document.querySelectorAll('.contact-item svg').forEach(el => {
         el.style.color = colors.leftBorder;
       });
+
+      // Update name and job title colors
+      document.querySelector('.left-part h1').style.color = colors.leftText;
+      document.querySelector('.left-part h2').style.color = colors.leftSecondary;
     }
 
-    // Get elements and set up event listeners after DOM is loaded
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = `${personal.firstName} ${personal.lastName}`;
+      document.getElementById('job_title').textContent = personal.jobTitle;
+
+      // Profile image (optional)
+      if (personal.profileImage) {
+        document.getElementById('profile-pic-container').style.display = 'block';
+        document.getElementById('profile-picture').src = personal.profileImage;
+      }
+    }
+
+    // Populate contact information - ALL fields
+    function populateContactInfo() {
+      const contactList = document.getElementById('contact-list');
+      const personal = resumeData.personalInfo;
+      let html = '';
+
+      // Location
+      if (personal.location) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>${personal.location}</span>
+          </div>
+        `;
+      }
+
+      // Email
+      if (personal.email) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>${personal.email}</span>
+          </div>
+        `;
+      }
+
+      // Phone
+      if (personal.phone) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>${personal.phone}</span>
+          </div>
+        `;
+      }
+
+      // Website
+      if (personal.website) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <span>${personal.website.replace('https://', '').replace('http://', '')}</span>
+          </div>
+        `;
+      }
+
+      // LinkedIn
+      if (personal.socialLinks && personal.socialLinks.linkedin) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <span>${personal.socialLinks.linkedin}</span>
+          </div>
+        `;
+      }
+
+      // Additional fields
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<div class="contact-item-text"><strong>Birth Date:</strong> ${formattedDate}</div>`;
+      }
+
+      if (personal.nationality) {
+        html += `<div class="contact-item-text"><strong>Nationality:</strong> ${personal.nationality}</div>`;
+      }
+
+      if (personal.relationshipStatus) {
+        html += `<div class="contact-item-text"><strong>Status:</strong> ${personal.relationshipStatus}</div>`;
+      }
+
+      if (personal.availability) {
+        html += `<div class="contact-item-text"><strong>Availability:</strong> ${personal.availability}</div>`;
+      }
+
+      if (personal.drivingLicense) {
+        html += `<div class="contact-item-text"><strong>License:</strong> ${personal.drivingLicense}</div>`;
+      }
+
+      // websitesAndSocialLinks
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `<div class="contact-item-text"><strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}</div>`;
+        });
+      }
+
+      contactList.innerHTML = html;
+    }
+
+    // Populate skills grouped by category
+    function populateSkills() {
+      const skillsContainer = document.getElementById('skills-container');
+
+      if (resumeData.skills && resumeData.skills.length > 0) {
+        // Group skills by category
+        const grouped = {};
+        resumeData.skills.forEach(skill => {
+          const category = skill.category || 'other';
+          if (!grouped[category]) {
+            grouped[category] = [];
+          }
+          grouped[category].push(skill);
+        });
+
+        // Find category names from skillGroups
+        const categoryNames = {};
+        if (resumeData.skillGroups) {
+          resumeData.skillGroups.forEach(group => {
+            categoryNames[group.id] = group.name;
+          });
+        }
+
+        let html = '';
+        Object.entries(grouped).forEach(([categoryId, skills]) => {
+          const categoryName = categoryNames[categoryId] || categoryId;
+
+          html += `<div class="skill-group">`;
+          html += `<h4 class="skill-group-title">${categoryName}</h4>`;
+          html += `<div class="skill-group-items">`;
+
+          skills.forEach(skill => {
+            const proficiency = skill.level === 'Expert' ? 100 : skill.level === 'Advanced' ? 80 : 60;
+            html += `
+              <div class="skill">
+                <div class="skill-name">${skill.skill}</div>
+                <div class="progress">
+                  <div class="progress-bar" style="width: ${proficiency}%"></div>
+                </div>
+              </div>
+            `;
+          });
+
+          html += `</div></div>`;
+        });
+
+        skillsContainer.innerHTML = html;
+      }
+    }
+
+    // Populate languages
+    function populateLanguages() {
+      const languagesContainer = document.getElementById('languages-container');
+
+      if (resumeData.languages && resumeData.languages.length > 0) {
+        let html = '';
+        resumeData.languages.forEach(lang => {
+          html += `
+            <div class="language">
+              <div class="lang-name">${lang.language}</div>
+              <div class="lang-level">${lang.level}</div>
+            </div>
+          `;
+        });
+        languagesContainer.innerHTML = html;
+      }
+    }
+
+    // Populate summary
+    function populateSummary() {
+      const summarySection = document.getElementById('summary-section');
+      const summaryText = document.getElementById('summary-text');
+
+      if (resumeData.professionalSummary && resumeData.professionalSummary.trim()) {
+        summaryText.textContent = stripHtmlTags(resumeData.professionalSummary);
+        summarySection.style.display = 'block';
+      } else {
+        summarySection.style.display = 'none';
+      }
+    }
+
+    // Populate education
+    function populateEducation() {
+      const educationList = document.getElementById('education-list');
+      const educationSection = document.getElementById('education-section');
+
+      if (resumeData.education && resumeData.education.length > 0) {
+        let html = '';
+
+        resumeData.education.forEach(edu => {
+          const startDate = formatDate(edu.startDate);
+          const endDate = edu.endDate ? formatDate(edu.endDate) : 'Present';
+
+          html += `
+            <div class="edu">
+              <h4>${edu.school} <span class="date">${startDate} – ${endDate}</span></h4>
+              <p>${edu.degree}${edu.description ? ' - ' + stripHtmlTags(edu.description) : ''}</p>
+            </div>
+          `;
+        });
+
+        educationList.innerHTML = html;
+        educationSection.style.display = 'block';
+      } else {
+        educationSection.style.display = 'none';
+      }
+    }
+
+    // Populate experience
+    function populateExperience() {
+      const experienceList = document.getElementById('experience-list');
+      const experienceSection = document.getElementById('experience-section');
+
+      if (resumeData.employmentHistory && resumeData.employmentHistory.length > 0) {
+        let html = '';
+
+        resumeData.employmentHistory.forEach(job => {
+          if (job.isInternship) return;
+
+          const startDate = formatDate(job.startDate);
+          const endDate = job.endDate ? formatDate(job.endDate) : 'Present';
+
+          html += `
+            <div class="job">
+              <h4>${job.jobTitle} at ${job.company} <span class="date">${startDate} – ${endDate}</span></h4>
+              <p>${stripHtmlTags(job.description)}</p>
+            </div>
+          `;
+        });
+
+        experienceList.innerHTML = html;
+        experienceSection.style.display = 'block';
+      } else {
+        experienceSection.style.display = 'none';
+      }
+    }
+
+    // Populate projects
+    function populateProjects() {
+      const projectsList = document.getElementById('projects-list');
+      const projectsSection = document.getElementById('projects-section');
+
+      if (resumeData.projects && resumeData.projects.length > 0) {
+        let html = '';
+
+        resumeData.projects.forEach(project => {
+          html += `
+            <div class="job">
+              <h4>${project.name}</h4>
+              <p>${stripHtmlTags(project.description)}${project.technologies ? ' Technologies: ' + project.technologies : ''}</p>
+            </div>
+          `;
+        });
+
+        projectsList.innerHTML = html;
+        projectsSection.style.display = 'block';
+      }
+    }
+
+    // Populate publications
+    function populatePublications() {
+      const publicationsList = document.getElementById('publications-list');
+      const publicationsSection = document.getElementById('publications-section');
+
+      if (resumeData.publications && resumeData.publications.length > 0) {
+        let html = '';
+
+        resumeData.publications.forEach(pub => {
+          const date = formatDate(pub.publicationDate);
+          html += `
+            <div class="job">
+              <h4>${pub.title} <span class="date">${date}</span></h4>
+              <p><em>${pub.publisher}</em> - ${stripHtmlTags(pub.description)}</p>
+            </div>
+          `;
+        });
+
+        publicationsList.innerHTML = html;
+        publicationsSection.style.display = 'block';
+      }
+    }
+
+    // Populate volunteering
+    function populateVolunteering() {
+      const volunteeringList = document.getElementById('volunteering-list');
+      const volunteeringSection = document.getElementById('volunteering-section');
+
+      if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        let html = '';
+
+        resumeData.customSections.volunteering.forEach(vol => {
+          const startDate = formatDate(vol.startDate);
+          const endDate = vol.endDate ? formatDate(vol.endDate) : 'Present';
+
+          html += `
+            <div class="job">
+              <h4>${vol.title} <span class="date">${startDate} – ${endDate}</span></h4>
+              <p><em>${vol.city}</em> - ${stripHtmlTags(vol.description)}</p>
+            </div>
+          `;
+        });
+
+        volunteeringList.innerHTML = html;
+        volunteeringSection.style.display = 'block';
+      }
+    }
+
+    // Populate certifications and awards
+    function populateCertificationsAndAwards() {
+      const section = document.getElementById('certifications-awards-section');
+      const certColumn = document.getElementById('certifications-column');
+      const certList = document.getElementById('certifications-list');
+      const awardsColumn = document.getElementById('awards-column');
+      const awardsList = document.getElementById('awards-list');
+
+      let hasCerts = false;
+      let hasAwards = false;
+
+      // Certifications
+      if (resumeData.courses && resumeData.courses.length > 0) {
+        let html = '';
+        resumeData.courses.forEach(course => {
+          const year = course.completionDate ? formatDate(course.completionDate).split(' ').pop() : '';
+          html += `<li>${course.title} (${year})</li>`;
+        });
+        certList.innerHTML = html;
+        certColumn.style.display = 'block';
+        hasCerts = true;
+      }
+
+      // Awards
+      if (resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0) {
+        let html = '';
+        resumeData.customSections.awards.forEach(award => {
+          const year = award.startDate ? formatDate(award.startDate).split(' ').pop() : '';
+          html += `<li>${award.title}${award.city ? ' - ' + award.city : ''} (${year})</li>`;
+        });
+        awardsList.innerHTML = html;
+        awardsColumn.style.display = 'block';
+        hasAwards = true;
+      }
+
+      if (hasCerts || hasAwards) {
+        section.style.display = 'block';
+      }
+    }
+
+    // Populate hobbies
+    function populateHobbies() {
+      const hobbiesSection = document.getElementById('hobbies-section');
+      const hobbiesList = document.getElementById('hobbies-list');
+
+      if (resumeData.hobbies && resumeData.hobbies.length > 0) {
+        let html = '<div class="hobbies-items">';
+        resumeData.hobbies.forEach(hobby => {
+          html += `<div class="hobby-item">${hobby}</div>`;
+        });
+        html += '</div>';
+        hobbiesList.innerHTML = html;
+        hobbiesSection.style.display = 'block';
+      }
+    }
+
+    // Populate references
+    function populateReferences() {
+      const referencesList = document.getElementById('references-list');
+      const referencesSection = document.getElementById('references-section');
+
+      if (resumeData.references && resumeData.references.length > 0) {
+        let html = '';
+
+        resumeData.references.forEach(ref => {
+          html += `
+            <div class="reference-item">
+              <h4>${ref.name}</h4>
+              ${ref.position ? `<p><strong>${ref.position}${ref.company ? ', ' + ref.company : ''}</strong></p>` : ''}
+              ${ref.email ? `<p>${ref.email}</p>` : ''}
+              ${ref.phone ? `<p>${ref.phone}</p>` : ''}
+            </div>
+          `;
+        });
+
+        referencesList.innerHTML = html;
+        referencesSection.style.display = 'block';
+      }
+    }
+
+    // Main function to populate all data
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content; // Extract content from the JSON structure
+
+        populateHeader();
+        populateContactInfo();
+        populateSkills();
+        populateLanguages();
+        populateSummary();
+        populateEducation();
+        populateExperience();
+        populateProjects();
+        populatePublications();
+        populateVolunteering();
+        populateCertificationsAndAwards();
+        populateHobbies();
+        populateReferences();
+
+        // Apply default color scheme
+        applyColorScheme('midnight');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Event listeners
     document.addEventListener('DOMContentLoaded', function() {
-      // Get elements
+      populateResume();
+
       const fontSelector = document.getElementById('font-selector');
       const colorSchemeSelector = document.getElementById('color-scheme');
       const resetBtn = document.getElementById('reset-btn');
       const printBtn = document.getElementById('print-btn');
-      const body = document.body;
 
-      // Event listeners
       fontSelector.addEventListener('change', (e) => {
-        console.log('Font changed to:', e.target.value);
         applyFont(e.target.value);
       });
 
       colorSchemeSelector.addEventListener('change', (e) => {
-        console.log('Color scheme changed to:', e.target.value);
         applyColorScheme(e.target.value);
       });
 
@@ -524,27 +743,19 @@
       });
 
       printBtn.addEventListener('click', () => {
-        // Hide control panel for printing
         document.querySelector('.control-panel').style.display = 'none';
         window.print();
         document.querySelector('.control-panel').style.display = 'block';
       });
 
-      // Generate all skill groups
-      generateSkillGroup('Programming Languages', skillsData['Programming Languages'], 'programming-skills');
-      generateSkillGroup('Frameworks & Libraries', skillsData['Frameworks & Libraries'], 'frameworks-skills');
-      generateSkillGroup('Cloud & DevOps', skillsData['Cloud & DevOps'], 'cloud-skills');
-      generateSkillGroup('Databases', skillsData['Databases'], 'database-skills');
-      
       // Initialize with default values
       applyFont("'Josefin Sans', sans-serif");
-      applyColorScheme('midnight');
     });
   </script>
 </body>
 </html>
 <style>
-    body {
+body {
   font-family: 'Josefin Sans', sans-serif;
   background: #f4f4f4;
   margin: 0;
@@ -567,12 +778,14 @@
   color: #fff;
   padding: 30px;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 .left-part .profile-pic {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .left-part .profile-pic img {
   width: 120px;
   height: 120px;
@@ -584,13 +797,16 @@
   font-size: 22px;
   text-align: center;
   margin: 10px 0 5px;
+  transition: color 0.3s ease;
 }
+
 .left-part h2 {
   font-size: 14px;
   font-weight: 400;
   text-align: center;
   margin: 0 0 20px;
   color: #bbb;
+  transition: color 0.3s ease;
 }
 
 .left-part h3 {
@@ -598,6 +814,7 @@
   margin: 20px 0 10px;
   border-bottom: 1px solid #444;
   padding-bottom: 5px;
+  transition: border-color 0.3s ease;
 }
 
 .left-part p {
@@ -610,21 +827,110 @@
 .skill {
   margin: 12px 0;
 }
+
 .skill-name {
   font-size: 12px;
   margin-bottom: 5px;
 }
+
 .progress {
   height: 4px;
   background: #333;
   border-radius: 4px;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
+
 .progress-bar {
   height: 100%;
-  background: #ffffff; /* accent color */
+  background: #ffffff;
   width: 0;
-  transition: width 0.5s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+/* CONTACT ITEMS WITH ICONS */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #ddd;
+}
+
+.contact-item svg {
+  margin-right: 8px;
+  color: #bbb;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.contact-item span {
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.contact-item-text {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: #ddd;
+  line-height: 1.3;
+}
+
+/* SKILL GROUPS */
+.skill-group {
+  margin-bottom: 20px;
+}
+
+.skill-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #bbb;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.skill-group-items {
+  margin-bottom: 10px;
+}
+
+/* LANGUAGES */
+.language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.lang-name {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.lang-level {
+  color: #bbb;
+  font-size: 11px;
+  transition: color 0.3s ease;
+}
+
+/* HOBBIES */
+.hobbies-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hobby-item {
+  font-size: 11px;
+  color: #ddd;
+  background: #222;
+  padding: 4px 10px;
+  border-radius: 12px;
 }
 
 /* RIGHT PART */
@@ -639,6 +945,7 @@
   margin: 25px 0 10px;
   border-bottom: 2px solid #000;
   padding-bottom: 4px;
+  transition: all 0.3s ease;
 }
 
 .right-part h4 {
@@ -659,62 +966,8 @@
   float: right;
 }
 
-/* CONTACT ITEMS WITH ICONS */
-.contact-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 12px;
-  color: #ddd;
-}
-
-.contact-item svg {
-  margin-right: 8px;
-  color: #bbb;
-  flex-shrink: 0;
-}
-
-.contact-item span {
-  line-height: 1.2;
-}
-
-/* SKILL GROUPS */
-.skill-group {
-  margin-bottom: 20px;
-}
-
-.skill-group-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: #bbb;
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #333;
-}
-
-.skill-group-items {
-  margin-bottom: 10px;
-}
-
-/* LANGUAGES */
-.language {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
-
-.lang-name {
-  color: #fff;
-  font-weight: 500;
-}
-
-.lang-level {
-  color: #bbb;
-  font-size: 11px;
+.job, .edu {
+  margin-bottom: 18px;
 }
 
 /* CERTIFICATIONS & AWARDS */
@@ -760,6 +1013,7 @@
   padding: 15px;
   border-radius: 8px;
   border-left: 4px solid #333;
+  transition: border-color 0.3s ease;
 }
 
 .reference-item h4 {
@@ -797,7 +1051,6 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   z-index: 1000;
   min-width: 250px;
-  font-family: 'Inter', sans-serif;
 }
 
 .control-panel h3 {
@@ -807,7 +1060,6 @@
   text-align: center;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
-  border-bottom-width: 1px;
 }
 
 .control-group {
@@ -875,12 +1127,12 @@
   .control-panel {
     display: none !important;
   }
-  
+
   body {
     background: white;
     padding: 0;
   }
-  
+
   .a4 {
     box-shadow: none;
     margin: 0;
@@ -894,22 +1146,22 @@
     width: 100%;
     min-height: auto;
   }
-  
+
   .left-part {
     width: 100%;
     padding: 20px;
   }
-  
+
   .right-part {
     width: 100%;
     padding: 20px;
   }
-  
+
   .cert-awards {
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .control-panel {
     position: relative;
     top: auto;
@@ -919,5 +1171,4 @@
     max-width: 300px;
   }
 }
-
 </style>

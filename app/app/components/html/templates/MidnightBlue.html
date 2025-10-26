@@ -13,240 +13,79 @@
 </head>
 <body>
   <div class="a4 midnight">
-    
+
     <!-- LEFT PART -->
     <aside class="left-part">
-      <div class="profile-pic">
-        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile Picture">
+      <div class="profile-pic" id="profile-pic" style="display:none;">
+        <img src="" alt="Profile Picture" id="profile-img">
       </div>
-      <h1 id="name">Carlos Idrissi Saez</h1>
-      <h2 id="job_title">Software Engineer</h2>
+      <h1 id="name"></h1>
+      <h2 id="job_title"></h2>
 
       <h3>Contact</h3>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        <span>Paris, France</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        <span>carlos.idriss@example.com</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-        <span>+33 6 12 34 56 78</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-        </svg>
-        <span>www.carlossaez.dev</span>
-      </div>
-      <div class="contact-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-        <span>linkedin.com/in/carlossaez</span>
-      </div>
+      <div id="contact-info"></div>
 
       <h3>Skills</h3>
-      <div id="skills">
-        <div class="skill-group">
-          <h4 class="skill-group-title">Programming Languages</h4>
-          <div class="skill-group-items" id="programming-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Frameworks & Libraries</h4>
-          <div class="skill-group-items" id="frameworks-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Cloud & DevOps</h4>
-          <div class="skill-group-items" id="cloud-skills"></div>
-        </div>
-        <div class="skill-group">
-          <h4 class="skill-group-title">Databases</h4>
-          <div class="skill-group-items" id="database-skills"></div>
-        </div>
-      </div>
+      <div id="skills"></div>
 
       <h3>Languages</h3>
-      <div class="language">
-        <div class="lang-name">English</div>
-        <div class="lang-level">Native</div>
-      </div>
-      <div class="language">
-        <div class="lang-name">Spanish</div>
-        <div class="lang-level">Fluent</div>
-      </div>
-      <div class="language">
-        <div class="lang-name">French</div>
-        <div class="lang-level">Intermediate</div>
+      <div id="languages"></div>
+
+      <div id="hobbies-section" style="display:none;">
+        <h3>Hobbies</h3>
+        <div id="hobbies"></div>
       </div>
     </aside>
 
     <!-- RIGHT PART -->
     <main class="right-part">
-      <section>
+      <section id="summary-section" style="display:none;">
         <h3>Professional Summary</h3>
-        <p>
-          Highly skilled and innovative Software Engineer with over 8 years of experience in developing 
-          cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, 
-          and distributed systems. Proven track record of leading teams to deliver high-quality solutions 
-          that drive business growth and improve user experience.
-        </p>
+        <p id="summary"></p>
       </section>
 
-      <section>
+      <section id="education-section" style="display:none;">
         <h3>Education</h3>
-        <div class="edu">
-          <h4>Stanford University <span class="date">Sep 2020 – Jun 2022</span></h4>
-          <p>Master of Science in Computer Science - Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0. Research Assistant at Stanford AI Lab. Published 2 papers on deep learning applications.</p>
-        </div>
-        <div class="edu">
-          <h4>University of California, Berkeley <span class="date">Sep 2016 – May 2020</span></h4>
-          <p>Bachelor of Science in Computer Engineering - Minor in Mathematics. GPA: 3.85/4.0. Dean's List all semesters. Capstone Project: Developed an IoT system for smart energy management.</p>
-        </div>
-        <div class="edu">
-          <h4>ETH Zurich <span class="date">Sep 2018 – Dec 2018</span></h4>
-          <p>Exchange Student in Computer Science - Focused on Advanced Algorithms and Data Structures. Participated in international programming competitions. Collaborated on research project in distributed computing.</p>
-        </div>
+        <div id="education"></div>
       </section>
 
-      <section>
+      <section id="experience-section" style="display:none;">
         <h3>Professional Experience</h3>
-        <div class="job">
-          <h4>Senior Software Engineer at Google Inc. <span class="date">Jun 2022 – Present</span></h4>
-          <p>
-            Led the development of a new feature for BigQuery ML that improved model training speed by 40%. 
-            Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment. 
-            Mentored 5 junior engineers and conducted technical interviews. Implemented CI/CD pipelines that 
-            reduced deployment time by 60%.
-          </p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at Microsoft Corporation <span class="date">Jul 2020 – May 2022</span></h4>
-          <p>
-            Built scalable microservices handling 1M+ requests per day using Java and Spring Boot. 
-            Optimized database queries resulting in 50% performance improvement. Implemented automated testing 
-            frameworks reducing bugs by 30%. Collaborated with product managers to define technical requirements 
-            and delivered features ahead of schedule.
-          </p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at XYZ Company <span class="date">Mar 2025 – Dec 2026</span></h4>
-          <p>
-            Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%. 
-            Developed frontend components and responsive UIs, reducing UI bugs by 25%. Built and maintained 
-            automated CI/CD pipelines and deployment scripts. Optimized database queries and introduced caching 
-            strategies, reducing response time by 40%.
-          </p>
-        </div>
+        <div id="experience"></div>
       </section>
 
-      <section>
+      <section id="projects-section" style="display:none;">
         <h3>Key Projects</h3>
-        <div class="job">
-          <h4>SmartRetail Platform - Lead Developer <span class="date">Mar 2022 – Present</span></h4>
-          <p>
-            E-commerce analytics platform with real-time inventory management and demand forecasting. 
-            Implemented machine learning algorithms for demand forecasting. Built real-time dashboard with React and D3.js. 
-            Achieved 25% improvement in inventory turnover rates. Technologies: Python, React, TensorFlow, AWS.
-          </p>
-        </div>
-        <div class="job">
-          <h4>FinanceTracker Pro - Full Stack Developer <span class="date">Jan 2023 – Dec 2023</span></h4>
-          <p>
-            Personal finance management application with automated categorization and investment tracking. 
-            Developed automated transaction categorization using NLP. Built investment portfolio tracking with real-time market data. 
-            Created mobile-responsive Vue.js frontend with PWA capabilities. Technologies: Vue.js, Node.js, MongoDB, Docker.
-          </p>
-        </div>
+        <div id="projects"></div>
       </section>
 
-      <section>
+      <section id="publications-section" style="display:none;">
         <h3>Publications</h3>
-        <div class="job">
-          <h4>Scaling Microservices with Kubernetes <span class="date">August 2022</span></h4>
-          <p><em>Tech Journal</em> - Best practices for deploying and scaling microservices with Kubernetes.</p>
-        </div>
-        <div class="job">
-          <h4>Modern Frontend Architecture Patterns <span class="date">March 2023</span></h4>
-          <p><em>Web Development Quarterly</em> - Comprehensive guide to modern frontend architecture patterns including micro-frontends and component-driven development.</p>
-        </div>
-        <div class="job">
-          <h4>Machine Learning in Production Systems <span class="date">November 2023</span></h4>
-          <p><em>AI Research Today</em> - Practical approaches to deploying and maintaining machine learning models in production environments.</p>
-        </div>
+        <div id="publications"></div>
       </section>
 
-      <section>
+      <section id="volunteering-section" style="display:none;">
         <h3>Volunteer Experience</h3>
-        <div class="job">
-          <h4>Web Development Mentor <span class="date">Jan 2023 – Present</span></h4>
-          <p><em>Berlin</em> - Mentoring aspiring web developers through coding bootcamp program. Provided one-on-one guidance to 15+ students. Conducted weekly code review sessions. Helped students build portfolio projects. Achieved 90% job placement rate for mentees.</p>
-        </div>
-        <div class="job">
-          <h4>Tech Workshop Organizer <span class="date">Mar 2022 – Dec 2022</span></h4>
-          <p><em>Munich</em> - Organized monthly technology workshops for local community. Planned and executed 10 workshops with 200+ attendees. Topics covered: React, Node.js, Python, and DevOps. Collaborated with local tech companies for sponsorship.</p>
-        </div>
+        <div id="volunteering"></div>
       </section>
 
-      <section>
+      <section id="certifications-awards-section" style="display:none;">
         <h3>Certifications & Awards</h3>
         <div class="cert-awards">
-          <div class="cert-column">
+          <div class="cert-column" id="certifications-column" style="display:none;">
             <h4>Certifications</h4>
-            <ul>
-              <li>AWS Certified Solutions Architect (2023)</li>
-              <li>Google Cloud Professional Developer (2022)</li>
-              <li>Certified Kubernetes Administrator (2022)</li>
-            </ul>
+            <ul id="certifications"></ul>
           </div>
-          <div class="awards-column">
+          <div class="awards-column" id="awards-column" style="display:none;">
             <h4>Awards</h4>
-            <ul>
-              <li>Employee of the Year - Google Inc. (2023)</li>
-              <li>Innovation Award - Microsoft Corporation (2021)</li>
-            </ul>
+            <ul id="awards"></ul>
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="references-section" style="display:none;">
         <h3>References</h3>
-        <div class="references-grid">
-          <div class="reference-item">
-            <h4>Michael Bauer</h4>
-            <p><strong>CTO, TechVision GmbH</strong></p>
-            <p>michael.bauer@techvision.com</p>
-            <p>+49 30 987654</p>
-            <p><em>Direct Manager</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Sarah Chen</h4>
-            <p><strong>Senior Engineering Manager, InnovateTech Solutions</strong></p>
-            <p>sarah.chen@innovatetech.com</p>
-            <p>+1 555 123 4567</p>
-            <p><em>Team Lead</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Dr. Andreas Mueller</h4>
-            <p><strong>Professor of Computer Science, University of Munich</strong></p>
-            <p>a.mueller@tum.de</p>
-            <p>+49 89 289 17234</p>
-            <p><em>Academic Supervisor</em></p>
-          </div>
-        </div>
+        <div class="references-grid" id="references"></div>
       </section>
     </main>
   </div>
@@ -297,57 +136,474 @@
   </div>
 
   <script>
-    // Skills data organized by groups
-    const skillsData = {
-      'Programming Languages': [
-        { name: 'Python', level: 100 },
-        { name: 'Java', level: 100 },
-        { name: 'JavaScript', level: 80 },
-        { name: 'TypeScript', level: 75 },
-        { name: 'Go', level: 60 },
-        { name: 'C++', level: 60 }
-      ],
-      'Frameworks & Libraries': [
-        { name: 'React', level: 100 },
-        { name: 'Vue.js', level: 80 },
-        { name: 'Node.js', level: 100 },
-        { name: 'Express', level: 80 },
-        { name: 'Django', level: 60 },
-        { name: 'Spring Boot', level: 60 }
-      ],
-      'Databases': [
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Redis', level: 60 },
-        { name: 'Elasticsearch', level: 60 }
-      ]
-    };
+    let resumeData = null;
 
-    // Generate skills by groups
-    function generateSkillGroup(groupName, skills, containerId) {
-      const container = document.getElementById(containerId);
-      skills.forEach(skill => {
-        const skillDiv = document.createElement('div');
-        skillDiv.className = 'skill';
-        
-        const skillName = document.createElement('div');
-        skillName.className = 'skill-name';
-        skillName.textContent = skill.name;
-        
-        const progress = document.createElement('div');
-        progress.className = 'progress';
-        
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        progressBar.style.width = skill.level + '%';
-        
-        progress.appendChild(progressBar);
-        skillDiv.appendChild(skillName);
-        skillDiv.appendChild(progress);
-        container.appendChild(skillDiv);
-      });
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
     }
 
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = `${personal.firstName} ${personal.lastName}`;
+      document.getElementById('job_title').textContent = personal.jobTitle;
+    }
+
+    // Populate contact info with ALL fields
+    function populateContactInfo() {
+      const personal = resumeData.personalInfo;
+      let html = '';
+
+      // Location
+      if (personal.location) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>${personal.location}</span>
+          </div>
+        `;
+      }
+
+      // Email
+      if (personal.email) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>${personal.email}</span>
+          </div>
+        `;
+      }
+
+      // Phone
+      if (personal.phone) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>${personal.phone}</span>
+          </div>
+        `;
+      }
+
+      // Website
+      if (personal.website) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <span>${personal.website.replace('https://', '').replace('http://', '')}</span>
+          </div>
+        `;
+      }
+
+      // LinkedIn
+      if (personal.socialLinks && personal.socialLinks.linkedin) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <span>${personal.socialLinks.linkedin}</span>
+          </div>
+        `;
+      }
+
+      // GitHub
+      if (personal.socialLinks && personal.socialLinks.github) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            <span>${personal.socialLinks.github}</span>
+          </div>
+        `;
+      }
+
+      // Birth Date
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Born: ${formattedDate}</span>
+          </div>
+        `;
+      }
+
+      // Nationality
+      if (personal.nationality) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span>${personal.nationality}</span>
+          </div>
+        `;
+      }
+
+      // Relationship Status
+      if (personal.relationshipStatus) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <span>${personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1)}</span>
+          </div>
+        `;
+      }
+
+      // Availability
+      if (personal.availability) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Available: ${personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1)}</span>
+          </div>
+        `;
+      }
+
+      // Driving License
+      if (personal.drivingLicense) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+            <span>License: ${personal.drivingLicense}</span>
+          </div>
+        `;
+      }
+
+      // Websites and Social Links
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `
+            <div class="contact-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              <span>${link.label}: ${link.url.replace('https://', '').replace('http://', '')}</span>
+            </div>
+          `;
+        });
+      }
+
+      document.getElementById('contact-info').innerHTML = html;
+    }
+
+    // Populate skills with grouping
+    function populateSkills() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      // Group skills by category
+      const grouped = {};
+      resumeData.skills.forEach(skill => {
+        const category = skill.category || 'other';
+        if (!grouped[category]) grouped[category] = [];
+        grouped[category].push(skill);
+      });
+
+      // Get category names from skillGroups
+      const categoryNames = {};
+      if (resumeData.skillGroups) {
+        resumeData.skillGroups.forEach(group => {
+          categoryNames[group.id] = group.name;
+        });
+      }
+
+      let html = '';
+      Object.entries(grouped).forEach(([categoryId, skills]) => {
+        const categoryName = categoryNames[categoryId] || categoryId;
+        html += `<div class="skill-group">`;
+        html += `<h4 class="skill-group-title">${categoryName}</h4>`;
+        html += `<div class="skill-group-items">`;
+
+        skills.forEach(skill => {
+          const proficiency = skill.level === 'Expert' ? 100 :
+                            skill.level === 'Advanced' ? 80 : 60;
+          html += `
+            <div class="skill">
+              <div class="skill-name">${skill.skill}</div>
+              <div class="progress">
+                <div class="progress-bar" style="width: ${proficiency}%"></div>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `</div></div>`;
+      });
+
+      document.getElementById('skills').innerHTML = html;
+    }
+
+    // Populate languages
+    function populateLanguages() {
+      if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+      let html = '';
+      resumeData.languages.forEach(lang => {
+        html += `
+          <div class="language">
+            <div class="lang-name">${lang.language}</div>
+            <div class="lang-level">${lang.level}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('languages').innerHTML = html;
+    }
+
+    // Populate hobbies
+    function populateHobbies() {
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+      let html = '';
+      resumeData.hobbies.forEach(hobby => {
+        html += `<div class="hobby-item">${hobby}</div>`;
+      });
+
+      document.getElementById('hobbies').innerHTML = html;
+      document.getElementById('hobbies-section').style.display = 'block';
+    }
+
+    // Populate summary
+    function populateSummary() {
+      if (!resumeData.professionalSummary) return;
+
+      document.getElementById('summary').textContent = resumeData.professionalSummary;
+      document.getElementById('summary-section').style.display = 'block';
+    }
+
+    // Populate education
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+        const cleanDesc = stripHtmlTags(edu.description);
+
+        html += `
+          <div class="edu">
+            <h4>${edu.school} <span class="date">${startDate} – ${endDate}</span></h4>
+            <p>${edu.degree}${cleanDesc ? ' - ' + cleanDesc : ''}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById('education').innerHTML = html;
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    // Populate experience
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="job">
+            <h4>${job.jobTitle} at ${job.company} <span class="date">${startDate} – ${endDate}</span></h4>
+        `;
+
+        if (job.responsibilities && job.responsibilities.length > 0) {
+          html += `<p>${job.responsibilities.join('. ')}.</p>`;
+        } else if (job.description) {
+          html += `<p>${job.description}</p>`;
+        }
+
+        html += `</div>`;
+      });
+
+      document.getElementById('experience').innerHTML = html;
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    // Populate projects
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="job">
+            <h4>${project.name}</h4>
+            <p>${project.description}${project.technologies ? ' Technologies: ' + project.technologies : ''}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById('projects').innerHTML = html;
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    // Populate publications
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const pubDate = formatDate(pub.publicationDate);
+        const cleanDesc = stripHtmlTags(pub.description);
+
+        html += `
+          <div class="job">
+            <h4>${pub.title} <span class="date">${pubDate}</span></h4>
+            <p><em>${pub.publisher}</em>${cleanDesc ? ' - ' + cleanDesc : ''}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById('publications').innerHTML = html;
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    // Populate volunteering
+    function populateVolunteering() {
+      if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      let html = '';
+      resumeData.customSections.volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+        const cleanDesc = stripHtmlTags(vol.description);
+
+        html += `
+          <div class="job">
+            <h4>${vol.title} <span class="date">${startDate} – ${endDate}</span></h4>
+            <p><em>${vol.city}</em> - ${cleanDesc}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById('volunteering').innerHTML = html;
+      document.getElementById('volunteering-section').style.display = 'block';
+    }
+
+    // Populate certifications and awards
+    function populateCertificationsAndAwards() {
+      const hasCourses = resumeData.courses && resumeData.courses.length > 0;
+      const hasAwards = resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0;
+
+      if (!hasCourses && !hasAwards) return;
+
+      // Certifications
+      if (hasCourses) {
+        let html = '';
+        resumeData.courses.forEach(course => {
+          const completionDate = new Date(course.completionDate);
+          const year = completionDate.getFullYear();
+          html += `<li>${course.title} (${year})</li>`;
+        });
+        document.getElementById('certifications').innerHTML = html;
+        document.getElementById('certifications-column').style.display = 'block';
+      }
+
+      // Awards
+      if (hasAwards) {
+        let html = '';
+        resumeData.customSections.awards.forEach(award => {
+          const cleanDesc = stripHtmlTags(award.description);
+          html += `<li>${cleanDesc}</li>`;
+        });
+        document.getElementById('awards').innerHTML = html;
+        document.getElementById('awards-column').style.display = 'block';
+      }
+
+      document.getElementById('certifications-awards-section').style.display = 'block';
+    }
+
+    // Populate references
+    function populateReferences() {
+      if (!resumeData.references || resumeData.references.length === 0) return;
+
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <div class="reference-item">
+            <h4>${ref.name}</h4>
+            <p><strong>${ref.position}, ${ref.company}</strong></p>
+            <p>${ref.email}</p>
+            <p>${ref.phone}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById('references').innerHTML = html;
+      document.getElementById('references-section').style.display = 'block';
+    }
+
+    // Main function to populate all resume data
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content; // Extract content
+
+        populateHeader();
+        populateContactInfo();
+        populateSkills();
+        populateLanguages();
+        populateHobbies();
+        populateSummary();
+        populateEducation();
+        populateExperience();
+        populateProjects();
+        populatePublications();
+        populateVolunteering();
+        populateCertificationsAndAwards();
+        populateReferences();
+
+        // Apply default color scheme after data is loaded
+        applyColorScheme('midnight');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
 
     // Color schemes adapted for dark theme
     const colorSchemes = {
@@ -530,15 +786,11 @@
         document.querySelector('.control-panel').style.display = 'block';
       });
 
-      // Generate all skill groups
-      generateSkillGroup('Programming Languages', skillsData['Programming Languages'], 'programming-skills');
-      generateSkillGroup('Frameworks & Libraries', skillsData['Frameworks & Libraries'], 'frameworks-skills');
-      generateSkillGroup('Cloud & DevOps', skillsData['Cloud & DevOps'], 'cloud-skills');
-      generateSkillGroup('Databases', skillsData['Databases'], 'database-skills');
-      
-      // Initialize with default values
+      // Initialize font
       applyFont("'Josefin Sans', sans-serif");
-      applyColorScheme('midnight');
+
+      // Load resume data
+      populateResume();
     });
   </script>
 </body>
@@ -714,6 +966,17 @@
 .lang-level {
   color: #bbb;
   font-size: 11px;
+}
+
+/* HOBBIES */
+.hobby-item {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  margin: 5px 5px 5px 0;
+  border-radius: 15px;
+  font-size: 11px;
+  color: #fff;
 }
 
 /* CERTIFICATIONS & AWARDS */

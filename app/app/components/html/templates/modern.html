@@ -25,6 +25,11 @@
         <h3>Contact</h3>
         <div id="contact-info"></div>
 
+        <div id="personal-details-section" style="display:none;">
+          <h3>Personal Details</h3>
+          <div id="personal-details"></div>
+        </div>
+
         <h3>Skills</h3>
         <div id="skills"></div>
 
@@ -130,13 +135,16 @@
       if (!resumeData) return;
 
       // Header
-      const fullName = `${resumeData.personalInfo.firstName} ${resumeData.personalInfo.lastName}`;
+      const fullName = resumeData.personalInfo.name || '';
       document.getElementById('full-name').textContent = fullName;
-      document.getElementById('job-title').textContent = resumeData.personalInfo.jobTitle;
-      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.jobTitle} Resume`;
+      document.getElementById('job-title').textContent = resumeData.personalInfo.title || '';
+      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.title || 'Resume'}`;
 
       // Contact Information
       populateContactInfo();
+
+      // Personal Details
+      populatePersonalDetails();
 
       // Skills (grouped by category)
       populateSkills();
@@ -151,7 +159,7 @@
       populateHobbies();
 
       // Professional Summary
-      document.getElementById('professional-summary').textContent = resumeData.professionalSummary;
+      document.getElementById('professional-summary').textContent = stripHtmlTags(resumeData.professionalSummary || '');
 
       // Employment History
       populateEmploymentHistory();
@@ -176,6 +184,37 @@
 
       // References
       populateReferences();
+    }
+
+    // Personal Details
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      const section = document.getElementById('personal-details-section');
+      const container = document.getElementById('personal-details');
+      container.innerHTML = '';
+
+      const items = [];
+
+      if (personal.birthDate) {
+        const date = new Date(personal.birthDate);
+        const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        items.push({ icon: 'calendar', label: 'Birth Date', value: formatted });
+      }
+      if (personal.nationality) items.push({ icon: 'flag', label: 'Nationality', value: personal.nationality });
+      if (personal.relationshipStatus) items.push({ icon: 'users', label: 'Status', value: personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1) });
+      if (personal.availability) items.push({ icon: 'clock', label: 'Availability', value: personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1) });
+      if (personal.drivingLicense) items.push({ icon: 'card', label: 'License', value: personal.drivingLicense });
+
+      if (items.length > 0) {
+        items.forEach(item => {
+          const div = document.createElement('div');
+          div.style.marginBottom = '10px';
+          div.style.fontSize = '12px';
+          div.innerHTML = `<strong style="display:block;color:#000;margin-bottom:2px;">${item.label}</strong><span style="color:#666;">${item.value}</span>`;
+          container.appendChild(div);
+        });
+        section.style.display = 'block';
+      }
     }
 
     // Contact Information
@@ -247,36 +286,22 @@
         `;
       }
 
-      // LinkedIn
-      if (personal.socialLinks && personal.socialLinks.linkedin) {
-        html += `
-          <div class="contact-item">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-            <div>
-              <strong>LinkedIn</strong><br>
-              <span>${personal.socialLinks.linkedin}</span>
+      // Social links from websitesAndSocialLinks array
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `
+            <div class="contact-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              <div>
+                <strong>${link.platform}</strong><br>
+                <span>${link.url}</span>
+              </div>
             </div>
-          </div>
-        `;
-      }
-
-      // GitHub
-      if (personal.socialLinks && personal.socialLinks.github) {
-        html += `
-          <div class="contact-item">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-            </svg>
-            <div>
-              <strong>GitHub</strong><br>
-              <span>${personal.socialLinks.github}</span>
-            </div>
-          </div>
-        `;
+          `;
+        });
       }
 
       contactContainer.innerHTML = html;
@@ -320,7 +345,7 @@
 
           html += `
             <div class="skill">
-              <div class="skill-name">${skill.skill}</div>
+              <div class="skill-name">${skill.name}</div>
               <div class="dots">
                 ${Array.from({length: 5}, (_, i) =>
                   `<div class="dot ${i < level ? 'filled' : ''}"></div>`
@@ -348,7 +373,7 @@
         html += `
           <div class="language-item">
             <strong>${lang.language}</strong>
-            <span>${lang.level}</span>
+            <span>${lang.proficiency}</span>
           </div>
         `;
       });
@@ -368,11 +393,12 @@
 
       let html = '<h3>Awards</h3><div class="awards">';
       awards.forEach(award => {
-        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        const year = award.date ? new Date(award.date).getFullYear() : '';
+        const issuer = award.issuer || '';
         html += `
           <div class="award-item">
             <strong>${award.title}</strong>
-            <span>${award.city}${year ? ` (${year})` : ''}</span>
+            <span>${issuer}${year ? ` (${year})` : ''}</span>
           </div>
         `;
       });
@@ -418,14 +444,14 @@
       let html = '';
       resumeData.employmentHistory.forEach(job => {
         const startDate = formatDate(job.startDate);
-        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+        const endDate = job.endDate ? formatDate(job.endDate) : 'Present';
 
         html += `
           <div class="job">
-            <h4>${job.jobTitle} at ${job.company}</h4>
+            <h4>${job.jobTitle} at ${job.employer}</h4>
             <span class="date">${startDate} — ${endDate}</span>
             <span class="loc">${job.location}</span>
-            <p>${job.description}</p>
+            <p>${stripHtmlTags(job.description)}</p>
           </div>
         `;
       });
@@ -445,13 +471,13 @@
       let html = '';
       resumeData.education.forEach(edu => {
         const startDate = formatDate(edu.startDate);
-        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+        const endDate = edu.endDate ? formatDate(edu.endDate) : 'Present';
 
         html += `
           <div class="edu">
             <h4>${edu.degree}</h4>
             <span class="date">${startDate} — ${endDate}</span>
-            <span class="loc">${edu.school}</span>
+            <span class="loc">${edu.institution}</span>
             ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
           </div>
         `;
@@ -498,12 +524,15 @@
 
       let html = '';
       resumeData.projects.forEach(project => {
+        const startDate = formatDate(project.startDate);
+        const endDate = project.endDate ? formatDate(project.endDate) : 'Present';
+
         html += `
           <div class="job">
-            <h4>${project.name}</h4>
-            ${project.link ? `<span class="date">${project.link}</span>` : ''}
-            <p>${project.description}</p>
-            ${project.technologies ? `<p><em>Technologies: ${project.technologies}</em></p>` : ''}
+            <h4>${project.title}</h4>
+            <span class="date">${startDate} — ${endDate}</span>
+            <p>${stripHtmlTags(project.description)}</p>
+            ${project.technologies && project.technologies.length > 0 ? `<p><em>Technologies: ${project.technologies.join(', ')}</em></p>` : ''}
           </div>
         `;
       });
@@ -524,13 +553,13 @@
       let html = '<h3>Volunteer Experience</h3>';
       volunteering.forEach(vol => {
         const startDate = formatDate(vol.startDate);
-        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+        const endDate = vol.endDate ? formatDate(vol.endDate) : 'Present';
 
         html += `
           <div class="job">
-            <h4>${vol.title}</h4>
+            <h4>${vol.role}</h4>
             <span class="date">${startDate} — ${endDate}</span>
-            <span class="loc">${vol.city}</span>
+            <span class="loc">${vol.organization}</span>
             ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
           </div>
         `;
@@ -551,7 +580,7 @@
       let html = '<h3>Courses & Certifications</h3><div class="pub-cert-item">';
       resumeData.courses.forEach(course => {
         const date = formatDate(course.completionDate);
-        html += `<p><strong>${course.title}</strong> - ${course.institution} (${date})</p>`;
+        html += `<p><strong>${course.name}</strong> - ${course.institution} (${date})</p>`;
       });
       html += '</div>';
 
@@ -569,7 +598,7 @@
 
       let html = '<h3>Publications</h3><div class="pub-cert-item">';
       resumeData.publications.forEach(pub => {
-        const date = formatDate(pub.publicationDate);
+        const date = formatDate(pub.date);
         html += `<p><strong>${pub.title}</strong> - ${pub.publisher} (${date})</p>`;
       });
       html += '</div>';

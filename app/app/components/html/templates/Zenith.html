@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenith Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+    <header class="zen-header">
+      <div class="name-block">
+        <h1 id="name"></h1>
+        <div class="accent-line"></div>
+        <p id="job-title" class="role"></p>
+      </div>
+      <div id="contact-bar" class="contact-bar"></div>
+    </header>
+
+    <div class="zen-grid">
+      <aside class="zen-sidebar">
+        <section id="personal-details-section" class="zen-sec" style="display:none;">
+          <div class="zen-label">PERSONAL</div>
+          <div id="personal-details"></div>
+        </section>
+
+        <section id="skills-section" class="zen-sec" style="display:none;">
+          <div class="zen-label">EXPERTISE</div>
+          <div id="skills"></div>
+        </section>
+
+        <section id="languages-section" class="zen-sec" style="display:none;">
+          <div class="zen-label">LANGUAGES</div>
+          <div id="languages"></div>
+        </section>
+
+        <section id="hobbies-section" class="zen-sec" style="display:none;">
+          <div class="zen-label">INTERESTS</div>
+          <div id="hobbies"></div>
+        </section>
+      </aside>
+
+      <main class="zen-main">
+        <section id="summary-section" class="zen-block" style="display:none;">
+          <h2>Summary</h2>
+          <p id="summary"></p>
+        </section>
+
+        <section id="experience-section" class="zen-block" style="display:none;">
+          <h2>Experience</h2>
+          <div id="experience"></div>
+        </section>
+
+        <section id="education-section" class="zen-block" style="display:none;">
+          <h2>Education</h2>
+          <div id="education"></div>
+        </section>
+
+        <section id="projects-section" class="zen-block" style="display:none;">
+          <h2>Projects</h2>
+          <div id="projects"></div>
+        </section>
+
+        <section id="publications-section" class="zen-block" style="display:none;">
+          <h2>Publications</h2>
+          <div id="publications"></div>
+        </section>
+
+        <section id="courses-section" class="zen-block" style="display:none;">
+          <h2>Certifications</h2>
+          <div id="courses"></div>
+        </section>
+
+        <section id="awards-section" class="zen-block" style="display:none;">
+          <h2>Awards</h2>
+          <div id="awards"></div>
+        </section>
+
+        <section id="volunteering-section" class="zen-block" style="display:none;">
+          <h2>Volunteer</h2>
+          <div id="volunteering"></div>
+        </section>
+
+        <section id="references-section" class="zen-block" style="display:none;">
+          <h2>References</h2>
+          <div id="references" class="refs"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>⚡ Settings</h3>
+    <div class="grp">
+      <label>Font:</label>
+      <select id="f-sel">
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="'IBM Plex Sans', sans-serif">IBM Plex Sans</option>
+      </select>
+    </div>
+    <div class="grp">
+      <label>Color:</label>
+      <select id="c-sel">
+        <option value="zen">Zen Black</option>
+        <option value="ink">Ink Blue</option>
+        <option value="pine">Pine Green</option>
+        <option value="crimson">Crimson Red</option>
+        <option value="ultra">Ultra Violet</option>
+        <option value="steel">Steel Gray</option>
+      </select>
+    </div>
+    <div class="grp">
+      <button id="r-btn">Reset</button>
+      <button id="p-btn">Print</button>
+    </div>
+  </div>
+
+  <script>
+    let d=null;
+    function s(h){if(!h)return '';const t=document.createElement('DIV');t.innerHTML=h;return t.textContent||t.innerText||'';}
+    function f(ds){if(!ds)return 'Present';const dt=new Date(ds);return dt.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
+
+    async function load(){
+      try{
+        const r=await fetch('resume.json');
+        const data=await r.json();
+        d=data.content;
+        const p=d.personalInfo;
+        document.getElementById('name').textContent=p.name||'';
+        document.getElementById('job-title').textContent=p.title||'';
+
+        const cb=document.getElementById('contact-bar');
+        const cts=[p.email,p.phone,p.location,p.website].filter(Boolean);
+        cb.innerHTML=cts.join(' <span class="sep">•</span> ');
+
+        if(p.websitesAndSocialLinks && p.websitesAndSocialLinks.length>0){
+          const sl=p.websitesAndSocialLinks.map(l=>l.platform).join(', ');
+          if(sl)cb.innerHTML+=' <span class="sep">•</span> '+sl;
+        }
+
+        const pd=document.getElementById('personal-details');
+        const its=[];
+        if(p.birthDate){
+          const dt=new Date(p.birthDate);
+          its.push({l:'DOB',v:dt.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'})});
+        }
+        if(p.nationality)its.push({l:'Nationality',v:p.nationality});
+        if(p.relationshipStatus)its.push({l:'Status',v:p.relationshipStatus.charAt(0).toUpperCase()+p.relationshipStatus.slice(1)});
+        if(p.availability)its.push({l:'Available',v:p.availability.charAt(0).toUpperCase()+p.availability.slice(1)});
+        if(p.drivingLicense)its.push({l:'License',v:p.drivingLicense});
+
+        if(its.length>0){
+          its.forEach(i=>{
+            const pp=document.createElement('p');
+            pp.innerHTML='<strong>'+i.l+':</strong> '+i.v;
+            pd.appendChild(pp);
+          });
+          document.getElementById('personal-details-section').style.display='block';
+        }
+
+        if(d.professionalSummary){
+          document.getElementById('summary').textContent=s(d.professionalSummary);
+          document.getElementById('summary-section').style.display='block';
+        }
+
+        if(d.skills && d.skills.length>0){
+          const sc=document.getElementById('skills');
+          const g={};
+          d.skills.forEach(sk=>{const c=sk.category||'other';if(!g[c])g[c]=[];g[c].push(sk);});
+          const cn={};
+          if(d.skillGroups)d.skillGroups.forEach(gr=>cn[gr.id]=gr.name);
+          Object.keys(g).forEach(cid=>{
+            const h=document.createElement('h4');
+            h.textContent=cn[cid]||cid.charAt(0).toUpperCase()+cid.slice(1);
+            sc.appendChild(h);
+            const tags=document.createElement('div');
+            tags.className='tag-wrap';
+            g[cid].forEach(sk=>{
+              const sp=document.createElement('span');
+              sp.className='tag';
+              sp.textContent=sk.name;
+              tags.appendChild(sp);
+            });
+            sc.appendChild(tags);
+          });
+          document.getElementById('skills-section').style.display='block';
+        }
+
+        if(d.languages && d.languages.length>0){
+          const lc=document.getElementById('languages');
+          d.languages.forEach(l=>{
+            const pp=document.createElement('p');
+            pp.innerHTML='<strong>'+l.language+'</strong> '+l.proficiency;
+            lc.appendChild(pp);
+          });
+          document.getElementById('languages-section').style.display='block';
+        }
+
+        if(d.hobbies && d.hobbies.length>0){
+          const hc=document.getElementById('hobbies');
+          const tw=document.createElement('div');
+          tw.className='tag-wrap';
+          d.hobbies.forEach(h=>{
+            const sp=document.createElement('span');
+            sp.className='tag';
+            sp.textContent=h;
+            tw.appendChild(sp);
+          });
+          hc.appendChild(tw);
+          document.getElementById('hobbies-section').style.display='block';
+        }
+
+        if(d.employmentHistory && d.employmentHistory.length>0){
+          const ec=document.getElementById('experience');
+          d.employmentHistory.forEach(j=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<div class="it-head"><h3>'+j.jobTitle+'</h3><span class="dt">'+f(j.startDate)+' – '+f(j.endDate)+'</span></div><p class="co">'+j.employer+(j.location?' • '+j.location:'')+'</p>'+(j.description?'<p class="tx">'+s(j.description)+'</p>':'');
+            ec.appendChild(dv);
+          });
+          document.getElementById('experience-section').style.display='block';
+        }
+
+        if(d.education && d.education.length>0){
+          const ec=document.getElementById('education');
+          d.education.forEach(e=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<div class="it-head"><h3>'+e.degree+'</h3><span class="dt">'+f(e.startDate)+' – '+f(e.endDate)+'</span></div><p class="co">'+e.institution+(e.location?' • '+e.location:'')+'</p>'+(e.description?'<p class="tx">'+s(e.description)+'</p>':'');
+            ec.appendChild(dv);
+          });
+          document.getElementById('education-section').style.display='block';
+        }
+
+        if(d.projects && d.projects.length>0){
+          const pc=document.getElementById('projects');
+          d.projects.forEach(pr=>{
+            const t=pr.technologies?(Array.isArray(pr.technologies)?pr.technologies.join(', '):pr.technologies):'';
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<div class="it-head"><h3>'+pr.title+'</h3><span class="dt">'+f(pr.startDate)+' – '+f(pr.endDate)+'</span></div>'+(t?'<p class="co">'+t+'</p>':'')+(pr.description?'<p class="tx">'+s(pr.description)+'</p>':'');
+            pc.appendChild(dv);
+          });
+          document.getElementById('projects-section').style.display='block';
+        }
+
+        if(d.publications && d.publications.length>0){
+          const pc=document.getElementById('publications');
+          d.publications.forEach(pu=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<h3>'+pu.title+'</h3><p class="co">'+pu.publisher+' • '+f(pu.date)+'</p>'+(pu.description?'<p class="tx">'+s(pu.description)+'</p>':'');
+            pc.appendChild(dv);
+          });
+          document.getElementById('publications-section').style.display='block';
+        }
+
+        if(d.courses && d.courses.length>0){
+          const cc=document.getElementById('courses');
+          d.courses.forEach(co=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<h3>'+co.name+'</h3><p class="co">'+co.institution+' • '+f(co.completionDate)+'</p>';
+            cc.appendChild(dv);
+          });
+          document.getElementById('courses-section').style.display='block';
+        }
+
+        if(d.customSections && d.customSections.awards && d.customSections.awards.length>0){
+          const ac=document.getElementById('awards');
+          d.customSections.awards.forEach(a=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<h3>'+a.title+'</h3><p class="co">'+(a.issuer||'')+' • '+f(a.date)+'</p>'+(a.description?'<p class="tx">'+s(a.description)+'</p>':'');
+            ac.appendChild(dv);
+          });
+          document.getElementById('awards-section').style.display='block';
+        }
+
+        if(d.customSections && d.customSections.volunteering && d.customSections.volunteering.length>0){
+          const vc=document.getElementById('volunteering');
+          d.customSections.volunteering.forEach(v=>{
+            const dv=document.createElement('div');
+            dv.className='zen-item';
+            dv.innerHTML='<div class="it-head"><h3>'+v.role+'</h3><span class="dt">'+f(v.startDate)+' – '+f(v.endDate)+'</span></div><p class="co">'+v.organization+'</p>'+(v.description?'<p class="tx">'+s(v.description)+'</p>':'');
+            vc.appendChild(dv);
+          });
+          document.getElementById('volunteering-section').style.display='block';
+        }
+
+        if(d.references && d.references.length>0){
+          const rc=document.getElementById('references');
+          d.references.forEach(re=>{
+            const dv=document.createElement('div');
+            dv.className='ref';
+            dv.innerHTML='<h4>'+re.name+'</h4><p>'+re.position+(re.company?', '+re.company:'')+'</p>'+(re.email?'<p>'+re.email+'</p>':'')+(re.phone?'<p>'+re.phone+'</p>':'');
+            rc.appendChild(dv);
+          });
+          document.getElementById('references-section').style.display='block';
+        }
+
+        applyC('zen');
+      }catch(e){console.error('Error:',e);}
+    }
+
+    const clrs={
+      zen:{p:'#000',a:'#000'},
+      ink:{p:'#1e40af',a:'#3b82f6'},
+      pine:{p:'#166534',a:'#22c55e'},
+      crimson:{p:'#991b1b',a:'#ef4444'},
+      ultra:{p:'#5b21b6',a:'#8b5cf6'},
+      steel:{p:'#475569',a:'#64748b'}
+    };
+
+    function applyC(c){
+      const cl=clrs[c];
+      document.querySelector('.accent-line').style.background=cl.a;
+      document.querySelectorAll('.zen-label').forEach(e=>e.style.background=cl.p);
+      document.querySelectorAll('.zen-block h2').forEach(e=>e.style.color=cl.p);
+      document.querySelectorAll('.zen-item h3').forEach(e=>e.style.color=cl.p);
+      document.querySelectorAll('.tag').forEach(e=>e.style.background=cl.a);
+    }
+
+    function applyF(fo){document.body.style.fontFamily=fo;}
+
+    document.addEventListener('DOMContentLoaded',function(){
+      load();
+      document.getElementById('f-sel').addEventListener('change',(e)=>applyF(e.target.value));
+      document.getElementById('c-sel').addEventListener('change',(e)=>applyC(e.target.value));
+      document.getElementById('r-btn').addEventListener('click',()=>{
+        document.getElementById('f-sel').value="'Inter', sans-serif";
+        document.getElementById('c-sel').value='zen';
+        applyF("'Inter', sans-serif");
+        applyC('zen');
+      });
+      document.getElementById('p-btn').addEventListener('click',()=>window.print());
+      applyF("'Inter', sans-serif");
+    });
+  </script>
+</body>
+</html>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fafafa;padding:20px;}
+.page{width:210mm;min-height:297mm;background:white;margin:0 auto;box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+.zen-header{padding:50px 50px 30px;border-bottom:1px solid #f0f0f0;}
+.name-block h1{font-size:42px;font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.accent-line{width:60px;height:4px;background:#000;margin:12px 0;}
+.role{font-size:15px;font-weight:400;color:#666;text-transform:uppercase;letter-spacing:3px;}
+.contact-bar{margin-top:20px;font-size:11px;color:#666;}
+.sep{margin:0 8px;color:#ccc;}
+.zen-grid{display:flex;}
+.zen-sidebar{width:35%;background:#fafafa;padding:30px 25px;border-right:1px solid #f0f0f0;}
+.zen-main{width:65%;padding:30px 40px;}
+.zen-sec{margin-bottom:25px;}
+.zen-label{display:inline-block;background:#000;color:white;font-size:9px;font-weight:600;letter-spacing:2px;padding:4px 12px;margin-bottom:12px;}
+.zen-sec p{font-size:11px;margin-bottom:8px;color:#555;line-height:1.5;}
+.zen-sec h4{font-size:11px;font-weight:600;margin:15px 0 8px;color:#000;}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.tag{background:#000;color:white;font-size:9px;padding:4px 10px;border-radius:3px;}
+.zen-block{margin-bottom:30px;}
+.zen-block h2{font-size:16px;font-weight:700;color:#000;margin-bottom:15px;padding-bottom:8px;border-bottom:2px solid #000;letter-spacing:-0.3px;}
+.zen-block>p{font-size:12px;line-height:1.7;color:#444;}
+.zen-item{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #f5f5f5;}
+.zen-item:last-child{border-bottom:none;}
+.it-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+.zen-item h3{font-size:13px;font-weight:600;color:#000;}
+.dt{font-size:10px;color:#999;white-space:nowrap;}
+.co{font-size:11px;color:#777;margin:3px 0;}
+.tx{font-size:11px;line-height:1.6;color:#555;margin-top:6px;}
+.refs{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
+.ref{background:#fafafa;padding:12px;border-left:2px solid #000;}
+.ref h4{font-size:11px;font-weight:600;margin-bottom:4px;}
+.ref p{font-size:10px;color:#666;margin:2px 0;}
+.panel{position:fixed;top:20px;right:20px;background:white;border-radius:8px;padding:16px;box-shadow:0 4px 15px rgba(0,0,0,0.12);z-index:1000;min-width:180px;}
+.panel h3{font-size:13px;margin-bottom:10px;text-align:center;border-bottom:1px solid #eee;padding-bottom:8px;}
+.grp{margin-bottom:10px;}
+.grp label{display:block;font-size:10px;font-weight:600;color:#555;margin-bottom:4px;}
+.grp select{width:100%;padding:5px;border:1px solid #ddd;border-radius:3px;font-size:10px;}
+.grp button{width:48%;padding:6px;border:none;border-radius:3px;font-size:10px;cursor:pointer;font-weight:600;}
+#r-btn{background:#f0f0f0;color:#666;margin-right:4%;}
+#p-btn{background:#000;color:white;}
+@media print{.panel{display:none;}body{background:white;padding:0;}.page{box-shadow:none;}}
+</style>

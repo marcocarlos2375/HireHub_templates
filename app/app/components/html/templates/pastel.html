@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Pastel Sidebar Template</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Inter:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,11 +12,11 @@
     <!-- HEADER -->
     <div class="header">
       <div class="header-pic">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Profile Picture">
+        <img id="profile-img" alt="Profile Picture" style="display:none;">
       </div>
       <div class="header-info">
-        <h1>Juliana Silva</h1>
-        <p class="job-title">Art Director</p>
+        <h1 id="name"></h1>
+        <p class="job-title" id="job-title"></p>
       </div>
     </div>
 
@@ -25,88 +25,601 @@
       <div class="left-part">
         <section>
           <h2>Contact</h2>
-          <ul class="contact-list">
-            <li>📞 +123-456-7890</li>
-            <li>✉️ hello@reallygreatsite.com</li>
-            <li>🌐 www.reallygreatsite.com</li>
-            <li>📍 123 Anywhere St., Any City</li>
+          <ul class="contact-list" id="contact-list">
           </ul>
         </section>
 
-        <section>
+        <section id="personal-details-section" style="display:none;">
+          <h2>Personal Details</h2>
+          <div id="personal-details"></div>
+        </section>
+
+        <section id="education-section" style="display:none;">
           <h2>Education</h2>
-          <p><strong>Bachelor of Design</strong><br>Wardiere University<br>2006 – 2008</p>
-          <p><strong>Bachelor of Design</strong><br>Wardiere University<br>2006 – 2008</p>
+          <div id="education"></div>
         </section>
 
-        <section>
+        <section id="skills-section" style="display:none;">
           <h2>Expertise</h2>
-          <ul>
-            <li>Web Design</li>
-            <li>Branding</li>
-            <li>Graphic Design</li>
-            <li>SEO</li>
-            <li>Marketing</li>
-          </ul>
+          <div id="skills"></div>
         </section>
 
-        <section>
+        <section id="languages-section" style="display:none;">
           <h2>Languages</h2>
-          <p>English</p>
-          <p>French</p>
+          <div id="languages"></div>
+        </section>
+
+        <section id="courses-section" style="display:none;">
+          <h2>Courses</h2>
+          <div id="courses"></div>
+        </section>
+
+        <section id="hobbies-section" style="display:none;">
+          <h2>Hobbies</h2>
+          <div id="hobbies"></div>
         </section>
       </div>
 
       <!-- RIGHT PART -->
       <div class="right-part">
 
-        <section>
+        <section id="summary-section" style="display:none;">
           <h2>About Me</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum.</p>
+          <p id="summary"></p>
         </section>
 
-        <section>
+        <section id="experience-section" style="display:none;">
           <h2>Work Experience</h2>
-
-          <div class="experience">
-            <span class="date">Jan 2022 – Present</span>
-            <h3>Digital Marketing Manager</h3>
-            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
-          </div>
-
-          <div class="experience">
-            <span class="date">2017 – 2019</span>
-            <h3>Social Media Manager</h3>
-            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
-          </div>
-
-          <div class="experience">
-            <span class="date">2015 – 2017</span>
-            <h3>Social Media Manager</h3>
-            <p><strong>Company Name | 123 Anywhere St., Any City</strong></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet.</p>
-          </div>
+          <div id="experience"></div>
         </section>
 
-        <section>
+        <section id="projects-section" style="display:none;">
+          <h2>Projects</h2>
+          <div id="projects"></div>
+        </section>
+
+        <section id="publications-section" style="display:none;">
+          <h2>Publications</h2>
+          <div id="publications"></div>
+        </section>
+
+        <section id="awards-section" style="display:none;">
+          <h2>Awards</h2>
+          <div id="awards"></div>
+        </section>
+
+        <section id="volunteering-section" style="display:none;">
+          <h2>Volunteering</h2>
+          <div id="volunteering"></div>
+        </section>
+
+        <section id="references-section" style="display:none;">
           <h2>References</h2>
-          <div class="references">
-            <div>
-              <p><strong>Estelle Darcy</strong><br>Wardiere Inc. / CEO</p>
-              <p>📞 +123-456-7890<br>✉️ hello@reallygreatsite.com</p>
-            </div>
-            <div>
-              <p><strong>Harper Russo</strong><br>Wardiere Inc. / CEO</p>
-              <p>📞 +123-456-7890<br>✉️ hello@reallygreatsite.com</p>
-            </div>
-          </div>
+          <div class="references" id="references"></div>
         </section>
 
       </div>
     </div>
   </div>
+
+  <!-- CONTROL PANEL -->
+  <div class="control-panel">
+    <h3>Customize Template</h3>
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Lato', sans-serif">Lato</option>
+        <option value="'Montserrat', sans-serif">Montserrat</option>
+        <option value="'Raleway', sans-serif">Raleway</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="pink">Pink (Default)</option>
+        <option value="lavender">Lavender</option>
+        <option value="mint">Mint</option>
+        <option value="peach">Peach</option>
+        <option value="skyblue">Sky Blue</option>
+        <option value="coral">Coral</option>
+        <option value="lilac">Lilac</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Resume</button>
+    </div>
+  </div>
+
+  <script>
+    let resumeData = null;
+
+    function stripHtmlTags(html) {
+      if (!html) return '';
+      const tmp = document.createElement('DIV');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      const month = date.toLocaleDateString('en-US', { month: 'short' });
+      const year = date.getFullYear();
+      return `${month} ${year}`;
+    }
+
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = personal.name || '';
+      document.getElementById('job-title').textContent = personal.title || '';
+
+      if (personal.profileImage) {
+        const img = document.getElementById('profile-img');
+        img.src = personal.profileImage;
+        img.style.display = 'block';
+      }
+    }
+
+    function populateContactInfo() {
+      const personal = resumeData.personalInfo;
+      const list = document.getElementById('contact-list');
+      list.innerHTML = '';
+
+      const contactItems = [
+        { icon: '📞', value: personal.phone },
+        { icon: '✉️', value: personal.email },
+        { icon: '🌐', value: personal.website },
+        { icon: '📍', value: personal.location }
+      ];
+
+      contactItems.forEach(item => {
+        if (item.value) {
+          const li = document.createElement('li');
+          li.textContent = `${item.icon} ${item.value}`;
+          list.appendChild(li);
+        }
+      });
+    }
+
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      const section = document.getElementById('personal-details-section');
+      const container = document.getElementById('personal-details');
+      container.innerHTML = '';
+
+      const items = [];
+
+      if (personal.birthDate) {
+        const date = new Date(personal.birthDate);
+        const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        items.push({ label: 'Birth Date', value: formatted });
+      }
+      if (personal.nationality) items.push({ label: 'Nationality', value: personal.nationality });
+      if (personal.relationshipStatus) items.push({ label: 'Status', value: personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1) });
+      if (personal.availability) items.push({ label: 'Availability', value: personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1) });
+      if (personal.drivingLicense) items.push({ label: 'License', value: personal.drivingLicense });
+
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          items.push({ label: link.platform, value: link.url });
+        });
+      }
+
+      if (items.length > 0) {
+        items.forEach(item => {
+          const p = document.createElement('p');
+          p.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
+          container.appendChild(p);
+        });
+        section.style.display = 'block';
+      }
+    }
+
+    function populateSummary() {
+      if (resumeData.professionalSummary) {
+        document.getElementById('summary').textContent = stripHtmlTags(resumeData.professionalSummary);
+        document.getElementById('summary-section').style.display = 'block';
+      }
+    }
+
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      const container = document.getElementById('experience');
+      container.innerHTML = '';
+
+      resumeData.employmentHistory.forEach(job => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('date');
+        dateSpan.textContent = `${formatDate(job.startDate)} – ${formatDate(job.endDate)}`;
+        div.appendChild(dateSpan);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = job.jobTitle || '';
+        div.appendChild(h3);
+
+        const companyP = document.createElement('p');
+        companyP.innerHTML = `<strong>${job.employer || ''}${job.location ? ' | ' + job.location : ''}</strong>`;
+        div.appendChild(companyP);
+
+        if (job.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(job.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      const container = document.getElementById('education');
+      container.innerHTML = '';
+
+      resumeData.education.forEach(edu => {
+        const p = document.createElement('p');
+        let html = '';
+        if (edu.degree) html += `<strong>${edu.degree}</strong><br>`;
+        if (edu.institution) html += `${edu.institution}<br>`;
+        html += `${formatDate(edu.startDate)} – ${formatDate(edu.endDate)}`;
+        p.innerHTML = html;
+        container.appendChild(p);
+      });
+
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    function populateSkills() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      const container = document.getElementById('skills');
+      container.innerHTML = '';
+
+      // Group skills by category
+      const grouped = {};
+      resumeData.skills.forEach(skill => {
+        const category = skill.category || 'other';
+        if (!grouped[category]) grouped[category] = [];
+        grouped[category].push(skill);
+      });
+
+      // Get category names
+      const categoryNames = {};
+      if (resumeData.skillGroups) {
+        resumeData.skillGroups.forEach(group => {
+          categoryNames[group.id] = group.name;
+        });
+      }
+
+      // Create list
+      const ul = document.createElement('ul');
+
+      Object.keys(grouped).forEach(category => {
+        grouped[category].forEach(skill => {
+          const li = document.createElement('li');
+          li.textContent = skill.name;
+          ul.appendChild(li);
+        });
+      });
+
+      container.appendChild(ul);
+      document.getElementById('skills-section').style.display = 'block';
+    }
+
+    function populateLanguages() {
+      if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+      const container = document.getElementById('languages');
+      container.innerHTML = '';
+
+      resumeData.languages.forEach(lang => {
+        const p = document.createElement('p');
+        p.textContent = `${lang.language} (${lang.proficiency})`;
+        container.appendChild(p);
+      });
+
+      document.getElementById('languages-section').style.display = 'block';
+    }
+
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      const container = document.getElementById('projects');
+      container.innerHTML = '';
+
+      resumeData.projects.forEach(proj => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('date');
+        dateSpan.textContent = `${formatDate(proj.startDate)} – ${formatDate(proj.endDate)}`;
+        div.appendChild(dateSpan);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = proj.title || '';
+        div.appendChild(h3);
+
+        if (proj.technologies && proj.technologies.length > 0) {
+          const techP = document.createElement('p');
+          techP.innerHTML = `<strong>Technologies: ${proj.technologies.join(', ')}</strong>`;
+          div.appendChild(techP);
+        }
+
+        if (proj.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(proj.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      const container = document.getElementById('publications');
+      container.innerHTML = '';
+
+      resumeData.publications.forEach(pub => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        if (pub.date) {
+          const dateSpan = document.createElement('span');
+          dateSpan.classList.add('date');
+          dateSpan.textContent = formatDate(pub.date);
+          div.appendChild(dateSpan);
+        }
+
+        const h3 = document.createElement('h3');
+        h3.textContent = pub.title || '';
+        div.appendChild(h3);
+
+        if (pub.publisher) {
+          const pubP = document.createElement('p');
+          pubP.innerHTML = `<strong>${pub.publisher}</strong>`;
+          div.appendChild(pubP);
+        }
+
+        if (pub.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(pub.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    function populateCourses() {
+      if (!resumeData.courses || resumeData.courses.length === 0) return;
+
+      const container = document.getElementById('courses');
+      container.innerHTML = '';
+
+      resumeData.courses.forEach(course => {
+        const p = document.createElement('p');
+        let html = '';
+        if (course.name) html += `<strong>${course.name}</strong><br>`;
+        if (course.institution) html += `${course.institution}<br>`;
+        if (course.completionDate) html += formatDate(course.completionDate);
+        p.innerHTML = html;
+        container.appendChild(p);
+      });
+
+      document.getElementById('courses-section').style.display = 'block';
+    }
+
+    function populateHobbies() {
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+      const container = document.getElementById('hobbies');
+      container.innerHTML = '';
+
+      const ul = document.createElement('ul');
+      resumeData.hobbies.forEach(hobby => {
+        const li = document.createElement('li');
+        li.textContent = hobby;
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+
+      document.getElementById('hobbies-section').style.display = 'block';
+    }
+
+    function populateAwards() {
+      if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
+
+      const container = document.getElementById('awards');
+      container.innerHTML = '';
+
+      resumeData.customSections.awards.forEach(award => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        if (award.date) {
+          const dateSpan = document.createElement('span');
+          dateSpan.classList.add('date');
+          dateSpan.textContent = formatDate(award.date);
+          div.appendChild(dateSpan);
+        }
+
+        const h3 = document.createElement('h3');
+        h3.textContent = award.title || '';
+        div.appendChild(h3);
+
+        if (award.issuer) {
+          const issuerP = document.createElement('p');
+          issuerP.innerHTML = `<strong>${award.issuer}</strong>`;
+          div.appendChild(issuerP);
+        }
+
+        if (award.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(award.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('awards-section').style.display = 'block';
+    }
+
+    function populateVolunteering() {
+      if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      const container = document.getElementById('volunteering');
+      container.innerHTML = '';
+
+      resumeData.customSections.volunteering.forEach(vol => {
+        const div = document.createElement('div');
+        div.classList.add('experience');
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('date');
+        dateSpan.textContent = `${formatDate(vol.startDate)} – ${formatDate(vol.endDate)}`;
+        div.appendChild(dateSpan);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = vol.role || '';
+        div.appendChild(h3);
+
+        const orgP = document.createElement('p');
+        orgP.innerHTML = `<strong>${vol.organization || ''}</strong>`;
+        div.appendChild(orgP);
+
+        if (vol.description) {
+          const descP = document.createElement('p');
+          descP.textContent = stripHtmlTags(vol.description);
+          div.appendChild(descP);
+        }
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('volunteering-section').style.display = 'block';
+    }
+
+    function populateReferences() {
+      if (!resumeData.references || resumeData.references.length === 0) return;
+
+      const container = document.getElementById('references');
+      container.innerHTML = '';
+
+      resumeData.references.forEach(ref => {
+        const div = document.createElement('div');
+
+        const nameP = document.createElement('p');
+        nameP.innerHTML = `<strong>${ref.name || ''}</strong><br>${ref.position || ''}${ref.company ? ' | ' + ref.company : ''}`;
+        div.appendChild(nameP);
+
+        const contactP = document.createElement('p');
+        let contactHtml = '';
+        if (ref.phone) contactHtml += `📞 ${ref.phone}<br>`;
+        if (ref.email) contactHtml += `✉️ ${ref.email}`;
+        contactP.innerHTML = contactHtml;
+        div.appendChild(contactP);
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('references-section').style.display = 'block';
+    }
+
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+
+        populateHeader();
+        populateContactInfo();
+        populatePersonalDetails();
+        populateSummary();
+        populateExperience();
+        populateEducation();
+        populateSkills();
+        populateLanguages();
+        populateProjects();
+        populatePublications();
+        populateCourses();
+        populateHobbies();
+        populateAwards();
+        populateVolunteering();
+        populateReferences();
+
+        applyColorScheme('pink');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    const colorSchemes = {
+      pink: { header: '#f5d8d8', accent: '#f5d8d8' },
+      lavender: { header: '#e6e6fa', accent: '#e6e6fa' },
+      mint: { header: '#d5f4e6', accent: '#d5f4e6' },
+      peach: { header: '#ffe5d0', accent: '#ffe5d0' },
+      skyblue: { header: '#d4e9f7', accent: '#d4e9f7' },
+      coral: { header: '#ffd7c4', accent: '#ffd7c4' },
+      lilac: { header: '#dcd0ff', accent: '#dcd0ff' }
+    };
+
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+      document.querySelector('.header').style.backgroundColor = colors.header;
+    }
+
+    function applyFont(fontFamily) {
+      document.body.style.fontFamily = fontFamily;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      populateResume();
+
+      const fontSelector = document.getElementById('font-selector');
+      const colorSelector = document.getElementById('color-scheme');
+      const resetBtn = document.getElementById('reset-btn');
+      const printBtn = document.getElementById('print-btn');
+
+      fontSelector.addEventListener('change', function() {
+        applyFont(this.value);
+      });
+
+      colorSelector.addEventListener('change', function() {
+        applyColorScheme(this.value);
+      });
+
+      resetBtn.addEventListener('click', function() {
+        fontSelector.value = "'Josefin Sans', sans-serif";
+        colorSelector.value = 'pink';
+        applyFont("'Josefin Sans', sans-serif");
+        applyColorScheme('pink');
+      });
+
+      printBtn.addEventListener('click', function() {
+        window.print();
+      });
+
+      applyFont("'Josefin Sans', sans-serif");
+    });
+  </script>
 </body>
 </html>
 <style>
@@ -211,5 +724,96 @@ p {
 }
 .references div {
   font-size: 13px;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  text-transform: none;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+}
+
+.control-group button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#reset-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+#reset-btn:hover {
+  background: #e0e0e0;
+}
+
+#print-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+#print-btn:hover {
+  background: #45a049;
+}
+
+@media print {
+  .control-panel {
+    display: none;
+  }
+  body {
+    background: white;
+    padding: 0;
+  }
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+  }
 }
 </style>

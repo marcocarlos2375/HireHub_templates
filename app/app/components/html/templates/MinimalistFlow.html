@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Minimalist Flow Template - Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,107 +12,125 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header-left">
-        <h1>Nina Patel</h1>
-        <h2>Product Designer</h2>
+        <h1 id="name"></h1>
+        <h2 id="job-title"></h2>
       </div>
-      <div class="header-right">
-        <p>ninapatel.design</p>
-        <p><a href="mailto:ninapatel@gmail.com">ninapatel@gmail.com</a></p>
-        <p>+91 432 2222 322</p>
-      </div>
+      <div class="header-right" id="contact-info"></div>
     </header>
 
     <!-- MAIN CONTENT -->
     <main>
+      <!-- SUMMARY -->
+      <section id="summary-section" style="display:none;">
+        <h3>Professional Summary</h3>
+        <p id="summary"></p>
+      </section>
+
       <!-- EXPERIENCE -->
-      <section>
+      <section id="experience-section" style="display:none;">
         <h3>Experience</h3>
-        <div class="item">
-          <div class="item-left">
-            <strong>ABC Company</strong><br>
-            UX Design Intern<br>
-            <span class="date">Jan 2023 – Present</span>
-          </div>
-          <div class="item-right">
-            <ul>
-              <li>Conducted user research and analyzed data to inform design decisions</li>
-              <li>Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups</li>
-              <li>Facilitated design reviews and user testing sessions to gather feedback</li>
-            </ul>
-          </div>
-        </div>
+        <div id="experience"></div>
       </section>
 
       <!-- EDUCATION -->
-      <section>
+      <section id="education-section" style="display:none;">
         <h3>Education</h3>
-        <div class="item">
-          <div class="item-left">
-            <strong>School of Design</strong><br>
-            UX Design Bootcamp<br>
-            <span class="date">Jan 2023 – Feb 2023</span>
-          </div>
-          <div class="item-right">
-            <ul>
-              <li>Hands-on training in user-centered design, prototyping, and visual design</li>
-              <li>Completed projects including mobile app, nonprofit website, and e-commerce platform</li>
-            </ul>
-          </div>
-        </div>
+        <div id="education"></div>
       </section>
 
       <!-- PROJECTS -->
-      <section>
+      <section id="projects-section" style="display:none;">
         <h3>Projects</h3>
-        <div class="item">
-          <div class="item-left">
-            <strong>XYZ Project</strong><br>
-            Freelance Designer<br>
-            <span class="date">Jun 2022 – Dec 2022</span>
+        <div id="projects"></div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section id="publications-section" style="display:none;">
+        <h3>Publications</h3>
+        <div id="publications"></div>
+      </section>
+
+      <!-- VOLUNTEERING -->
+      <section id="volunteering-section" style="display:none;">
+        <h3>Volunteer Experience</h3>
+        <div id="volunteering"></div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills-section" style="display:none;">
+        <h3>Skills</h3>
+        <div id="skills" class="skills-grid"></div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section id="languages-section" style="display:none;">
+        <h3>Languages</h3>
+        <div id="languages" class="two-cols"></div>
+      </section>
+
+      <!-- CERTIFICATIONS & AWARDS -->
+      <section id="certifications-awards-section" style="display:none;">
+        <h3>Certifications & Awards</h3>
+        <div class="two-cols">
+          <div id="certifications-column" style="display:none;">
+            <h4>Certifications</h4>
+            <ul id="certifications"></ul>
           </div>
-          <div class="item-right">
-            <ul>
-              <li>Designed wireframes, prototypes, and visual designs for mobile/web products</li>
-              <li>Conducted usability testing and iterated designs based on feedback</li>
-              <li>Collaborated with developers to ensure accessible implementation</li>
-            </ul>
+          <div id="awards-column" style="display:none;">
+            <h4>Awards</h4>
+            <ul id="awards"></ul>
           </div>
         </div>
       </section>
 
-      <!-- SKILLS & TOOLS -->
-      <section>
-        <h3>Skills & Tools</h3>
-        <div class="two-cols">
-          <div>
-            <h4>Tools</h4>
-            <ul>
-              <li>Sketch</li>
-              <li>Figma</li>
-              <li>FigJam</li>
-              <li>Adobe Creative Suite</li>
-              <li>InVision</li>
-              <li>Axure</li>
-              <li>Marvel App</li>
-              <li>Balsamiq</li>
-              <li>Webflow</li>
-              <li>UserTesting</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Skills</h4>
-            <ul>
-              <li>User Research</li>
-              <li>Interaction Design</li>
-              <li>Visual Design</li>
-              <li>Communication & Collaboration</li>
-              <li>User Testing</li>
-              <li>Adaptability & Continuous Learning</li>
-            </ul>
-          </div>
-        </div>
+      <!-- REFERENCES -->
+      <section id="references-section" style="display:none;">
+        <h3>References</h3>
+        <div id="references"></div>
+      </section>
+
+      <!-- HOBBIES -->
+      <section id="hobbies-section" style="display:none;">
+        <h3>Hobbies & Interests</h3>
+        <div id="hobbies" class="hobbies-grid"></div>
       </section>
     </main>
+  </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Template</h3>
+
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Lato', sans-serif">Lato</option>
+        <option value="Arial, sans-serif">Arial</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="default">Classic Black (Default)</option>
+        <option value="charcoal">Charcoal Gray</option>
+        <option value="navy">Navy Blue</option>
+        <option value="forest">Forest Green</option>
+        <option value="burgundy">Burgundy</option>
+        <option value="slate">Slate</option>
+        <option value="teal">Teal</option>
+        <option value="plum">Plum</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Resume</button>
+    </div>
   </div>
 </body>
 </html>
@@ -216,67 +234,647 @@ section h3 {
   padding-left: 18px;
   font-size: 13px;
 }
-    
+
+.skills-grid, .hobbies-grid {
+  margin-top: 10px;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  text-transform: none;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  color: #333;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.2);
+}
+
+.control-group button {
+  width: 48%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#reset-btn {
+  background: #f8f9fa;
+  color: #666;
+  margin-right: 4%;
+}
+
+#reset-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+#print-btn {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+#print-btn:hover {
+  background: #333;
+  border-color: #333;
+}
+
+/* Hide control panel when printing */
+@media print {
+  .control-panel {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+  }
+}
+
 </style>
 <script>
-    const skills = [
-  { name: "Figma", level: 95 },
-  { name: "Sketch", level: 90 },
-  { name: "Adobe Photoshop", level: 70 },
-  { name: "Adobe Illustrator", level: 60 },
-  { name: "Principle", level: 50 },
-  { name: "Adobe XD", level: 65 }
-];
+    let resumeData = null;
 
-const languages = [
-  { name: "English", level: 85 },
-  { name: "Italian", level: 60 }
-];
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
 
-// Render Skills
-const skillsContainer = document.getElementById("skills");
-skills.forEach(skill => {
-  const div = document.createElement("div");
-  div.classList.add("skill");
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
 
-  const name = document.createElement("div");
-  name.classList.add("skill-name");
-  name.textContent = skill.name;
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = `${personal.firstName} ${personal.lastName}`;
+      document.getElementById('job-title').textContent = personal.jobTitle;
+    }
 
-  const progress = document.createElement("div");
-  progress.classList.add("progress");
+    // Populate contact info with ALL fields
+    function populateContactInfo() {
+      const personal = resumeData.personalInfo;
+      let html = '';
 
-  const bar = document.createElement("div");
-  bar.classList.add("progress-bar");
-  bar.style.width = skill.level + "%";
+      // Website
+      if (personal.website) {
+        html += `<p>${personal.website.replace('https://', '').replace('http://', '')}</p>`;
+      }
 
-  progress.appendChild(bar);
-  div.appendChild(name);
-  div.appendChild(progress);
-  skillsContainer.appendChild(div);
-});
+      // Email
+      if (personal.email) {
+        html += `<p><a href="mailto:${personal.email}">${personal.email}</a></p>`;
+      }
 
-// Render Languages
-const languagesContainer = document.getElementById("languages");
-languages.forEach(lang => {
-  const div = document.createElement("div");
-  div.classList.add("language");
+      // Phone
+      if (personal.phone) {
+        html += `<p>${personal.phone}</p>`;
+      }
 
-  const name = document.createElement("div");
-  name.classList.add("language-name");
-  name.textContent = lang.name;
+      // Location
+      if (personal.location) {
+        html += `<p>${personal.location}</p>`;
+      }
 
-  const bar = document.createElement("div");
-  bar.classList.add("language-bar");
+      // LinkedIn
+      if (personal.socialLinks && personal.socialLinks.linkedin) {
+        html += `<p>LinkedIn: ${personal.socialLinks.linkedin}</p>`;
+      }
 
-  const progress = document.createElement("div");
-  progress.classList.add("language-progress");
-  progress.style.width = lang.level + "%";
+      // GitHub
+      if (personal.socialLinks && personal.socialLinks.github) {
+        html += `<p>GitHub: ${personal.socialLinks.github}</p>`;
+      }
 
-  bar.appendChild(progress);
-  div.appendChild(name);
-  div.appendChild(bar);
-  languagesContainer.appendChild(div);
-});
+      // Birth Date
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p>Born: ${formattedDate}</p>`;
+      }
 
+      // Nationality
+      if (personal.nationality) {
+        html += `<p>Nationality: ${personal.nationality}</p>`;
+      }
+
+      // Relationship Status
+      if (personal.relationshipStatus) {
+        html += `<p>Status: ${personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1)}</p>`;
+      }
+
+      // Availability
+      if (personal.availability) {
+        html += `<p>Available: ${personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1)}</p>`;
+      }
+
+      // Driving License
+      if (personal.drivingLicense) {
+        html += `<p>License: ${personal.drivingLicense}</p>`;
+      }
+
+      // Websites and Social Links
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `<p>${link.label}: ${link.url.replace('https://', '').replace('http://', '')}</p>`;
+        });
+      }
+
+      document.getElementById('contact-info').innerHTML = html;
+    }
+
+    // Populate summary
+    function populateSummary() {
+      if (!resumeData.professionalSummary) return;
+
+      document.getElementById('summary').textContent = resumeData.professionalSummary;
+      document.getElementById('summary-section').style.display = 'block';
+    }
+
+    // Populate experience
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${job.company}</strong><br>
+              ${job.jobTitle}<br>
+              <span class="date">${startDate} – ${endDate}</span>
+            </div>
+            <div class="item-right">
+        `;
+
+        if (job.responsibilities && job.responsibilities.length > 0) {
+          html += '<ul>';
+          job.responsibilities.forEach(resp => {
+            html += `<li>${resp}</li>`;
+          });
+          html += '</ul>';
+        } else if (job.description) {
+          html += `<p>${job.description}</p>`;
+        }
+
+        html += `</div></div>`;
+      });
+
+      document.getElementById('experience').innerHTML = html;
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    // Populate education
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+        const cleanDesc = stripHtmlTags(edu.description);
+
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${edu.school}</strong><br>
+              ${edu.degree}<br>
+              <span class="date">${startDate} – ${endDate}</span>
+            </div>
+            <div class="item-right">
+              <p>${cleanDesc}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('education').innerHTML = html;
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    // Populate projects
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${project.name}</strong>
+            </div>
+            <div class="item-right">
+              <p>${project.description}</p>
+              ${project.technologies ? `<p><em>Technologies: ${project.technologies}</em></p>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('projects').innerHTML = html;
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    // Populate publications
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const pubDate = formatDate(pub.publicationDate);
+        const cleanDesc = stripHtmlTags(pub.description);
+
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${pub.title}</strong><br>
+              <span class="date">${pubDate}</span>
+            </div>
+            <div class="item-right">
+              <p><em>${pub.publisher}</em>${cleanDesc ? ' - ' + cleanDesc : ''}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('publications').innerHTML = html;
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    // Populate volunteering
+    function populateVolunteering() {
+      if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      let html = '';
+      resumeData.customSections.volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+        const cleanDesc = stripHtmlTags(vol.description);
+
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${vol.title}</strong><br>
+              ${vol.city}<br>
+              <span class="date">${startDate} – ${endDate}</span>
+            </div>
+            <div class="item-right">
+              <p>${cleanDesc}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('volunteering').innerHTML = html;
+      document.getElementById('volunteering-section').style.display = 'block';
+    }
+
+    // Populate skills grouped by category
+    function populateSkills() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      // Group skills by category
+      const grouped = {};
+      resumeData.skills.forEach(skill => {
+        const category = skill.category || 'other';
+        if (!grouped[category]) grouped[category] = [];
+        grouped[category].push(skill);
+      });
+
+      // Get category names from skillGroups
+      const categoryNames = {};
+      if (resumeData.skillGroups) {
+        resumeData.skillGroups.forEach(group => {
+          categoryNames[group.id] = group.name;
+        });
+      }
+
+      let html = '<div class="two-cols">';
+      const categories = Object.keys(grouped);
+      const half = Math.ceil(categories.length / 2);
+
+      // First column
+      html += '<div>';
+      categories.slice(0, half).forEach(categoryId => {
+        const categoryName = categoryNames[categoryId] || categoryId;
+        const skills = grouped[categoryId];
+        html += `<h4>${categoryName}</h4><ul>`;
+        skills.forEach(skill => {
+          html += `<li>${skill.skill}</li>`;
+        });
+        html += `</ul>`;
+      });
+      html += '</div>';
+
+      // Second column
+      html += '<div>';
+      categories.slice(half).forEach(categoryId => {
+        const categoryName = categoryNames[categoryId] || categoryId;
+        const skills = grouped[categoryId];
+        html += `<h4>${categoryName}</h4><ul>`;
+        skills.forEach(skill => {
+          html += `<li>${skill.skill}</li>`;
+        });
+        html += `</ul>`;
+      });
+      html += '</div>';
+
+      html += '</div>';
+
+      document.getElementById('skills').innerHTML = html;
+      document.getElementById('skills-section').style.display = 'block';
+    }
+
+    // Populate languages
+    function populateLanguages() {
+      if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+      let html = '<div><ul>';
+      resumeData.languages.forEach(lang => {
+        html += `<li>${lang.language} - ${lang.level}</li>`;
+      });
+      html += '</ul></div>';
+
+      document.getElementById('languages').innerHTML = html;
+      document.getElementById('languages-section').style.display = 'block';
+    }
+
+    // Populate certifications and awards
+    function populateCertificationsAndAwards() {
+      const hasCourses = resumeData.courses && resumeData.courses.length > 0;
+      const hasAwards = resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0;
+
+      if (!hasCourses && !hasAwards) return;
+
+      // Certifications
+      if (hasCourses) {
+        let html = '';
+        resumeData.courses.forEach(course => {
+          const completionDate = new Date(course.completionDate);
+          const year = completionDate.getFullYear();
+          html += `<li>${course.title} (${year})</li>`;
+        });
+        document.getElementById('certifications').innerHTML = html;
+        document.getElementById('certifications-column').style.display = 'block';
+      }
+
+      // Awards
+      if (hasAwards) {
+        let html = '';
+        resumeData.customSections.awards.forEach(award => {
+          const cleanDesc = stripHtmlTags(award.description);
+          html += `<li>${cleanDesc}</li>`;
+        });
+        document.getElementById('awards').innerHTML = html;
+        document.getElementById('awards-column').style.display = 'block';
+      }
+
+      document.getElementById('certifications-awards-section').style.display = 'block';
+    }
+
+    // Populate references
+    function populateReferences() {
+      if (!resumeData.references || resumeData.references.length === 0) return;
+
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <div class="item">
+            <div class="item-left">
+              <strong>${ref.name}</strong>
+            </div>
+            <div class="item-right">
+              <p><strong>${ref.position}, ${ref.company}</strong><br>
+              ${ref.email}<br>
+              ${ref.phone}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('references').innerHTML = html;
+      document.getElementById('references-section').style.display = 'block';
+    }
+
+    // Populate hobbies
+    function populateHobbies() {
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+      let html = '<ul>';
+      resumeData.hobbies.forEach(hobby => {
+        html += `<li>${hobby}</li>`;
+      });
+      html += '</ul>';
+
+      document.getElementById('hobbies').innerHTML = html;
+      document.getElementById('hobbies-section').style.display = 'block';
+    }
+
+    // Main function to populate all resume data
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content; // Extract content
+
+        populateHeader();
+        populateContactInfo();
+        populateSummary();
+        populateExperience();
+        populateEducation();
+        populateProjects();
+        populatePublications();
+        populateVolunteering();
+        populateSkills();
+        populateLanguages();
+        populateCertificationsAndAwards();
+        populateReferences();
+        populateHobbies();
+
+        // Apply default color scheme after data is loaded
+        applyColorScheme('default');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Color schemes for minimalist template
+    const colorSchemes = {
+      default: {
+        primary: '#000000',
+        secondary: '#666666',
+        border: '#ddd',
+        link: '#000000'
+      },
+      charcoal: {
+        primary: '#2c3e50',
+        secondary: '#7f8c8d',
+        border: '#bdc3c7',
+        link: '#2c3e50'
+      },
+      navy: {
+        primary: '#1e3a8a',
+        secondary: '#60a5fa',
+        border: '#93c5fd',
+        link: '#1e3a8a'
+      },
+      forest: {
+        primary: '#065f46',
+        secondary: '#34d399',
+        border: '#a7f3d0',
+        link: '#065f46'
+      },
+      burgundy: {
+        primary: '#7f1d1d',
+        secondary: '#ef4444',
+        border: '#fca5a5',
+        link: '#7f1d1d'
+      },
+      slate: {
+        primary: '#334155',
+        secondary: '#94a3b8',
+        border: '#cbd5e1',
+        link: '#334155'
+      },
+      teal: {
+        primary: '#0f766e',
+        secondary: '#5eead4',
+        border: '#99f6e4',
+        link: '#0f766e'
+      },
+      plum: {
+        primary: '#581c87',
+        secondary: '#c084fc',
+        border: '#e9d5ff',
+        link: '#581c87'
+      }
+    };
+
+    // Apply font
+    function applyFont(fontFamily) {
+      document.body.style.fontFamily = fontFamily;
+    }
+
+    // Apply color scheme
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+
+      // Apply primary color to headings and strong elements
+      document.querySelectorAll('h1, h2, h3, h4, strong').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply secondary color to dates and secondary text
+      document.querySelectorAll('.date, .header-right p').forEach(el => {
+        el.style.color = colors.secondary;
+      });
+
+      // Apply border color
+      document.querySelectorAll('.header, section').forEach(el => {
+        if (el.classList.contains('header')) {
+          el.style.borderBottomColor = colors.border;
+        }
+      });
+
+      // Apply link color
+      document.querySelectorAll('a').forEach(el => {
+        el.style.color = colors.link;
+      });
+    }
+
+    // Get elements and set up event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get elements
+      const fontSelector = document.getElementById('font-selector');
+      const colorSchemeSelector = document.getElementById('color-scheme');
+      const resetBtn = document.getElementById('reset-btn');
+      const printBtn = document.getElementById('print-btn');
+
+      // Event listeners
+      fontSelector.addEventListener('change', (e) => {
+        applyFont(e.target.value);
+      });
+
+      colorSchemeSelector.addEventListener('change', (e) => {
+        applyColorScheme(e.target.value);
+      });
+
+      resetBtn.addEventListener('click', () => {
+        fontSelector.value = "'Josefin Sans', sans-serif";
+        colorSchemeSelector.value = 'default';
+        applyFont("'Josefin Sans', sans-serif");
+        applyColorScheme('default');
+      });
+
+      printBtn.addEventListener('click', () => {
+        // Hide control panel for printing
+        document.querySelector('.control-panel').style.display = 'none';
+        window.print();
+        document.querySelector('.control-panel').style.display = 'block';
+      });
+
+      // Initialize font
+      applyFont("'Josefin Sans', sans-serif");
+
+      // Load resume data
+      populateResume();
+    });
 </script>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aurora Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="a4">
+    <header class="gradient-header">
+      <div class="profile-container">
+        <img id="profile-img" class="profile-image" alt="Profile" style="display:none;">
+        <div class="header-text">
+          <h1 id="name"></h1>
+          <p id="job-title" class="job-title"></p>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <aside class="left-column">
+        <section class="section">
+          <h2 class="section-title">Contact</h2>
+          <div id="contact-info" class="contact-grid"></div>
+        </section>
+
+        <section id="personal-details-section" class="section" style="display:none;">
+          <h2 class="section-title">Personal Info</h2>
+          <div id="personal-details"></div>
+        </section>
+
+        <section id="skills-section" class="section" style="display:none;">
+          <h2 class="section-title">Skills</h2>
+          <div id="skills"></div>
+        </section>
+
+        <section id="languages-section" class="section" style="display:none;">
+          <h2 class="section-title">Languages</h2>
+          <div id="languages"></div>
+        </section>
+
+        <section id="hobbies-section" class="section" style="display:none;">
+          <h2 class="section-title">Interests</h2>
+          <div id="hobbies"></div>
+        </section>
+      </aside>
+
+      <main class="right-column">
+        <section id="summary-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Professional Summary</h2>
+          <p id="summary" class="summary-text"></p>
+        </section>
+
+        <section id="experience-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Experience</h2>
+          <div id="experience"></div>
+        </section>
+
+        <section id="education-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Education</h2>
+          <div id="education"></div>
+        </section>
+
+        <section id="projects-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Projects</h2>
+          <div id="projects"></div>
+        </section>
+
+        <section id="publications-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Publications</h2>
+          <div id="publications"></div>
+        </section>
+
+        <section id="courses-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Certifications</h2>
+          <div id="courses"></div>
+        </section>
+
+        <section id="awards-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Awards</h2>
+          <div id="awards"></div>
+        </section>
+
+        <section id="volunteering-section" class="section" style="display:none;">
+          <h2 class="section-title-main">Volunteer Work</h2>
+          <div id="volunteering"></div>
+        </section>
+
+        <section id="references-section" class="section" style="display:none;">
+          <h2 class="section-title-main">References</h2>
+          <div id="references" class="references-grid"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <h3>⚡ Customize</h3>
+    <div class="control-group">
+      <label>Font:</label>
+      <select id="font-selector">
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Montserrat', sans-serif">Montserrat</option>
+        <option value="'Inter', sans-serif">Inter</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Theme:</label>
+      <select id="color-scheme">
+        <option value="aurora">Aurora</option>
+        <option value="sunset">Sunset</option>
+        <option value="ocean">Ocean</option>
+        <option value="forest">Forest</option>
+        <option value="twilight">Twilight</option>
+        <option value="fire">Fire</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <button id="reset-btn">Reset</button>
+      <button id="print-btn">Print</button>
+    </div>
+  </div>
+
+  <script>
+    let resumeData = null;
+
+    function stripHtmlTags(html) {
+      if (!html) return '';
+      const tmp = document.createElement('DIV');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = personal.name || '';
+      document.getElementById('job-title').textContent = personal.title || '';
+      
+      if (personal.profileImage) {
+        const img = document.getElementById('profile-img');
+        img.src = personal.profileImage;
+        img.style.display = 'block';
+      }
+    }
+
+    function populateContactInfo() {
+      const personal = resumeData.personalInfo;
+      const container = document.getElementById('contact-info');
+      container.innerHTML = '';
+
+      const contacts = [
+        { icon: '📍', value: personal.location },
+        { icon: '📧', value: personal.email },
+        { icon: '📱', value: personal.phone },
+        { icon: '🌐', value: personal.website }
+      ];
+
+      contacts.forEach(item => {
+        if (item.value) {
+          const div = document.createElement('div');
+          div.className = 'contact-item';
+          div.innerHTML = '<span class="icon">' + item.icon + '</span><span>' + item.value + '</span>';
+          container.appendChild(div);
+        }
+      });
+
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          const div = document.createElement('div');
+          div.className = 'contact-item';
+          div.innerHTML = '<span class="icon">🔗</span><span>' + link.platform + '</span>';
+          container.appendChild(div);
+        });
+      }
+    }
+
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      const section = document.getElementById('personal-details-section');
+      const container = document.getElementById('personal-details');
+      container.innerHTML = '';
+
+      const items = [];
+      if (personal.birthDate) {
+        const date = new Date(personal.birthDate);
+        items.push({ label: 'Birth Date', value: date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) });
+      }
+      if (personal.nationality) items.push({ label: 'Nationality', value: personal.nationality });
+      if (personal.relationshipStatus) items.push({ label: 'Status', value: personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1) });
+      if (personal.availability) items.push({ label: 'Availability', value: personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1) });
+      if (personal.drivingLicense) items.push({ label: 'License', value: personal.drivingLicense });
+
+      if (items.length > 0) {
+        items.forEach(item => {
+          const p = document.createElement('p');
+          p.className = 'info-item';
+          p.innerHTML = '<strong>' + item.label + ':</strong> ' + item.value;
+          container.appendChild(p);
+        });
+        section.style.display = 'block';
+      }
+    }
+
+    function populateSummary() {
+      if (resumeData.professionalSummary) {
+        document.getElementById('summary').textContent = stripHtmlTags(resumeData.professionalSummary);
+        document.getElementById('summary-section').style.display = 'block';
+      }
+    }
+
+    function populateSkills() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      const container = document.getElementById('skills');
+      container.innerHTML = '';
+
+      const grouped = {};
+      resumeData.skills.forEach(skill => {
+        const cat = skill.category || 'other';
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(skill);
+      });
+
+      const catNames = {};
+      if (resumeData.skillGroups) {
+        resumeData.skillGroups.forEach(g => catNames[g.id] = g.name);
+      }
+
+      Object.keys(grouped).forEach(catId => {
+        const h4 = document.createElement('h4');
+        h4.className = 'skill-cat';
+        h4.textContent = catNames[catId] || catId.charAt(0).toUpperCase() + catId.slice(1);
+        container.appendChild(h4);
+
+        const skillsGrid = document.createElement('div');
+        skillsGrid.className = 'skills-grid';
+        grouped[catId].forEach(skill => {
+          const span = document.createElement('span');
+          span.className = 'skill-tag';
+          span.textContent = skill.name;
+          skillsGrid.appendChild(span);
+        });
+        container.appendChild(skillsGrid);
+      });
+
+      document.getElementById('skills-section').style.display = 'block';
+    }
+
+    function populateLanguages() {
+      if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+      const container = document.getElementById('languages');
+      container.innerHTML = '';
+
+      resumeData.languages.forEach(lang => {
+        const div = document.createElement('div');
+        div.className = 'lang-item';
+        div.innerHTML = '<strong>' + lang.language + '</strong><span>' + lang.proficiency + '</span>';
+        container.appendChild(div);
+      });
+
+      document.getElementById('languages-section').style.display = 'block';
+    }
+
+    function populateHobbies() {
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+      const container = document.getElementById('hobbies');
+      container.innerHTML = '';
+
+      const grid = document.createElement('div');
+      grid.className = 'hobbies-grid';
+      resumeData.hobbies.forEach(hobby => {
+        const span = document.createElement('span');
+        span.className = 'hobby-tag';
+        span.textContent = hobby;
+        grid.appendChild(span);
+      });
+      container.appendChild(grid);
+
+      document.getElementById('hobbies-section').style.display = 'block';
+    }
+
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      const container = document.getElementById('experience');
+      container.innerHTML = '';
+
+      resumeData.employmentHistory.forEach(job => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const header = document.createElement('div');
+        header.className = 'exp-header';
+        
+        const leftDiv = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = job.jobTitle;
+        leftDiv.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = job.employer + (job.location ? ' • ' + job.location : '');
+        leftDiv.appendChild(compP);
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'date';
+        dateSpan.textContent = formatDate(job.startDate) + ' - ' + formatDate(job.endDate);
+        
+        header.appendChild(leftDiv);
+        header.appendChild(dateSpan);
+        div.appendChild(header);
+        
+        if (job.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(job.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      const container = document.getElementById('education');
+      container.innerHTML = '';
+
+      resumeData.education.forEach(edu => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const header = document.createElement('div');
+        header.className = 'exp-header';
+        
+        const leftDiv = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = edu.degree;
+        leftDiv.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = edu.institution + (edu.location ? ' • ' + edu.location : '');
+        leftDiv.appendChild(compP);
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'date';
+        dateSpan.textContent = formatDate(edu.startDate) + ' - ' + formatDate(edu.endDate);
+        
+        header.appendChild(leftDiv);
+        header.appendChild(dateSpan);
+        div.appendChild(header);
+        
+        if (edu.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(edu.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      const container = document.getElementById('projects');
+      container.innerHTML = '';
+
+      resumeData.projects.forEach(proj => {
+        const tech = proj.technologies ? (Array.isArray(proj.technologies) ? proj.technologies.join(', ') : proj.technologies) : '';
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const header = document.createElement('div');
+        header.className = 'exp-header';
+        
+        const leftDiv = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = proj.title;
+        leftDiv.appendChild(h3);
+        
+        if (tech) {
+          const compP = document.createElement('p');
+          compP.className = 'company';
+          compP.textContent = tech;
+          leftDiv.appendChild(compP);
+        }
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'date';
+        dateSpan.textContent = formatDate(proj.startDate) + ' - ' + formatDate(proj.endDate);
+        
+        header.appendChild(leftDiv);
+        header.appendChild(dateSpan);
+        div.appendChild(header);
+        
+        if (proj.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(proj.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      const container = document.getElementById('publications');
+      container.innerHTML = '';
+
+      resumeData.publications.forEach(pub => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = pub.title;
+        div.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = pub.publisher + ' • ' + formatDate(pub.date);
+        div.appendChild(compP);
+        
+        if (pub.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(pub.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    function populateCourses() {
+      if (!resumeData.courses || resumeData.courses.length === 0) return;
+
+      const container = document.getElementById('courses');
+      container.innerHTML = '';
+
+      resumeData.courses.forEach(course => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = course.name;
+        div.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = course.institution + ' • ' + formatDate(course.completionDate);
+        div.appendChild(compP);
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('courses-section').style.display = 'block';
+    }
+
+    function populateAwards() {
+      if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
+
+      const container = document.getElementById('awards');
+      container.innerHTML = '';
+
+      resumeData.customSections.awards.forEach(award => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = award.title;
+        div.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = (award.issuer || '') + ' • ' + formatDate(award.date);
+        div.appendChild(compP);
+        
+        if (award.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(award.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('awards-section').style.display = 'block';
+    }
+
+    function populateVolunteering() {
+      if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      const container = document.getElementById('volunteering');
+      container.innerHTML = '';
+
+      resumeData.customSections.volunteering.forEach(vol => {
+        const div = document.createElement('div');
+        div.className = 'exp-item';
+        
+        const header = document.createElement('div');
+        header.className = 'exp-header';
+        
+        const leftDiv = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = vol.role;
+        leftDiv.appendChild(h3);
+        
+        const compP = document.createElement('p');
+        compP.className = 'company';
+        compP.textContent = vol.organization;
+        leftDiv.appendChild(compP);
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'date';
+        dateSpan.textContent = formatDate(vol.startDate) + ' - ' + formatDate(vol.endDate);
+        
+        header.appendChild(leftDiv);
+        header.appendChild(dateSpan);
+        div.appendChild(header);
+        
+        if (vol.description) {
+          const desc = document.createElement('p');
+          desc.className = 'desc';
+          desc.textContent = stripHtmlTags(vol.description);
+          div.appendChild(desc);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('volunteering-section').style.display = 'block';
+    }
+
+    function populateReferences() {
+      if (!resumeData.references || resumeData.references.length === 0) return;
+
+      const container = document.getElementById('references');
+      container.innerHTML = '';
+
+      resumeData.references.forEach(ref => {
+        const div = document.createElement('div');
+        div.className = 'ref-card';
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = ref.name;
+        div.appendChild(h3);
+        
+        const posP = document.createElement('p');
+        posP.textContent = ref.position + (ref.company ? ', ' + ref.company : '');
+        div.appendChild(posP);
+        
+        if (ref.email) {
+          const emailP = document.createElement('p');
+          emailP.textContent = ref.email;
+          div.appendChild(emailP);
+        }
+        
+        if (ref.phone) {
+          const phoneP = document.createElement('p');
+          phoneP.textContent = ref.phone;
+          div.appendChild(phoneP);
+        }
+        
+        container.appendChild(div);
+      });
+
+      document.getElementById('references-section').style.display = 'block';
+    }
+
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+
+        populateHeader();
+        populateContactInfo();
+        populatePersonalDetails();
+        populateSummary();
+        populateSkills();
+        populateLanguages();
+        populateHobbies();
+        populateExperience();
+        populateEducation();
+        populateProjects();
+        populatePublications();
+        populateCourses();
+        populateAwards();
+        populateVolunteering();
+        populateReferences();
+
+        applyColorScheme('aurora');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    const colorSchemes = {
+      aurora: { g1: '#667eea', g2: '#764ba2', accent: '#667eea' },
+      sunset: { g1: '#ff6b6b', g2: '#feca57', accent: '#ff6b6b' },
+      ocean: { g1: '#2193b0', g2: '#6dd5ed', accent: '#2193b0' },
+      forest: { g1: '#134e5e', g2: '#71b280', accent: '#134e5e' },
+      twilight: { g1: '#4568dc', g2: '#b06ab3', accent: '#4568dc' },
+      fire: { g1: '#f2709c', g2: '#ff9472', accent: '#f2709c' }
+    };
+
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+      const header = document.querySelector('.gradient-header');
+      header.style.background = 'linear-gradient(135deg, ' + colors.g1 + ' 0%, ' + colors.g2 + ' 100%)';
+
+      document.querySelectorAll('.section-title-main').forEach(el => {
+        el.style.color = colors.accent;
+        el.style.borderBottomColor = colors.accent;
+      });
+
+      document.querySelectorAll('.skill-tag, .hobby-tag').forEach(el => {
+        el.style.background = colors.accent;
+      });
+
+      document.querySelectorAll('.exp-item h3').forEach(el => {
+        el.style.color = colors.accent;
+      });
+    }
+
+    function applyFont(font) {
+      document.body.style.fontFamily = font;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      populateResume();
+
+      document.getElementById('font-selector').addEventListener('change', (e) => applyFont(e.target.value));
+      document.getElementById('color-scheme').addEventListener('change', (e) => applyColorScheme(e.target.value));
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        document.getElementById('font-selector').value = "'Poppins', sans-serif";
+        document.getElementById('color-scheme').value = 'aurora';
+        applyFont("'Poppins', sans-serif");
+        applyColorScheme('aurora');
+      });
+      document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+      applyFont("'Poppins', sans-serif");
+    });
+  </script>
+</body>
+</html>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.gradient-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 50px 40px;
+  color: white;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.3);
+  object-fit: cover;
+}
+
+.header-text h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+}
+
+.job-title {
+  font-size: 16px;
+  font-weight: 300;
+  opacity: 0.95;
+  letter-spacing: 1px;
+}
+
+.main-layout {
+  display: flex;
+}
+
+.left-column {
+  width: 35%;
+  background: #f8f9fa;
+  padding: 30px 25px;
+}
+
+.right-column {
+  width: 65%;
+  padding: 30px 35px;
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #667eea;
+  margin-bottom: 12px;
+}
+
+.section-title-main {
+  font-size: 18px;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #667eea;
+}
+
+.contact-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #555;
+}
+
+.icon {
+  font-size: 14px;
+}
+
+.info-item {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.skill-cat {
+  font-size: 11px;
+  font-weight: 600;
+  color: #667eea;
+  margin: 12px 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-cat:first-child {
+  margin-top: 0;
+}
+
+.skills-grid, .hobbies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.skill-tag, .hobby-tag {
+  background: #667eea;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.lang-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.lang-item span {
+  color: #888;
+  font-size: 10px;
+}
+
+.summary-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.exp-item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.exp-item:last-child {
+  border-bottom: none;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.exp-item h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 4px;
+}
+
+.company {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.date {
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.desc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 8px;
+}
+
+.references-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.ref-card {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid #667eea;
+}
+
+.ref-card h3 {
+  font-size: 13px;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.ref-card p {
+  font-size: 11px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.control-panel h3 {
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.control-group {
+  margin-bottom: 10px;
+}
+
+.control-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.control-group button {
+  width: 48%;
+  padding: 7px;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#reset-btn {
+  background: #f0f0f0;
+  color: #666;
+  margin-right: 4%;
+}
+
+#print-btn {
+  background: #667eea;
+  color: white;
+}
+
+@media print {
+  .control-panel { display: none; }
+  body { background: white; padding: 0; }
+  .a4 { box-shadow: none; }
+}
+</style>

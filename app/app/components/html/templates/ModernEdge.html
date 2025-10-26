@@ -12,163 +12,82 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header-top">
-        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Idrissi Saez">
-        <h1>Carlos Idrissi Saez</h1>
-        <h2>Software Engineer</h2>
+        <img id="profile-img" alt="Profile" style="display:none;">
+        <h1 id="name"></h1>
+        <h2 id="job-title"></h2>
       </div>
-      <div class="header-bottom">
-        <span>Paris, France</span>
-        <span>carlos.idriss@example.com</span>
-        <span>+33 6 12 34 56 78</span>
-        <span>www.carlossaez.dev</span>
-        <span>linkedin.com/in/carlossaez</span>
-      </div>
+      <div class="header-bottom" id="contact-info"></div>
     </header>
 
     <main>
       <!-- LEFT PART -->
       <section class="left-part">
-        <h3>Experience</h3>
-        <div class="job">
-          <h4>Google Inc.</h4>
-          <p><strong>Senior Software Engineer</strong><br>Jun 2022 - Present</p>
-          <ul>
-            <li>Led development of BigQuery ML feature improving training speed by 40%</li>
-            <li>Designed and delivered RESTful APIs for ML model deployment</li>
-            <li>Mentored 5 junior engineers and conducted technical interviews</li>
-            <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
-          </ul>
+        <div id="experience-section" style="display:none;">
+          <h3>Experience</h3>
+          <div id="experience"></div>
         </div>
 
-        <div class="job">
-          <h4>Microsoft Corporation</h4>
-          <p><strong>Software Engineer</strong><br>Jul 2020 - May 2022</p>
-          <ul>
-            <li>Built scalable microservices handling 1M+ requests per day</li>
-            <li>Optimized database queries resulting in 50% performance improvement</li>
-            <li>Implemented automated testing frameworks reducing bugs by 30%</li>
-            <li>Collaborated with product managers to define technical requirements</li>
-          </ul>
+        <div id="education-section" style="display:none;">
+          <h3>Education</h3>
+          <div id="education"></div>
         </div>
 
-        <div class="job">
-          <h4>XYZ Company</h4>
-          <p><strong>Software Engineer</strong><br>Mar 2025 - Dec 2026</p>
-          <ul>
-            <li>Designed RESTful APIs and microservices improving delivery by 30%</li>
-            <li>Developed responsive UIs reducing UI bugs by 25%</li>
-            <li>Built automated CI/CD pipelines ensuring zero-downtime releases</li>
-            <li>Optimized database queries reducing response times by 40%</li>
-          </ul>
+        <div id="projects-section" style="display:none;">
+          <h3>Key Projects</h3>
+          <div id="projects"></div>
         </div>
 
-        <h3>Education</h3>
-        <p><strong>Stanford University</strong><br>Master of Science in Computer Science, Sep 2020 - Jun 2022<br><em>GPA: 3.92/4.0, Research Assistant at Stanford AI Lab</em></p>
-        <p><strong>University of California, Berkeley</strong><br>Bachelor of Science in Computer Engineering, Sep 2016 - May 2020<br><em>GPA: 3.85/4.0, Dean's List all semesters</em></p>
-        <p><strong>ETH Zurich</strong><br>Study Abroad Program, Jan 2019 - Jun 2019<br><em>Advanced Algorithms and Distributed Systems</em></p>
-
-        <h3>Key Projects</h3>
-        <div class="project">
-          <h4>SmartRetail Platform</h4>
-          <p><strong>Lead Developer</strong> | RetailTech AG | Mar 2022 - Present</p>
-          <p><em>Technologies: React, Node.js, MongoDB, AWS</em></p>
-          <ul>
-            <li>Implemented ML algorithms for demand forecasting</li>
-            <li>Built real-time dashboards with React and D3.js</li>
-            <li>Achieved 25% improvement in inventory turnover rates</li>
-          </ul>
+        <div id="publications-section" style="display:none;">
+          <h3>Publications</h3>
+          <div id="publications"></div>
         </div>
 
-        <div class="project">
-          <h4>FinanceTracker Pro</h4>
-          <p><strong>Full Stack Developer</strong> | FinTech Solutions | Jan 2023 - Dec 2023</p>
-          <p><em>Technologies: Vue.js, Python, PostgreSQL, Docker</em></p>
-          <ul>
-            <li>Developed automated transaction categorization using NLP</li>
-            <li>Built portfolio tracking with live market data</li>
-            <li>Created mobile-responsive Vue.js frontend with PWA</li>
-          </ul>
+        <div id="volunteering-section" style="display:none;">
+          <h3>Volunteer Experience</h3>
+          <div id="volunteering"></div>
         </div>
 
-        <div class="project">
-          <h4>Healthcare Analytics Dashboard</h4>
-          <p><strong>Senior Developer</strong> | MedTech Innovations | Jun 2021 - Feb 2022</p>
-          <p><em>Technologies: Angular, Java, Spring Boot, MySQL</em></p>
-          <ul>
-            <li>Built dashboards for monitoring patient flows</li>
-            <li>Implemented real-time alerts for critical metrics</li>
-            <li>Reduced patient wait times by 30% via optimization</li>
-          </ul>
-        </div>
-
-        <h3>Publications</h3>
-        <div class="publication">
-          <h4>Scaling Microservices with Kubernetes</h4>
-          <p><em>Tech Journal - August 2022</em></p>
-          <p>Best practices for deploying and scaling microservices with Kubernetes.</p>
-        </div>
-        <div class="publication">
-          <h4>Modern Frontend Architecture Patterns</h4>
-          <p><em>Web Development Quarterly - March 2023</em></p>
-          <p>Comprehensive guide to modern frontend architecture patterns including micro-frontends.</p>
-        </div>
-        <div class="publication">
-          <h4>Machine Learning in Production Systems</h4>
-          <p><em>AI Research Today - November 2023</em></p>
-          <p>Practical approaches to deploying and maintaining ML models in production environments.</p>
-        </div>
-
-        <h3>Volunteer Experience</h3>
-        <div class="volunteer">
-          <h4>Web Development Mentor</h4>
-          <p><strong>Berlin, Germany</strong> | Jan 2023 - Present</p>
-          <p>Mentoring aspiring web developers through coding bootcamp program. Achieved 90% job placement rate for mentees.</p>
-        </div>
-        <div class="volunteer">
-          <h4>Tech Workshop Organizer</h4>
-          <p><strong>Munich, Germany</strong> | Mar 2022 - Dec 2022</p>
-          <p>Organized monthly technology workshops for local community with 200+ attendees.</p>
+        <div id="references-section" style="display:none;">
+          <h3>References</h3>
+          <div id="references"></div>
         </div>
       </section>
 
       <!-- RIGHT PART -->
       <section class="right-part">
-        <h3>Professional Summary</h3>
-        <p class="summary">Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver high-quality solutions that drive business growth and improve user experience.</p>
-        
-        <h3>Skills</h3>
-        <div id="skills"></div>
-
-        <h3>Languages</h3>
-        <div id="languages"></div>
-
-
-        <h3>Certifications</h3>
-        <div class="cert-list">
-          <div class="cert-item">
-            <span class="cert-name">AWS Certified Solutions Architect</span>
-            <span class="cert-year">2023</span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-name">Google Cloud Professional Developer</span>
-            <span class="cert-year">2022</span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-name">Certified Kubernetes Administrator</span>
-            <span class="cert-year">2022</span>
-          </div>
+        <div id="personal-details-section" style="display:none;">
+          <h3>Personal Details</h3>
+          <div id="personal-details" style="font-size: 12px; line-height: 1.5;"></div>
         </div>
 
-        <h3>Awards</h3>
-        <div class="award-list">
-          <div class="award-item">
-            <span class="award-name">Employee of the Year</span>
-            <span class="award-org">Google Inc. • 2023</span>
-          </div>
-          <div class="award-item">
-            <span class="award-name">Innovation Award</span>
-            <span class="award-org">Microsoft Corporation • 2021</span>
-          </div>
+        <div id="summary-section" style="display:none;">
+          <h3>Professional Summary</h3>
+          <p class="summary" id="summary"></p>
+        </div>
+
+        <div id="skills-section" style="display:none;">
+          <h3>Skills</h3>
+          <div id="skills"></div>
+        </div>
+
+        <div id="languages-section" style="display:none;">
+          <h3>Languages</h3>
+          <div id="languages"></div>
+        </div>
+
+        <div id="hobbies-section" style="display:none;">
+          <h3>Hobbies</h3>
+          <div id="hobbies" style="font-size: 12px; line-height: 1.5;"></div>
+        </div>
+
+        <div id="certifications-section" style="display:none;">
+          <h3>Certifications</h3>
+          <div class="cert-list" id="certifications"></div>
+        </div>
+
+        <div id="awards-section" style="display:none;">
+          <h3>Awards</h3>
+          <div class="award-list" id="awards"></div>
         </div>
 
       </section>
@@ -701,81 +620,375 @@ h3 {
     
 </style>
 <script>
-// Skills data from resume store
-const skills = [
-  // Programming Languages
-  { name: "Python", level: 100 },
-  { name: "Java", level: 100 },
-  { name: "JavaScript", level: 80 },
-  { name: "TypeScript", level: 80 },
-  { name: "Go", level: 60 },
-  { name: "C++", level: 60 },
-  // Frameworks & Libraries
-  { name: "React", level: 100 },
-  { name: "Node.js", level: 100 },
-  { name: "Vue.js", level: 80 },
-  { name: "Express", level: 80 },
-  // Cloud & DevOps
-  { name: "Docker", level: 100 },
-  { name: "AWS", level: 80 },
-  { name: "Kubernetes", level: 80 },
-  // Databases
-  { name: "PostgreSQL", level: 80 },
-  { name: "MongoDB", level: 80 }
-];
+let resumeData = null;
 
-// Languages data from resume store
-const languages = [
-  { name: "English", level: 100 },
-  { name: "Spanish", level: 90 },
-  { name: "French", level: 60 }
-];
+// Helper function to strip HTML tags
+function stripHtmlTags(html) {
+  if (!html) return '';
+  const tmp = document.createElement('DIV');
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
+}
 
-// Render Skills
-const skillsContainer = document.getElementById("skills");
-skills.forEach(skill => {
-  const div = document.createElement("div");
-  div.classList.add("skill");
+// Helper function to format dates
+function formatDate(dateStr) {
+  if (!dateStr) return 'Present';
+  const date = new Date(dateStr);
+  const month = date.toLocaleDateString('en-US', { month: 'short' });
+  const year = date.getFullYear();
+  return `${month} ${year}`;
+}
 
-  const name = document.createElement("div");
-  name.classList.add("skill-name");
-  name.textContent = skill.name;
+// Populate header
+function populateHeader() {
+  const personal = resumeData.personalInfo;
+  document.getElementById('name').textContent = personal.name || '';
+  document.getElementById('job-title').textContent = personal.title || '';
 
-  const progress = document.createElement("div");
-  progress.classList.add("progress");
+  // Profile image
+  if (personal.profileImage) {
+    const img = document.getElementById('profile-img');
+    img.src = personal.profileImage;
+    img.style.display = 'block';
+  }
 
-  const bar = document.createElement("div");
-  bar.classList.add("progress-bar");
-  bar.style.width = skill.level + "%";
+  // Contact info
+  let html = '';
+  if (personal.location) html += `<span>${personal.location}</span>`;
+  if (personal.email) html += `<span>${personal.email}</span>`;
+  if (personal.phone) html += `<span>${personal.phone}</span>`;
+  if (personal.website) html += `<span>${personal.website.replace('https://', '')}</span>`;
+  if (personal.socialLinks?.linkedin) html += `<span>${personal.socialLinks.linkedin.replace('https://linkedin.com/in/', 'linkedin.com/in/')}</span>`;
 
-  progress.appendChild(bar);
-  div.appendChild(name);
-  div.appendChild(progress);
-  skillsContainer.appendChild(div);
-});
+  document.getElementById('contact-info').innerHTML = html;
+}
 
-// Render Languages
-const languagesContainer = document.getElementById("languages");
-languages.forEach(lang => {
-  const div = document.createElement("div");
-  div.classList.add("language");
+// Populate personal details
+function populatePersonalDetails() {
+  const personal = resumeData.personalInfo;
+  let items = [];
 
-  const name = document.createElement("div");
-  name.classList.add("language-name");
-  name.textContent = lang.name;
+  if (personal.birthDate) {
+    const birthDate = new Date(personal.birthDate);
+    const formattedDate = birthDate.toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+    items.push(`<strong>Birth Date:</strong> ${formattedDate}`);
+  }
 
-  const bar = document.createElement("div");
-  bar.classList.add("language-bar");
+  if (personal.nationality) {
+    items.push(`<strong>Nationality:</strong> ${personal.nationality}`);
+  }
 
-  const progress = document.createElement("div");
-  progress.classList.add("language-progress");
-  progress.style.width = lang.level + "%";
+  if (personal.relationshipStatus) {
+    const status = personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1);
+    items.push(`<strong>Relationship Status:</strong> ${status}`);
+  }
 
-  bar.appendChild(progress);
-  div.appendChild(name);
-  div.appendChild(bar);
-  languagesContainer.appendChild(div);
-});
+  if (personal.availability) {
+    const avail = personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1);
+    items.push(`<strong>Availability:</strong> ${avail}`);
+  }
+
+  if (personal.drivingLicense) {
+    items.push(`<strong>Driving License:</strong> ${personal.drivingLicense}`);
+  }
+
+  if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+    const links = personal.websitesAndSocialLinks.map(link => `${link.platform}: ${link.url.replace('https://', '')}`).join(', ');
+    items.push(`<strong>Websites & Social:</strong> ${links}`);
+  }
+
+  if (items.length > 0) {
+    document.getElementById('personal-details').innerHTML = '<p style="margin: 5px 0; color: #666;">' + items.join('<br>') + '</p>';
+    document.getElementById('personal-details-section').style.display = 'block';
+  }
+}
+
+// Populate summary
+function populateSummary() {
+  if (resumeData.professionalSummary) {
+    const cleanSummary = stripHtmlTags(resumeData.professionalSummary);
+    document.getElementById('summary').textContent = cleanSummary;
+    document.getElementById('summary-section').style.display = 'block';
+  }
+}
+
+// Populate skills with progress bars
+function populateSkills() {
+  if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+  const skillsContainer = document.getElementById('skills');
+  skillsContainer.innerHTML = '';
+
+  resumeData.skills.forEach(skill => {
+    const proficiency = skill.level === 'Expert' ? 100 :
+                       skill.level === 'Advanced' ? 80 :
+                       skill.level === 'Intermediate' ? 60 : 40;
+
+    const div = document.createElement('div');
+    div.classList.add('skill');
+
+    const name = document.createElement('div');
+    name.classList.add('skill-name');
+    name.textContent = skill.skill;
+
+    const progress = document.createElement('div');
+    progress.classList.add('progress');
+
+    const bar = document.createElement('div');
+    bar.classList.add('progress-bar');
+    bar.style.width = proficiency + '%';
+
+    progress.appendChild(bar);
+    div.appendChild(name);
+    div.appendChild(progress);
+    skillsContainer.appendChild(div);
+  });
+
+  document.getElementById('skills-section').style.display = 'block';
+}
+
+// Populate languages with progress bars
+function populateLanguages() {
+  if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+  const languagesContainer = document.getElementById('languages');
+  languagesContainer.innerHTML = '';
+
+  resumeData.languages.forEach(lang => {
+    const proficiencyMap = {
+      'C2': 100, 'C1': 90, 'B2': 80, 'B1': 70, 'A2': 60, 'A1': 50,
+      'Native': 100, 'Fluent': 100, 'Advanced': 80, 'Intermediate': 60, 'Basic': 40
+    };
+    const proficiency = proficiencyMap[lang.proficiency] || 60;
+
+    const div = document.createElement('div');
+    div.classList.add('language');
+
+    const name = document.createElement('div');
+    name.classList.add('language-name');
+    name.textContent = lang.language;
+
+    const bar = document.createElement('div');
+    bar.classList.add('language-bar');
+
+    const progress = document.createElement('div');
+    progress.classList.add('language-progress');
+    progress.style.width = proficiency + '%';
+
+    bar.appendChild(progress);
+    div.appendChild(name);
+    div.appendChild(bar);
+    languagesContainer.appendChild(div);
+  });
+
+  document.getElementById('languages-section').style.display = 'block';
+}
+
+// Populate hobbies
+function populateHobbies() {
+  if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+  const hobbiesList = resumeData.hobbies.join(', ');
+  document.getElementById('hobbies').innerHTML = `<p style="margin: 5px 0; color: #666;">${hobbiesList}</p>`;
+  document.getElementById('hobbies-section').style.display = 'block';
+}
+
+// Populate certifications
+function populateCertifications() {
+  if (!resumeData.courses || resumeData.courses.length === 0) return;
+
+  let html = '';
+  resumeData.courses.forEach(cert => {
+    const year = cert.completionDate ? new Date(cert.completionDate).getFullYear() : '';
+    html += `
+      <div class="cert-item">
+        <span class="cert-name">${cert.name}</span>
+        <span class="cert-year">${year || ''}</span>
+      </div>
+    `;
+  });
+
+  document.getElementById('certifications').innerHTML = html;
+  document.getElementById('certifications-section').style.display = 'block';
+}
+
+// Populate awards
+function populateAwards() {
+  if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
+
+  let html = '';
+  resumeData.customSections.awards.forEach(award => {
+    const year = award.date ? new Date(award.date).getFullYear() : '';
+    html += `
+      <div class="award-item">
+        <span class="award-name">${award.title}</span>
+        <span class="award-org">${award.awarder}${year ? ' • ' + year : ''}</span>
+      </div>
+    `;
+  });
+
+  document.getElementById('awards').innerHTML = html;
+  document.getElementById('awards-section').style.display = 'block';
+}
+
+// Populate experience
+function populateExperience() {
+  if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+  let html = '';
+  resumeData.employmentHistory.forEach(job => {
+    const startDate = formatDate(job.startDate);
+    const endDate = job.current ? 'Present' : formatDate(job.endDate);
+    const cleanDesc = stripHtmlTags(job.description);
+
+    html += `
+      <div class="job">
+        <h4>${job.company}</h4>
+        <p><strong>${job.title}</strong><br>${startDate} - ${endDate}</p>
+        ${cleanDesc ? `<p style="font-size: 12px; margin: 8px 0; line-height: 1.4;">${cleanDesc}</p>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('experience').innerHTML = html;
+  document.getElementById('experience-section').style.display = 'block';
+}
+
+// Populate education
+function populateEducation() {
+  if (!resumeData.education || resumeData.education.length === 0) return;
+
+  let html = '';
+  resumeData.education.forEach(edu => {
+    const startDate = formatDate(edu.startDate);
+    const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+    const cleanDesc = stripHtmlTags(edu.description);
+
+    html += `
+      <p><strong>${edu.school}</strong><br>${edu.degree}, ${startDate} - ${endDate}${cleanDesc ? '<br><em>' + cleanDesc + '</em>' : ''}</p>
+    `;
+  });
+
+  document.getElementById('education').innerHTML = html;
+  document.getElementById('education-section').style.display = 'block';
+}
+
+// Populate projects
+function populateProjects() {
+  if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+  let html = '';
+  resumeData.projects.forEach(project => {
+    const cleanDesc = stripHtmlTags(project.description);
+    const technologies = project.technologies ? project.technologies.join(', ') : '';
+
+    html += `
+      <div class="project">
+        <h4>${project.name}</h4>
+        ${project.url ? `<p><em>${project.url}</em></p>` : ''}
+        ${technologies ? `<p><em>Technologies: ${technologies}</em></p>` : ''}
+        ${cleanDesc ? `<p style="font-size: 12px; margin: 8px 0; line-height: 1.4;">${cleanDesc}</p>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('projects').innerHTML = html;
+  document.getElementById('projects-section').style.display = 'block';
+}
+
+// Populate publications
+function populatePublications() {
+  if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+  let html = '';
+  resumeData.publications.forEach(pub => {
+    const date = formatDate(pub.date);
+    html += `
+      <div class="publication">
+        <h4>${pub.title}</h4>
+        <p><em>${pub.publisher} - ${date}</em></p>
+        ${pub.url ? `<p style="font-size: 11px;">${pub.url}</p>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('publications').innerHTML = html;
+  document.getElementById('publications-section').style.display = 'block';
+}
+
+// Populate volunteering
+function populateVolunteering() {
+  if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+  let html = '';
+  resumeData.customSections.volunteering.forEach(vol => {
+    const startDate = formatDate(vol.startDate);
+    const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+    const cleanDesc = stripHtmlTags(vol.summary);
+
+    html += `
+      <div class="volunteer">
+        <h4>${vol.position}</h4>
+        <p><strong>${vol.organization}</strong> | ${startDate} - ${endDate}</p>
+        ${cleanDesc ? `<p>${cleanDesc}</p>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('volunteering').innerHTML = html;
+  document.getElementById('volunteering-section').style.display = 'block';
+}
+
+// Populate references
+function populateReferences() {
+  if (!resumeData.references || resumeData.references.length === 0) return;
+
+  let html = '';
+  resumeData.references.forEach(ref => {
+    html += `
+      <div class="volunteer">
+        <h4>${ref.name}</h4>
+        <p><strong>${ref.position} — ${ref.company}</strong></p>
+        ${ref.email ? `<p>Email: ${ref.email}</p>` : ''}
+        ${ref.phone ? `<p>Phone: ${ref.phone}</p>` : ''}
+      </div>
+    `;
+  });
+
+  document.getElementById('references').innerHTML = html;
+  document.getElementById('references-section').style.display = 'block';
+}
+
+// Main populate function
+async function populateResume() {
+  try {
+    const response = await fetch('resume.json');
+    const data = await response.json();
+    resumeData = data.content;
+
+    populateHeader();
+    populatePersonalDetails();
+    populateSummary();
+    populateSkills();
+    populateLanguages();
+    populateHobbies();
+    populateCertifications();
+    populateAwards();
+    populateExperience();
+    populateEducation();
+    populateProjects();
+    populatePublications();
+    populateVolunteering();
+    populateReferences();
+
+    // Apply default color scheme after population
+    applyColorScheme('dark');
+  } catch (error) {
+    console.error('Error loading resume data:', error);
+  }
+}
 
 // Color schemes
 const colorSchemes = {
@@ -796,27 +1009,27 @@ function applyFont(fontFamily) {
 // Apply color scheme
 function applyColorScheme(scheme) {
   const colors = colorSchemes[scheme];
-  
+
   // Update header
   document.querySelector('.header').style.backgroundColor = colors.header;
-  
+
   // Update header bottom border
   document.querySelector('.header-bottom').style.borderTopColor = `rgba(255, 255, 255, 0.4)`;
-  
+
   // Update main delimiter (desktop and mobile)
   document.querySelector('.left-part').style.borderRightColor = colors.accent;
   document.querySelector('.left-part').style.borderBottomColor = colors.accent;
-  
+
   // Update section borders
   document.querySelectorAll('h3').forEach(h3 => {
     h3.style.borderBottomColor = colors.accent;
   });
-  
+
   // Update progress bars
   document.querySelectorAll('.progress-bar, .language-progress').forEach(bar => {
     bar.style.backgroundColor = colors.progress;
   });
-  
+
   // Update education strong text
   document.querySelectorAll('.left-part > p strong').forEach(strong => {
     strong.style.color = colors.accent;
@@ -825,6 +1038,9 @@ function applyColorScheme(scheme) {
 
 // Get elements and set up event listeners
 document.addEventListener('DOMContentLoaded', function() {
+  // Load resume data first
+  populateResume();
+
   const fontSelector = document.getElementById('font-selector');
   const colorSelector = document.getElementById('color-scheme');
   const resetBtn = document.getElementById('reset-btn');
@@ -863,7 +1079,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize with default values
   applyFont("'Josefin Sans', sans-serif");
-  applyColorScheme('dark');
 });
-    
+
 </script>

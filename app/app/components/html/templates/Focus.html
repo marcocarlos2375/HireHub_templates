@@ -17,160 +17,62 @@
     
     <!-- HEADER -->
     <header class="header">
-      <h1>CARLOS IDRISSI SAEZ</h1>
-      <h2>SOFTWARE ENGINEER</h2>
-      <p class="contact">
-        +33 6 12 34 56 78 | carlos.idriss@example.com | Paris, France | www.carlossaez.dev | linkedin.com/in/carlossaez
-      </p>
+      <h1 id="name"></h1>
+      <h2 id="job-title"></h2>
+      <p class="contact" id="contact-info"></p>
     </header>
 
+    <!-- PERSONAL DETAILS -->
+    <section id="personal-details-section" style="display:none;">
+      <h3>PERSONAL DETAILS</h3>
+      <div id="personal-details"></div>
+    </section>
+
     <!-- SUMMARY -->
-    <section class="summary">
-      <p>
-        Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. 
-        Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver 
-        high-quality solutions that drive business growth and improve user experience.
-      </p>
+    <section class="summary" id="summary-section" style="display:none;">
+      <p id="summary"></p>
     </section>
 
     <!-- AREA OF EXPERTISE -->
-    <section>
+    <section id="expertise-section" style="display:none;">
       <h3>TECHNICAL EXPERTISE</h3>
-      <div class="expertise">
-        <span>Python & Java</span>
-        <span>React & Vue.js</span>
-        <span>Node.js & Express</span>
-        <span>Machine Learning</span>
-        <span>Cloud Infrastructure</span>
-        <span>Docker & Kubernetes</span>
-        <span>AWS & Azure</span>
-        <span>Microservices</span>
-        <span>CI/CD Pipelines</span>
-        <span>Distributed Systems</span>
-      </div>
+      <div class="expertise" id="expertise"></div>
     </section>
 
-    <!-- KEY ACHIEVEMENTS -->
-    <section>
-      <h3>KEY ACHIEVEMENTS</h3>
-      <ul>
-        <li>
-          <strong>Performance Optimization.</strong> Led development of BigQuery ML features that improved model training speed by 40%, 
-          directly impacting Google's machine learning infrastructure efficiency.
-        </li>
-        <li>
-          <strong>System Scalability.</strong> Built scalable microservices at Microsoft handling 1M+ requests per day, 
-          with 50% performance improvement through database query optimization.
-        </li>
-        <li>
-          <strong>Team Leadership.</strong> Mentored 5 junior engineers and implemented CI/CD pipelines that reduced deployment time by 60%, 
-          significantly improving development velocity.
-        </li>
-        <li>
-          <strong>Innovation Recognition.</strong> Received Employee of the Year award at Google (2023) and Innovation Award at Microsoft (2021) 
-          for outstanding technical contributions.
-        </li>
-      </ul>
+    <!-- AWARDS -->
+    <section id="awards-section" style="display:none;">
+      <h3>KEY ACHIEVEMENTS & AWARDS</h3>
+      <div id="awards"></div>
     </section>
 
     <!-- PROFESSIONAL EXPERIENCE -->
-    <section>
+    <section id="experience-section" style="display:none;">
       <h3>PROFESSIONAL EXPERIENCE</h3>
-      <div class="experience">
-        <div class="job">
-          <p class="job-title">Senior Software Engineer, Google Inc. <span>Jun 2022 - Present</span></p>
-          <ul>
-            <li>Led the development of a new feature for BigQuery ML that improved model training speed by 40%</li>
-            <li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li>
-            <li>Mentored 5 junior engineers and conducted technical interviews</li>
-            <li>Implemented CI/CD pipelines that reduced deployment time by 60%</li>
-          </ul>
-        </div>
-        <div class="job">
-          <p class="job-title">Software Engineer, Microsoft Corporation <span>Jul 2020 - May 2022</span></p>
-          <ul>
-            <li>Built scalable microservices handling 1M+ requests per day</li>
-            <li>Optimized database queries resulting in 50% performance improvement</li>
-            <li>Implemented automated testing frameworks reducing bugs by 30%</li>
-            <li>Collaborated with product managers to define technical requirements</li>
-          </ul>
-        </div>
-        <div class="job">
-          <p class="job-title">Software Engineer, XYZ Company <span>Mar 2025 - Dec 2026</span></p>
-          <ul>
-            <li>Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%</li>
-            <li>Developed frontend components and responsive UIs, reducing UI bugs by 25%</li>
-            <li>Built and maintained automated CI/CD pipelines and deployment scripts</li>
-            <li>Optimized database queries and introduced caching strategies, reducing response time by 40%</li>
-          </ul>
-        </div>
-      </div>
+      <div class="experience" id="experience"></div>
     </section>
 
     <!-- EDUCATION -->
-    <section>
+    <section id="education-section" style="display:none;">
       <h3>EDUCATION</h3>
-      <div class="education">
-        <div class="edu-item">
-          <p class="job-title">Master of Science in Computer Science <span>Sep 2020 - Jun 2022</span></p>
-          <p>Stanford University</p>
-          <p><em>Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0. Research Assistant at Stanford AI Lab.</em></p>
-        </div>
-        <div class="edu-item">
-          <p class="job-title">Bachelor of Science in Computer Engineering <span>Sep 2016 - May 2020</span></p>
-          <p>University of California, Berkeley</p>
-          <p><em>Minor in Mathematics. GPA: 3.85/4.0. Dean's List all semesters. Capstone Project: IoT system for smart energy management.</em></p>
-        </div>
-        <div class="edu-item">
-          <p class="job-title">Study Abroad Program <span>Jan 2019 - Jun 2019</span></p>
-          <p>ETH Zurich</p>
-          <p><em>Focus on Advanced Algorithms and Distributed Systems. Research project on distributed consensus algorithms.</em></p>
-        </div>
-      </div>
+      <div class="education" id="education"></div>
     </section>
 
     <!-- KEY PROJECTS -->
-    <section>
+    <section id="projects-section" style="display:none;">
       <h3>KEY PROJECTS</h3>
-      <div class="experience">
-        <div class="job">
-          <p class="job-title">SmartRetail Platform, RetailTech AG <span>Mar 2022 - Present</span></p>
-          <ul>
-            <li>Implemented machine learning algorithms for demand forecasting</li>
-            <li>Built real-time dashboard with React and D3.js</li>
-            <li>Achieved 25% improvement in inventory turnover rates</li>
-          </ul>
-        </div>
-        <div class="job">
-          <p class="job-title">FinanceTracker Pro, FinTech Solutions <span>Jan 2023 - Dec 2023</span></p>
-          <ul>
-            <li>Developed automated transaction categorization using NLP</li>
-            <li>Built investment portfolio tracking with real-time market data</li>
-            <li>Created mobile-responsive Vue.js frontend with PWA capabilities</li>
-          </ul>
-        </div>
-      </div>
+      <div class="experience" id="projects"></div>
     </section>
 
     <!-- PUBLICATIONS -->
-    <section>
+    <section id="publications-section" style="display:none;">
       <h3>PUBLICATIONS</h3>
-      <ul>
-        <li><strong>Machine Learning in Production Systems</strong> - AI Research Today, November 2023</li>
-        <li><strong>Modern Frontend Architecture Patterns</strong> - Web Development Quarterly, March 2023</li>
-        <li><strong>Scaling Microservices with Kubernetes</strong> - Tech Journal, August 2022</li>
-      </ul>
+      <ul id="publications"></ul>
     </section>
 
     <!-- ADDITIONAL INFO -->
-    <section>
+    <section id="additional-section" style="display:none;">
       <h3>ADDITIONAL INFORMATION</h3>
-      <ul>
-        <li><strong>Languages:</strong> English (Native), Spanish (Fluent), French (Intermediate).</li>
-        <li><strong>Certifications:</strong> AWS Certified Solutions Architect (2023), Google Cloud Professional Developer (2022), Certified Kubernetes Administrator (2022).</li>
-        <li><strong>Awards:</strong> Employee of the Year - Google Inc. (2023), Innovation Award - Microsoft Corporation (2021).</li>
-        <li><strong>Volunteer:</strong> Web Development Mentor (2023-Present), Tech Workshop Organizer (2022).</li>
-      </ul>
+      <ul id="additional-info"></ul>
     </section>
 
   </div>
@@ -220,6 +122,276 @@
   </div>
 
   <script>
+    let resumeData = null;
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      if (!html) return '';
+      const tmp = document.createElement('DIV');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      const month = date.toLocaleDateString('en-US', { month: 'short' });
+      const year = date.getFullYear();
+      return `${month} ${year}`;
+    }
+
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = personal.name ? personal.name.toUpperCase() : '';
+      document.getElementById('job-title').textContent = personal.title ? personal.title.toUpperCase() : '';
+
+      // Contact info on one line
+      let contact = [];
+      if (personal.phone) contact.push(personal.phone);
+      if (personal.email) contact.push(personal.email);
+      if (personal.location) contact.push(personal.location);
+      if (personal.website) contact.push(personal.website.replace('https://', ''));
+      if (personal.socialLinks?.linkedin) contact.push(personal.socialLinks.linkedin.replace('https://linkedin.com/in/', 'linkedin.com/in/'));
+
+      document.getElementById('contact-info').textContent = contact.join(' | ');
+    }
+
+    // Populate personal details
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      let items = [];
+
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        items.push(`<strong>Birth Date:</strong> ${formattedDate}`);
+      }
+
+      if (personal.nationality) {
+        items.push(`<strong>Nationality:</strong> ${personal.nationality}`);
+      }
+
+      if (personal.relationshipStatus) {
+        const status = personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1);
+        items.push(`<strong>Status:</strong> ${status}`);
+      }
+
+      if (personal.availability) {
+        const avail = personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1);
+        items.push(`<strong>Availability:</strong> ${avail}`);
+      }
+
+      if (personal.drivingLicense) {
+        items.push(`<strong>Driving License:</strong> ${personal.drivingLicense}`);
+      }
+
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          items.push(`<strong>${link.platform}:</strong> ${link.url.replace('https://', '')}`);
+        });
+      }
+
+      if (items.length > 0) {
+        document.getElementById('personal-details').innerHTML = '<p style="font-size: 13px; line-height: 1.6;">' + items.join('. ') + '.</p>';
+        document.getElementById('personal-details-section').style.display = 'block';
+      }
+    }
+
+    // Populate summary
+    function populateSummary() {
+      if (resumeData.professionalSummary) {
+        const cleanSummary = stripHtmlTags(resumeData.professionalSummary);
+        document.getElementById('summary').textContent = cleanSummary;
+        document.getElementById('summary-section').style.display = 'block';
+      }
+    }
+
+    // Populate expertise (skills as pills)
+    function populateExpertise() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      let html = '';
+      resumeData.skills.forEach(skill => {
+        html += `<span>${skill.skill}</span>`;
+      });
+
+      document.getElementById('expertise').innerHTML = html;
+      document.getElementById('expertise-section').style.display = 'block';
+    }
+
+    // Populate awards
+    function populateAwards() {
+      if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
+
+      let html = '<ul>';
+      resumeData.customSections.awards.forEach(award => {
+        const year = award.date ? new Date(award.date).getFullYear() : '';
+        const summary = award.summary ? stripHtmlTags(award.summary) : '';
+        html += `<li><strong>${award.title}.</strong> ${award.awarder}${year ? ' (' + year + ')' : ''}${summary ? ' - ' + summary : ''}.</li>`;
+      });
+      html += '</ul>';
+
+      document.getElementById('awards').innerHTML = html;
+      document.getElementById('awards-section').style.display = 'block';
+    }
+
+    // Populate experience
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.current ? 'Present' : formatDate(job.endDate);
+        const cleanDesc = stripHtmlTags(job.description);
+
+        html += `
+          <div class="job">
+            <p class="job-title">${job.title}, ${job.company} <span>${startDate} - ${endDate}</span></p>
+            ${cleanDesc ? `<p style="font-size: 13px; margin: 5px 0; line-height: 1.4;">${cleanDesc}</p>` : ''}
+          </div>
+        `;
+      });
+
+      document.getElementById('experience').innerHTML = html;
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    // Populate education
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+        const cleanDesc = stripHtmlTags(edu.description);
+
+        html += `
+          <div class="edu-item">
+            <p class="job-title">${edu.degree} <span>${startDate} - ${endDate}</span></p>
+            <p>${edu.school}</p>
+            ${cleanDesc ? `<p><em>${cleanDesc}</em></p>` : ''}
+          </div>
+        `;
+      });
+
+      document.getElementById('education').innerHTML = html;
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    // Populate projects
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        const cleanDesc = stripHtmlTags(project.description);
+        const technologies = project.technologies ? project.technologies.join(', ') : '';
+
+        html += `
+          <div class="job">
+            <p class="job-title">${project.name}</p>
+            ${cleanDesc ? `<p style="font-size: 13px; margin: 5px 0; line-height: 1.4;">${cleanDesc}</p>` : ''}
+            ${technologies ? `<p style="font-size: 12px; margin-top: 5px;"><strong>Technologies:</strong> ${technologies}</p>` : ''}
+          </div>
+        `;
+      });
+
+      document.getElementById('projects').innerHTML = html;
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    // Populate publications
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const date = formatDate(pub.date);
+        html += `<li><strong>${pub.title}</strong> - ${pub.publisher}, ${date}</li>`;
+      });
+
+      document.getElementById('publications').innerHTML = html;
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    // Populate additional information
+    function populateAdditionalInfo() {
+      let items = [];
+
+      // Languages
+      if (resumeData.languages && resumeData.languages.length > 0) {
+        const langList = resumeData.languages.map(lang => `${lang.language} (${lang.proficiency})`).join(', ');
+        items.push(`<li><strong>Languages:</strong> ${langList}.</li>`);
+      }
+
+      // Certifications
+      if (resumeData.courses && resumeData.courses.length > 0) {
+        const certList = resumeData.courses.map(cert => {
+          const year = cert.completionDate ? new Date(cert.completionDate).getFullYear() : '';
+          return `${cert.name}${year ? ' (' + year + ')' : ''}`;
+        }).join(', ');
+        items.push(`<li><strong>Certifications:</strong> ${certList}.</li>`);
+      }
+
+      // Hobbies
+      if (resumeData.hobbies && resumeData.hobbies.length > 0) {
+        const hobbiesList = resumeData.hobbies.join(', ');
+        items.push(`<li><strong>Hobbies:</strong> ${hobbiesList}.</li>`);
+      }
+
+      // Volunteering
+      if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        const volList = resumeData.customSections.volunteering.map(vol => {
+          const startDate = formatDate(vol.startDate);
+          const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+          return `${vol.position} at ${vol.organization} (${startDate}-${endDate})`;
+        }).join(', ');
+        items.push(`<li><strong>Volunteer:</strong> ${volList}.</li>`);
+      }
+
+      // References
+      if (resumeData.references && resumeData.references.length > 0) {
+        const refList = resumeData.references.map(ref => `${ref.name} (${ref.position} at ${ref.company})`).join(', ');
+        items.push(`<li><strong>References:</strong> ${refList}.</li>`);
+      }
+
+      if (items.length > 0) {
+        document.getElementById('additional-info').innerHTML = items.join('');
+        document.getElementById('additional-section').style.display = 'block';
+      }
+    }
+
+    // Main populate function
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+
+        populateHeader();
+        populatePersonalDetails();
+        populateSummary();
+        populateExpertise();
+        populateAwards();
+        populateExperience();
+        populateEducation();
+        populateProjects();
+        populatePublications();
+        populateAdditionalInfo();
+
+        // Apply default color scheme after population
+        applyColorScheme('black');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
     // Color schemes
     const colorSchemes = {
       black: {
@@ -295,7 +467,7 @@
     // Apply color scheme
     function applyColorScheme(scheme) {
       const colors = colorSchemes[scheme];
-      
+
       // Apply to specific elements
       document.querySelectorAll('h3').forEach(el => {
         el.style.borderTopColor = colors.primary;
@@ -308,31 +480,38 @@
     }
 
     // Event listeners
-    fontSelector.addEventListener('change', (e) => {
-      applyFont(e.target.value);
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load resume data
+      populateResume();
 
-    colorSchemeSelector.addEventListener('change', (e) => {
-      applyColorScheme(e.target.value);
-    });
+      // Font selector
+      fontSelector.addEventListener('change', (e) => {
+        applyFont(e.target.value);
+      });
 
-    resetBtn.addEventListener('click', () => {
-      fontSelector.value = "'Josefin Sans', sans-serif";
-      colorSchemeSelector.value = 'black';
+      // Color scheme selector
+      colorSchemeSelector.addEventListener('change', (e) => {
+        applyColorScheme(e.target.value);
+      });
+
+      // Reset button
+      resetBtn.addEventListener('click', () => {
+        fontSelector.value = "'Josefin Sans', sans-serif";
+        colorSchemeSelector.value = 'black';
+        applyFont("'Josefin Sans', sans-serif");
+        applyColorScheme('black');
+      });
+
+      // Print button
+      printBtn.addEventListener('click', () => {
+        document.querySelector('.control-panel').style.display = 'none';
+        window.print();
+        document.querySelector('.control-panel').style.display = 'block';
+      });
+
+      // Initialize with default values
       applyFont("'Josefin Sans', sans-serif");
-      applyColorScheme('black');
     });
-
-    printBtn.addEventListener('click', () => {
-      // Hide control panel for printing
-      document.querySelector('.control-panel').style.display = 'none';
-      window.print();
-      document.querySelector('.control-panel').style.display = 'block';
-    });
-
-    // Initialize with default values
-    applyFont("'Josefin Sans', sans-serif");
-    applyColorScheme('black');
   </script>
 </body>
 </html>

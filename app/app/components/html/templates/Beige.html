@@ -14,323 +14,84 @@
   <div class="a4">
     <div class="header">
       <div class="name-block">
-        <h1>Carlos <br> Idrissi Saez</h1>
+        <h1 id="name"></h1>
       </div>
       <div class="job-summary">
-        <h2>Software Engineer</h2>
-        <p>Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems.</p>
-        <div class="contact-top">
-          <span>+33 6 12 34 56 78</span> | 
-          <span>carlos.idriss@example.com</span> | 
-          <span>Paris, France</span> | 
-          <span>www.carlossaez.dev</span>
-        </div>
+        <h2 id="job-title"></h2>
+        <p id="summary"></p>
+        <div class="contact-top" id="contact-info"></div>
       </div>
     </div>
 
     <div class="main">
       <!-- LEFT PART -->
       <div class="left-part">
-        <section>
+        <section id="personal-details-section" style="display:none;">
+          <h3>Personal Details</h3>
+          <div id="personal-details"></div>
+        </section>
+
+        <section id="skills-section" style="display:none;">
           <h3>Expertise</h3>
-          <table class="skills-table">
-            <tr><td>Python</td><td class="level">Mastery</td></tr>
-            <tr><td>Java</td><td class="level">Mastery</td></tr>
-            <tr><td>React</td><td class="level">Mastery</td></tr>
-            <tr><td>Node.js</td><td class="level">Mastery</td></tr>
-            <tr><td>Docker</td><td class="level">Mastery</td></tr>
-            <tr><td>JavaScript</td><td class="level">Advanced</td></tr>
-            <tr><td>TypeScript</td><td class="level">Advanced</td></tr>
-            <tr><td>Vue.js</td><td class="level">Advanced</td></tr>
-            <tr><td>AWS</td><td class="level">Advanced</td></tr>
-            <tr><td>Kubernetes</td><td class="level">Advanced</td></tr>
-          </table>
+          <div id="skills"></div>
         </section>
 
-        <section>
+        <section id="languages-section" style="display:none;">
           <h3>Languages</h3>
-          <table class="skills-table">
-            <tr><td>English</td><td class="level">Native</td></tr>
-            <tr><td>Spanish</td><td class="level">Fluent</td></tr>
-            <tr><td>French</td><td class="level">Intermediate</td></tr>
-          </table>
+          <table class="skills-table" id="languages"></table>
         </section>
 
-        <section>
+        <section id="hobbies-section" style="display:none;">
+          <h3>Hobbies</h3>
+          <div id="hobbies" class="hobbies-list"></div>
+        </section>
+
+        <section id="certifications-section" style="display:none;">
           <h3>Certifications</h3>
-          <div class="cert-list">
-            <div class="cert-item">
-              <span class="cert-name">AWS Certified Solutions Architect</span>
-              <span class="cert-year">2023</span>
-            </div>
-            <div class="cert-item">
-              <span class="cert-name">Google Cloud Professional Developer</span>
-              <span class="cert-year">2022</span>
-            </div>
-            <div class="cert-item">
-              <span class="cert-name">Certified Kubernetes Administrator</span>
-              <span class="cert-year">2022</span>
-            </div>
-          </div>
+          <div class="cert-list" id="certifications"></div>
         </section>
 
-        <section>
+        <section id="awards-section" style="display:none;">
           <h3>Awards</h3>
-          <div class="award-list">
-            <div class="award-item">
-              <span class="award-name">Employee of the Year</span>
-              <span class="award-org">Google Inc. • 2023</span>
-            </div>
-            <div class="award-item">
-              <span class="award-name">Innovation Award</span>
-              <span class="award-org">Microsoft Corporation • 2021</span>
-            </div>
-          </div>
+          <div class="award-list" id="awards"></div>
         </section>
 
-        <section>
+        <section id="references-section" style="display:none;">
           <h3>References</h3>
-          <p><strong>Michael Bauer / TechVision GmbH</strong><br>
-          CTO <br>
-          +49 30 987654 <br>
-          michael.bauer@techvision.com</p>
-          
-          <p><strong>Sarah Chen / InnovateTech Solutions</strong><br>
-          Senior Engineering Manager <br>
-          +1 555 123 4567 <br>
-          sarah.chen@innovatetech.com</p>
+          <div id="references"></div>
         </section>
       </div>
 
       <!-- RIGHT PART -->
       <div class="right-part">
         <!-- Experience -->
-        <section>
+        <section id="experience-section" style="display:none;">
           <h3>Experience</h3>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Mountain View, CA</p>
-              <h4>Senior Software Engineer</h4>
-              <p><em>Google Inc.</em></p>
-              <ul>
-                <li>Led the development of a new feature for BigQuery ML that improved model training speed by 40%</li>
-                <li>Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment</li>
-                <li>Mentored 5 junior engineers and conducted technical interviews</li>
-                <li>Implemented CI/CD pipelines that reduced deployment time by 60%</li>
-              </ul>
-            </div>
-            <div class="date">Jun '22 – Present</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Seattle, WA</p>
-              <h4>Software Engineer</h4>
-              <p><em>Microsoft Corporation</em></p>
-              <ul>
-                <li>Built scalable microservices handling 1M+ requests per day</li>
-                <li>Optimized database queries resulting in 50% performance improvement</li>
-                <li>Implemented automated testing frameworks reducing bugs by 30%</li>
-                <li>Collaborated with product managers to define technical requirements</li>
-              </ul>
-            </div>
-            <div class="date">Jul '20 – May '22</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Deggendorf</p>
-              <h4>Software Engineer</h4>
-              <p><em>XYZ Company</em></p>
-              <ul>
-                <li>Designed and implemented RESTful APIs and microservices using modern web frameworks, improving feature delivery time by ~30%</li>
-                <li>Developed frontend components and responsive UIs and collaborated closely with designers to reduce UI bugs by 25%</li>
-                <li>Built and maintained automated CI/CD pipelines, unit and integration test suites</li>
-                <li>Optimized database queries and introduced caching strategies, reducing average response time by 40%</li>
-              </ul>
-            </div>
-            <div class="date">Mar '25 – Dec '26</div>
-          </div>
+          <div id="experience"></div>
         </section>
 
         <!-- Education -->
-        <section>
+        <section id="education-section" style="display:none;">
           <h3>Education</h3>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Stanford, CA</p>
-              <h4>Master of Science in Computer Science</h4>
-              <p><em>Stanford University</em></p>
-              <ul>
-                <li>Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0</li>
-                <li>Research Assistant at Stanford AI Lab</li>
-                <li>Published 2 papers on deep learning applications</li>
-                <li>Teaching Assistant for CS231n: Convolutional Neural Networks</li>
-              </ul>
-            </div>
-            <div class="date">Sep '20 – Jun '22</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Berkeley, CA</p>
-              <h4>Bachelor of Science in Computer Engineering</h4>
-              <p><em>University of California, Berkeley</em></p>
-              <ul>
-                <li>Bachelor of Science in Computer Engineering - Minor in Mathematics. GPA: 3.85/4.0</li>
-                <li>Dean's List all semesters</li>
-                <li>Capstone Project: Developed an IoT system for smart energy management</li>
-              </ul>
-            </div>
-            <div class="date">Sep '16 – May '20</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Zurich, Switzerland</p>
-              <h4>Study Abroad Program</h4>
-              <p><em>ETH Zurich</em></p>
-              <ul>
-                <li>Focus on Advanced Algorithms and Distributed Systems</li>
-                <li>Completed research project on distributed consensus algorithms</li>
-                <li>Participated in the ETH Robotics Challenge</li>
-              </ul>
-            </div>
-            <div class="date">Jan '19 – Jun '19</div>
-          </div>
+          <div id="education"></div>
         </section>
 
         <!-- Projects -->
-        <section>
+        <section id="projects-section" style="display:none;">
           <h3>Projects</h3>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">RetailTech AG</p>
-              <h4>SmartRetail Platform</h4>
-              <p><em>Lead Developer</em></p>
-              <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">AWS</span>
-              </div>
-              <ul>
-                <li>Implemented machine learning algorithms for demand forecasting</li>
-                <li>Built real-time dashboard with React and D3.js</li>
-                <li>Integrated with multiple POS systems and inventory databases</li>
-                <li>Achieved 25% improvement in inventory turnover rates</li>
-              </ul>
-            </div>
-            <div class="date">Mar '22 – Present</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">FinTech Solutions</p>
-              <h4>FinanceTracker Pro</h4>
-              <p><em>Full Stack Developer</em></p>
-              <div class="project-tech">
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">Docker</span>
-              </div>
-              <ul>
-                <li>Developed automated transaction categorization using NLP</li>
-                <li>Built investment portfolio tracking with real-time market data</li>
-                <li>Implemented secure bank account integration via Plaid API</li>
-                <li>Created mobile-responsive Vue.js frontend with PWA capabilities</li>
-              </ul>
-            </div>
-            <div class="date">Jan '23 – Dec '23</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">MedTech Innovations</p>
-              <h4>Healthcare Analytics Dashboard</h4>
-              <p><em>Senior Developer</em></p>
-              <div class="project-tech">
-                <span class="tech-tag">Angular</span>
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">Spring Boot</span>
-                <span class="tech-tag">MySQL</span>
-              </div>
-              <ul>
-                <li>Built interactive dashboards for patient flow monitoring</li>
-                <li>Implemented real-time alerts for critical patient metrics</li>
-                <li>Developed data integration layer for multiple hospital systems</li>
-                <li>Reduced patient wait times by 30% through optimized scheduling</li>
-              </ul>
-            </div>
-            <div class="date">Jun '21 – Feb '22</div>
-          </div>
+          <div id="projects"></div>
         </section>
 
         <!-- Publications -->
-        <section>
+        <section id="publications-section" style="display:none;">
           <h3>Publications</h3>
-
-          <div class="publication">
-            <div class="content">
-              <h4>Machine Learning in Production Systems</h4>
-              <p class="pub-details"><em>AI Research Today</em> • November 2023</p>
-              <p class="pub-description">Practical approaches to deploying and maintaining machine learning models in production environments.</p>
-            </div>
-          </div>
-
-          <div class="publication">
-            <div class="content">
-              <h4>Modern Frontend Architecture Patterns</h4>
-              <p class="pub-details"><em>Web Development Quarterly</em> • March 2023</p>
-              <p class="pub-description">Comprehensive guide to modern frontend architecture patterns including micro-frontends and component-driven development.</p>
-            </div>
-          </div>
-
-          <div class="publication">
-            <div class="content">
-              <h4>Scaling Microservices with Kubernetes</h4>
-              <p class="pub-details"><em>Tech Journal</em> • August 2022</p>
-              <p class="pub-description">Best practices for deploying and scaling microservices with Kubernetes.</p>
-            </div>
-          </div>
+          <div id="publications"></div>
         </section>
 
         <!-- Volunteer Experience -->
-        <section>
+        <section id="volunteering-section" style="display:none;">
           <h3>Volunteer Experience</h3>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Berlin</p>
-              <h4>Web Development Mentor</h4>
-              <p><em>Coding Bootcamp Program</em></p>
-              <ul>
-                <li>Provided one-on-one guidance to 15+ students</li>
-                <li>Conducted weekly code review sessions</li>
-                <li>Helped students build portfolio projects</li>
-                <li>Achieved 90% job placement rate for mentees</li>
-              </ul>
-            </div>
-            <div class="date">Jan '23 – Present</div>
-          </div>
-
-          <div class="job">
-            <div class="content">
-              <p class="location">Munich</p>
-              <h4>Tech Workshop Organizer</h4>
-              <p><em>Local Community</em></p>
-              <ul>
-                <li>Planned and executed 10 workshops with 200+ attendees</li>
-                <li>Topics covered: React, Node.js, Python, and DevOps</li>
-                <li>Collaborated with local tech companies for sponsorship</li>
-              </ul>
-            </div>
-            <div class="date">Mar '22 – Dec '22</div>
-          </div>
+          <div id="volunteering"></div>
         </section>
       </div>
     </div>
@@ -381,6 +142,451 @@
   </div>
 
   <script>
+    let resumeData = null;
+
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Present';
+      const date = new Date(dateStr);
+      const month = date.toLocaleDateString('en-US', { month: 'short' });
+      const year = date.toLocaleDateString('en-US', { year: '2-digit' });
+      return `${month} '${year}`;
+    }
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      const nameEl = document.getElementById('name');
+      const fullName = `${personal.firstName} <br> ${personal.lastName}`;
+      nameEl.innerHTML = fullName;
+
+      document.getElementById('job-title').textContent = personal.jobTitle;
+
+      if (resumeData.professionalSummary) {
+        document.getElementById('summary').textContent = resumeData.professionalSummary;
+      }
+    }
+
+    // Populate contact info in header with basic fields
+    function populateContactInfo() {
+      const personal = resumeData.personalInfo;
+      let parts = [];
+
+      if (personal.phone) parts.push(`<span>${personal.phone}</span>`);
+      if (personal.email) parts.push(`<span>${personal.email}</span>`);
+      if (personal.location) parts.push(`<span>${personal.location}</span>`);
+      if (personal.website) parts.push(`<span>${personal.website.replace('https://', '').replace('http://', '')}</span>`);
+
+      document.getElementById('contact-info').innerHTML = parts.join(' | ');
+    }
+
+    // Populate personal details in sidebar with ALL additional fields
+    function populatePersonalDetails() {
+      const personal = resumeData.personalInfo;
+      let html = '';
+      let hasDetails = false;
+
+      // Birth Date
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p><strong>Birth Date:</strong><br>${formattedDate}</p>`;
+        hasDetails = true;
+      }
+
+      // Nationality
+      if (personal.nationality) {
+        html += `<p><strong>Nationality:</strong><br>${personal.nationality}</p>`;
+        hasDetails = true;
+      }
+
+      // Relationship Status
+      if (personal.relationshipStatus) {
+        html += `<p><strong>Status:</strong><br>${personal.relationshipStatus.charAt(0).toUpperCase() + personal.relationshipStatus.slice(1)}</p>`;
+        hasDetails = true;
+      }
+
+      // Availability
+      if (personal.availability) {
+        html += `<p><strong>Availability:</strong><br>${personal.availability.charAt(0).toUpperCase() + personal.availability.slice(1)}</p>`;
+        hasDetails = true;
+      }
+
+      // Driving License
+      if (personal.drivingLicense) {
+        html += `<p><strong>License:</strong><br>${personal.drivingLicense}</p>`;
+        hasDetails = true;
+      }
+
+      // Websites and Social Links
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        html += `<p><strong>Links:</strong></p>`;
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `<p style="margin-left: 10px;">${link.label}: ${link.url.replace('https://', '').replace('http://', '')}</p>`;
+        });
+        hasDetails = true;
+      }
+
+      // Social Links
+      if (personal.socialLinks) {
+        if (personal.socialLinks.linkedin) {
+          html += `<p><strong>LinkedIn:</strong><br>${personal.socialLinks.linkedin}</p>`;
+          hasDetails = true;
+        }
+        if (personal.socialLinks.github) {
+          html += `<p><strong>GitHub:</strong><br>${personal.socialLinks.github}</p>`;
+          hasDetails = true;
+        }
+      }
+
+      if (hasDetails) {
+        document.getElementById('personal-details').innerHTML = html;
+        document.getElementById('personal-details-section').style.display = 'block';
+      }
+    }
+
+    // Populate skills grouped by category
+    function populateSkills() {
+      if (!resumeData.skills || resumeData.skills.length === 0) return;
+
+      // Group skills by category
+      const grouped = {};
+      resumeData.skills.forEach(skill => {
+        const category = skill.category || 'other';
+        if (!grouped[category]) grouped[category] = [];
+        grouped[category].push(skill);
+      });
+
+      // Get category names from skillGroups
+      const categoryNames = {};
+      if (resumeData.skillGroups) {
+        resumeData.skillGroups.forEach(group => {
+          categoryNames[group.id] = group.name;
+        });
+      }
+
+      let html = '';
+      Object.entries(grouped).forEach(([categoryId, skills]) => {
+        const categoryName = categoryNames[categoryId] || categoryId;
+        html += `<h4 style="font-size: 12px; margin: 8px 0 4px; color: #666;">${categoryName}</h4>`;
+        html += `<table class="skills-table">`;
+
+        skills.forEach(skill => {
+          const levelText = skill.level === 'Expert' ? 'Mastery' :
+                          skill.level === 'Advanced' ? 'Advanced' : 'Intermediate';
+          html += `<tr><td>${skill.skill}</td><td class="level">${levelText}</td></tr>`;
+        });
+
+        html += `</table>`;
+      });
+
+      document.getElementById('skills').innerHTML = html;
+      document.getElementById('skills-section').style.display = 'block';
+    }
+
+    // Populate languages
+    function populateLanguages() {
+      if (!resumeData.languages || resumeData.languages.length === 0) return;
+
+      let html = '';
+      resumeData.languages.forEach(lang => {
+        html += `<tr><td>${lang.language}</td><td class="level">${lang.level}</td></tr>`;
+      });
+
+      document.getElementById('languages').innerHTML = html;
+      document.getElementById('languages-section').style.display = 'block';
+    }
+
+    // Populate hobbies
+    function populateHobbies() {
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) return;
+
+      let html = '<ul style="margin: 0; padding-left: 18px;">';
+      resumeData.hobbies.forEach(hobby => {
+        html += `<li style="font-size: 13px; margin-bottom: 4px;">${hobby}</li>`;
+      });
+      html += '</ul>';
+
+      document.getElementById('hobbies').innerHTML = html;
+      document.getElementById('hobbies-section').style.display = 'block';
+    }
+
+    // Populate certifications
+    function populateCertifications() {
+      if (!resumeData.courses || resumeData.courses.length === 0) return;
+
+      let html = '';
+      resumeData.courses.forEach(course => {
+        const completionDate = new Date(course.completionDate);
+        const year = completionDate.getFullYear();
+        html += `
+          <div class="cert-item">
+            <span class="cert-name">${course.title}</span>
+            <span class="cert-year">${year}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById('certifications').innerHTML = html;
+      document.getElementById('certifications-section').style.display = 'block';
+    }
+
+    // Populate awards
+    function populateAwards() {
+      if (!resumeData.customSections || !resumeData.customSections.awards || resumeData.customSections.awards.length === 0) return;
+
+      let html = '';
+      resumeData.customSections.awards.forEach(award => {
+        const cleanDesc = stripHtmlTags(award.description);
+        const startDate = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        html += `
+          <div class="award-item">
+            <span class="award-name">${award.title}</span>
+            <span class="award-org">${award.city}${startDate ? ' • ' + startDate : ''}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById('awards').innerHTML = html;
+      document.getElementById('awards-section').style.display = 'block';
+    }
+
+    // Populate references
+    function populateReferences() {
+      if (!resumeData.references || resumeData.references.length === 0) return;
+
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <p><strong>${ref.name} / ${ref.company}</strong><br>
+          ${ref.position} <br>
+          ${ref.phone} <br>
+          ${ref.email}</p>
+        `;
+      });
+
+      document.getElementById('references').innerHTML = html;
+      document.getElementById('references-section').style.display = 'block';
+    }
+
+    // Populate experience
+    function populateExperience() {
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) return;
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="job">
+            <div class="content">
+              <p class="location">${job.location || ''}</p>
+              <h4>${job.jobTitle}</h4>
+              <p><em>${job.company}</em></p>
+        `;
+
+        if (job.responsibilities && job.responsibilities.length > 0) {
+          html += '<ul>';
+          job.responsibilities.forEach(resp => {
+            html += `<li>${resp}</li>`;
+          });
+          html += '</ul>';
+        } else if (job.description) {
+          html += `<p>${job.description}</p>`;
+        }
+
+        html += `
+            </div>
+            <div class="date">${startDate} – ${endDate}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('experience').innerHTML = html;
+      document.getElementById('experience-section').style.display = 'block';
+    }
+
+    // Populate education
+    function populateEducation() {
+      if (!resumeData.education || resumeData.education.length === 0) return;
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+        const cleanDesc = stripHtmlTags(edu.description);
+
+        html += `
+          <div class="job">
+            <div class="content">
+              <p class="location">${edu.location || ''}</p>
+              <h4>${edu.degree}</h4>
+              <p><em>${edu.school}</em></p>
+        `;
+
+        if (cleanDesc) {
+          const lines = cleanDesc.split(/\.\s+/).filter(line => line.trim());
+          if (lines.length > 0) {
+            html += '<ul>';
+            lines.forEach(line => {
+              if (line.trim()) html += `<li>${line.trim()}${line.endsWith('.') ? '' : '.'}</li>`;
+            });
+            html += '</ul>';
+          }
+        }
+
+        html += `
+            </div>
+            <div class="date">${startDate} – ${endDate}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('education').innerHTML = html;
+      document.getElementById('education-section').style.display = 'block';
+    }
+
+    // Populate projects
+    function populateProjects() {
+      if (!resumeData.projects || resumeData.projects.length === 0) return;
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="job">
+            <div class="content">
+              <h4>${project.name}</h4>
+        `;
+
+        // Parse technologies into tags
+        if (project.technologies) {
+          html += '<div class="project-tech">';
+          const techs = project.technologies.split(',').map(t => t.trim());
+          techs.forEach(tech => {
+            html += `<span class="tech-tag">${tech}</span>`;
+          });
+          html += '</div>';
+        }
+
+        // Parse description into bullet points
+        const descLines = project.description.split(/\.\s+/).filter(line => line.trim());
+        if (descLines.length > 0) {
+          html += '<ul>';
+          descLines.forEach(line => {
+            if (line.trim()) html += `<li>${line.trim()}${line.endsWith('.') ? '' : '.'}</li>`;
+          });
+          html += '</ul>';
+        }
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('projects').innerHTML = html;
+      document.getElementById('projects-section').style.display = 'block';
+    }
+
+    // Populate publications
+    function populatePublications() {
+      if (!resumeData.publications || resumeData.publications.length === 0) return;
+
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const pubDate = new Date(pub.publicationDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        const cleanDesc = stripHtmlTags(pub.description);
+
+        html += `
+          <div class="publication">
+            <div class="content">
+              <h4>${pub.title}</h4>
+              <p class="pub-details"><em>${pub.publisher}</em> • ${pubDate}</p>
+              <p class="pub-description">${cleanDesc}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('publications').innerHTML = html;
+      document.getElementById('publications-section').style.display = 'block';
+    }
+
+    // Populate volunteering
+    function populateVolunteering() {
+      if (!resumeData.customSections || !resumeData.customSections.volunteering || resumeData.customSections.volunteering.length === 0) return;
+
+      let html = '';
+      resumeData.customSections.volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+        const cleanDesc = stripHtmlTags(vol.description);
+
+        html += `
+          <div class="job">
+            <div class="content">
+              <p class="location">${vol.city}</p>
+              <h4>${vol.title}</h4>
+        `;
+
+        // Parse description into bullet points
+        const lines = cleanDesc.split(/\.\s+/).filter(line => line.trim());
+        if (lines.length > 0) {
+          html += '<ul>';
+          lines.forEach(line => {
+            if (line.trim()) html += `<li>${line.trim()}${line.endsWith('.') ? '' : '.'}</li>`;
+          });
+          html += '</ul>';
+        }
+
+        html += `
+            </div>
+            <div class="date">${startDate} – ${endDate}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('volunteering').innerHTML = html;
+      document.getElementById('volunteering-section').style.display = 'block';
+    }
+
+    // Main function to populate all resume data
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content; // Extract content
+
+        populateHeader();
+        populateContactInfo();
+        populatePersonalDetails();
+        populateSkills();
+        populateLanguages();
+        populateHobbies();
+        populateCertifications();
+        populateAwards();
+        populateReferences();
+        populateExperience();
+        populateEducation();
+        populateProjects();
+        populatePublications();
+        populateVolunteering();
+
+        // Apply default color scheme after data is loaded
+        applyColorScheme('beige');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
     // Color schemes
     const colorSchemes = {
       beige: {
@@ -441,23 +647,16 @@
       }
     };
 
-    // Get elements
-    const fontSelector = document.getElementById('font-selector');
-    const colorSchemeSelector = document.getElementById('color-scheme');
-    const resetBtn = document.getElementById('reset-btn');
-    const printBtn = document.getElementById('print-btn');
-    const body = document.body;
-
     // Apply font
     function applyFont(fontFamily) {
-      body.style.fontFamily = fontFamily;
+      document.body.style.fontFamily = fontFamily;
     }
 
     // Apply color scheme
     function applyColorScheme(scheme) {
       const colors = colorSchemes[scheme];
       const root = document.documentElement;
-      
+
       root.style.setProperty('--primary-color', colors.primary);
       root.style.setProperty('--secondary-color', colors.secondary);
       root.style.setProperty('--background-color', colors.background);
@@ -479,32 +678,41 @@
       });
     }
 
-    // Event listeners
-    fontSelector.addEventListener('change', (e) => {
-      applyFont(e.target.value);
-    });
+    // Initialize everything on DOM load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get elements
+      const fontSelector = document.getElementById('font-selector');
+      const colorSchemeSelector = document.getElementById('color-scheme');
+      const resetBtn = document.getElementById('reset-btn');
+      const printBtn = document.getElementById('print-btn');
 
-    colorSchemeSelector.addEventListener('change', (e) => {
-      applyColorScheme(e.target.value);
-    });
+      // Event listeners
+      fontSelector.addEventListener('change', (e) => {
+        applyFont(e.target.value);
+      });
 
-    resetBtn.addEventListener('click', () => {
-      fontSelector.value = "'Josefin Sans', sans-serif";
-      colorSchemeSelector.value = 'beige';
+      colorSchemeSelector.addEventListener('change', (e) => {
+        applyColorScheme(e.target.value);
+      });
+
+      resetBtn.addEventListener('click', () => {
+        fontSelector.value = "'Josefin Sans', sans-serif";
+        colorSchemeSelector.value = 'beige';
+        applyFont("'Josefin Sans', sans-serif");
+        applyColorScheme('beige');
+      });
+
+      printBtn.addEventListener('click', () => {
+        // Hide control panel for printing
+        document.querySelector('.control-panel').style.display = 'none';
+        window.print();
+        document.querySelector('.control-panel').style.display = 'block';
+      });
+
+      // Initialize font and load resume data
       applyFont("'Josefin Sans', sans-serif");
-      applyColorScheme('beige');
+      populateResume();
     });
-
-    printBtn.addEventListener('click', () => {
-      // Hide control panel for printing
-      document.querySelector('.control-panel').style.display = 'none';
-      window.print();
-      document.querySelector('.control-panel').style.display = 'block';
-    });
-
-    // Initialize with default values
-    applyFont("'Josefin Sans', sans-serif");
-    applyColorScheme('beige');
   </script>
 </body>
 </html>
