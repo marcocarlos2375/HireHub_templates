@@ -311,6 +311,27 @@
         `;
       }
 
+      if (personal.drivingLicense) {
+        html += `
+          <div class="contact-item">
+            <strong>Driving License</strong><br>
+            <span>${personal.drivingLicense}</span>
+          </div>
+        `;
+      }
+
+      // Add websitesAndSocialLinks if available
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `
+            <div class="contact-item">
+              <strong>${link.label}</strong><br>
+              <span>${link.url.replace('https://', '').replace('http://', '')}</span>
+            </div>
+          `;
+        });
+      }
+
       contactContainer.innerHTML = html;
     }
 

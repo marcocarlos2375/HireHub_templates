@@ -133,3 +133,4 @@ TypeScript configuration uses Nuxt's project references pattern (see `tsconfig.j
 - **Template Selection** - Gallery emits `template-selected` event with template object
 - **Back Navigation** - Template view includes back button that resets selected template
 - **PDF Generation** - Async function with loading state (`isGeneratingPDF`)
+- for all the template please make sure to inlude all part of @app/app/components/html/templates/resume.json including birthDate, nationality,relationshipStatus,drivingLicense,websitesAndSocialLinks

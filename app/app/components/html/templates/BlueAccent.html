@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Accent Template</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title id="page-title">Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Josefin Sans', sans-serif;
@@ -27,45 +27,50 @@
     .header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       border-bottom: 2px solid #f0f0f0;
       padding-bottom: 20px;
       margin-bottom: 30px;
     }
 
     .header-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .header-left img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
+      flex: 1;
     }
 
     .header-left h1 {
       margin: 0;
       font-size: 28px;
       font-weight: 700;
+      color: #333;
     }
 
     .header-left h2 {
-      margin: 5px 0 0 0;
+      margin: 5px 0 10px 0;
       font-size: 16px;
       color: #00aaff;
       font-weight: 600;
     }
 
+    .header-left .summary {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
     .header-right {
       text-align: right;
-      font-size: 14px;
+      font-size: 13px;
+      color: #666;
     }
 
     .header-right p {
-      margin: 2px 0;
+      margin: 4px 0;
+    }
+
+    .header-right strong {
+      color: #333;
+      font-weight: 600;
     }
 
     .header-right a {
@@ -79,55 +84,318 @@
       gap: 40px;
     }
 
-    .left-part, .right-part {
+    .left-part {
+      flex: 1;
+    }
+
+    .right-part {
       flex: 1;
     }
 
     /* Section headings */
     h3.section-title {
-      font-size: 18px;
+      font-size: 16px;
       color: #00aaff;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #f0f0f0;
+      margin-bottom: 15px;
+      margin-top: 25px;
+      border-bottom: 2px solid #e0f4ff;
       padding-bottom: 5px;
       font-weight: 700;
     }
 
-    /* Experience */
-    .experience-item {
+    h3.section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Experience & Entry items */
+    .entry-item {
       margin-bottom: 20px;
     }
 
-    .experience-item h4 {
-      margin: 0;
-      font-size: 16px;
+    .entry-item h4 {
+      margin: 0 0 5px 0;
+      font-size: 14px;
       font-weight: 700;
+      color: #333;
     }
 
-    .experience-item span {
+    .entry-item .date {
+      font-size: 12px;
+      color: #00aaff;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .entry-item .location {
+      font-size: 12px;
+      color: #999;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .entry-item p {
       font-size: 13px;
       color: #666;
-    }
-
-    /* Education */
-    .education-item {
-      margin-bottom: 20px;
-    }
-
-    .education-item h4 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .education-item span {
-      font-size: 13px;
-      color: #666;
+      line-height: 1.5;
+      margin: 5px 0 0 0;
     }
 
     /* Skills */
-    .skills p {
-      margin: 8px 0;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .skill-category h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 8px 0;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-category li {
+      background: #e0f4ff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #0088cc;
+      font-weight: 500;
+    }
+
+    /* Languages */
+    .languages-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .lang-item:last-child {
+      border-bottom: none;
+    }
+
+    .lang-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .lang-level {
+      font-size: 12px;
+      color: #00aaff;
+      font-weight: 500;
+    }
+
+    /* Hobbies */
+    .hobbies-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hobby-item {
+      background: #e0f4ff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #0088cc;
+    }
+
+    /* References */
+    .references-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .reference-item {
+      background: #f8fcff;
+      padding: 12px;
+      border-left: 3px solid #00aaff;
+      border-radius: 4px;
+    }
+
+    .reference-item h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      color: #333;
+    }
+
+    .reference-item p {
+      font-size: 11px;
+      margin: 2px 0;
+      color: #666;
+    }
+
+    .ref-position {
+      font-weight: 600;
+      color: #00aaff;
+    }
+
+    /* Certifications & Awards */
+    .cert-awards-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cert-list, .awards-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cert-list li, .awards-list li {
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .cert-list li strong, .awards-list li strong {
+      color: #00aaff;
+      font-weight: 600;
+    }
+
+    .cert-desc, .award-desc {
+      font-size: 11px;
+      color: #666;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: 2px solid #00aaff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+      z-index: 1000;
+      min-width: 250px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .control-panel h3 {
+      margin: 0 0 15px;
+      font-size: 16px;
+      color: #00aaff;
+      text-align: center;
+      border-bottom: 2px solid #e0f4ff;
+      padding-bottom: 10px;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+    }
+
+    .control-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .control-group select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 13px;
+      background: white;
+      color: #333;
+    }
+
+    .control-group select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.2);
+    }
+
+    .control-group button {
+      width: 48%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #reset-btn {
+      background: #f8f9fa;
+      color: #666;
+      margin-right: 4%;
+    }
+
+    #reset-btn:hover {
+      background: #e9ecef;
+      border-color: #adb5bd;
+    }
+
+    #print-btn {
+      background: #00aaff;
+      color: white;
+      border-color: #00aaff;
+    }
+
+    #print-btn:hover {
+      background: #0088cc;
+      border-color: #0088cc;
+    }
+
+    /* Hide control panel when printing */
+    @media print {
+      .control-panel {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .a4 {
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .control-panel {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -136,71 +404,803 @@
     <!-- Header -->
     <div class="header">
       <div class="header-left">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile Picture">
-        <div>
-          <h1>Kate Bishop</h1>
-          <h2>Product Designer</h2>
-          <p>Over 5 years of professional experience conducting UX research and designing interactive end-to-end user flows.</p>
-        </div>
+        <h1 id="full-name"></h1>
+        <h2 id="job-title"></h2>
+        <p class="summary" id="professional-summary"></p>
       </div>
-      <div class="header-right">
-        <p><strong>Email:</strong> <a href="mailto:kate.bishop@katedesign.com">kate.bishop@katedesign.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/kate-bishop</a></p>
-        <p><strong>Phone:</strong> +46 98-765 43 21</p>
-      </div>
+      <div class="header-right" id="header-contacts"></div>
     </div>
 
     <!-- Main -->
     <div class="main">
       <!-- Left -->
       <div class="left-part">
-        <h3 class="section-title">Work Experience</h3>
-        <div class="experience-item">
-          <h4>Product Designer – Fintef</h4>
-          <span>Oct 2019 – Present</span>
-          <p>Designing end-to-end experience for financial products on mobile & web platforms.</p>
+        <h3 class="section-title">Professional Experience</h3>
+        <div id="employment-history"></div>
+
+        <div id="internships-section" style="display:none;">
+          <h3 class="section-title">Internships</h3>
+          <div id="internships"></div>
         </div>
-        <div class="experience-item">
-          <h4>UX Designer – Resume Worded</h4>
-          <span>Sep 2017 – Sep 2019</span>
-          <p>Revamped website flows and navigation menus, reducing misdirected queries by 30%.</p>
+
+        <div id="volunteering-section" style="display:none;">
+          <h3 class="section-title">Volunteer Experience</h3>
+          <div id="volunteering"></div>
         </div>
-        <div class="experience-item">
-          <h4>Associate UX Designer – Growshi</h4>
-          <span>Dec 2016 – Aug 2017</span>
-          <p>Redesigned homepage & lead generation forms, increasing leads by 15%.</p>
-        </div>
-        <div class="experience-item">
-          <h4>UX Analyst – Growshi</h4>
-          <span>Mar 2016 – Dec 2016</span>
-          <p>Managed redesign of internal tracking system for 125 employees, adding 20+ features.</p>
-        </div>
+
+        <h3 class="section-title">Key Projects</h3>
+        <div id="projects"></div>
       </div>
 
       <!-- Right -->
       <div class="right-part">
-        <h3 class="section-title">Education & Learning</h3>
-        <div class="education-item">
-          <h4>Master’s in Human–Computer Interaction</h4>
-          <span>Copenhagen School of Design and Technology, 2015 – 2016</span>
-        </div>
-        <div class="education-item">
-          <h4>Bachelor’s of Arts</h4>
-          <span>Copenhagen School of Design and Technology, 2011 – 2015</span>
-        </div>
-        <div class="education-item">
-          <h4>Design Leadership Masterclass</h4>
-          <span>Design Lab Inc., Mar 2020</span>
+        <h3 class="section-title">Education</h3>
+        <div id="education"></div>
+
+        <h3 class="section-title">Technical Skills</h3>
+        <div class="skills-grid" id="skills-grid"></div>
+
+        <div id="languages-section" style="display:none;">
+          <h3 class="section-title">Languages</h3>
+          <div class="languages-list" id="languages-list"></div>
         </div>
 
-        <h3 class="section-title">Skills</h3>
-        <div class="skills">
-          <p>Business Analysis, UX Research, User Testing, Customer Journey Mapping</p>
-          <p>Wireframing, Prototyping, Interaction Design, Visual Design</p>
-          <p>Agile & Lean Methodologies, SQL, HTML, CSS, JavaScript</p>
+        <div id="cert-awards-section" style="display:none;">
+          <h3 class="section-title">Certifications & Awards</h3>
+          <div class="cert-awards-grid">
+            <div id="cert-column" style="display:none;">
+              <h4 style="font-size: 14px; color: #333; margin: 0 0 10px 0;">Certifications</h4>
+              <ul class="cert-list" id="cert-list"></ul>
+            </div>
+            <div id="awards-column" style="display:none;">
+              <h4 style="font-size: 14px; color: #333; margin: 0 0 10px 0;">Awards</h4>
+              <ul class="awards-list" id="awards-list"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="publications-section" style="display:none;">
+          <h3 class="section-title">Publications</h3>
+          <div id="publications"></div>
+        </div>
+
+        <div id="hobbies-section" style="display:none;">
+          <h3 class="section-title">Hobbies & Interests</h3>
+          <div class="hobbies-list" id="hobbies-list"></div>
+        </div>
+
+        <div id="references-section" style="display:none;">
+          <h3 class="section-title">References</h3>
+          <div class="references-grid" id="references-grid"></div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Template</h3>
+
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Wix Madefor Text', sans-serif">Wix Madefor Text</option>
+        <option value="'Gabarito', sans-serif">Gabarito</option>
+        <option value="'Raleway', sans-serif">Raleway</option>
+        <option value="'Manrope', sans-serif">Manrope</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+        <option value="'Figtree', sans-serif">Figtree</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Lato', sans-serif">Lato</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme">
+        <option value="blue">Ocean Blue (Default)</option>
+        <option value="cyan">Bright Cyan</option>
+        <option value="navy">Deep Navy</option>
+        <option value="teal">Professional Teal</option>
+        <option value="skyblue">Sky Blue</option>
+        <option value="indigo">Royal Indigo</option>
+        <option value="azure">Azure</option>
+        <option value="cobalt">Cobalt Blue</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Resume</button>
+    </div>
+  </div>
+
+  <script>
+    // Load resume data from JSON file
+    let resumeData = null;
+
+    // Fetch and load data
+    async function loadResumeData() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+        populateResume();
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Populate all resume sections
+    function populateResume() {
+      if (!resumeData) return;
+
+      // Header
+      const fullName = `${resumeData.personalInfo.firstName} ${resumeData.personalInfo.lastName}`;
+      document.getElementById('full-name').textContent = fullName;
+      document.getElementById('job-title').textContent = resumeData.personalInfo.jobTitle;
+      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.jobTitle} Resume`;
+      document.getElementById('professional-summary').textContent = resumeData.professionalSummary;
+
+      // Contact Information
+      populateContactInfo();
+
+      // Employment History
+      populateEmploymentHistory();
+
+      // Education
+      populateEducation();
+
+      // Internships
+      populateInternships();
+
+      // Skills
+      populateSkills();
+
+      // Projects
+      populateProjects();
+
+      // Publications
+      populatePublications();
+
+      // Certifications & Awards
+      populateCertificationsAndAwards();
+
+      // Languages
+      populateLanguages();
+
+      // Hobbies
+      populateHobbies();
+
+      // Volunteering
+      populateVolunteering();
+
+      // References
+      populateReferences();
+
+      // Apply default color scheme after all elements are created
+      applyColorScheme('blue');
+    }
+
+    // Contact Information
+    function populateContactInfo() {
+      const contactContainer = document.getElementById('header-contacts');
+      const personal = resumeData.personalInfo;
+      let html = '';
+
+      if (personal.email) {
+        html += `<p><strong>Email:</strong> <a href="mailto:${personal.email}">${personal.email}</a></p>`;
+      }
+
+      if (personal.phone) {
+        html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
+      }
+
+      if (personal.location) {
+        html += `<p><strong>Location:</strong> ${personal.location}</p>`;
+      }
+
+      if (personal.website) {
+        html += `<p><strong>Website:</strong> <a href="${personal.website}" target="_blank">${personal.website.replace('https://', '').replace('http://', '')}</a></p>`;
+      }
+
+      if (personal.socialLinks && personal.socialLinks.linkedin) {
+        html += `<p><strong>LinkedIn:</strong> <a href="https://${personal.socialLinks.linkedin}" target="_blank">${personal.socialLinks.linkedin}</a></p>`;
+      }
+
+      if (personal.socialLinks && personal.socialLinks.github) {
+        html += `<p><strong>GitHub:</strong> <a href="https://${personal.socialLinks.github}" target="_blank">${personal.socialLinks.github}</a></p>`;
+      }
+
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
+      }
+
+      if (personal.nationality) {
+        html += `<p><strong>Nationality:</strong> ${personal.nationality}</p>`;
+      }
+
+      if (personal.availability) {
+        html += `<p><strong>Availability:</strong> ${personal.availability}</p>`;
+      }
+
+      if (personal.relationshipStatus) {
+        html += `<p><strong>Relationship Status:</strong> ${personal.relationshipStatus}</p>`;
+      }
+
+      if (personal.drivingLicense) {
+        html += `<p><strong>Driving License:</strong> ${personal.drivingLicense}</p>`;
+      }
+
+      // Add websitesAndSocialLinks if available
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `<p><strong>${link.label}:</strong> <a href="${link.url}" target="_blank">${link.url.replace('https://', '').replace('http://', '')}</a></p>`;
+        });
+      }
+
+      contactContainer.innerHTML = html;
+    }
+
+    // Employment History
+    function populateEmploymentHistory() {
+      const employmentContainer = document.getElementById('employment-history');
+
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) {
+        employmentContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="entry-item">
+            <h4>${job.jobTitle} at ${job.company}</h4>
+            <span class="date">${startDate} – ${endDate}</span>
+            <span class="location">${job.location}</span>
+            <p>${job.description}</p>
+          </div>
+        `;
+      });
+
+      employmentContainer.innerHTML = html;
+    }
+
+    // Education
+    function populateEducation() {
+      const educationContainer = document.getElementById('education');
+
+      if (!resumeData.education || resumeData.education.length === 0) {
+        educationContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+
+        html += `
+          <div class="entry-item">
+            <h4>${edu.degree}</h4>
+            <span class="date">${startDate} – ${endDate}</span>
+            <span class="location">${edu.school}, ${edu.location}</span>
+            ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      educationContainer.innerHTML = html;
+    }
+
+    // Internships
+    function populateInternships() {
+      const internshipsSection = document.getElementById('internships-section');
+      const internshipsContainer = document.getElementById('internships');
+
+      if (!resumeData.internships || resumeData.internships.length === 0) {
+        internshipsSection.style.display = 'none';
+        return;
+      }
+
+      internshipsSection.style.display = 'block';
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = formatDate(internship.endDate);
+
+        html += `
+          <div class="entry-item">
+            <h4>${internship.position} at ${internship.company}</h4>
+            <span class="date">${startDate} – ${endDate}</span>
+            <span class="location">${internship.location}</span>
+            ${internship.description ? `<p>${internship.description}</p>` : ''}
+          </div>
+        `;
+      });
+
+      internshipsContainer.innerHTML = html;
+    }
+
+    // Skills grouped by category
+    function populateSkills() {
+      const skillsGrid = document.getElementById('skills-grid');
+
+      if (!resumeData.skills || resumeData.skills.length === 0) {
+        skillsGrid.innerHTML = '';
+        return;
+      }
+
+      // Group skills by category
+      const groupedSkills = {};
+      resumeData.skills.forEach(skill => {
+        if (!groupedSkills[skill.category]) {
+          groupedSkills[skill.category] = [];
+        }
+        groupedSkills[skill.category].push(skill);
+      });
+
+      let html = '';
+
+      // Get skill groups for display
+      const skillGroups = resumeData.skillGroups || [];
+
+      // Iterate through skill groups to maintain order
+      skillGroups.forEach(group => {
+        const skills = groupedSkills[group.id];
+        if (!skills || skills.length === 0) return;
+
+        html += `
+          <div class="skill-category">
+            <h4>${group.name}</h4>
+            <ul>
+        `;
+
+        skills.forEach(skill => {
+          html += `<li>${skill.skill}</li>`;
+        });
+
+        html += `
+            </ul>
+          </div>
+        `;
+      });
+
+      skillsGrid.innerHTML = html;
+    }
+
+    // Projects
+    function populateProjects() {
+      const projectsContainer = document.getElementById('projects');
+
+      if (!resumeData.projects || resumeData.projects.length === 0) {
+        projectsContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="entry-item">
+            <h4>${project.name}</h4>
+            ${project.link ? `<span class="date"><a href="${project.link}" target="_blank">${project.link}</a></span>` : ''}
+            <p>${project.description}</p>
+            ${project.technologies ? `<p style="font-size: 12px; color: #00aaff;"><em>Technologies: ${project.technologies}</em></p>` : ''}
+          </div>
+        `;
+      });
+
+      projectsContainer.innerHTML = html;
+    }
+
+    // Publications
+    function populatePublications() {
+      const publicationsSection = document.getElementById('publications-section');
+      const publicationsContainer = document.getElementById('publications');
+
+      if (!resumeData.publications || resumeData.publications.length === 0) {
+        publicationsSection.style.display = 'none';
+        return;
+      }
+
+      publicationsSection.style.display = 'block';
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const date = formatDate(pub.publicationDate);
+        html += `
+          <div class="entry-item">
+            <h4>${pub.title}</h4>
+            <span class="date">${date}</span>
+            <span class="location">${pub.publisher}</span>
+            ${pub.description ? `<p>${pub.description}</p>` : ''}
+            ${pub.url ? `<p style="font-size: 12px;"><a href="${pub.url}" target="_blank">${pub.url}</a></p>` : ''}
+          </div>
+        `;
+      });
+
+      publicationsContainer.innerHTML = html;
+    }
+
+    // Certifications & Awards
+    function populateCertificationsAndAwards() {
+      const section = document.getElementById('cert-awards-section');
+      const certColumn = document.getElementById('cert-column');
+      const awardsColumn = document.getElementById('awards-column');
+      const certList = document.getElementById('cert-list');
+      const awardsList = document.getElementById('awards-list');
+
+      const courses = resumeData.courses || [];
+      const awards = resumeData.customSections?.awards || [];
+
+      if (courses.length === 0 && awards.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+
+      // Populate certifications
+      if (courses.length > 0) {
+        certColumn.style.display = 'block';
+        let html = '';
+        courses.forEach(course => {
+          const date = formatDate(course.completionDate);
+          html += `
+            <li>
+              <strong>${course.title}</strong> - ${course.institution} (${date})
+              ${course.credential ? `<br><em>Credential: ${course.credential}</em>` : ''}
+              ${course.description ? `<br><span class="cert-desc">${stripHtmlTags(course.description)}</span>` : ''}
+            </li>
+          `;
+        });
+        certList.innerHTML = html;
+      } else {
+        certColumn.style.display = 'none';
+      }
+
+      // Populate awards
+      if (awards.length > 0) {
+        awardsColumn.style.display = 'block';
+        let html = '';
+        awards.forEach(award => {
+          const startYear = award.startDate ? new Date(award.startDate).getFullYear() : '';
+          const endYear = award.endDate ? new Date(award.endDate).getFullYear() : '';
+          const dateRange = award.current ? `${startYear} - Present` : (endYear ? `${startYear} - ${endYear}` : startYear);
+
+          html += `
+            <li>
+              <strong>${award.title}</strong>
+              ${award.city ? ` - ${award.city}` : ''}
+              ${dateRange ? ` (${dateRange})` : ''}
+              ${award.description ? `<br><span class="award-desc">${stripHtmlTags(award.description)}</span>` : ''}
+            </li>
+          `;
+        });
+        awardsList.innerHTML = html;
+      } else {
+        awardsColumn.style.display = 'none';
+      }
+    }
+
+    // Languages
+    function populateLanguages() {
+      const languagesSection = document.getElementById('languages-section');
+      const languagesList = document.getElementById('languages-list');
+
+      if (!resumeData.languages || resumeData.languages.length === 0) {
+        languagesSection.style.display = 'none';
+        return;
+      }
+
+      languagesSection.style.display = 'block';
+      let html = '';
+      resumeData.languages.forEach(lang => {
+        html += `
+          <div class="lang-item">
+            <span class="lang-name">${lang.language}</span>
+            <span class="lang-level">${lang.level}</span>
+          </div>
+        `;
+      });
+
+      languagesList.innerHTML = html;
+    }
+
+    // Hobbies
+    function populateHobbies() {
+      const hobbiesSection = document.getElementById('hobbies-section');
+      const hobbiesList = document.getElementById('hobbies-list');
+
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) {
+        hobbiesSection.style.display = 'none';
+        return;
+      }
+
+      hobbiesSection.style.display = 'block';
+      let html = '';
+      resumeData.hobbies.forEach(hobby => {
+        html += `<span class="hobby-item">${hobby}</span>`;
+      });
+
+      hobbiesList.innerHTML = html;
+    }
+
+    // Volunteering
+    function populateVolunteering() {
+      const volunteeringSection = document.getElementById('volunteering-section');
+      const volunteeringContainer = document.getElementById('volunteering');
+
+      const volunteering = resumeData.customSections?.volunteering || [];
+      if (volunteering.length === 0) {
+        volunteeringSection.style.display = 'none';
+        return;
+      }
+
+      volunteeringSection.style.display = 'block';
+      let html = '';
+      volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+
+        html += `
+          <div class="entry-item">
+            <h4>${vol.title}</h4>
+            <span class="date">${startDate} – ${endDate}</span>
+            <span class="location">${vol.city}</span>
+            ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      volunteeringContainer.innerHTML = html;
+    }
+
+    // References
+    function populateReferences() {
+      const referencesSection = document.getElementById('references-section');
+      const referencesGrid = document.getElementById('references-grid');
+
+      if (!resumeData.references || resumeData.references.length === 0) {
+        referencesSection.style.display = 'none';
+        return;
+      }
+
+      referencesSection.style.display = 'block';
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <div class="reference-item">
+            <h4>${ref.name}</h4>
+            <p class="ref-position">${ref.position}</p>
+            <p>${ref.company}</p>
+            <p>${ref.email}</p>
+            <p>${ref.phone}</p>
+          </div>
+        `;
+      });
+
+      referencesGrid.innerHTML = html;
+    }
+
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      return temp.textContent || temp.innerText || '';
+    }
+
+    // Blue-themed color schemes
+    const colorSchemes = {
+      blue: {
+        primary: '#00aaff',
+        secondary: '#e0f4ff',
+        background: '#f4f4f4',
+        text: '#333',
+        lightText: '#666',
+        accent: '#0088cc',
+        border: '#e0f4ff'
+      },
+      cyan: {
+        primary: '#00d4ff',
+        secondary: '#e0f9ff',
+        background: '#f5fcff',
+        text: '#2d3748',
+        lightText: '#4a5568',
+        accent: '#00b8e6',
+        border: '#d0f3ff'
+      },
+      navy: {
+        primary: '#1e3a8a',
+        secondary: '#dbeafe',
+        background: '#f8fafc',
+        text: '#1e293b',
+        lightText: '#475569',
+        accent: '#1e40af',
+        border: '#bfdbfe'
+      },
+      teal: {
+        primary: '#0d9488',
+        secondary: '#ccfbf1',
+        background: '#f0fdfa',
+        text: '#134e4a',
+        lightText: '#14b8a6',
+        accent: '#0f766e',
+        border: '#99f6e4'
+      },
+      skyblue: {
+        primary: '#0ea5e9',
+        secondary: '#e0f2fe',
+        background: '#f0f9ff',
+        text: '#0c4a6e',
+        lightText: '#075985',
+        accent: '#0284c7',
+        border: '#bae6fd'
+      },
+      indigo: {
+        primary: '#6366f1',
+        secondary: '#e0e7ff',
+        background: '#f5f7ff',
+        text: '#312e81',
+        lightText: '#4338ca',
+        accent: '#4f46e5',
+        border: '#c7d2fe'
+      },
+      azure: {
+        primary: '#0891b2',
+        secondary: '#cffafe',
+        background: '#ecfeff',
+        text: '#164e63',
+        lightText: '#0e7490',
+        accent: '#06b6d4',
+        border: '#a5f3fc'
+      },
+      cobalt: {
+        primary: '#2563eb',
+        secondary: '#dbeafe',
+        background: '#eff6ff',
+        text: '#1e3a8a',
+        lightText: '#1e40af',
+        accent: '#1d4ed8',
+        border: '#bfdbfe'
+      }
+    };
+
+    // Get elements
+    const fontSelector = document.getElementById('font-selector');
+    const colorSchemeSelector = document.getElementById('color-scheme');
+    const resetBtn = document.getElementById('reset-btn');
+    const printBtn = document.getElementById('print-btn');
+    const body = document.body;
+
+    // Apply font
+    function applyFont(fontFamily) {
+      body.style.fontFamily = fontFamily;
+    }
+
+    // Apply color scheme
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+
+      // Apply background
+      document.body.style.backgroundColor = colors.background;
+
+      // Apply to header
+      document.querySelectorAll('.header-left h2').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply to section titles
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.color = colors.primary;
+        el.style.borderBottomColor = colors.border;
+      });
+
+      // Apply to dates and links
+      document.querySelectorAll('.date').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      document.querySelectorAll('.header-right a').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply to skills
+      document.querySelectorAll('.skill-category li').forEach(el => {
+        el.style.backgroundColor = colors.secondary;
+        el.style.color = colors.accent;
+      });
+
+      // Apply to language levels
+      document.querySelectorAll('.lang-level').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply to hobbies
+      document.querySelectorAll('.hobby-item').forEach(el => {
+        el.style.backgroundColor = colors.secondary;
+        el.style.color = colors.accent;
+      });
+
+      // Apply to references
+      document.querySelectorAll('.reference-item').forEach(el => {
+        el.style.backgroundColor = colors.secondary;
+        el.style.borderLeftColor = colors.primary;
+      });
+      document.querySelectorAll('.ref-position').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply to certifications and awards
+      document.querySelectorAll('.cert-list li strong, .awards-list li strong').forEach(el => {
+        el.style.color = colors.primary;
+      });
+
+      // Apply to control panel
+      const controlPanel = document.querySelector('.control-panel');
+      if (controlPanel) {
+        controlPanel.style.borderColor = colors.primary;
+        controlPanel.style.boxShadow = `0 4px 12px ${colors.primary}33`;
+      }
+      document.querySelectorAll('.control-panel h3').forEach(el => {
+        el.style.color = colors.primary;
+        el.style.borderBottomColor = colors.border;
+      });
+      document.querySelectorAll('#print-btn').forEach(el => {
+        el.style.backgroundColor = colors.primary;
+        el.style.borderColor = colors.primary;
+      });
+    }
+
+    // Event listeners
+    fontSelector.addEventListener('change', (e) => {
+      applyFont(e.target.value);
+    });
+
+    colorSchemeSelector.addEventListener('change', (e) => {
+      applyColorScheme(e.target.value);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      fontSelector.value = "'Josefin Sans', sans-serif";
+      colorSchemeSelector.value = 'blue';
+      applyFont("'Josefin Sans', sans-serif");
+      applyColorScheme('blue');
+    });
+
+    printBtn.addEventListener('click', () => {
+      // Hide control panel for printing
+      document.querySelector('.control-panel').style.display = 'none';
+      window.print();
+      document.querySelector('.control-panel').style.display = 'block';
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Load resume data (this will also apply the default color scheme after populating)
+      await loadResumeData();
+
+      // Initialize with default font
+      applyFont("'Josefin Sans', sans-serif");
+    });
+  </script>
 </body>
 </html>

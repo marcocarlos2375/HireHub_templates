@@ -5,109 +5,632 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gradient Flow Template</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>Customize Template</h3>
+
+    <div class="control-group">
+      <label for="color-scheme">Color Scheme:</label>
+      <select id="color-scheme" onchange="applyColorScheme(this.value)">
+        <option value="warm-sunset">Warm Sunset</option>
+        <option value="ocean-breeze">Ocean Breeze</option>
+        <option value="purple-dream">Purple Dream</option>
+        <option value="forest-mist">Forest Mist</option>
+        <option value="coral-reef">Coral Reef</option>
+        <option value="midnight-aurora">Midnight Aurora</option>
+        <option value="peachy-keen">Peachy Keen</option>
+        <option value="cosmic-nebula">Cosmic Nebula</option>
+      </select>
+    </div>
+  </div>
+
   <div class="a4">
     <!-- Header with Gradient -->
     <div class="header">
-      <div class="profile-img">
-        <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Profile Picture">
+      <div class="profile-img" id="profile-img" style="display: none;">
+        <img id="profile-picture" src="" alt="Profile Picture">
       </div>
-      <h1>David Johnson</h1>
-      <p class="job-title">UI/UX Designer</p>
+      <h1 id="name"></h1>
+      <p class="job-title" id="job-title"></p>
     </div>
 
     <!-- About -->
-    <section class="about">
+    <section class="about" id="about-section">
       <h2>About Me</h2>
-      <p>
-        Creative UI/UX Designer with 6+ years of experience building engaging digital experiences. 
-        Skilled in design systems, prototyping, and collaboration with development teams.
-      </p>
-    </section>
-
-    <!-- Education -->
-    <section class="education">
-      <h2>Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>B.A. in Graphic Design</h3>
-          <p><em>Parsons School of Design</em> — 2012 - 2016</p>
-        </div>
-        <div class="timeline-item">
-          <h3>M.A. in Human-Computer Interaction</h3>
-          <p><em>Stanford University</em> — 2016 - 2018</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="experience">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>Lead UI/UX Designer</h3>
-          <p><em>Spotify</em> — 2020 - Present</p>
-          <ul>
-            <li>Designed new mobile experiences increasing engagement by 25%.</li>
-            <li>Led design sprints and prototyping workshops.</li>
-          </ul>
-        </div>
-        <div class="timeline-item">
-          <h3>UI Designer</h3>
-          <p><em>Adobe</em> — 2018 - 2020</p>
-          <ul>
-            <li>Worked on Adobe XD features to improve user flows.</li>
-            <li>Contributed to cross-platform design consistency.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="skills">
-      <h2>Skills</h2>
-      <div class="skill">
-        <span>Figma</span>
-        <progress value="90" max="100"></progress>
-      </div>
-      <div class="skill">
-        <span>Adobe XD</span>
-        <progress value="85" max="100"></progress>
-      </div>
-      <div class="skill">
-        <span>Sketch</span>
-        <progress value="75" max="100"></progress>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section class="languages">
-      <h2>Languages</h2>
-      <div class="skill">
-        <span>English</span>
-        <progress value="95" max="100"></progress>
-      </div>
-      <div class="skill">
-        <span>French</span>
-        <progress value="70" max="100"></progress>
-      </div>
+      <p id="about-text"></p>
     </section>
 
     <!-- Contact -->
     <section class="contact">
       <h2>Contact</h2>
-      <p><strong>Phone:</strong> +1 555-987-6543</p>
-      <p><strong>Email:</strong> david.johnson@example.com</p>
-      <p><strong>Location:</strong> San Francisco, USA</p>
-      <p><strong>Portfolio:</strong> www.davidjohnson.design</p>
+      <div id="contact-info"></div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills-section">
+      <h2>Skills</h2>
+      <div id="skills-list"></div>
+    </section>
+
+    <!-- Languages -->
+    <section class="languages" id="languages-section">
+      <h2>Languages</h2>
+      <div id="languages-list"></div>
+    </section>
+
+    <!-- Education -->
+    <section class="education" id="education-section">
+      <h2>Education</h2>
+      <div class="timeline" id="education-list"></div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience-section">
+      <h2>Professional Experience</h2>
+      <div class="timeline" id="experience-list"></div>
+    </section>
+
+    <!-- Internships -->
+    <section class="internships" id="internships-section" style="display: none;">
+      <h2>Internships</h2>
+      <div class="timeline" id="internships-list"></div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects-section" style="display: none;">
+      <h2>Projects</h2>
+      <div id="projects-list"></div>
+    </section>
+
+    <!-- Publications -->
+    <section class="publications" id="publications-section" style="display: none;">
+      <h2>Publications</h2>
+      <div id="publications-list"></div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses" id="courses-section" style="display: none;">
+      <h2>Certifications & Courses</h2>
+      <div id="courses-list"></div>
+    </section>
+
+    <!-- Awards -->
+    <section class="awards" id="awards-section" style="display: none;">
+      <h2>Awards</h2>
+      <div id="awards-list"></div>
+    </section>
+
+    <!-- Volunteering -->
+    <section class="volunteering" id="volunteering-section" style="display: none;">
+      <h2>Volunteering</h2>
+      <div id="volunteering-list"></div>
+    </section>
+
+    <!-- Hobbies -->
+    <section class="hobbies" id="hobbies-section" style="display: none;">
+      <h2>Hobbies & Interests</h2>
+      <div id="hobbies-list"></div>
+    </section>
+
+    <!-- References -->
+    <section class="references" id="references-section" style="display: none;">
+      <h2>References</h2>
+      <div id="references-list"></div>
     </section>
   </div>
+
+  <script>
+    let resumeData = null;
+
+    // Color schemes with gradient combinations
+    const colorSchemes = {
+      'warm-sunset': {
+        gradient: 'linear-gradient(135deg, #f6d365, #fda085, #f15bb5)',
+        progressGradient: 'linear-gradient(135deg, #f6d365, #fda085)',
+        headingColor: '#f15bb5',
+        textColor: '#333'
+      },
+      'ocean-breeze': {
+        gradient: 'linear-gradient(135deg, #667eea, #4facfe, #00f2fe)',
+        progressGradient: 'linear-gradient(135deg, #667eea, #4facfe)',
+        headingColor: '#667eea',
+        textColor: '#333'
+      },
+      'purple-dream': {
+        gradient: 'linear-gradient(135deg, #a8edea, #c77dff, #7209b7)',
+        progressGradient: 'linear-gradient(135deg, #c77dff, #7209b7)',
+        headingColor: '#7209b7',
+        textColor: '#333'
+      },
+      'forest-mist': {
+        gradient: 'linear-gradient(135deg, #74ebd5, #52b788, #2d6a4f)',
+        progressGradient: 'linear-gradient(135deg, #74ebd5, #52b788)',
+        headingColor: '#2d6a4f',
+        textColor: '#333'
+      },
+      'coral-reef': {
+        gradient: 'linear-gradient(135deg, #ff9a9e, #fecfef, #ff6f91)',
+        progressGradient: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
+        headingColor: '#ff6f91',
+        textColor: '#333'
+      },
+      'midnight-aurora': {
+        gradient: 'linear-gradient(135deg, #2e3192, #1bffff, #00d4ff)',
+        progressGradient: 'linear-gradient(135deg, #1bffff, #00d4ff)',
+        headingColor: '#2e3192',
+        textColor: '#333'
+      },
+      'peachy-keen': {
+        gradient: 'linear-gradient(135deg, #ffafbd, #ffc3a0, #ff677d)',
+        progressGradient: 'linear-gradient(135deg, #ffafbd, #ffc3a0)',
+        headingColor: '#ff677d',
+        textColor: '#333'
+      },
+      'cosmic-nebula': {
+        gradient: 'linear-gradient(135deg, #fa709a, #fee140, #30cfd0)',
+        progressGradient: 'linear-gradient(135deg, #fa709a, #fee140)',
+        headingColor: '#fa709a',
+        textColor: '#333'
+      }
+    };
+
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+
+      // Update header gradient
+      const header = document.querySelector('.header');
+      if (header) {
+        header.style.background = colors.gradient;
+      }
+
+      // Update all h2 headings
+      const headings = document.querySelectorAll('h2');
+      headings.forEach(h => {
+        h.style.color = colors.headingColor;
+      });
+
+      // Update progress bars
+      const style = document.createElement('style');
+      style.textContent = `
+        progress::-webkit-progress-value {
+          background: ${colors.progressGradient} !important;
+        }
+        progress::-moz-progress-bar {
+          background: ${colors.progressGradient} !important;
+        }
+      `;
+
+      // Remove old dynamic styles
+      const oldStyle = document.getElementById('dynamic-progress-style');
+      if (oldStyle) {
+        oldStyle.remove();
+      }
+      style.id = 'dynamic-progress-style';
+      document.head.appendChild(style);
+    }
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const tmp = document.createElement('DIV');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    // Helper function to format dates
+    function formatDate(dateString) {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    }
+
+    // Populate header
+    function populateHeader() {
+      const personal = resumeData.personalInfo;
+      document.getElementById('name').textContent = `${personal.firstName} ${personal.lastName}`;
+      document.getElementById('job-title').textContent = personal.jobTitle || '';
+
+      // Profile image (optional)
+      if (personal.profileImage) {
+        document.getElementById('profile-img').style.display = 'block';
+        document.getElementById('profile-picture').src = personal.profileImage;
+      }
+    }
+
+    // Populate contact information - ALL fields
+    function populateContactInfo() {
+      const contactContainer = document.getElementById('contact-info');
+      const personal = resumeData.personalInfo;
+      let html = '';
+
+      if (personal.phone) {
+        html += `<p><strong>Phone:</strong> ${personal.phone}</p>`;
+      }
+
+      if (personal.email) {
+        html += `<p><strong>Email:</strong> ${personal.email}</p>`;
+      }
+
+      if (personal.location) {
+        html += `<p><strong>Location:</strong> ${personal.location}</p>`;
+      }
+
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const formattedDate = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        html += `<p><strong>Birth Date:</strong> ${formattedDate}</p>`;
+      }
+
+      if (personal.nationality) {
+        html += `<p><strong>Nationality:</strong> ${personal.nationality}</p>`;
+      }
+
+      if (personal.relationshipStatus) {
+        html += `<p><strong>Status:</strong> ${personal.relationshipStatus}</p>`;
+      }
+
+      if (personal.availability) {
+        html += `<p><strong>Availability:</strong> ${personal.availability}</p>`;
+      }
+
+      if (personal.drivingLicense) {
+        html += `<p><strong>Driving License:</strong> ${personal.drivingLicense}</p>`;
+      }
+
+      // Add websitesAndSocialLinks if available
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          html += `<p><strong>${link.label}:</strong> ${link.url.replace('https://', '').replace('http://', '')}</p>`;
+        });
+      }
+
+      contactContainer.innerHTML = html;
+    }
+
+    // Populate about section
+    function populateAbout() {
+      const aboutSection = document.getElementById('about-section');
+      if (resumeData.professionalSummary && resumeData.professionalSummary.trim()) {
+        document.getElementById('about-text').textContent = stripHtmlTags(resumeData.professionalSummary);
+        aboutSection.style.display = 'block';
+      } else {
+        aboutSection.style.display = 'none';
+      }
+    }
+
+    // Populate skills
+    function populateSkills() {
+      const skillsContainer = document.getElementById('skills-list');
+      const skillsSection = document.getElementById('skills-section');
+
+      let allSkills = [];
+
+      // Get skills from skills array
+      if (resumeData.skills && resumeData.skills.length > 0) {
+        allSkills = resumeData.skills;
+      }
+
+      if (allSkills.length > 0) {
+        let html = '';
+        allSkills.forEach(skill => {
+          const skillName = typeof skill === 'string' ? skill : skill.skill;
+          const proficiency = skill.level === 'Expert' ? 95 : skill.level === 'Advanced' ? 85 : 70;
+
+          html += `
+            <div class="skill">
+              <span>${skillName}</span>
+              <progress value="${proficiency}" max="100"></progress>
+            </div>
+          `;
+        });
+        skillsContainer.innerHTML = html;
+        skillsSection.style.display = 'block';
+      } else {
+        skillsSection.style.display = 'none';
+      }
+    }
+
+    // Populate languages
+    function populateLanguages() {
+      const languagesContainer = document.getElementById('languages-list');
+      const languagesSection = document.getElementById('languages-section');
+
+      if (resumeData.languages && resumeData.languages.length > 0) {
+        let html = '';
+        resumeData.languages.forEach(lang => {
+          const level = lang.level;
+          const proficiency = level.includes('C2') || level.includes('Native') ? 100 : level.includes('C1') ? 90 : level.includes('B2') ? 75 : 60;
+          html += `
+            <div class="skill">
+              <span>${lang.language}</span>
+              <progress value="${proficiency}" max="100"></progress>
+            </div>
+          `;
+        });
+        languagesContainer.innerHTML = html;
+        languagesSection.style.display = 'block';
+      } else {
+        languagesSection.style.display = 'none';
+      }
+    }
+
+    // Populate education
+    function populateEducation() {
+      const educationContainer = document.getElementById('education-list');
+      const educationSection = document.getElementById('education-section');
+
+      if (resumeData.education && resumeData.education.length > 0) {
+        let html = '';
+        resumeData.education.forEach(edu => {
+          const startDate = formatDate(edu.startDate);
+          const endDate = edu.endDate ? formatDate(edu.endDate) : 'Present';
+
+          html += `
+            <div class="timeline-item">
+              <h3>${edu.degree}</h3>
+              <p><em>${edu.school}</em> — ${startDate} - ${endDate}</p>
+              ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
+            </div>
+          `;
+        });
+        educationContainer.innerHTML = html;
+        educationSection.style.display = 'block';
+      } else {
+        educationSection.style.display = 'none';
+      }
+    }
+
+    // Populate experience
+    function populateExperience() {
+      const experienceContainer = document.getElementById('experience-list');
+      const experienceSection = document.getElementById('experience-section');
+
+      if (resumeData.employmentHistory && resumeData.employmentHistory.length > 0) {
+        let html = '';
+        resumeData.employmentHistory.forEach(job => {
+          // Skip internships
+          if (job.isInternship) return;
+
+          const startDate = formatDate(job.startDate);
+          const endDate = job.endDate ? formatDate(job.endDate) : 'Present';
+
+          html += `
+            <div class="timeline-item">
+              <h3>${job.jobTitle}</h3>
+              <p><em>${job.company}</em> — ${startDate} - ${endDate}</p>
+              ${job.description ? `<div class="job-description">${job.description}</div>` : ''}
+            </div>
+          `;
+        });
+
+        if (html) {
+          experienceContainer.innerHTML = html;
+          experienceSection.style.display = 'block';
+        } else {
+          experienceSection.style.display = 'none';
+        }
+      } else {
+        experienceSection.style.display = 'none';
+      }
+    }
+
+    // Populate internships
+    function populateInternships() {
+      const internshipsContainer = document.getElementById('internships-list');
+      const internshipsSection = document.getElementById('internships-section');
+
+      if (resumeData.employmentHistory && resumeData.employmentHistory.length > 0) {
+        const internships = resumeData.employmentHistory.filter(job => job.isInternship);
+
+        if (internships.length > 0) {
+          let html = '';
+          internships.forEach(job => {
+            const startDate = formatDate(job.startDate);
+            const endDate = job.endDate ? formatDate(job.endDate) : 'Present';
+
+            html += `
+              <div class="timeline-item">
+                <h3>${job.jobTitle}</h3>
+                <p><em>${job.company}</em> — ${startDate} - ${endDate}</p>
+                ${job.description ? `<div class="job-description">${job.description}</div>` : ''}
+              </div>
+            `;
+          });
+          internshipsContainer.innerHTML = html;
+          internshipsSection.style.display = 'block';
+        }
+      }
+    }
+
+    // Populate projects
+    function populateProjects() {
+      const projectsContainer = document.getElementById('projects-list');
+      const projectsSection = document.getElementById('projects-section');
+
+      if (resumeData.projects && resumeData.projects.length > 0) {
+        let html = '';
+        resumeData.projects.forEach(project => {
+          const startDate = formatDate(project.startDate);
+          const endDate = project.endDate ? formatDate(project.endDate) : 'Present';
+
+          html += `
+            <div class="timeline-item">
+              <h3>${project.name}</h3>
+              ${project.description ? `<p>${stripHtmlTags(project.description)}</p>` : ''}
+              ${project.technologies ? `<p><strong>Technologies:</strong> ${project.technologies}</p>` : ''}
+              ${project.link ? `<p><strong>Link:</strong> ${project.link}</p>` : ''}
+            </div>
+          `;
+        });
+        projectsContainer.innerHTML = html;
+        projectsSection.style.display = 'block';
+      }
+    }
+
+    // Populate publications
+    function populatePublications() {
+      const publicationsContainer = document.getElementById('publications-list');
+      const publicationsSection = document.getElementById('publications-section');
+
+      if (resumeData.publications && resumeData.publications.length > 0) {
+        let html = '';
+        resumeData.publications.forEach(pub => {
+          html += `
+            <div class="timeline-item">
+              <h3>${pub.title}</h3>
+              ${pub.publisher ? `<p><em>${pub.publisher}</em>${pub.publicationDate ? ` — ${formatDate(pub.publicationDate)}` : ''}</p>` : ''}
+              ${pub.description ? `<p>${stripHtmlTags(pub.description)}</p>` : ''}
+            </div>
+          `;
+        });
+        publicationsContainer.innerHTML = html;
+        publicationsSection.style.display = 'block';
+      }
+    }
+
+    // Populate courses
+    function populateCourses() {
+      const coursesContainer = document.getElementById('courses-list');
+      const coursesSection = document.getElementById('courses-section');
+
+      let allCourses = [];
+
+      // Get from courses array
+      if (resumeData.courses && resumeData.courses.length > 0) {
+        allCourses = allCourses.concat(resumeData.courses);
+      }
+
+
+      if (allCourses.length > 0) {
+        let html = '';
+        allCourses.forEach(course => {
+          html += `
+            <div class="timeline-item">
+              <h3>${course.title}</h3>
+              ${course.institution ? `<p><em>${course.institution}</em>${course.completionDate ? ` — ${formatDate(course.completionDate)}` : ''}</p>` : ''}
+              ${course.description ? `<p>${stripHtmlTags(course.description)}</p>` : ''}
+            </div>
+          `;
+        });
+        coursesContainer.innerHTML = html;
+        coursesSection.style.display = 'block';
+      }
+    }
+
+    // Populate awards
+    function populateAwards() {
+      const awardsContainer = document.getElementById('awards-list');
+      const awardsSection = document.getElementById('awards-section');
+
+      if (resumeData.customSections && resumeData.customSections.awards && resumeData.customSections.awards.length > 0) {
+        let html = '';
+        resumeData.customSections.awards.forEach(award => {
+          html += `
+            <div class="timeline-item">
+              <h3>${award.title}</h3>
+              ${award.city ? `<p><em>${award.city}</em>${award.startDate ? ` — ${formatDate(award.startDate)}` : ''}</p>` : ''}
+              ${award.description ? `<p>${stripHtmlTags(award.description)}</p>` : ''}
+            </div>
+          `;
+        });
+        awardsContainer.innerHTML = html;
+        awardsSection.style.display = 'block';
+      }
+    }
+
+    // Populate volunteering
+    function populateVolunteering() {
+      const volunteeringContainer = document.getElementById('volunteering-list');
+      const volunteeringSection = document.getElementById('volunteering-section');
+
+      if (resumeData.customSections && resumeData.customSections.volunteering && resumeData.customSections.volunteering.length > 0) {
+        let html = '';
+        resumeData.customSections.volunteering.forEach(vol => {
+          html += `
+            <div class="timeline-item">
+              <h3>${vol.title}</h3>
+              <p><em>${vol.city}</em>${vol.startDate ? ` — ${formatDate(vol.startDate)}` : ''}</p>
+              ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
+            </div>
+          `;
+        });
+        volunteeringContainer.innerHTML = html;
+        volunteeringSection.style.display = 'block';
+      }
+    }
+
+    // Populate hobbies
+    function populateHobbies() {
+      const hobbiesContainer = document.getElementById('hobbies-list');
+      const hobbiesSection = document.getElementById('hobbies-section');
+
+      if (resumeData.hobbies && resumeData.hobbies.length > 0) {
+        const hobbiesList = resumeData.hobbies.join(' • ');
+        hobbiesContainer.innerHTML = `<p>${hobbiesList}</p>`;
+        hobbiesSection.style.display = 'block';
+      }
+    }
+
+    // Populate references
+    function populateReferences() {
+      const referencesContainer = document.getElementById('references-list');
+      const referencesSection = document.getElementById('references-section');
+
+      if (resumeData.references && resumeData.references.length > 0) {
+        let html = '';
+        resumeData.references.forEach(ref => {
+          html += `
+            <div class="timeline-item">
+              <h3>${ref.name}</h3>
+              ${ref.position ? `<p><em>${ref.position}${ref.company ? ` at ${ref.company}` : ''}</em></p>` : ''}
+              ${ref.email ? `<p>Email: ${ref.email}</p>` : ''}
+              ${ref.phone ? `<p>Phone: ${ref.phone}</p>` : ''}
+            </div>
+          `;
+        });
+        referencesContainer.innerHTML = html;
+        referencesSection.style.display = 'block';
+      }
+    }
+
+    // Main function to populate all data
+    async function populateResume() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content; // Extract content from the JSON structure
+
+        populateHeader();
+        populateContactInfo();
+        populateAbout();
+        populateSkills();
+        populateLanguages();
+        populateEducation();
+        populateExperience();
+        populateInternships();
+        populateProjects();
+        populatePublications();
+        populateCourses();
+        populateAwards();
+        populateVolunteering();
+        populateHobbies();
+        populateReferences();
+
+        // Apply default color scheme
+        applyColorScheme('warm-sunset');
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Load resume data when page loads
+    document.addEventListener('DOMContentLoaded', populateResume);
+  </script>
 </body>
 </html>
 <style>
-    body {
+body {
   font-family: 'Josefin Sans', sans-serif;
   background: #f4f4f4;
   margin: 0;
@@ -124,14 +647,75 @@
   box-sizing: border-box;
 }
 
+/* Control Panel */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'Josefin Sans', sans-serif;
+  background: white;
+  cursor: pointer;
+}
+
+@media print {
+  .control-panel {
+    display: none;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+  }
+}
+
 /* Header with Gradient */
-/* Header with Warm Gradient */
 .header {
   text-align: center;
   padding: 40px 20px;
   background: linear-gradient(135deg, #f6d365, #fda085, #f15bb5);
   color: #fff;
-  
+  transition: background 0.3s ease;
 }
 
 .profile-img img {
@@ -155,7 +739,6 @@
   text-transform: uppercase;
 }
 
-
 /* Sections */
 section {
   padding: 20px 40px;
@@ -166,9 +749,10 @@ h2 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #2575fc;
+  color: #f15bb5;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 .timeline-item {
@@ -197,6 +781,17 @@ h2 {
   margin-bottom: 5px;
 }
 
+.job-description ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.job-description ul li {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
 /* Skills & Languages */
 .skill {
   margin-bottom: 12px;
@@ -221,8 +816,17 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, #f6d365, #fda085);
   border-radius: 3px;
 }
 
+progress::-moz-progress-bar {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  border-radius: 3px;
+}
+
+.contact p {
+  margin: 8px 0;
+  font-size: 13px;
+}
 </style>

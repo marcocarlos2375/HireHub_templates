@@ -2,108 +2,714 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Clean Gradient Template</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title id="page-title">Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="a4">
     <!-- HEADER -->
     <div class="header">
-      <div class="profile-pic">
-        <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Profile Picture">
-      </div>
       <div class="header-info">
-        <p class="location">San Francisco, California</p>
-        <p class="contact">(315) 802-8179 · ricktang@gmail.com</p>
-        <h1>Rick Tang, <span>Product Designer</span></h1>
-        <p class="summary">
-          UX/UI specialist focused on designing clean and functional projects across all platforms and devices 
-          in response to specific briefs and problems, while always maintaining a unique look and feel.
-        </p>
+        <p class="location" id="location"></p>
+        <p class="contact" id="contact"></p>
+        <h1><span id="full-name"></span>, <span id="job-title-inline"></span></h1>
+        <p class="summary" id="professional-summary"></p>
       </div>
     </div>
 
     <!-- EXPERIENCE -->
     <section class="section">
-      <h2>Experience</h2>
+      <h2>Professional Experience</h2>
+      <div id="employment-history"></div>
+    </section>
 
-      <div class="entry">
-        <h3>Product Designer, Uber</h3>
-        <span class="date">Mar 2015 – Present</span>
-        <ul>
-          <li>Designed safety-focused experiences for Riders and Drivers</li>
-          <li>Physical space problem solving and interaction with digital systems</li>
-          <li>Navigated organization to achieve operational improvements</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>Product Designer, IFTTT</h3>
-        <span class="date">Dec 2013 – Mar 2015</span>
-        <ul>
-          <li>Product and system design for a complex product</li>
-          <li>Designed consumer and developer products for IFTTT</li>
-          <li>Maintained design across iOS, Android, and Web</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>Product Designer, Facebook</h3>
-        <span class="date">Jun 2013 – Sep 2013</span>
-        <ul>
-          <li>Designed and prototyped internal tools</li>
-          <li>Worked with Privacy team to build assets and features</li>
-          <li>Redesigned Newsfeed curation for mobile</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>UX/UI Design Intern, Google Maps</h3>
-        <span class="date">Jun 2012 – Sep 2013</span>
-        <ul>
-          <li>Contributed to Maps on iOS wireframe and user experience</li>
-          <li>Designed and prototyped onboarding experience</li>
-          <li>Created asset and feature design for Maps on Android</li>
-        </ul>
-      </div>
+    <!-- INTERNSHIPS -->
+    <section class="section" id="internships-section" style="display:none;">
+      <h2>Internships</h2>
+      <div id="internships"></div>
     </section>
 
     <!-- EDUCATION -->
     <section class="section">
       <h2>Education</h2>
-      <div class="entry">
-        <h3>Rhode Island School of Design</h3>
-        <p>BFA Industrial Design, Class of 2013</p>
-      </div>
-      <div class="entry">
-        <h3>Brown University</h3>
-        <p>Interdisciplinary Studies, Sep 2010 – May 2013</p>
-      </div>
+      <div id="education"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects-section" style="display:none;">
+      <h2>Key Projects</h2>
+      <div id="projects"></div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications-section" style="display:none;">
+      <h2>Publications</h2>
+      <div id="publications"></div>
+    </section>
+
+    <!-- CERTIFICATIONS & AWARDS -->
+    <section class="section" id="cert-awards-section" style="display:none;">
+      <h2>Certifications & Awards</h2>
+      <div id="cert-awards"></div>
     </section>
 
     <!-- LANGUAGES -->
-    <section class="section">
+    <section class="section" id="languages-section" style="display:none;">
       <h2>Languages</h2>
-      <p>English: C2 | Italian: B2</p>
+      <div id="languages-list"></div>
     </section>
 
     <!-- SKILLS -->
     <section class="section">
-      <h2>Skills</h2>
-      <p>Figma | Sketch | Photoshop | Illustrator | Adobe XD | Principle</p>
+      <h2>Technical Skills</h2>
+      <div id="skills-container"></div>
     </section>
 
-    <!-- LINKS -->
-    <section class="section">
+    <!-- HOBBIES -->
+    <section class="section" id="hobbies-section" style="display:none;">
+      <h2>Hobbies & Interests</h2>
+      <div id="hobbies-list"></div>
+    </section>
+
+    <!-- VOLUNTEERING -->
+    <section class="section" id="volunteering-section" style="display:none;">
+      <h2>Volunteer Experience</h2>
+      <div id="volunteering"></div>
+    </section>
+
+    <!-- REFERENCES -->
+    <section class="section" id="references-section" style="display:none;">
+      <h2>References</h2>
+      <div id="references-list"></div>
+    </section>
+
+    <!-- SOCIAL LINKS -->
+    <section class="section" id="social-links-section" style="display:none;">
       <h2>Links</h2>
-      <p>LinkedIn | Dribbble | Behance</p>
+      <div id="social-links"></div>
     </section>
   </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 Customize Template</h3>
+
+    <div class="control-group">
+      <label for="font-selector">Font Family:</label>
+      <select id="font-selector">
+        <option value="'Josefin Sans', sans-serif">Josefin Sans (Default)</option>
+        <option value="'Inter', sans-serif">Inter</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Wix Madefor Text', sans-serif">Wix Madefor Text</option>
+        <option value="'Gabarito', sans-serif">Gabarito</option>
+        <option value="'Raleway', sans-serif">Raleway</option>
+        <option value="'Manrope', sans-serif">Manrope</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+        <option value="'Figtree', sans-serif">Figtree</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Lato', sans-serif">Lato</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="color-scheme">Gradient Theme:</label>
+      <select id="color-scheme">
+        <option value="teal">Teal Gradient (Default)</option>
+        <option value="ocean">Ocean Gradient</option>
+        <option value="sunset">Sunset Gradient</option>
+        <option value="forest">Forest Gradient</option>
+        <option value="purple">Purple Dreams</option>
+        <option value="rose">Rose Gradient</option>
+        <option value="arctic">Arctic Gradient</option>
+        <option value="mint">Mint Gradient</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <button id="reset-btn">Reset to Default</button>
+      <button id="print-btn">Print Resume</button>
+    </div>
+  </div>
+
+  <script>
+    // Load resume data from JSON file
+    let resumeData = null;
+
+    // Fetch and load data
+    async function loadResumeData() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+        populateResume();
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Populate all resume sections
+    function populateResume() {
+      if (!resumeData) return;
+
+      // Header
+      const fullName = `${resumeData.personalInfo.firstName} ${resumeData.personalInfo.lastName}`;
+      document.getElementById('full-name').textContent = fullName;
+      document.getElementById('job-title-inline').textContent = resumeData.personalInfo.jobTitle;
+      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.jobTitle} Resume`;
+
+      // Location and contact
+      const personal = resumeData.personalInfo;
+      document.getElementById('location').textContent = personal.location || '';
+      const contactInfo = [];
+      if (personal.phone) contactInfo.push(personal.phone);
+      if (personal.email) contactInfo.push(personal.email);
+      if (personal.website) contactInfo.push(personal.website.replace('https://', '').replace('http://', ''));
+      if (personal.birthDate) {
+        const birthDate = new Date(personal.birthDate);
+        const age = new Date().getFullYear() - birthDate.getFullYear();
+        contactInfo.push(`Age: ${age}`);
+      }
+      if (personal.nationality) contactInfo.push(personal.nationality);
+      if (personal.availability) contactInfo.push(`Available: ${personal.availability}`);
+      if (personal.relationshipStatus) contactInfo.push(personal.relationshipStatus);
+      if (personal.drivingLicense) contactInfo.push(`License: ${personal.drivingLicense}`);
+      document.getElementById('contact').textContent = contactInfo.join(' · ');
+
+      // Professional Summary
+      document.getElementById('professional-summary').textContent = resumeData.professionalSummary;
+
+      // Employment History
+      populateEmploymentHistory();
+
+      // Education
+      populateEducation();
+
+      // Internships
+      populateInternships();
+
+      // Projects
+      populateProjects();
+
+      // Publications
+      populatePublications();
+
+      // Certifications & Awards
+      populateCertificationsAndAwards();
+
+      // Skills
+      populateSkills();
+
+      // Languages
+      populateLanguages();
+
+      // Hobbies
+      populateHobbies();
+
+      // Volunteering
+      populateVolunteering();
+
+      // References
+      populateReferences();
+
+      // Social Links
+      populateSocialLinks();
+
+      // Apply default color scheme after all elements are created
+      applyColorScheme('teal');
+    }
+
+    // Employment History
+    function populateEmploymentHistory() {
+      const employmentContainer = document.getElementById('employment-history');
+
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) {
+        employmentContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="entry">
+            <h3>${job.jobTitle}, ${job.company}</h3>
+            <span class="date">${startDate} – ${endDate}</span>
+            <p>${job.description}</p>
+          </div>
+        `;
+      });
+
+      employmentContainer.innerHTML = html;
+    }
+
+    // Education
+    function populateEducation() {
+      const educationContainer = document.getElementById('education');
+
+      if (!resumeData.education || resumeData.education.length === 0) {
+        educationContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+
+        html += `
+          <div class="entry">
+            <h3>${edu.school}</h3>
+            <p>${edu.degree}, ${startDate} – ${endDate}</p>
+            ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      educationContainer.innerHTML = html;
+    }
+
+    // Internships
+    function populateInternships() {
+      const internshipsSection = document.getElementById('internships-section');
+      const internshipsContainer = document.getElementById('internships');
+
+      if (!resumeData.internships || resumeData.internships.length === 0) {
+        internshipsSection.style.display = 'none';
+        return;
+      }
+
+      internshipsSection.style.display = 'block';
+      let html = '';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = formatDate(internship.endDate);
+
+        html += `
+          <div class="entry">
+            <h3>${internship.position}, ${internship.company}</h3>
+            <span class="date">${startDate} – ${endDate}</span>
+            ${internship.description ? `<p>${internship.description}</p>` : ''}
+          </div>
+        `;
+      });
+
+      internshipsContainer.innerHTML = html;
+    }
+
+    // Projects
+    function populateProjects() {
+      const projectsSection = document.getElementById('projects-section');
+      const projectsContainer = document.getElementById('projects');
+
+      if (!resumeData.projects || resumeData.projects.length === 0) {
+        projectsSection.style.display = 'none';
+        return;
+      }
+
+      projectsSection.style.display = 'block';
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="entry">
+            <h3>${project.name}</h3>
+            <p>${project.description}</p>
+            ${project.technologies ? `<p style="font-size: 12px; color: #777;"><em>Technologies: ${project.technologies}</em></p>` : ''}
+          </div>
+        `;
+      });
+
+      projectsContainer.innerHTML = html;
+    }
+
+    // Publications
+    function populatePublications() {
+      const publicationsSection = document.getElementById('publications-section');
+      const publicationsContainer = document.getElementById('publications');
+
+      if (!resumeData.publications || resumeData.publications.length === 0) {
+        publicationsSection.style.display = 'none';
+        return;
+      }
+
+      publicationsSection.style.display = 'block';
+      let html = '';
+      resumeData.publications.forEach(pub => {
+        const date = formatDate(pub.publicationDate);
+        html += `
+          <div class="entry">
+            <h3>${pub.title}</h3>
+            <span class="date">${pub.publisher}, ${date}</span>
+            ${pub.description ? `<p>${pub.description}</p>` : ''}
+          </div>
+        `;
+      });
+
+      publicationsContainer.innerHTML = html;
+    }
+
+    // Certifications & Awards
+    function populateCertificationsAndAwards() {
+      const section = document.getElementById('cert-awards-section');
+      const container = document.getElementById('cert-awards');
+
+      const courses = resumeData.courses || [];
+      const awards = resumeData.customSections?.awards || [];
+
+      if (courses.length === 0 && awards.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+      let html = '';
+
+      // Certifications
+      if (courses.length > 0) {
+        courses.forEach(course => {
+          const date = formatDate(course.completionDate);
+          html += `
+            <div class="entry">
+              <h3>${course.title}</h3>
+              <p>${course.institution}, ${date}</p>
+              ${course.description ? `<p style="font-size: 12px;">${stripHtmlTags(course.description)}</p>` : ''}
+            </div>
+          `;
+        });
+      }
+
+      // Awards
+      if (awards.length > 0) {
+        awards.forEach(award => {
+          const startYear = award.startDate ? new Date(award.startDate).getFullYear() : '';
+          html += `
+            <div class="entry">
+              <h3>${award.title}</h3>
+              <p>${award.city || ''}${startYear ? ` ${startYear}` : ''}</p>
+              ${award.description ? `<p style="font-size: 12px;">${stripHtmlTags(award.description)}</p>` : ''}
+            </div>
+          `;
+        });
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Skills
+    function populateSkills() {
+      const skillsContainer = document.getElementById('skills-container');
+
+      if (!resumeData.skills || resumeData.skills.length === 0) {
+        skillsContainer.innerHTML = '';
+        return;
+      }
+
+      // Group skills by category
+      const groupedSkills = {};
+      resumeData.skills.forEach(skill => {
+        if (!groupedSkills[skill.category]) {
+          groupedSkills[skill.category] = [];
+        }
+        groupedSkills[skill.category].push(skill);
+      });
+
+      let html = '';
+      const skillGroups = resumeData.skillGroups || [];
+
+      // Show skills grouped
+      skillGroups.forEach(group => {
+        const skills = groupedSkills[group.id];
+        if (!skills || skills.length === 0) return;
+
+        html += `<p><strong>${group.name}:</strong> ${skills.map(s => s.skill).join(' | ')}</p>`;
+      });
+
+      skillsContainer.innerHTML = html;
+    }
+
+    // Languages
+    function populateLanguages() {
+      const languagesSection = document.getElementById('languages-section');
+      const languagesList = document.getElementById('languages-list');
+
+      if (!resumeData.languages || resumeData.languages.length === 0) {
+        languagesSection.style.display = 'none';
+        return;
+      }
+
+      languagesSection.style.display = 'block';
+      const langStrings = resumeData.languages.map(lang => `${lang.language}: ${lang.level}`);
+      languagesList.innerHTML = `<p>${langStrings.join(' | ')}</p>`;
+    }
+
+    // Hobbies
+    function populateHobbies() {
+      const hobbiesSection = document.getElementById('hobbies-section');
+      const hobbiesList = document.getElementById('hobbies-list');
+
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) {
+        hobbiesSection.style.display = 'none';
+        return;
+      }
+
+      hobbiesSection.style.display = 'block';
+      hobbiesList.innerHTML = `<p>${resumeData.hobbies.join(' | ')}</p>`;
+    }
+
+    // Volunteering
+    function populateVolunteering() {
+      const volunteeringSection = document.getElementById('volunteering-section');
+      const volunteeringContainer = document.getElementById('volunteering');
+
+      const volunteering = resumeData.customSections?.volunteering || [];
+      if (volunteering.length === 0) {
+        volunteeringSection.style.display = 'none';
+        return;
+      }
+
+      volunteeringSection.style.display = 'block';
+      let html = '';
+      volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+
+        html += `
+          <div class="entry">
+            <h3>${vol.title}</h3>
+            <span class="date">${startDate} – ${endDate}, ${vol.city}</span>
+            ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      volunteeringContainer.innerHTML = html;
+    }
+
+    // References
+    function populateReferences() {
+      const referencesSection = document.getElementById('references-section');
+      const referencesList = document.getElementById('references-list');
+
+      if (!resumeData.references || resumeData.references.length === 0) {
+        referencesSection.style.display = 'none';
+        return;
+      }
+
+      referencesSection.style.display = 'block';
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <div class="entry">
+            <h3>${ref.name}</h3>
+            <p>${ref.position}, ${ref.company}</p>
+            <p style="font-size: 12px; color: #777;">${ref.email} | ${ref.phone}</p>
+          </div>
+        `;
+      });
+
+      referencesList.innerHTML = html;
+    }
+
+    // Social Links
+    function populateSocialLinks() {
+      const socialLinksSection = document.getElementById('social-links-section');
+      const socialLinksContainer = document.getElementById('social-links');
+
+      const personal = resumeData.personalInfo;
+      const links = [];
+
+      if (personal.socialLinks) {
+        if (personal.socialLinks.linkedin) links.push('LinkedIn');
+        if (personal.socialLinks.github) links.push('GitHub');
+        if (personal.socialLinks.twitter) links.push('Twitter');
+      }
+      if (personal.website) links.push('Portfolio');
+
+      // Add websitesAndSocialLinks if available
+      if (personal.websitesAndSocialLinks && personal.websitesAndSocialLinks.length > 0) {
+        personal.websitesAndSocialLinks.forEach(link => {
+          links.push(link.label);
+        });
+      }
+
+      if (links.length === 0) {
+        socialLinksSection.style.display = 'none';
+        return;
+      }
+
+      socialLinksSection.style.display = 'block';
+      socialLinksContainer.innerHTML = `<p>${links.join(' | ')}</p>`;
+    }
+
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      return temp.textContent || temp.innerText || '';
+    }
+
+    // Gradient color schemes
+    const colorSchemes = {
+      teal: {
+        gradient: 'linear-gradient(to right, #eaf6f3 0%, #ffffff 60%)',
+        accent: '#222',
+        text: '#333',
+        lightText: '#555',
+        dateColor: '#777'
+      },
+      ocean: {
+        gradient: 'linear-gradient(to right, #e0f2ff 0%, #ffffff 60%)',
+        accent: '#1e3a8a',
+        text: '#1e40af',
+        lightText: '#3b82f6',
+        dateColor: '#60a5fa'
+      },
+      sunset: {
+        gradient: 'linear-gradient(to right, #ffedd5 0%, #ffffff 60%)',
+        accent: '#c2410c',
+        text: '#ea580c',
+        lightText: '#f97316',
+        dateColor: '#fb923c'
+      },
+      forest: {
+        gradient: 'linear-gradient(to right, #d1fae5 0%, #ffffff 60%)',
+        accent: '#065f46',
+        text: '#047857',
+        lightText: '#10b981',
+        dateColor: '#34d399'
+      },
+      purple: {
+        gradient: 'linear-gradient(to right, #f3e8ff 0%, #ffffff 60%)',
+        accent: '#6b21a8',
+        text: '#7e22ce',
+        lightText: '#a855f7',
+        dateColor: '#c084fc'
+      },
+      rose: {
+        gradient: 'linear-gradient(to right, #ffe4e6 0%, #ffffff 60%)',
+        accent: '#9f1239',
+        text: '#be123c',
+        lightText: '#f43f5e',
+        dateColor: '#fb7185'
+      },
+      arctic: {
+        gradient: 'linear-gradient(to right, #f0f9ff 0%, #ffffff 60%)',
+        accent: '#0c4a6e',
+        text: '#075985',
+        lightText: '#0ea5e9',
+        dateColor: '#38bdf8'
+      },
+      mint: {
+        gradient: 'linear-gradient(to right, #d1fae5 0%, #ffffff 60%)',
+        accent: '#134e4a',
+        text: '#115e59',
+        lightText: '#14b8a6',
+        dateColor: '#2dd4bf'
+      }
+    };
+
+    // Get elements
+    const fontSelector = document.getElementById('font-selector');
+    const colorSchemeSelector = document.getElementById('color-scheme');
+    const resetBtn = document.getElementById('reset-btn');
+    const printBtn = document.getElementById('print-btn');
+    const body = document.body;
+
+    // Apply font
+    function applyFont(fontFamily) {
+      body.style.fontFamily = fontFamily;
+    }
+
+    // Apply color scheme
+    function applyColorScheme(scheme) {
+      const colors = colorSchemes[scheme];
+
+      // Apply gradient background
+      const a4 = document.querySelector('.a4');
+      if (a4) {
+        a4.style.background = colors.gradient;
+      }
+
+      // Apply accent color to section borders
+      document.querySelectorAll('.section h2').forEach(el => {
+        el.style.borderLeftColor = colors.accent;
+        el.style.color = colors.text;
+      });
+
+      // Apply to dates
+      document.querySelectorAll('.date').forEach(el => {
+        el.style.color = colors.dateColor;
+      });
+
+      // Apply to entry headings
+      document.querySelectorAll('.entry h3').forEach(el => {
+        el.style.color = colors.text;
+      });
+
+      // Apply to control panel
+      const controlPanel = document.querySelector('.control-panel');
+      if (controlPanel) {
+        controlPanel.style.borderColor = colors.accent;
+      }
+      document.querySelectorAll('.control-panel h3').forEach(el => {
+        el.style.color = colors.accent;
+        el.style.borderBottomColor = colors.accent;
+      });
+      document.querySelectorAll('#print-btn').forEach(el => {
+        el.style.backgroundColor = colors.accent;
+        el.style.borderColor = colors.accent;
+      });
+    }
+
+    // Event listeners
+    fontSelector.addEventListener('change', (e) => {
+      applyFont(e.target.value);
+    });
+
+    colorSchemeSelector.addEventListener('change', (e) => {
+      applyColorScheme(e.target.value);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      fontSelector.value = "'Josefin Sans', sans-serif";
+      colorSchemeSelector.value = 'teal';
+      applyFont("'Josefin Sans', sans-serif");
+      applyColorScheme('teal');
+    });
+
+    printBtn.addEventListener('click', () => {
+      // Hide control panel for printing
+      document.querySelector('.control-panel').style.display = 'none';
+      window.print();
+      document.querySelector('.control-panel').style.display = 'block';
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Load resume data (this will also apply the default color scheme after populating)
+      await loadResumeData();
+
+      // Initialize with default font
+      applyFont("'Josefin Sans', sans-serif");
+    });
+  </script>
 </body>
 </html>
 <style>
-    body {
+body {
   font-family: 'Josefin Sans', sans-serif;
   background: #f4f4f4;
   margin: 0;
@@ -127,13 +733,6 @@
   margin-bottom: 30px;
 }
 
-.profile-pic img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
 .header-info {
   flex: 1;
 }
@@ -142,6 +741,7 @@
   font-size: 22px;
   margin: 5px 0;
   font-weight: 700;
+  color: #333;
 }
 .header-info h1 span {
   font-weight: 400;
@@ -156,6 +756,7 @@
   font-size: 13px;
   margin-top: 10px;
   color: #333;
+  line-height: 1.6;
 }
 
 /* SECTIONS */
@@ -179,17 +780,134 @@
   font-size: 14px;
   font-weight: 600;
   margin: 0;
+  color: #333;
 }
 .entry .date {
   font-size: 12px;
   color: #777;
+  display: block;
+  margin-bottom: 4px;
 }
 .entry p, .entry ul {
   font-size: 13px;
   margin: 4px 0;
+  color: #555;
+  line-height: 1.5;
 }
 .entry ul {
   padding-left: 18px;
 }
 
+/* Control Panel */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid #222;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 250px;
+  font-family: 'Inter', sans-serif;
+}
+
+.control-panel h3 {
+  margin: 0 0 15px;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+  border-bottom: 2px solid #222;
+  padding-bottom: 10px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: white;
+  color: #333;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: #222;
+  box-shadow: 0 0 0 2px rgba(34, 34, 34, 0.1);
+}
+
+.control-group button {
+  width: 48%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#reset-btn {
+  background: #f8f9fa;
+  color: #666;
+  margin-right: 4%;
+}
+
+#reset-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+#print-btn {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+#print-btn:hover {
+  background: #000;
+  border-color: #000;
+}
+
+/* Hide control panel when printing */
+@media print {
+  .control-panel {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .control-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 300px;
+  }
+}
 </style>
