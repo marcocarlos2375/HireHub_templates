@@ -2,221 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Carlos Idrissi Saez - Software Engineer Resume</title>
-  <meta name="description" content="Software Engineer with 8+ years experience in machine learning, cloud infrastructure, and distributed systems">
-  <meta name="keywords" content="Software Engineer, Python, Java, React, Machine Learning, Cloud, AWS, Docker, Kubernetes">
+  <title id="page-title">Resume</title>
+  <meta name="description" content="Professional Resume">
+  <meta name="keywords" content="">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&family=Wix+Madefor+Text:wght@300;400;600&family=Gabarito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Manrope:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Figtree:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <style>
     @import url('https://fonts.cdnfonts.com/css/satoshi');
   </style>
 </head>
 <body>
   <div class="a4">
-    
+
     <!-- HEADER -->
     <header class="header-box">
-      <h1>Carlos Idrissi Saez</h1>
-      <h2>Software Engineer</h2>
+      <h1 id="full-name"></h1>
+      <h2 id="job-title"></h2>
     </header>
 
     <main>
       <!-- LEFT COLUMN -->
       <section class="left">
         <h3>Contact</h3>
-        <div class="contact-item">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          <div>
-            <strong>Location</strong><br>
-            <span>Paris, France</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-          <div>
-            <strong>Email</strong><br>
-            <span>carlos.idriss@example.com</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <div>
-            <strong>Phone</strong><br>
-            <span>+33 6 12 34 56 78</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-          </svg>
-          <div>
-            <strong>Website</strong><br>
-            <span>www.carlossaez.dev</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          <div>
-            <strong>LinkedIn</strong><br>
-            <span>linkedin.com/in/carlossaez</span>
-          </div>
-        </div>
+        <div id="contact-info"></div>
 
         <h3>Skills</h3>
         <div id="skills"></div>
 
         <h3>Languages</h3>
-        <div class="languages">
-          <div class="language-item">
-            <strong>English</strong>
-            <span>Native</span>
-          </div>
-          <div class="language-item">
-            <strong>Spanish</strong>
-            <span>Fluent</span>
-          </div>
-          <div class="language-item">
-            <strong>French</strong>
-            <span>Intermediate</span>
-          </div>
-        </div>
+        <div id="languages" class="languages"></div>
 
-        <h3>Awards</h3>
-        <div class="awards">
-          <div class="award-item">
-            <strong>Employee of the Year</strong>
-            <span>Google Inc. (2023)</span>
-          </div>
-          <div class="award-item">
-            <strong>Innovation Award</strong>
-            <span>Microsoft Corporation (2021)</span>
-          </div>
-        </div>
+        <div id="awards-section"></div>
+
+        <div id="hobbies-section"></div>
       </section>
 
       <!-- RIGHT COLUMN -->
       <section class="right">
         <h3>Professional Summary</h3>
-        <p>Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver high-quality solutions that drive business growth and improve user experience.</p>
+        <p id="professional-summary"></p>
 
         <h3>Professional Experience</h3>
-        <div class="job">
-          <h4>Senior Software Engineer at Google Inc.</h4>
-          <span class="date">Jun 2022 — Present</span>
-          <span class="loc">Mountain View, CA</span>
-          <p>Led the development of a new feature for BigQuery ML that improved model training speed by 40%. Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment. Mentored 5 junior engineers and conducted technical interviews. Implemented CI/CD pipelines that reduced deployment time by 60%.</p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at Microsoft Corporation</h4>
-          <span class="date">Jul 2020 — May 2022</span>
-          <span class="loc">Seattle, WA</span>
-          <p>Built scalable microservices handling 1M+ requests per day using Java and Spring Boot. Optimized database queries resulting in 50% performance improvement. Implemented automated testing frameworks reducing bugs by 30%. Collaborated with product managers to define technical requirements and delivered features ahead of schedule.</p>
-        </div>
-        <div class="job">
-          <h4>Software Engineer at XYZ Company</h4>
-          <span class="date">Mar 2025 — Dec 2026</span>
-          <span class="loc">Deggendorf</span>
-          <p>Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%. Developed frontend components and responsive UIs, reducing UI bugs by 25%. Built and maintained automated CI/CD pipelines and deployment scripts. Optimized database queries and introduced caching strategies, reducing response time by 40%.</p>
-        </div>
+        <div id="employment-history"></div>
 
         <h3>Education</h3>
-        <div class="edu">
-          <h4>Master of Science in Computer Science</h4>
-          <span class="date">Sep 2020 — Jun 2022</span>
-          <span class="loc">Stanford University</span>
-          <p>Specialized in Artificial Intelligence and Machine Learning. GPA: 3.92/4.0. Research Assistant at Stanford AI Lab. Published 2 papers on deep learning applications.</p>
-        </div>
-        <div class="edu">
-          <h4>Bachelor of Science in Computer Engineering</h4>
-          <span class="date">Sep 2016 — May 2020</span>
-          <span class="loc">University of California, Berkeley</span>
-          <p>Minor in Mathematics. GPA: 3.85/4.0. Dean's List all semesters. Capstone Project: Developed an IoT system for smart energy management.</p>
-        </div>
-        <div class="edu">
-          <h4>Exchange Student in Computer Science</h4>
-          <span class="date">Sep 2018 — Dec 2018</span>
-          <span class="loc">ETH Zurich</span>
-          <p>Focused on Advanced Algorithms and Data Structures. Participated in international programming competitions. Collaborated on research project in distributed computing.</p>
-        </div>
+        <div id="education"></div>
+
+        <div id="internships-section"></div>
 
         <h3>Key Projects</h3>
-        <div class="job">
-          <h4>SmartRetail Platform - Lead Developer</h4>
-          <span class="date">Mar 2022 — Present</span>
-          <span class="loc">RetailTech AG</span>
-          <p>E-commerce analytics platform with real-time inventory management and demand forecasting. Implemented machine learning algorithms for demand forecasting. Built real-time dashboard with React and D3.js. Achieved 25% improvement in inventory turnover rates. Technologies: Python, React, TensorFlow, AWS.</p>
-        </div>
-        <div class="job">
-          <h4>FinanceTracker Pro - Full Stack Developer</h4>
-          <span class="date">Jan 2023 — Dec 2023</span>
-          <span class="loc">FinTech Solutions</span>
-          <p>Personal finance management application with automated categorization and investment tracking. Developed automated transaction categorization using NLP. Built investment portfolio tracking with real-time market data. Created mobile-responsive Vue.js frontend with PWA capabilities. Technologies: Vue.js, Node.js, MongoDB, Docker.</p>
-        </div>
+        <div id="projects"></div>
 
-        <h3>Volunteer Experience</h3>
-        <div class="job">
-          <h4>Web Development Mentor</h4>
-          <span class="date">Jan 2023 — Present</span>
-          <span class="loc">Berlin</span>
-          <p>Mentoring aspiring web developers through coding bootcamp program. Provided one-on-one guidance to 15+ students. Conducted weekly code review sessions. Helped students build portfolio projects. Achieved 90% job placement rate for mentees.</p>
-        </div>
-        <div class="job">
-          <h4>Tech Workshop Organizer</h4>
-          <span class="date">Mar 2022 — Dec 2022</span>
-          <span class="loc">Munich</span>
-          <p>Organized monthly technology workshops for local community. Planned and executed 10 workshops with 200+ attendees. Topics covered: React, Node.js, Python, and DevOps. Collaborated with local tech companies for sponsorship.</p>
-        </div>
+        <div id="volunteering-section"></div>
 
-        <h3>Publications & Certifications</h3>
-        <div class="pub-cert">
-          <div class="pub-cert-item">
-            <h4>Publications</h4>
-            <p><strong>Scaling Microservices with Kubernetes</strong> - Tech Journal (August 2022)</p>
-            <p><strong>Modern Frontend Architecture Patterns</strong> - Web Development Quarterly (March 2023)</p>
-            <p><strong>Machine Learning in Production Systems</strong> - AI Research Today (November 2023)</p>
-          </div>
-          <div class="pub-cert-item">
-            <h4>Certifications</h4>
-            <p>AWS Certified Solutions Architect (2023)</p>
-            <p>Google Cloud Professional Developer (2022)</p>
-            <p>Certified Kubernetes Administrator (2022)</p>
-          </div>
-        </div>
+        <div id="courses-section"></div>
+
+        <div id="publications-section"></div>
 
         <h3>References</h3>
-        <div class="references">
-          <div class="reference-item">
-            <h4>Michael Bauer</h4>
-            <p><strong>CTO, TechVision GmbH</strong></p>
-            <p>michael.bauer@techvision.com | +49 30 987654</p>
-            <p><em>Direct Manager</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Sarah Chen</h4>
-            <p><strong>Senior Engineering Manager, InnovateTech Solutions</strong></p>
-            <p>sarah.chen@innovatetech.com | +1 555 123 4567</p>
-            <p><em>Team Lead</em></p>
-          </div>
-          <div class="reference-item">
-            <h4>Dr. Andreas Mueller</h4>
-            <p><strong>Professor of Computer Science, University of Munich</strong></p>
-            <p>a.mueller@tum.de | +49 89 289 17234</p>
-            <p><em>Academic Supervisor</em></p>
-          </div>
-        </div>
+        <div id="references" class="references"></div>
       </section>
     </main>
   </div>
@@ -224,7 +67,7 @@
   <!-- Control Panel -->
   <div class="control-panel">
     <h3>🎨 Customize Template</h3>
-    
+
     <div class="control-group">
       <label for="font-selector">Font Family:</label>
       <select id="font-selector">
@@ -267,21 +110,510 @@
   </div>
 
   <script>
-    // Skills data with dot ratings (1-5)
-    const skills = [
-      { name: 'Python', level: 5 },
-      { name: 'Java', level: 5 },
-      { name: 'JavaScript', level: 4 },
-      { name: 'TypeScript', level: 4 },
-      { name: 'React', level: 5 },
-      { name: 'Node.js', level: 5 },
-      { name: 'Docker', level: 5 },
-      { name: 'Kubernetes', level: 4 },
-      { name: 'AWS', level: 4 },
-      { name: 'Machine Learning', level: 5 },
-      { name: 'TensorFlow', level: 4 },
-      { name: 'MongoDB', level: 4 }
-    ];
+    // Load resume data from JSON file
+    let resumeData = null;
+
+    // Fetch and load data
+    async function loadResumeData() {
+      try {
+        const response = await fetch('resume.json');
+        const data = await response.json();
+        resumeData = data.content;
+        populateResume();
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      }
+    }
+
+    // Populate all resume sections
+    function populateResume() {
+      if (!resumeData) return;
+
+      // Header
+      const fullName = `${resumeData.personalInfo.firstName} ${resumeData.personalInfo.lastName}`;
+      document.getElementById('full-name').textContent = fullName;
+      document.getElementById('job-title').textContent = resumeData.personalInfo.jobTitle;
+      document.getElementById('page-title').textContent = `${fullName} - ${resumeData.personalInfo.jobTitle} Resume`;
+
+      // Contact Information
+      populateContactInfo();
+
+      // Skills (grouped by category)
+      populateSkills();
+
+      // Languages
+      populateLanguages();
+
+      // Awards
+      populateAwards();
+
+      // Hobbies
+      populateHobbies();
+
+      // Professional Summary
+      document.getElementById('professional-summary').textContent = resumeData.professionalSummary;
+
+      // Employment History
+      populateEmploymentHistory();
+
+      // Education
+      populateEducation();
+
+      // Internships
+      populateInternships();
+
+      // Projects
+      populateProjects();
+
+      // Volunteering
+      populateVolunteering();
+
+      // Courses
+      populateCourses();
+
+      // Publications
+      populatePublications();
+
+      // References
+      populateReferences();
+    }
+
+    // Contact Information
+    function populateContactInfo() {
+      const contactContainer = document.getElementById('contact-info');
+      const personal = resumeData.personalInfo;
+      let html = '';
+
+      // Location
+      if (personal.location) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <strong>Location</strong><br>
+              <span>${personal.location}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // Email
+      if (personal.email) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div>
+              <strong>Email</strong><br>
+              <span>${personal.email}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // Phone
+      if (personal.phone) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <div>
+              <strong>Phone</strong><br>
+              <span>${personal.phone}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // Website
+      if (personal.website) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <div>
+              <strong>Website</strong><br>
+              <span>${personal.website.replace('https://', '').replace('http://', '')}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // LinkedIn
+      if (personal.socialLinks && personal.socialLinks.linkedin) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <div>
+              <strong>LinkedIn</strong><br>
+              <span>${personal.socialLinks.linkedin}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // GitHub
+      if (personal.socialLinks && personal.socialLinks.github) {
+        html += `
+          <div class="contact-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            <div>
+              <strong>GitHub</strong><br>
+              <span>${personal.socialLinks.github}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      contactContainer.innerHTML = html;
+    }
+
+    // Skills grouped by category
+    function populateSkills() {
+      const skillsContainer = document.getElementById('skills');
+
+      if (!resumeData.skills || resumeData.skills.length === 0) {
+        skillsContainer.innerHTML = '';
+        return;
+      }
+
+      // Group skills by category
+      const groupedSkills = {};
+      resumeData.skills.forEach(skill => {
+        if (!groupedSkills[skill.category]) {
+          groupedSkills[skill.category] = [];
+        }
+        groupedSkills[skill.category].push(skill);
+      });
+
+      let html = '';
+
+      // Get skill groups for display
+      const skillGroups = resumeData.skillGroups || [];
+
+      // Iterate through skill groups to maintain order
+      skillGroups.forEach(group => {
+        const skills = groupedSkills[group.id];
+        if (!skills || skills.length === 0) return;
+
+        // Add group name as subheading
+        html += `<h4 class="skill-group-title">${group.name}</h4>`;
+
+        // Add skills for this group
+        skills.forEach(skill => {
+          const levelMap = { 'Expert': 5, 'Advanced': 4, 'Intermediate': 3, 'Beginner': 2, 'Novice': 1 };
+          const level = levelMap[skill.level] || 3;
+
+          html += `
+            <div class="skill">
+              <div class="skill-name">${skill.skill}</div>
+              <div class="dots">
+                ${Array.from({length: 5}, (_, i) =>
+                  `<div class="dot ${i < level ? 'filled' : ''}"></div>`
+                ).join('')}
+              </div>
+            </div>
+          `;
+        });
+      });
+
+      skillsContainer.innerHTML = html;
+    }
+
+    // Languages
+    function populateLanguages() {
+      const languagesContainer = document.getElementById('languages');
+
+      if (!resumeData.languages || resumeData.languages.length === 0) {
+        languagesContainer.parentElement.style.display = 'none';
+        return;
+      }
+
+      let html = '';
+      resumeData.languages.forEach(lang => {
+        html += `
+          <div class="language-item">
+            <strong>${lang.language}</strong>
+            <span>${lang.level}</span>
+          </div>
+        `;
+      });
+
+      languagesContainer.innerHTML = html;
+    }
+
+    // Awards
+    function populateAwards() {
+      const awardsSection = document.getElementById('awards-section');
+
+      const awards = resumeData.customSections?.awards || [];
+      if (awards.length === 0) {
+        awardsSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Awards</h3><div class="awards">';
+      awards.forEach(award => {
+        const year = award.startDate ? new Date(award.startDate).getFullYear() : '';
+        html += `
+          <div class="award-item">
+            <strong>${award.title}</strong>
+            <span>${award.city}${year ? ` (${year})` : ''}</span>
+          </div>
+        `;
+      });
+      html += '</div>';
+
+      awardsSection.innerHTML = html;
+    }
+
+    // Hobbies
+    function populateHobbies() {
+      const hobbiesSection = document.getElementById('hobbies-section');
+
+      if (!resumeData.hobbies || resumeData.hobbies.length === 0) {
+        hobbiesSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Hobbies & Interests</h3><div class="hobbies">';
+      resumeData.hobbies.forEach(hobby => {
+        html += `
+          <div class="hobby-item">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span>${hobby}</span>
+          </div>
+        `;
+      });
+      html += '</div>';
+
+      hobbiesSection.innerHTML = html;
+    }
+
+    // Employment History
+    function populateEmploymentHistory() {
+      const employmentContainer = document.getElementById('employment-history');
+
+      if (!resumeData.employmentHistory || resumeData.employmentHistory.length === 0) {
+        employmentContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.employmentHistory.forEach(job => {
+        const startDate = formatDate(job.startDate);
+        const endDate = job.currentlyWorking ? 'Present' : formatDate(job.endDate);
+
+        html += `
+          <div class="job">
+            <h4>${job.jobTitle} at ${job.company}</h4>
+            <span class="date">${startDate} — ${endDate}</span>
+            <span class="loc">${job.location}</span>
+            <p>${job.description}</p>
+          </div>
+        `;
+      });
+
+      employmentContainer.innerHTML = html;
+    }
+
+    // Education
+    function populateEducation() {
+      const educationContainer = document.getElementById('education');
+
+      if (!resumeData.education || resumeData.education.length === 0) {
+        educationContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.education.forEach(edu => {
+        const startDate = formatDate(edu.startDate);
+        const endDate = edu.current ? 'Present' : formatDate(edu.endDate);
+
+        html += `
+          <div class="edu">
+            <h4>${edu.degree}</h4>
+            <span class="date">${startDate} — ${endDate}</span>
+            <span class="loc">${edu.school}</span>
+            ${edu.description ? `<p>${stripHtmlTags(edu.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      educationContainer.innerHTML = html;
+    }
+
+    // Internships
+    function populateInternships() {
+      const internshipsSection = document.getElementById('internships-section');
+
+      if (!resumeData.internships || resumeData.internships.length === 0) {
+        internshipsSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Internships</h3>';
+      resumeData.internships.forEach(internship => {
+        const startDate = formatDate(internship.startDate);
+        const endDate = formatDate(internship.endDate);
+
+        html += `
+          <div class="job">
+            <h4>${internship.position} at ${internship.company}</h4>
+            <span class="date">${startDate} — ${endDate}</span>
+            <span class="loc">${internship.location}</span>
+            ${internship.description ? `<p>${internship.description}</p>` : ''}
+          </div>
+        `;
+      });
+
+      internshipsSection.innerHTML = html;
+    }
+
+    // Projects
+    function populateProjects() {
+      const projectsContainer = document.getElementById('projects');
+
+      if (!resumeData.projects || resumeData.projects.length === 0) {
+        projectsContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      resumeData.projects.forEach(project => {
+        html += `
+          <div class="job">
+            <h4>${project.name}</h4>
+            ${project.link ? `<span class="date">${project.link}</span>` : ''}
+            <p>${project.description}</p>
+            ${project.technologies ? `<p><em>Technologies: ${project.technologies}</em></p>` : ''}
+          </div>
+        `;
+      });
+
+      projectsContainer.innerHTML = html;
+    }
+
+    // Volunteering
+    function populateVolunteering() {
+      const volunteeringSection = document.getElementById('volunteering-section');
+
+      const volunteering = resumeData.customSections?.volunteering || [];
+      if (volunteering.length === 0) {
+        volunteeringSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Volunteer Experience</h3>';
+      volunteering.forEach(vol => {
+        const startDate = formatDate(vol.startDate);
+        const endDate = vol.current ? 'Present' : formatDate(vol.endDate);
+
+        html += `
+          <div class="job">
+            <h4>${vol.title}</h4>
+            <span class="date">${startDate} — ${endDate}</span>
+            <span class="loc">${vol.city}</span>
+            ${vol.description ? `<p>${stripHtmlTags(vol.description)}</p>` : ''}
+          </div>
+        `;
+      });
+
+      volunteeringSection.innerHTML = html;
+    }
+
+    // Courses
+    function populateCourses() {
+      const coursesSection = document.getElementById('courses-section');
+
+      if (!resumeData.courses || resumeData.courses.length === 0) {
+        coursesSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Courses & Certifications</h3><div class="pub-cert-item">';
+      resumeData.courses.forEach(course => {
+        const date = formatDate(course.completionDate);
+        html += `<p><strong>${course.title}</strong> - ${course.institution} (${date})</p>`;
+      });
+      html += '</div>';
+
+      coursesSection.innerHTML = html;
+    }
+
+    // Publications
+    function populatePublications() {
+      const publicationsSection = document.getElementById('publications-section');
+
+      if (!resumeData.publications || resumeData.publications.length === 0) {
+        publicationsSection.style.display = 'none';
+        return;
+      }
+
+      let html = '<h3>Publications</h3><div class="pub-cert-item">';
+      resumeData.publications.forEach(pub => {
+        const date = formatDate(pub.publicationDate);
+        html += `<p><strong>${pub.title}</strong> - ${pub.publisher} (${date})</p>`;
+      });
+      html += '</div>';
+
+      publicationsSection.innerHTML = html;
+    }
+
+    // References
+    function populateReferences() {
+      const referencesContainer = document.getElementById('references');
+
+      if (!resumeData.references || resumeData.references.length === 0) {
+        referencesContainer.parentElement.style.display = 'none';
+        return;
+      }
+
+      let html = '';
+      resumeData.references.forEach(ref => {
+        html += `
+          <div class="reference-item">
+            <h4>${ref.name}</h4>
+            <p><strong>${ref.position}, ${ref.company}</strong></p>
+            <p>${ref.email} | ${ref.phone}</p>
+          </div>
+        `;
+      });
+
+      referencesContainer.innerHTML = html;
+    }
+
+    // Helper function to format dates
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    // Helper function to strip HTML tags
+    function stripHtmlTags(html) {
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      return temp.textContent || temp.innerText || '';
+    }
 
     // Color schemes
     const colorSchemes = {
@@ -343,33 +675,6 @@
       }
     };
 
-    // Generate skills with dots
-    const skillsContainer = document.getElementById("skills");
-    skills.forEach(skill => {
-      const skillDiv = document.createElement("div");
-      skillDiv.classList.add("skill");
-
-      const nameSpan = document.createElement("div");
-      nameSpan.classList.add("skill-name");
-      nameSpan.textContent = skill.name;
-
-      const dotsDiv = document.createElement("div");
-      dotsDiv.classList.add("dots");
-
-      for (let i = 0; i < 5; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i < skill.level) {
-          dot.classList.add("filled");
-        }
-        dotsDiv.appendChild(dot);
-      }
-
-      skillDiv.appendChild(nameSpan);
-      skillDiv.appendChild(dotsDiv);
-      skillsContainer.appendChild(skillDiv);
-    });
-
     // Apply font
     function applyFont(fontFamily) {
       document.body.style.fontFamily = fontFamily;
@@ -378,27 +683,37 @@
     // Apply color scheme
     function applyColorScheme(scheme) {
       const colors = colorSchemes[scheme];
-      
+
       // Apply header border and text
-      document.querySelector('.header-box').style.borderColor = colors.primary;
-      document.querySelector('.header-box h1').style.color = colors.text;
-      
+      const headerBox = document.querySelector('.header-box');
+      if (headerBox) {
+        headerBox.style.borderColor = colors.primary;
+        const h1 = headerBox.querySelector('h1');
+        if (h1) h1.style.color = colors.text;
+      }
+
       // Apply section headers
       document.querySelectorAll('h3').forEach(el => {
         el.style.borderBottomColor = colors.primary;
         el.style.color = colors.text;
       });
-      
+
       // Apply job titles
       document.querySelectorAll('h4').forEach(el => {
         el.style.color = colors.text;
       });
-      
+
+      // Apply skill group titles
+      document.querySelectorAll('.skill-group-title').forEach(el => {
+        el.style.color = colors.secondary;
+        el.style.borderTopColor = colors.accent;
+      });
+
       // Apply filled dots
       document.querySelectorAll('.dot.filled').forEach(el => {
         el.style.backgroundColor = colors.primary;
       });
-      
+
       // Apply contact icons
       document.querySelectorAll('.contact-item svg').forEach(el => {
         el.style.color = colors.secondary;
@@ -430,9 +745,12 @@
       });
     }
 
-    // Get elements and set up event listeners after DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get elements
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Load resume data
+      await loadResumeData();
+
+      // Get elements and set up event listeners
       const fontSelector = document.getElementById('font-selector');
       const colorSchemeSelector = document.getElementById('color-scheme');
       const resetBtn = document.getElementById('reset-btn');
@@ -475,7 +793,7 @@ body {
     margin: 0;
     padding: 0;
   }
-  
+
   .a4 {
     width: 210mm;
     min-height: 297mm;
@@ -484,7 +802,7 @@ body {
     padding: 20mm;
     box-sizing: border-box;
   }
-  
+
   /* Header */
   .header-box {
     border: 2px solid #000;
@@ -505,21 +823,21 @@ body {
     letter-spacing: 1px;
     color: #555;
   }
-  
+
   /* Layout */
   main {
     display: flex;
     gap: 40px;
   }
-  
+
   .left {
     width: 35%;
   }
-  
+
   .right {
     width: 65%;
   }
-  
+
   /* Section headers */
   h3 {
     font-size: 14px;
@@ -528,14 +846,14 @@ body {
     padding-bottom: 3px;
     margin: 25px 0 10px;
   }
-  
+
   /* Sub headers */
   h4 {
     font-size: 13px;
     font-weight: 600;
     margin: 10px 0 5px;
   }
-  
+
   /* Text */
   p {
     font-size: 12.5px;
@@ -548,13 +866,30 @@ body {
     display: inline-block;
     margin-right: 10px;
   }
-  
+
   /* Skills */
+  .skill-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    margin: 15px 0 8px 0;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .skill-group-title:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
   .skill {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 6px 0;
+    margin: 6px 0 6px 8px;
   }
   .skill-name {
     font-size: 12.5px;
@@ -646,6 +981,28 @@ body {
   font-size: 11px;
 }
 
+/* HOBBIES */
+.hobbies {
+  margin-top: 10px;
+}
+
+.hobby-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.hobby-item svg {
+  color: #333;
+  flex-shrink: 0;
+}
+
+.hobby-item span {
+  color: #555;
+}
+
 /* REFERENCES */
 .references {
   display: grid;
@@ -657,7 +1014,6 @@ body {
 .reference-item {
   background: #f9f9f9;
   padding: 12px;
- 
   border-left: 3px solid #000;
 }
 
@@ -798,12 +1154,12 @@ body {
   .control-panel {
     display: none !important;
   }
-  
+
   body {
     background: white;
     padding: 0;
   }
-  
+
   .a4 {
     box-shadow: none;
     margin: 0;
@@ -817,21 +1173,21 @@ body {
     min-height: auto;
     padding: 15px;
   }
-  
+
   main {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .left, .right {
     width: 100%;
   }
-  
+
   .pub-cert {
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .control-panel {
     position: relative;
     top: auto;

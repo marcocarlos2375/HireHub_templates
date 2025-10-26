@@ -1,0 +1,376 @@
+{
+  "content": {
+    "personalInfo": {
+      "jobTitle": "Software Engineer",
+      "firstName": "Carlos",
+      "lastName": "Idrissi Saez",
+      "email": "carlos.idriss@example.com",
+      "phone": "+33 6 12 34 56 78",
+      "location": "Paris, France",
+      "website": "https://www.carlossaez.dev",
+      "birthDate": "",
+      "nationality": "French",
+      "relationshipStatus": "",
+      "availability": "immediate",
+      "socialLinks": {
+        "linkedin": "linkedin.com/in/carlossaez",
+        "github": "github.com/carlossaez",
+        "twitter": "",
+        "other": ""
+      },
+      "websitesAndSocialLinks": [
+        {
+          "label": "Portfolio",
+          "url": "https://www.carlossaez.dev"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/carlossaez"
+        }
+      ]
+    },
+    "professionalSummary": "Highly skilled and innovative Software Engineer with over 8 years of experience in developing cutting-edge applications and services. Specialized in machine learning, cloud infrastructure, and distributed systems. Proven track record of leading teams to deliver high-quality solutions that drive business growth and improve user experience.",
+    "employmentHistory": [
+      {
+        "jobTitle": "Senior Software Engineer",
+        "company": "Google Inc.",
+        "location": "Mountain View, CA",
+        "startDate": "2022-06",
+        "endDate": "",
+        "currentlyWorking": true,
+        "description": "Led the development of a new feature for BigQuery ML that improved model training speed by 40%. Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment.",
+        "responsibilities": [
+          "Led the development of a new feature for BigQuery ML that improved model training speed by 40%",
+          "Collaborated with cross-functional teams to design and implement RESTful APIs for ML model deployment",
+          "Mentored 5 junior engineers and conducted technical interviews",
+          "Implemented CI/CD pipelines that reduced deployment time by 60%"
+        ]
+      },
+      {
+        "jobTitle": "Software Engineer",
+        "company": "Microsoft Corporation",
+        "location": "Seattle, WA",
+        "startDate": "2020-07",
+        "endDate": "2022-05",
+        "currentlyWorking": false,
+        "description": "Built scalable microservices handling 1M+ requests per day using Java and Spring Boot. Optimized database queries resulting in 50% performance improvement.",
+        "responsibilities": [
+          "Built scalable microservices handling 1M+ requests per day using Java and Spring Boot",
+          "Optimized database queries resulting in 50% performance improvement",
+          "Implemented automated testing frameworks reducing bugs by 30%",
+          "Collaborated with product managers to define technical requirements and delivered features ahead of schedule"
+        ]
+      },
+      {
+        "jobTitle": "Software Engineer",
+        "company": "XYZ Company",
+        "location": "Deggendorf",
+        "startDate": "2018-03",
+        "endDate": "2020-06",
+        "currentlyWorking": false,
+        "description": "Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%.",
+        "responsibilities": [
+          "Designed and implemented RESTful APIs and microservices improving feature delivery time by ~30%",
+          "Developed frontend components and responsive UIs, reducing UI bugs by 25%",
+          "Built and maintained automated CI/CD pipelines and deployment scripts",
+          "Optimized database queries and introduced caching strategies, reducing response time by 40%"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "Stanford University",
+        "degree": "Master of Science in Computer Science",
+        "location": "Stanford, CA",
+        "startDate": "2020-09",
+        "endDate": "2022-06",
+        "current": false,
+        "description": "<p>Specialized in Artificial Intelligence and Machine Learning.</p><p>GPA: 3.92/4.0</p><p>Research Assistant at Stanford AI Lab. Published 2 papers on deep learning applications.</p>"
+      },
+      {
+        "school": "University of California, Berkeley",
+        "degree": "Bachelor of Science in Computer Engineering",
+        "location": "Berkeley, CA",
+        "startDate": "2016-09",
+        "endDate": "2020-05",
+        "current": false,
+        "description": "<p>Minor in Mathematics. GPA: 3.85/4.0.</p><p>Dean's List all semesters.</p><p>Capstone Project: Developed an IoT system for smart energy management.</p>"
+      },
+      {
+        "school": "ETH Zurich",
+        "degree": "Exchange Student in Computer Science",
+        "location": "Zurich, Switzerland",
+        "startDate": "2018-09",
+        "endDate": "2018-12",
+        "current": false,
+        "description": "<p>Focused on Advanced Algorithms and Data Structures.</p><p>Participated in international programming competitions.</p><p>Collaborated on research project in distributed computing.</p>"
+      }
+    ],
+    "skillGroups": [
+      {
+        "id": "programming-languages",
+        "name": "Programming Languages",
+        "icon": "code"
+      },
+      {
+        "id": "frontend-frameworks",
+        "name": "Frontend Frameworks",
+        "icon": "layout"
+      },
+      {
+        "id": "backend-technologies",
+        "name": "Backend Technologies",
+        "icon": "server"
+      },
+      {
+        "id": "devops-tools",
+        "name": "DevOps & Tools",
+        "icon": "tool"
+      },
+      {
+        "id": "cloud-platforms",
+        "name": "Cloud Platforms",
+        "icon": "cloud"
+      },
+      {
+        "id": "ai-ml",
+        "name": "AI & Machine Learning",
+        "icon": "brain"
+      },
+      {
+        "id": "databases",
+        "name": "Databases",
+        "icon": "database"
+      },
+      {
+        "id": "soft-skills",
+        "name": "Soft Skills",
+        "icon": "users"
+      }
+    ],
+    "skills": [
+      {
+        "skill": "Python",
+        "level": "Expert",
+        "category": "programming-languages"
+      },
+      {
+        "skill": "Java",
+        "level": "Expert",
+        "category": "programming-languages"
+      },
+      {
+        "skill": "JavaScript",
+        "level": "Advanced",
+        "category": "programming-languages"
+      },
+      {
+        "skill": "TypeScript",
+        "level": "Advanced",
+        "category": "programming-languages"
+      },
+      {
+        "skill": "React",
+        "level": "Expert",
+        "category": "frontend-frameworks"
+      },
+      {
+        "skill": "Node.js",
+        "level": "Expert",
+        "category": "backend-technologies"
+      },
+      {
+        "skill": "Docker",
+        "level": "Expert",
+        "category": "devops-tools"
+      },
+      {
+        "skill": "Kubernetes",
+        "level": "Advanced",
+        "category": "devops-tools"
+      },
+      {
+        "skill": "AWS",
+        "level": "Advanced",
+        "category": "cloud-platforms"
+      },
+      {
+        "skill": "Machine Learning",
+        "level": "Expert",
+        "category": "ai-ml"
+      },
+      {
+        "skill": "TensorFlow",
+        "level": "Advanced",
+        "category": "ai-ml"
+      },
+      {
+        "skill": "MongoDB",
+        "level": "Advanced",
+        "category": "databases"
+      },
+      {
+        "skill": "Leadership",
+        "level": "Advanced",
+        "category": "soft-skills"
+      },
+      {
+        "skill": "Communication",
+        "level": "Advanced",
+        "category": "soft-skills"
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "level": "C2/Native"
+      },
+      {
+        "language": "Spanish",
+        "level": "C1"
+      },
+      {
+        "language": "French",
+        "level": "B2"
+      }
+    ],
+    "courses": [
+      {
+        "title": "AWS Certified Solutions Architect",
+        "institution": "Amazon Web Services",
+        "completionDate": "2023-01",
+        "credential": "AWS-SAP-2023",
+        "description": "Professional-level certification demonstrating expertise in designing distributed systems on AWS. Covers best practices for architecting secure, high-performing, resilient, and cost-efficient infrastructure."
+      },
+      {
+        "title": "Google Cloud Professional Developer",
+        "institution": "Google Cloud",
+        "completionDate": "2022-08",
+        "credential": "GCP-PD-2022",
+        "description": "Advanced certification validating ability to design, build, and deploy scalable applications on Google Cloud Platform. Focus on cloud-native development and microservices architecture."
+      },
+      {
+        "title": "Certified Kubernetes Administrator",
+        "institution": "Cloud Native Computing Foundation",
+        "completionDate": "2022-05",
+        "credential": "CKA-2022",
+        "description": "Industry-recognized certification demonstrating proficiency in Kubernetes administration, including installation, configuration, networking, and troubleshooting of production-grade Kubernetes clusters."
+      }
+    ],
+    "publications": [
+      {
+        "title": "Scaling Microservices with Kubernetes",
+        "publisher": "Tech Journal",
+        "publicationDate": "2022-08",
+        "url": "https://techjournal.com/scaling-microservices",
+        "description": "Comprehensive guide on architecting and deploying scalable microservices infrastructure using Kubernetes. Covers container orchestration, service mesh implementation, and auto-scaling strategies for production environments."
+      },
+      {
+        "title": "Modern Frontend Architecture Patterns",
+        "publisher": "Web Development Quarterly",
+        "publicationDate": "2023-03",
+        "url": "https://webdevquarterly.com/frontend-architecture",
+        "description": "In-depth analysis of contemporary frontend architectural patterns including micro-frontends, component-driven development, and state management strategies. Features real-world case studies and performance optimization techniques."
+      },
+      {
+        "title": "Machine Learning in Production Systems",
+        "publisher": "AI Research Today",
+        "publicationDate": "2023-11",
+        "url": "https://airesearchtoday.com/ml-production",
+        "description": "Practical guide to deploying and maintaining machine learning models in production environments. Discusses MLOps best practices, model monitoring, A/B testing strategies, and handling model drift in real-world applications."
+      }
+    ],
+    "projects": [
+      {
+        "name": "SmartRetail Platform",
+        "description": "E-commerce analytics platform with real-time inventory management and demand forecasting. Implemented machine learning algorithms for demand forecasting. Built real-time dashboard with React and D3.js. Achieved 25% improvement in inventory turnover rates.",
+        "technologies": "Python, React, TensorFlow, AWS, D3.js",
+        "link": "https://github.com/carlossaez/smartretail"
+      },
+      {
+        "name": "FinanceTracker Pro",
+        "description": "Personal finance management application with automated categorization and investment tracking. Developed automated transaction categorization using NLP. Built investment portfolio tracking with real-time market data. Created mobile-responsive Vue.js frontend with PWA capabilities.",
+        "technologies": "Vue.js, Node.js, MongoDB, Docker, NLP",
+        "link": "https://github.com/carlossaez/financetracker"
+      }
+    ],
+    "references": [
+      {
+        "name": "Michael Bauer",
+        "position": "CTO",
+        "company": "TechVision GmbH",
+        "email": "michael.bauer@techvision.com",
+        "phone": "+49 30 987654"
+      },
+      {
+        "name": "Sarah Chen",
+        "position": "Senior Engineering Manager",
+        "company": "InnovateTech Solutions",
+        "email": "sarah.chen@innovatetech.com",
+        "phone": "+1 555 123 4567"
+      },
+      {
+        "name": "Dr. Andreas Mueller",
+        "position": "Professor of Computer Science",
+        "company": "University of Munich",
+        "email": "a.mueller@tum.de",
+        "phone": "+49 89 289 17234"
+      }
+    ],
+    "hobbies": [
+      "Open Source Contributing",
+      "Technical Writing",
+      "Machine Learning Research",
+      "Hiking"
+    ],
+    "internships": [],
+    "customSections": {
+      "awards": [
+        {
+          "title": "Employee of the Year",
+          "city": "Mountain View, CA",
+          "startDate": "2023-01",
+          "endDate": "",
+          "current": true,
+          "description": "<p>Received company-wide recognition at Google Inc. for outstanding contributions to BigQuery ML performance improvements.</p>"
+        },
+        {
+          "title": "Innovation Award",
+          "city": "Seattle, WA",
+          "startDate": "2021-12",
+          "endDate": "",
+          "current": false,
+          "description": "<p>Awarded by Microsoft Corporation for innovative approach to microservices architecture and performance optimization.</p>"
+        }
+      ],
+      "volunteering": [
+        {
+          "title": "Web Development Mentor",
+          "city": "Berlin",
+          "startDate": "2023-01",
+          "endDate": "",
+          "current": true,
+          "description": "<p>Mentoring aspiring web developers through coding bootcamp program. Provided one-on-one guidance to 15+ students. Conducted weekly code review sessions. Helped students build portfolio projects. Achieved 90% job placement rate for mentees.</p>"
+        },
+        {
+          "title": "Tech Workshop Organizer",
+          "city": "Munich",
+          "startDate": "2022-03",
+          "endDate": "2022-12",
+          "current": false,
+          "description": "<p>Organized monthly technology workshops for local community. Planned and executed 10 workshops with 200+ attendees. Topics covered: React, Node.js, Python, and DevOps. Collaborated with local tech companies for sponsorship.</p>"
+        }
+      ]
+    },
+    "customSectionsList": [
+      {
+        "id": "awards",
+        "title": "Awards & Achievements"
+      },
+      {
+        "id": "volunteering",
+        "title": "Volunteer Experience"
+      }
+    ]
+  }
+}
